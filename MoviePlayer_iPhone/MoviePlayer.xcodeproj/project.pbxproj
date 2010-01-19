@@ -16,6 +16,8 @@
 		5360AB740F9555EE004386E1 /* streaming.png in Resources */ = {isa = PBXBuildFile; fileRef = 5360AB720F9555EE004386E1 /* streaming.png */; };
 		53E4BB070DDB491E0033B3CF /* MyImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E4BB050DDB491E0033B3CF /* MyImageView.m */; };
 		53F69CEE0DDB4A390051C004 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53F69CEC0DDB4A390051C004 /* MainWindow.xib */; };
+		6A38A2C611065954004EF5FD /* TimeTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A38A2C311065954004EF5FD /* TimeTracker.m */; };
+		6A38A2C711065954004EF5FD /* TimeTrackerNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A38A2C511065954004EF5FD /* TimeTrackerNode.m */; };
 		8487EAAA0F8A5E2B00B9E9B0 /* SecondView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8487EAA80F8A5E2B00B9E9B0 /* SecondView.xib */; };
 		848A50330DD350F100267E4B /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848A50320DD350F100267E4B /* MediaPlayer.framework */; };
 		849C87B00F897A7D005A6DDE /* MyMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849C87AF0F897A7D005A6DDE /* MyMovieViewController.m */; };
@@ -42,6 +44,10 @@
 		53E4BB050DDB491E0033B3CF /* MyImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyImageView.m; path = Classes/MyImageView.m; sourceTree = "<group>"; };
 		53E4BB060DDB491E0033B3CF /* MyImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyImageView.h; path = Classes/MyImageView.h; sourceTree = "<group>"; };
 		53F69CED0DDB4A390051C004 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		6A38A2C211065954004EF5FD /* TimeTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTracker.h; sourceTree = "<group>"; };
+		6A38A2C311065954004EF5FD /* TimeTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTracker.m; sourceTree = "<group>"; };
+		6A38A2C411065954004EF5FD /* TimeTrackerNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTrackerNode.h; sourceTree = "<group>"; };
+		6A38A2C511065954004EF5FD /* TimeTrackerNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTrackerNode.m; sourceTree = "<group>"; };
 		8487EAA90F8A5E2B00B9E9B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondView.xib; sourceTree = "<group>"; };
 		848A50320DD350F100267E4B /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		849C87AE0F897A7D005A6DDE /* MyMovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMovieViewController.h; sourceTree = "<group>"; };
@@ -76,6 +82,10 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				6A38A2C211065954004EF5FD /* TimeTracker.h */,
+				6A38A2C311065954004EF5FD /* TimeTracker.m */,
+				6A38A2C411065954004EF5FD /* TimeTrackerNode.h */,
+				6A38A2C511065954004EF5FD /* TimeTrackerNode.m */,
 				1D3623240D0F684500981E51 /* MoviePlayerAppDelegate.h */,
 				1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */,
 				849C87AE0F897A7D005A6DDE /* MyMovieViewController.h */,
@@ -219,6 +229,8 @@
 				D6854D240E7B42EE00E66CAC /* MyOverlayView.m in Sources */,
 				849C87B00F897A7D005A6DDE /* MyMovieViewController.m in Sources */,
 				849C88110F899862005A6DDE /* MyStreamingMovieViewController.m in Sources */,
+				6A38A2C611065954004EF5FD /* TimeTracker.m in Sources */,
+				6A38A2C711065954004EF5FD /* TimeTrackerNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

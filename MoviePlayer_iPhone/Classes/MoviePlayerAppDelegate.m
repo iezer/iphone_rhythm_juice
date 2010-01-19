@@ -60,6 +60,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 @synthesize window;
 @synthesize tabBarController;
 @synthesize moviePlayer;
+@synthesize tracker;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {	
 
@@ -87,6 +88,8 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 					selector:@selector(movieScalingModeDidChange:) 
 					name:MPMoviePlayerScalingModeDidChangeNotification 
 					object:nil];
+	
+	self.tracker = [[TimeTracker alloc] init];
 }
 
 -(void)initAndPlayMovie:(NSURL *)movieURL
@@ -101,6 +104,8 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 		
 		// Apply the user specified settings to the movie player object
 		[self setMoviePlayerUserSettings];
+		
+		[ self.tracker play:[movieURL absoluteString] ];
 		
 		// Play the movie!
 		[self.moviePlayer play];
@@ -213,7 +218,10 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 //  Notification called when the movie finished playing.
 - (void) moviePlayBackDidFinish:(NSNotification*)notification
 {
-    /*     
+	TimeTrackerNode* node = [tracker stop];
+	//trackerLabel.text = [node description];
+	[node release];
+	/*     
         < add your code here >
         
             MPMoviePlayerController* moviePlayerObj=[notification object];
@@ -251,7 +259,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
                                                     name:OverlayViewTouchNotification
                                                   object:nil];
 	[moviePlayer release]; 
-		
+	[tracker release];
     [super dealloc];
 }
 

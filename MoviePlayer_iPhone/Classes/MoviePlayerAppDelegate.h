@@ -51,6 +51,7 @@ Copyright (C) 2009 Apple Inc. All Rights Reserved.
 
 */
 
+#import "TimeTracker.h"
 #import <UIKit/UIKit.h>
 #import "MyMovieViewController.h"
 
@@ -59,11 +60,13 @@ Copyright (C) 2009 Apple Inc. All Rights Reserved.
 	UIWindow *window;
 	MPMoviePlayerController *moviePlayer;
     UITabBarController *tabBarController;
+	TimeTracker* tracker;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 @property (readwrite, retain) MPMoviePlayerController *moviePlayer;
+@property (nonatomic, retain) TimeTracker* tracker;
 
 -(void)initAndPlayMovie:(NSURL *)movieURL;
 -(void)setMoviePlayerUserSettings;

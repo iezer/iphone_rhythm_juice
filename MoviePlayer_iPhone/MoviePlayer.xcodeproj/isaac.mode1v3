@@ -228,8 +228,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -279,8 +277,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>10</integer>
-									<integer>9</integer>
+									<integer>2</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -315,12 +312,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MyMovieViewController.m</string>
+								<string>TimeTracker.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -328,7 +327,92 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>MyMovieViewController.m</string>
+										<string>TimeTracker.m</string>
+										<key>_historyCapacity</key>
+										<integer>0</integer>
+										<key>bookmark</key>
+										<string>6A38A3C3110660A6004EF5FD</string>
+										<key>history</key>
+										<array>
+											<string>6A38A2E211065B31004EF5FD</string>
+											<string>6A38A2E311065B31004EF5FD</string>
+											<string>6A38A38C11065FA1004EF5FD</string>
+											<string>6A38A38E11065FA1004EF5FD</string>
+											<string>6A38A3AF11066097004EF5FD</string>
+											<string>6A38A3B111066097004EF5FD</string>
+											<string>6A38A3C0110660A6004EF5FD</string>
+											<string>6A38A3C1110660A6004EF5FD</string>
+										</array>
+										<key>prevStack</key>
+										<array>
+											<string>6A38A2EA11065B31004EF5FD</string>
+											<string>6A38A2EB11065B31004EF5FD</string>
+											<string>6A38A2EC11065B31004EF5FD</string>
+											<string>6A38A2ED11065B31004EF5FD</string>
+											<string>6A38A2EE11065B31004EF5FD</string>
+											<string>6A38A2EF11065B31004EF5FD</string>
+											<string>6A38A2F011065B31004EF5FD</string>
+											<string>6A38A2F111065B31004EF5FD</string>
+											<string>6A38A2F211065B31004EF5FD</string>
+											<string>6A38A2F311065B31004EF5FD</string>
+											<string>6A38A2F411065B31004EF5FD</string>
+											<string>6A38A2F511065B31004EF5FD</string>
+											<string>6A38A2F611065B31004EF5FD</string>
+											<string>6A38A2F711065B31004EF5FD</string>
+											<string>6A38A2F811065B31004EF5FD</string>
+											<string>6A38A2F911065B31004EF5FD</string>
+											<string>6A38A2FA11065B31004EF5FD</string>
+											<string>6A38A2FB11065B31004EF5FD</string>
+											<string>6A38A2FC11065B31004EF5FD</string>
+											<string>6A38A2FD11065B31004EF5FD</string>
+											<string>6A38A2FE11065B31004EF5FD</string>
+											<string>6A38A31511065BBE004EF5FD</string>
+											<string>6A38A31611065BBE004EF5FD</string>
+											<string>6A38A31711065BBE004EF5FD</string>
+											<string>6A38A31F11065BD6004EF5FD</string>
+											<string>6A38A32811065C3D004EF5FD</string>
+											<string>6A38A32911065C3D004EF5FD</string>
+											<string>6A38A32A11065C3D004EF5FD</string>
+											<string>6A38A32B11065C3D004EF5FD</string>
+											<string>6A38A33311065CB9004EF5FD</string>
+											<string>6A38A33411065CB9004EF5FD</string>
+											<string>6A38A33511065CB9004EF5FD</string>
+											<string>6A38A33611065CB9004EF5FD</string>
+											<string>6A38A33711065CB9004EF5FD</string>
+											<string>6A38A33811065CB9004EF5FD</string>
+											<string>6A38A33911065CB9004EF5FD</string>
+											<string>6A38A33A11065CB9004EF5FD</string>
+											<string>6A38A34311065D1E004EF5FD</string>
+											<string>6A38A34411065D1E004EF5FD</string>
+											<string>6A38A34511065D1E004EF5FD</string>
+											<string>6A38A34611065D1E004EF5FD</string>
+											<string>6A38A34D11065D68004EF5FD</string>
+											<string>6A38A34E11065D68004EF5FD</string>
+											<string>6A38A34F11065D68004EF5FD</string>
+											<string>6A38A35011065D68004EF5FD</string>
+											<string>6A38A35111065D68004EF5FD</string>
+											<string>6A38A35F11065DAC004EF5FD</string>
+											<string>6A38A36711065DC8004EF5FD</string>
+											<string>6A38A39011065FA1004EF5FD</string>
+											<string>6A38A39111065FA1004EF5FD</string>
+											<string>6A38A39211065FA1004EF5FD</string>
+											<string>6A38A39311065FA1004EF5FD</string>
+											<string>6A38A39411065FA1004EF5FD</string>
+											<string>6A38A39511065FA1004EF5FD</string>
+											<string>6A38A39611065FA1004EF5FD</string>
+											<string>6A38A39711065FA1004EF5FD</string>
+											<string>6A38A3A211065FFB004EF5FD</string>
+											<string>6A38A3A311065FFB004EF5FD</string>
+											<string>6A38A3B311066097004EF5FD</string>
+											<string>6A38A3B411066097004EF5FD</string>
+											<string>6A38A3B511066097004EF5FD</string>
+											<string>6A38A3B611066097004EF5FD</string>
+											<string>6A38A3B711066097004EF5FD</string>
+											<string>6A38A3B811066097004EF5FD</string>
+											<string>6A38A3B911066097004EF5FD</string>
+											<string>6A38A3BA11066097004EF5FD</string>
+											<string>6A38A3C2110660A6004EF5FD</string>
+										</array>
 									</dict>
 									<key>SplitCount</key>
 									<string>1</string>
@@ -521,11 +605,12 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>6A38A2B6110658CA004EF5FD</string>
+		<string>6A38A3BC11066097004EF5FD</string>
+		<string>6A38A2BD1106590F004EF5FD</string>
 		<string>6A38A2B7110658CA004EF5FD</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>6A389BC210FF3802004EF5FD</string>
 		<string>1CD10A99069EF8BA00B06720</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/isaac/repo/iphone-tracker/MoviePlayer_iPhone/MoviePlayer.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -859,6 +944,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -904,7 +991,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
