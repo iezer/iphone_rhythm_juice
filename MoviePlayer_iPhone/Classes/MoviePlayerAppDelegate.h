@@ -61,14 +61,14 @@ Copyright (C) 2009 Apple Inc. All Rights Reserved.
 	MPMoviePlayerController *moviePlayer;
     UITabBarController *tabBarController;
 	TimeTracker* tracker;
-	IBOutlet UILabel *label;
+	IBOutlet UITextView *textView;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 @property (readwrite, retain) MPMoviePlayerController *moviePlayer;
 @property (nonatomic, retain) TimeTracker* tracker;
-@property (nonatomic, retain) UILabel *label;
+@property (nonatomic, retain) UITextView *textView;
 
 -(void)initAndPlayMovie:(NSURL *)movieURL;
 -(void)setMoviePlayerUserSettings;

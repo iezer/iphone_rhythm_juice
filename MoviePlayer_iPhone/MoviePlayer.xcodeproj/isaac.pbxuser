@@ -3,15 +3,15 @@
 	1D3623240D0F684500981E51 /* MoviePlayerAppDelegate.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {796, 1482}}";
-			sepNavSelRange = "{3272, 0}";
-			sepNavVisRange = "{2630, 722}";
+			sepNavSelRange = "{2943, 0}";
+			sepNavVisRange = "{2636, 735}";
 		};
 	};
 	1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {996, 5301}}";
-			sepNavSelRange = "{4548, 0}";
-			sepNavVisRange = "{4312, 772}";
+			sepNavIntBoundsRect = "{{0, 0}, {996, 5282}}";
+			sepNavSelRange = "{2948, 0}";
+			sepNavVisRange = "{2336, 766}";
 		};
 	};
 	1D6058900D05DD3D006BFB54 /* MoviePlayer */ = {
@@ -29,10 +29,11 @@
 			1D6058900D05DD3D006BFB54 /* MoviePlayer */,
 		);
 		breakpoints = (
-			6A38A2DC11065B2F004EF5FD /* MoviePlayerAppDelegate.m:222 */,
+			6A38A2DC11065B2F004EF5FD /* MoviePlayerAppDelegate.m:223 */,
 			6A38A30811065B72004EF5FD /* MoviePlayerAppDelegate.m:93 */,
 			6A38A32211065C31004EF5FD /* TimeTracker.m:28 */,
 			6A38A35611065D6E004EF5FD /* TimeTracker.m:34 */,
+			6A38A43311066F59004EF5FD /* MoviePlayerAppDelegate.m:109 */,
 		);
 		codeSenseManager = 6A38A28C1106586D004EF5FD /* Code sense */;
 		executables = (
@@ -229,6 +230,67 @@
 			6A38A418110664D9004EF5FD /* PBXTextBookmark */ = 6A38A418110664D9004EF5FD /* PBXTextBookmark */;
 			6A38A41A1106650C004EF5FD /* PBXTextBookmark */ = 6A38A41A1106650C004EF5FD /* PBXTextBookmark */;
 			6A38A41E1106654E004EF5FD /* PBXTextBookmark */ = 6A38A41E1106654E004EF5FD /* PBXTextBookmark */;
+			6A38A421110669AE004EF5FD /* PBXTextBookmark */ = 6A38A421110669AE004EF5FD /* PBXTextBookmark */;
+			6A38A42411066B50004EF5FD /* PBXTextBookmark */ = 6A38A42411066B50004EF5FD /* PBXTextBookmark */;
+			6A38A42511066B50004EF5FD /* PBXTextBookmark */ = 6A38A42511066B50004EF5FD /* PBXTextBookmark */;
+			6A38A42611066B50004EF5FD /* PBXTextBookmark */ = 6A38A42611066B50004EF5FD /* PBXTextBookmark */;
+			6A38A42711066B50004EF5FD /* PBXTextBookmark */ = 6A38A42711066B50004EF5FD /* PBXTextBookmark */;
+			6A38A42811066B50004EF5FD /* PBXTextBookmark */ = 6A38A42811066B50004EF5FD /* PBXTextBookmark */;
+			6A38A42911066B50004EF5FD /* PBXTextBookmark */ = 6A38A42911066B50004EF5FD /* PBXTextBookmark */;
+			6A38A42A11066B50004EF5FD /* PBXTextBookmark */ = 6A38A42A11066B50004EF5FD /* PBXTextBookmark */;
+			6A38A42B11066B50004EF5FD /* PBXTextBookmark */ = 6A38A42B11066B50004EF5FD /* PBXTextBookmark */;
+			6A38A43011066F43004EF5FD /* PBXTextBookmark */ = 6A38A43011066F43004EF5FD /* PBXTextBookmark */;
+			6A38A43911066F68004EF5FD /* PBXTextBookmark */ = 6A38A43911066F68004EF5FD /* PBXTextBookmark */;
+			6A38A43E11066F7D004EF5FD /* PBXTextBookmark */ = 6A38A43E11066F7D004EF5FD /* PBXTextBookmark */;
+			6A38A43F11066F7D004EF5FD /* PBXTextBookmark */ = 6A38A43F11066F7D004EF5FD /* PBXTextBookmark */;
+			6A38A44011066F7D004EF5FD /* PBXTextBookmark */ = 6A38A44011066F7D004EF5FD /* PBXTextBookmark */;
+			6A38A44111066F7D004EF5FD /* PBXTextBookmark */ = 6A38A44111066F7D004EF5FD /* PBXTextBookmark */;
+			6A38A44611066FF3004EF5FD /* PBXTextBookmark */ = 6A38A44611066FF3004EF5FD /* PBXTextBookmark */;
+			6A38A44711066FF3004EF5FD /* PBXTextBookmark */ = 6A38A44711066FF3004EF5FD /* PBXTextBookmark */;
+			6A38A44811066FF3004EF5FD /* PBXTextBookmark */ = 6A38A44811066FF3004EF5FD /* PBXTextBookmark */;
+			6A38A44911066FF3004EF5FD /* PBXTextBookmark */ = 6A38A44911066FF3004EF5FD /* PBXTextBookmark */;
+			6A38A44A11066FF3004EF5FD /* PBXTextBookmark */ = 6A38A44A11066FF3004EF5FD /* PBXTextBookmark */;
+			6A38A45011067035004EF5FD /* PBXTextBookmark */ = 6A38A45011067035004EF5FD /* PBXTextBookmark */;
+			6A38A45111067035004EF5FD /* PBXTextBookmark */ = 6A38A45111067035004EF5FD /* PBXTextBookmark */;
+			6A38A45211067035004EF5FD /* PBXTextBookmark */ = 6A38A45211067035004EF5FD /* PBXTextBookmark */;
+			6A38A45311067035004EF5FD /* PBXTextBookmark */ = 6A38A45311067035004EF5FD /* PBXTextBookmark */;
+			6A38A45411067035004EF5FD /* PBXTextBookmark */ = 6A38A45411067035004EF5FD /* PBXTextBookmark */;
+			6A38A45511067035004EF5FD /* PBXTextBookmark */ = 6A38A45511067035004EF5FD /* PBXTextBookmark */;
+			6A38A45811067043004EF5FD /* PBXTextBookmark */ = 6A38A45811067043004EF5FD /* PBXTextBookmark */;
+			6A38A45F110671B4004EF5FD /* PBXTextBookmark */ = 6A38A45F110671B4004EF5FD /* PBXTextBookmark */;
+			6A38A460110671B4004EF5FD /* PBXTextBookmark */ = 6A38A460110671B4004EF5FD /* PBXTextBookmark */;
+			6A38A461110671B4004EF5FD /* PBXTextBookmark */ = 6A38A461110671B4004EF5FD /* PBXTextBookmark */;
+			6A38A462110671B4004EF5FD /* PBXTextBookmark */ = 6A38A462110671B4004EF5FD /* PBXTextBookmark */;
+			6A38A463110671B4004EF5FD /* PBXTextBookmark */ = 6A38A463110671B4004EF5FD /* PBXTextBookmark */;
+			6A38A464110671B4004EF5FD /* PBXTextBookmark */ = 6A38A464110671B4004EF5FD /* PBXTextBookmark */;
+			6A38A465110671B4004EF5FD /* PBXTextBookmark */ = 6A38A465110671B4004EF5FD /* PBXTextBookmark */;
+			6A38A466110671B4004EF5FD /* PBXTextBookmark */ = 6A38A466110671B4004EF5FD /* PBXTextBookmark */;
+			6A38A467110671B4004EF5FD /* PBXTextBookmark */ = 6A38A467110671B4004EF5FD /* PBXTextBookmark */;
+			6A38A468110671B4004EF5FD /* PBXTextBookmark */ = 6A38A468110671B4004EF5FD /* PBXTextBookmark */;
+			6A38A469110671B4004EF5FD /* PBXTextBookmark */ = 6A38A469110671B4004EF5FD /* PBXTextBookmark */;
+			6A38A46A110671B4004EF5FD /* PBXTextBookmark */ = 6A38A46A110671B4004EF5FD /* PBXTextBookmark */;
+			6A38A46B110671B4004EF5FD /* PBXTextBookmark */ = 6A38A46B110671B4004EF5FD /* PBXTextBookmark */;
+			6A38A46C110671B4004EF5FD /* PBXTextBookmark */ = 6A38A46C110671B4004EF5FD /* PBXTextBookmark */;
+			6A38A46F110671C3004EF5FD /* PBXTextBookmark */ = 6A38A46F110671C3004EF5FD /* PBXTextBookmark */;
+			6A38A470110671DD004EF5FD /* PBXTextBookmark */ = 6A38A470110671DD004EF5FD /* PBXTextBookmark */;
+			6A38A471110671DD004EF5FD /* PBXTextBookmark */ = 6A38A471110671DD004EF5FD /* PBXTextBookmark */;
+			6A38A472110671DD004EF5FD /* PBXTextBookmark */ = 6A38A472110671DD004EF5FD /* PBXTextBookmark */;
+			6A38A473110671DD004EF5FD /* PBXTextBookmark */ = 6A38A473110671DD004EF5FD /* PBXTextBookmark */;
+			6A38A474110671DD004EF5FD /* PBXTextBookmark */ = 6A38A474110671DD004EF5FD /* PBXTextBookmark */;
+			6A38A4791106726D004EF5FD /* PBXTextBookmark */ = 6A38A4791106726D004EF5FD /* PBXTextBookmark */;
+			6A38A47B110672B2004EF5FD /* PBXTextBookmark */ = 6A38A47B110672B2004EF5FD /* PBXTextBookmark */;
+			6A38A47C110672B2004EF5FD /* PBXTextBookmark */ = 6A38A47C110672B2004EF5FD /* PBXTextBookmark */;
+			6A38A47D110672B2004EF5FD /* PBXTextBookmark */ = 6A38A47D110672B2004EF5FD /* PBXTextBookmark */;
+			6A38A47E110672B2004EF5FD /* PBXTextBookmark */ = 6A38A47E110672B2004EF5FD /* PBXTextBookmark */;
+			6A38A47F110672B2004EF5FD /* PBXTextBookmark */ = 6A38A47F110672B2004EF5FD /* PBXTextBookmark */;
+			6A38A480110672B2004EF5FD /* PBXTextBookmark */ = 6A38A480110672B2004EF5FD /* PBXTextBookmark */;
+			6A38A481110672B2004EF5FD /* PBXTextBookmark */ = 6A38A481110672B2004EF5FD /* PBXTextBookmark */;
+			6A38A482110672B2004EF5FD /* PBXTextBookmark */ = 6A38A482110672B2004EF5FD /* PBXTextBookmark */;
+			6A38A48A1106734F004EF5FD /* PBXTextBookmark */ = 6A38A48A1106734F004EF5FD /* PBXTextBookmark */;
+			6A38A48B1106734F004EF5FD /* PBXTextBookmark */ = 6A38A48B1106734F004EF5FD /* PBXTextBookmark */;
+			6A38A48C1106734F004EF5FD /* PBXTextBookmark */ = 6A38A48C1106734F004EF5FD /* PBXTextBookmark */;
+			6A38A48D1106734F004EF5FD /* PBXTextBookmark */ = 6A38A48D1106734F004EF5FD /* PBXTextBookmark */;
+			6A38A4951106738A004EF5FD /* PBXTextBookmark */ = 6A38A4951106738A004EF5FD /* PBXTextBookmark */;
 		};
 		sourceControlManager = 6A38A28B1106586D004EF5FD /* Source Control */;
 		userBuildSettings = {
@@ -241,7 +303,7 @@
 		argumentStrings = (
 		);
 		autoAttachOnCrash = 1;
-		breakpointsEnabled = 0;
+		breakpointsEnabled = 1;
 		configStateDict = {
 		};
 		customDataFormattersEnabled = 1;
@@ -282,9 +344,9 @@
 	};
 	6A38A2C311065954004EF5FD /* TimeTracker.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {884, 874}}";
-			sepNavSelRange = "{719, 0}";
-			sepNavVisRange = "{230, 646}";
+			sepNavIntBoundsRect = "{{0, 0}, {884, 836}}";
+			sepNavSelRange = "{524, 0}";
+			sepNavVisRange = "{230, 610}";
 		};
 	};
 	6A38A2C411065954004EF5FD /* TimeTrackerNode.h */ = {
@@ -297,11 +359,11 @@
 	6A38A2C511065954004EF5FD /* TimeTrackerNode.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {900, 760}}";
-			sepNavSelRange = "{647, 0}";
-			sepNavVisRange = "{202, 550}";
+			sepNavSelRange = "{549, 2}";
+			sepNavVisRange = "{202, 551}";
 		};
 	};
-	6A38A2DC11065B2F004EF5FD /* MoviePlayerAppDelegate.m:222 */ = {
+	6A38A2DC11065B2F004EF5FD /* MoviePlayerAppDelegate.m:223 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -313,10 +375,10 @@
 		functionName = "-moviePlayBackDidFinish:";
 		hitCount = 0;
 		ignoreCount = 0;
-		lineNumber = 222;
+		lineNumber = 223;
 		location = MoviePlayer;
-		modificationTime = 285630816.752365;
-		state = 1;
+		modificationTime = 285635412.995865;
+		state = 2;
 	};
 	6A38A2E211065B31004EF5FD /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -343,7 +405,7 @@
 		fRef = 6A38A2C511065954004EF5FD /* TimeTrackerNode.m */;
 		name = "TimeTrackerNode.m: 33";
 		rLen = 17;
-		rLoc = 666;
+		rLoc = 668;
 		rType = 0;
 		vrLen = 553;
 		vrLoc = 203;
@@ -373,7 +435,7 @@
 		fRef = 1D3623240D0F684500981E51 /* MoviePlayerAppDelegate.h */;
 		name = "MoviePlayerAppDelegate.h: 69";
 		rLen = 0;
-		rLoc = 3272;
+		rLoc = 3232;
 		rType = 0;
 		vrLen = 654;
 		vrLoc = 2630;
@@ -393,7 +455,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 221";
 		rLen = 0;
-		rLoc = 9269;
+		rLoc = 9465;
 		rType = 0;
 		vrLen = 680;
 		vrLoc = 8749;
@@ -403,7 +465,7 @@
 		fRef = 1D3623240D0F684500981E51 /* MoviePlayerAppDelegate.h */;
 		name = "MoviePlayerAppDelegate.h: 69";
 		rLen = 0;
-		rLoc = 3272;
+		rLoc = 3232;
 		rType = 0;
 		vrLen = 654;
 		vrLoc = 2630;
@@ -413,7 +475,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 257";
 		rLen = 0;
-		rLoc = 10772;
+		rLoc = 10968;
 		rType = 0;
 		vrLen = 1121;
 		vrLoc = 9498;
@@ -493,7 +555,7 @@
 		fRef = 6A38A2C511065954004EF5FD /* TimeTrackerNode.m */;
 		name = "TimeTrackerNode.m: 37";
 		rLen = 0;
-		rLoc = 751;
+		rLoc = 753;
 		rType = 0;
 		vrLen = 533;
 		vrLoc = 203;
@@ -513,7 +575,7 @@
 		fRef = 6A38A2C511065954004EF5FD /* TimeTrackerNode.m */;
 		name = "TimeTrackerNode.m: 35";
 		rLen = 0;
-		rLoc = 725;
+		rLoc = 727;
 		rType = 0;
 		vrLen = 534;
 		vrLoc = 222;
@@ -543,7 +605,7 @@
 		fRef = 6A38A2C511065954004EF5FD /* TimeTrackerNode.m */;
 		name = "TimeTrackerNode.m: 33";
 		rLen = 17;
-		rLoc = 666;
+		rLoc = 668;
 		rType = 0;
 		vrLen = 553;
 		vrLoc = 203;
@@ -583,7 +645,7 @@
 		fRef = 1D3623240D0F684500981E51 /* MoviePlayerAppDelegate.h */;
 		name = "MoviePlayerAppDelegate.h: 69";
 		rLen = 0;
-		rLoc = 3272;
+		rLoc = 3232;
 		rType = 0;
 		vrLen = 654;
 		vrLoc = 2630;
@@ -593,7 +655,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 221";
 		rLen = 0;
-		rLoc = 9269;
+		rLoc = 9465;
 		rType = 0;
 		vrLen = 680;
 		vrLoc = 8749;
@@ -613,7 +675,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 222";
 		rLen = 0;
-		rLoc = 9218;
+		rLoc = 9317;
 		rType = 0;
 		vrLen = 628;
 		vrLoc = 8750;
@@ -623,7 +685,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 92";
 		rLen = 0;
-		rLoc = 4081;
+		rLoc = 4084;
 		rType = 0;
 		vrLen = 721;
 		vrLoc = 3752;
@@ -642,7 +704,7 @@
 		ignoreCount = 0;
 		lineNumber = 93;
 		location = MoviePlayer;
-		modificationTime = 285630815.667604;
+		modificationTime = 285635412.995874;
 		state = 2;
 	};
 	6A38A30B11065B78004EF5FD /* PBXTextBookmark */ = {
@@ -650,7 +712,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 92";
 		rLen = 0;
-		rLoc = 4081;
+		rLoc = 4084;
 		rType = 0;
 		vrLen = 842;
 		vrLoc = 3591;
@@ -660,7 +722,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 92";
 		rLen = 0;
-		rLoc = 4081;
+		rLoc = 4084;
 		rType = 0;
 		vrLen = 842;
 		vrLoc = 3591;
@@ -690,7 +752,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 92";
 		rLen = 0;
-		rLoc = 4081;
+		rLoc = 4084;
 		rType = 0;
 		vrLen = 842;
 		vrLoc = 3591;
@@ -720,7 +782,7 @@
 		fRef = 1D3623240D0F684500981E51 /* MoviePlayerAppDelegate.h */;
 		name = "MoviePlayerAppDelegate.h: 69";
 		rLen = 0;
-		rLoc = 3203;
+		rLoc = 3209;
 		rType = 0;
 		vrLen = 656;
 		vrLoc = 2630;
@@ -730,7 +792,7 @@
 		fRef = 1D3623240D0F684500981E51 /* MoviePlayerAppDelegate.h */;
 		name = "MoviePlayerAppDelegate.h: 69";
 		rLen = 0;
-		rLoc = 3203;
+		rLoc = 3209;
 		rType = 0;
 		vrLen = 656;
 		vrLoc = 2630;
@@ -747,7 +809,7 @@
 		fRef = 1D3623240D0F684500981E51 /* MoviePlayerAppDelegate.h */;
 		name = "MoviePlayerAppDelegate.h: 69";
 		rLen = 0;
-		rLoc = 3203;
+		rLoc = 3209;
 		rType = 0;
 		vrLen = 656;
 		vrLoc = 2630;
@@ -757,7 +819,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 92";
 		rLen = 0;
-		rLoc = 4058;
+		rLoc = 4061;
 		rType = 0;
 		vrLen = 842;
 		vrLoc = 3591;
@@ -776,15 +838,15 @@
 		ignoreCount = 0;
 		lineNumber = 28;
 		location = MoviePlayer;
-		modificationTime = 285630816.793706;
-		state = 1;
+		modificationTime = 285635412.995879;
+		state = 2;
 	};
 	6A38A32511065C3D004EF5FD /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 221";
 		rLen = 0;
-		rLoc = 9176;
+		rLoc = 9277;
 		rType = 0;
 		vrLen = 636;
 		vrLoc = 8876;
@@ -794,7 +856,7 @@
 		fRef = 6A38A2C511065954004EF5FD /* TimeTrackerNode.m */;
 		name = "TimeTrackerNode.m: 33";
 		rLen = 17;
-		rLoc = 666;
+		rLoc = 668;
 		rType = 0;
 		vrLen = 548;
 		vrLoc = 202;
@@ -814,7 +876,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 92";
 		rLen = 0;
-		rLoc = 4058;
+		rLoc = 4061;
 		rType = 0;
 		vrLen = 625;
 		vrLoc = 8747;
@@ -834,7 +896,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 221";
 		rLen = 0;
-		rLoc = 9176;
+		rLoc = 9277;
 		rType = 0;
 		vrLen = 636;
 		vrLoc = 8876;
@@ -844,7 +906,7 @@
 		fRef = 6A38A2C511065954004EF5FD /* TimeTrackerNode.m */;
 		name = "TimeTrackerNode.m: 33";
 		rLen = 17;
-		rLoc = 666;
+		rLoc = 668;
 		rType = 0;
 		vrLen = 548;
 		vrLoc = 202;
@@ -864,7 +926,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 229";
 		rLen = 0;
-		rLoc = 9416;
+		rLoc = 9612;
 		rType = 0;
 		vrLen = 571;
 		vrLoc = 8876;
@@ -924,7 +986,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 229";
 		rLen = 0;
-		rLoc = 9416;
+		rLoc = 9612;
 		rType = 0;
 		vrLen = 571;
 		vrLoc = 8876;
@@ -944,7 +1006,7 @@
 		fRef = 6A38A2C511065954004EF5FD /* TimeTrackerNode.m */;
 		name = "TimeTrackerNode.m: 33";
 		rLen = 17;
-		rLoc = 666;
+		rLoc = 668;
 		rType = 0;
 		vrLen = 548;
 		vrLoc = 202;
@@ -1014,7 +1076,7 @@
 		fRef = 1D3623240D0F684500981E51 /* MoviePlayerAppDelegate.h */;
 		name = "MoviePlayerAppDelegate.h: 69";
 		rLen = 0;
-		rLoc = 3203;
+		rLoc = 3209;
 		rType = 0;
 		vrLen = 709;
 		vrLoc = 2578;
@@ -1024,7 +1086,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 221";
 		rLen = 0;
-		rLoc = 9176;
+		rLoc = 9277;
 		rType = 0;
 		vrLen = 626;
 		vrLoc = 8888;
@@ -1044,7 +1106,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 221";
 		rLen = 0;
-		rLoc = 9176;
+		rLoc = 9277;
 		rType = 0;
 		vrLen = 626;
 		vrLoc = 8888;
@@ -1064,7 +1126,7 @@
 		fRef = 1D3623240D0F684500981E51 /* MoviePlayerAppDelegate.h */;
 		name = "MoviePlayerAppDelegate.h: 69";
 		rLen = 0;
-		rLoc = 3203;
+		rLoc = 3209;
 		rType = 0;
 		vrLen = 709;
 		vrLoc = 2578;
@@ -1074,7 +1136,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 92";
 		rLen = 0;
-		rLoc = 4075;
+		rLoc = 4078;
 		rType = 0;
 		vrLen = 861;
 		vrLoc = 3494;
@@ -1084,7 +1146,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 92";
 		rLen = 0;
-		rLoc = 4075;
+		rLoc = 4078;
 		rType = 0;
 		vrLen = 625;
 		vrLoc = 8754;
@@ -1114,7 +1176,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 92";
 		rLen = 0;
-		rLoc = 4075;
+		rLoc = 4078;
 		rType = 0;
 		vrLen = 625;
 		vrLoc = 8754;
@@ -1179,12 +1241,12 @@
 		delayBeforeContinue = 0;
 		fileReference = 6A38A2C311065954004EF5FD /* TimeTracker.m */;
 		functionName = "-init";
-		hitCount = 1;
+		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 34;
 		location = MoviePlayer;
-		modificationTime = 285630817.610937;
-		state = 1;
+		modificationTime = 285635412.995884;
+		state = 2;
 	};
 	6A38A35811065D73004EF5FD /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -1268,7 +1330,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 92";
 		rLen = 0;
-		rLoc = 4061;
+		rLoc = 4064;
 		rType = 0;
 		vrLen = 636;
 		vrLoc = 8883;
@@ -1325,7 +1387,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 221";
 		rLen = 0;
-		rLoc = 9176;
+		rLoc = 9277;
 		rType = 0;
 		vrLen = 608;
 		vrLoc = 8754;
@@ -1345,7 +1407,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 92";
 		rLen = 0;
-		rLoc = 4061;
+		rLoc = 4064;
 		rType = 0;
 		vrLen = 636;
 		vrLoc = 8883;
@@ -1405,7 +1467,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 221";
 		rLen = 0;
-		rLoc = 9176;
+		rLoc = 9277;
 		rType = 0;
 		vrLen = 571;
 		vrLoc = 8883;
@@ -1432,7 +1494,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 221";
 		rLen = 0;
-		rLoc = 9176;
+		rLoc = 9277;
 		rType = 0;
 		vrLen = 571;
 		vrLoc = 8883;
@@ -1482,7 +1544,7 @@
 		fRef = 1D3623240D0F684500981E51 /* MoviePlayerAppDelegate.h */;
 		name = "MoviePlayerAppDelegate.h: 69";
 		rLen = 0;
-		rLoc = 3203;
+		rLoc = 3209;
 		rType = 0;
 		vrLen = 708;
 		vrLoc = 2578;
@@ -1492,7 +1554,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 229";
 		rLen = 0;
-		rLoc = 9416;
+		rLoc = 9612;
 		rType = 0;
 		vrLen = 571;
 		vrLoc = 8883;
@@ -1512,7 +1574,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 221";
 		rLen = 0;
-		rLoc = 9176;
+		rLoc = 9277;
 		rType = 0;
 		vrLen = 571;
 		vrLoc = 8883;
@@ -1532,7 +1594,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 229";
 		rLen = 0;
-		rLoc = 9416;
+		rLoc = 9612;
 		rType = 0;
 		vrLen = 571;
 		vrLoc = 8883;
@@ -1572,7 +1634,7 @@
 		fRef = 1D3623240D0F684500981E51 /* MoviePlayerAppDelegate.h */;
 		name = "MoviePlayerAppDelegate.h: 69";
 		rLen = 0;
-		rLoc = 3203;
+		rLoc = 3209;
 		rType = 0;
 		vrLen = 708;
 		vrLoc = 2578;
@@ -1582,7 +1644,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 223";
 		rLen = 0;
-		rLoc = 9267;
+		rLoc = 9463;
 		rType = 0;
 		vrLen = 621;
 		vrLoc = 8925;
@@ -1592,7 +1654,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 223";
 		rLen = 0;
-		rLoc = 9267;
+		rLoc = 9463;
 		rType = 0;
 		vrLen = 652;
 		vrLoc = 8925;
@@ -1609,7 +1671,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 223";
 		rLen = 0;
-		rLoc = 9267;
+		rLoc = 9463;
 		rType = 0;
 		vrLen = 652;
 		vrLoc = 8925;
@@ -1629,7 +1691,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 223";
 		rLen = 0;
-		rLoc = 9251;
+		rLoc = 9447;
 		rType = 0;
 		vrLen = 652;
 		vrLoc = 8925;
@@ -1669,7 +1731,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 221";
 		rLen = 0;
-		rLoc = 9176;
+		rLoc = 9277;
 		rType = 0;
 		vrLen = 652;
 		vrLoc = 8925;
@@ -1689,7 +1751,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 223";
 		rLen = 0;
-		rLoc = 9251;
+		rLoc = 9447;
 		rType = 0;
 		vrLen = 652;
 		vrLoc = 8925;
@@ -1776,7 +1838,7 @@
 		fRef = 1D3623240D0F684500981E51 /* MoviePlayerAppDelegate.h */;
 		name = "MoviePlayerAppDelegate.h: 71";
 		rLen = 0;
-		rLoc = 3272;
+		rLoc = 3232;
 		rType = 0;
 		vrLen = 774;
 		vrLoc = 2578;
@@ -1786,7 +1848,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 223";
 		rLen = 0;
-		rLoc = 9251;
+		rLoc = 9447;
 		rType = 0;
 		vrLen = 691;
 		vrLoc = 8895;
@@ -1806,7 +1868,7 @@
 		fRef = 1D3623240D0F684500981E51 /* MoviePlayerAppDelegate.h */;
 		name = "MoviePlayerAppDelegate.h: 71";
 		rLen = 0;
-		rLoc = 3272;
+		rLoc = 3232;
 		rType = 0;
 		vrLen = 774;
 		vrLoc = 2578;
@@ -1816,7 +1878,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 64";
 		rLen = 0;
-		rLoc = 2967;
+		rLoc = 2970;
 		rType = 0;
 		vrLen = 623;
 		vrLoc = 2476;
@@ -1826,7 +1888,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 223";
 		rLen = 0;
-		rLoc = 9219;
+		rLoc = 9317;
 		rType = 0;
 		vrLen = 647;
 		vrLoc = 9024;
@@ -1836,7 +1898,7 @@
 		fRef = 1D3623240D0F684500981E51 /* MoviePlayerAppDelegate.h */;
 		name = "MoviePlayerAppDelegate.h: 71";
 		rLen = 0;
-		rLoc = 3272;
+		rLoc = 3232;
 		rType = 0;
 		vrLen = 722;
 		vrLoc = 2630;
@@ -1846,7 +1908,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 109";
 		rLen = 0;
-		rLoc = 4531;
+		rLoc = 4609;
 		rType = 0;
 		vrLen = 1171;
 		vrLoc = 4934;
@@ -1866,7 +1928,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 223";
 		rLen = 0;
-		rLoc = 9219;
+		rLoc = 9317;
 		rType = 0;
 		vrLen = 647;
 		vrLoc = 9024;
@@ -1876,7 +1938,7 @@
 		fRef = 1D3623240D0F684500981E51 /* MoviePlayerAppDelegate.h */;
 		name = "MoviePlayerAppDelegate.h: 71";
 		rLen = 0;
-		rLoc = 3272;
+		rLoc = 3232;
 		rType = 0;
 		vrLen = 722;
 		vrLoc = 2630;
@@ -1886,7 +1948,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 109";
 		rLen = 0;
-		rLoc = 4531;
+		rLoc = 4609;
 		rType = 0;
 		vrLen = 1171;
 		vrLoc = 4934;
@@ -1916,7 +1978,7 @@
 		fRef = 6A38A2C511065954004EF5FD /* TimeTrackerNode.m */;
 		name = "TimeTrackerNode.m: 29";
 		rLen = 0;
-		rLoc = 647;
+		rLoc = 649;
 		rType = 0;
 		vrLen = 550;
 		vrLoc = 202;
@@ -1926,7 +1988,7 @@
 		fRef = 6A38A2C511065954004EF5FD /* TimeTrackerNode.m */;
 		name = "TimeTrackerNode.m: 29";
 		rLen = 0;
-		rLoc = 647;
+		rLoc = 649;
 		rType = 0;
 		vrLen = 550;
 		vrLoc = 202;
@@ -1936,7 +1998,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 109";
 		rLen = 0;
-		rLoc = 4531;
+		rLoc = 4609;
 		rType = 0;
 		vrLen = 1103;
 		vrLoc = 4934;
@@ -1946,7 +2008,7 @@
 		fRef = 6A38A2C511065954004EF5FD /* TimeTrackerNode.m */;
 		name = "TimeTrackerNode.m: 29";
 		rLen = 0;
-		rLoc = 647;
+		rLoc = 649;
 		rType = 0;
 		vrLen = 550;
 		vrLoc = 202;
@@ -1956,7 +2018,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 109";
 		rLen = 0;
-		rLoc = 4548;
+		rLoc = 4609;
 		rType = 0;
 		vrLen = 756;
 		vrLoc = 4312;
@@ -1966,7 +2028,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 109";
 		rLen = 0;
-		rLoc = 4548;
+		rLoc = 4609;
 		rType = 0;
 		vrLen = 752;
 		vrLoc = 4312;
@@ -1976,7 +2038,7 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 109";
 		rLen = 0;
-		rLoc = 4548;
+		rLoc = 4609;
 		rType = 0;
 		vrLen = 761;
 		vrLoc = 4312;
@@ -1986,16 +2048,631 @@
 		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		name = "MoviePlayerAppDelegate.m: 109";
 		rLen = 0;
-		rLoc = 4548;
+		rLoc = 4609;
 		rType = 0;
 		vrLen = 772;
 		vrLoc = 4312;
+	};
+	6A38A421110669AE004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 109";
+		rLen = 0;
+		rLoc = 4609;
+		rType = 0;
+		vrLen = 1433;
+		vrLoc = 0;
+	};
+	6A38A42411066B50004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* MoviePlayerAppDelegate.h */;
+		name = "MoviePlayerAppDelegate.h: 74";
+		rLen = 0;
+		rLoc = 3285;
+		rType = 0;
+		vrLen = 758;
+		vrLoc = 2685;
+	};
+	6A38A42511066B50004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 849C87AE0F897A7D005A6DDE /* MyMovieViewController.h */;
+		name = "MyMovieViewController.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 614;
+		vrLoc = 2539;
+	};
+	6A38A42611066B50004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 65";
+		rLen = 0;
+		rLoc = 2970;
+		rType = 0;
+		vrLen = 838;
+		vrLoc = 2716;
+	};
+	6A38A42711066B50004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 109";
+		rLen = 0;
+		rLoc = 4609;
+		rType = 0;
+		vrLen = 1295;
+		vrLoc = 0;
+	};
+	6A38A42811066B50004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* MoviePlayerAppDelegate.h */;
+		name = "MoviePlayerAppDelegate.h: 74";
+		rLen = 0;
+		rLoc = 3285;
+		rType = 0;
+		vrLen = 758;
+		vrLoc = 2685;
+	};
+	6A38A42911066B50004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 65";
+		rLen = 0;
+		rLoc = 2970;
+		rType = 0;
+		vrLen = 838;
+		vrLoc = 2716;
+	};
+	6A38A42A11066B50004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 849C87AE0F897A7D005A6DDE /* MyMovieViewController.h */;
+		name = "MyMovieViewController.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 614;
+		vrLoc = 2539;
+	};
+	6A38A42B11066B50004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 224";
+		rLen = 0;
+		rLoc = 9424;
+		rType = 0;
+		vrLen = 1136;
+		vrLoc = 6658;
+	};
+	6A38A43011066F43004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 112";
+		rLen = 0;
+		rLoc = 4656;
+		rType = 0;
+		vrLen = 944;
+		vrLoc = 4518;
+	};
+	6A38A43311066F59004EF5FD /* MoviePlayerAppDelegate.m:109 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		functionName = "-initAndPlayMovie:";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 109;
+		location = MoviePlayer;
+		modificationTime = 285635412.995889;
+		state = 2;
+	};
+	6A38A43911066F68004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 112";
+		rLen = 0;
+		rLoc = 4656;
+		rType = 0;
+		vrLen = 944;
+		vrLoc = 4518;
+	};
+	6A38A43E11066F7D004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 112";
+		rLen = 0;
+		rLoc = 4656;
+		rType = 0;
+		vrLen = 944;
+		vrLoc = 4518;
+	};
+	6A38A43F11066F7D004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C311065954004EF5FD /* TimeTracker.m */;
+		rLen = 0;
+		rLoc = 33;
+		rType = 1;
+	};
+	6A38A44011066F7D004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 112";
+		rLen = 0;
+		rLoc = 4656;
+		rType = 0;
+		vrLen = 944;
+		vrLoc = 4518;
+	};
+	6A38A44111066F7D004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C311065954004EF5FD /* TimeTracker.m */;
+		name = "TimeTracker.m: 34";
+		rLen = 0;
+		rLoc = 719;
+		rType = 0;
+		vrLen = 603;
+		vrLoc = 273;
+	};
+	6A38A44611066FF3004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 110";
+		rLen = 0;
+		rLoc = 4502;
+		rType = 0;
+		vrLen = 944;
+		vrLoc = 4518;
+	};
+	6A38A44711066FF3004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C311065954004EF5FD /* TimeTracker.m */;
+		rLen = 0;
+		rLoc = 33;
+		rType = 1;
+	};
+	6A38A44811066FF3004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C311065954004EF5FD /* TimeTracker.m */;
+		name = "TimeTracker.m: 34";
+		rLen = 0;
+		rLoc = 719;
+		rType = 0;
+		vrLen = 603;
+		vrLoc = 273;
+	};
+	6A38A44911066FF3004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 110";
+		rLen = 0;
+		rLoc = 4502;
+		rType = 0;
+		vrLen = 944;
+		vrLoc = 4518;
+	};
+	6A38A44A11066FF3004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C311065954004EF5FD /* TimeTracker.m */;
+		name = "TimeTracker.m: 42";
+		rLen = 0;
+		rLoc = 875;
+		rType = 0;
+		vrLen = 603;
+		vrLoc = 273;
+	};
+	6A38A45011067035004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C311065954004EF5FD /* TimeTracker.m */;
+		name = "TimeTracker.m: 26";
+		rLen = 0;
+		rLoc = 519;
+		rType = 0;
+		vrLen = 628;
+		vrLoc = 230;
+	};
+	6A38A45111067035004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		rLen = 0;
+		rLoc = 108;
+		rType = 1;
+	};
+	6A38A45211067035004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C311065954004EF5FD /* TimeTracker.m */;
+		name = "TimeTracker.m: 42";
+		rLen = 0;
+		rLoc = 875;
+		rType = 0;
+		vrLen = 603;
+		vrLoc = 273;
+	};
+	6A38A45311067035004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 110";
+		rLen = 0;
+		rLoc = 4502;
+		rType = 0;
+		vrLen = 653;
+		vrLoc = 8894;
+	};
+	6A38A45411067035004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C311065954004EF5FD /* TimeTracker.m */;
+		name = "TimeTracker.m: 26";
+		rLen = 0;
+		rLoc = 519;
+		rType = 0;
+		vrLen = 628;
+		vrLoc = 230;
+	};
+	6A38A45511067035004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 112";
+		rLen = 0;
+		rLoc = 4630;
+		rType = 0;
+		vrLen = 766;
+		vrLoc = 4169;
+	};
+	6A38A45811067043004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 112";
+		rLen = 0;
+		rLoc = 4630;
+		rType = 0;
+		vrLen = 766;
+		vrLoc = 4169;
+	};
+	6A38A45F110671B4004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C311065954004EF5FD /* TimeTracker.m */;
+		name = "TimeTracker.m: 27";
+		rLen = 0;
+		rLoc = 524;
+		rType = 0;
+		vrLen = 610;
+		vrLoc = 230;
+	};
+	6A38A460110671B4004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* MoviePlayerAppDelegate.h */;
+		name = "MoviePlayerAppDelegate.h: 74";
+		rLen = 0;
+		rLoc = 3285;
+		rType = 0;
+		vrLen = 806;
+		vrLoc = 2636;
+	};
+	6A38A461110671B4004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C511065954004EF5FD /* TimeTrackerNode.m */;
+		name = "TimeTrackerNode.m: 26";
+		rLen = 150;
+		rLoc = 501;
+		rType = 0;
+		vrLen = 556;
+		vrLoc = 203;
+	};
+	6A38A462110671B4004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 226";
+		rLen = 0;
+		rLoc = 9442;
+		rType = 0;
+		vrLen = 678;
+		vrLoc = 9028;
+	};
+	6A38A463110671B4004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 112";
+		rLen = 0;
+		rLoc = 4630;
+		rType = 0;
+		vrLen = 616;
+		vrLoc = 9025;
+	};
+	6A38A464110671B4004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C311065954004EF5FD /* TimeTracker.m */;
+		name = "TimeTracker.m: 27";
+		rLen = 0;
+		rLoc = 524;
+		rType = 0;
+		vrLen = 610;
+		vrLoc = 230;
+	};
+	6A38A465110671B4004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 224";
+		rLen = 0;
+		rLoc = 9277;
+		rType = 0;
+		vrLen = 616;
+		vrLoc = 9025;
+	};
+	6A38A466110671B4004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* MoviePlayerAppDelegate.h */;
+		name = "MoviePlayerAppDelegate.h: 74";
+		rLen = 0;
+		rLoc = 3285;
+		rType = 0;
+		vrLen = 806;
+		vrLoc = 2637;
+	};
+	6A38A467110671B4004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C511065954004EF5FD /* TimeTrackerNode.m */;
+		name = "TimeTrackerNode.m: 26";
+		rLen = 0;
+		rLoc = 570;
+		rType = 0;
+		vrLen = 537;
+		vrLoc = 222;
+	};
+	6A38A468110671B4004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 226";
+		rLen = 0;
+		rLoc = 9442;
+		rType = 0;
+		vrLen = 678;
+		vrLoc = 9028;
+	};
+	6A38A469110671B4004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C511065954004EF5FD /* TimeTrackerNode.m */;
+		name = "TimeTrackerNode.m: 26";
+		rLen = 150;
+		rLoc = 501;
+		rType = 0;
+		vrLen = 556;
+		vrLoc = 203;
+	};
+	6A38A46A110671B4004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* MoviePlayerAppDelegate.h */;
+		name = "MoviePlayerAppDelegate.h: 74";
+		rLen = 0;
+		rLoc = 3285;
+		rType = 0;
+		vrLen = 806;
+		vrLoc = 2636;
+	};
+	6A38A46B110671B4004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C511065954004EF5FD /* TimeTrackerNode.m */;
+		name = "TimeTrackerNode.m: 26";
+		rLen = 150;
+		rLoc = 501;
+		rType = 0;
+		vrLen = 556;
+		vrLoc = 203;
+	};
+	6A38A46C110671B4004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 230";
+		rLen = 0;
+		rLoc = 9445;
+		rType = 0;
+		vrLen = 608;
+		vrLoc = 9028;
+	};
+	6A38A46F110671C3004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 230";
+		rLen = 0;
+		rLoc = 9445;
+		rType = 0;
+		vrLen = 684;
+		vrLoc = 4080;
+	};
+	6A38A470110671DD004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C311065954004EF5FD /* TimeTracker.m */;
+		name = "TimeTracker.m: 27";
+		rLen = 0;
+		rLoc = 524;
+		rType = 0;
+		vrLen = 610;
+		vrLoc = 230;
+	};
+	6A38A471110671DD004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		rLen = 0;
+		rLoc = 222;
+		rType = 1;
+	};
+	6A38A472110671DD004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 230";
+		rLen = 0;
+		rLoc = 9445;
+		rType = 0;
+		vrLen = 628;
+		vrLoc = 9025;
+	};
+	6A38A473110671DD004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C311065954004EF5FD /* TimeTracker.m */;
+		name = "TimeTracker.m: 27";
+		rLen = 0;
+		rLoc = 524;
+		rType = 0;
+		vrLen = 610;
+		vrLoc = 230;
+	};
+	6A38A474110671DD004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 225";
+		rLen = 0;
+		rLoc = 9317;
+		rType = 0;
+		vrLen = 628;
+		vrLoc = 9025;
+	};
+	6A38A4791106726D004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 227";
+		rLen = 0;
+		rLoc = 9387;
+		rType = 0;
+		vrLen = 1222;
+		vrLoc = 7741;
+	};
+	6A38A47B110672B2004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C411065954004EF5FD /* TimeTrackerNode.h */;
+		name = "TimeTrackerNode.h: 22";
+		rLen = 24;
+		rLoc = 415;
+		rType = 0;
+		vrLen = 559;
+		vrLoc = 0;
+	};
+	6A38A47C110672B2004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C511065954004EF5FD /* TimeTrackerNode.m */;
+		name = "TimeTrackerNode.m: 26";
+		rLen = 2;
+		rLoc = 549;
+		rType = 0;
+		vrLen = 551;
+		vrLoc = 202;
+	};
+	6A38A47D110672B2004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 226";
+		rLen = 0;
+		rLoc = 9368;
+		rType = 0;
+		vrLen = 649;
+		vrLoc = 9296;
+	};
+	6A38A47E110672B2004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 226";
+		rLen = 0;
+		rLoc = 9368;
+		rType = 0;
+		vrLen = 649;
+		vrLoc = 9296;
+	};
+	6A38A47F110672B2004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C511065954004EF5FD /* TimeTrackerNode.m */;
+		name = "TimeTrackerNode.m: 26";
+		rLen = 2;
+		rLoc = 549;
+		rType = 0;
+		vrLen = 551;
+		vrLoc = 203;
+	};
+	6A38A480110672B2004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C411065954004EF5FD /* TimeTrackerNode.h */;
+		name = "TimeTrackerNode.h: 22";
+		rLen = 24;
+		rLoc = 415;
+		rType = 0;
+		vrLen = 559;
+		vrLoc = 0;
+	};
+	6A38A481110672B2004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C511065954004EF5FD /* TimeTrackerNode.m */;
+		name = "TimeTrackerNode.m: 26";
+		rLen = 2;
+		rLoc = 549;
+		rType = 0;
+		vrLen = 551;
+		vrLoc = 202;
+	};
+	6A38A482110672B2004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 226";
+		rLen = 0;
+		rLoc = 9368;
+		rType = 0;
+		vrLen = 651;
+		vrLoc = 9296;
+	};
+	6A38A48A1106734F004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 63";
+		rLen = 0;
+		rLoc = 2948;
+		rType = 0;
+		vrLen = 766;
+		vrLoc = 2336;
+	};
+	6A38A48B1106734F004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* MoviePlayerAppDelegate.h */;
+		name = "MoviePlayerAppDelegate.h: 74";
+		rLen = 0;
+		rLoc = 3285;
+		rType = 0;
+		vrLen = 806;
+		vrLoc = 2636;
+	};
+	6A38A48C1106734F004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 63";
+		rLen = 0;
+		rLoc = 2948;
+		rType = 0;
+		vrLen = 766;
+		vrLoc = 2336;
+	};
+	6A38A48D1106734F004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* MoviePlayerAppDelegate.h */;
+		name = "MoviePlayerAppDelegate.h: 63";
+		rLen = 0;
+		rLoc = 2943;
+		rType = 0;
+		vrLen = 735;
+		vrLoc = 2636;
+	};
+	6A38A4951106738A004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* MoviePlayerAppDelegate.h */;
+		name = "MoviePlayerAppDelegate.h: 63";
+		rLen = 0;
+		rLoc = 2943;
+		rType = 0;
+		vrLen = 735;
+		vrLoc = 2636;
 	};
 	849C87AE0F897A7D005A6DDE /* MyMovieViewController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {779, 1425}}";
 			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{2542, 611}";
+			sepNavVisRange = "{2539, 614}";
 		};
 	};
 	849C87AF0F897A7D005A6DDE /* MyMovieViewController.m */ = {
