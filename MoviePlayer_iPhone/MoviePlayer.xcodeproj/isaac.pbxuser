@@ -11,7 +11,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {996, 5301}}";
 			sepNavSelRange = "{4548, 0}";
-			sepNavVisRange = "{4312, 761}";
+			sepNavVisRange = "{4312, 772}";
 		};
 	};
 	1D6058900D05DD3D006BFB54 /* MoviePlayer */ = {
@@ -228,6 +228,7 @@
 			6A38A414110664A3004EF5FD /* PBXTextBookmark */ = 6A38A414110664A3004EF5FD /* PBXTextBookmark */;
 			6A38A418110664D9004EF5FD /* PBXTextBookmark */ = 6A38A418110664D9004EF5FD /* PBXTextBookmark */;
 			6A38A41A1106650C004EF5FD /* PBXTextBookmark */ = 6A38A41A1106650C004EF5FD /* PBXTextBookmark */;
+			6A38A41E1106654E004EF5FD /* PBXTextBookmark */ = 6A38A41E1106654E004EF5FD /* PBXTextBookmark */;
 		};
 		sourceControlManager = 6A38A28B1106586D004EF5FD /* Source Control */;
 		userBuildSettings = {
@@ -1978,6 +1979,16 @@
 		rLoc = 4548;
 		rType = 0;
 		vrLen = 761;
+		vrLoc = 4312;
+	};
+	6A38A41E1106654E004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 109";
+		rLen = 0;
+		rLoc = 4548;
+		rType = 0;
+		vrLen = 772;
 		vrLoc = 4312;
 	};
 	849C87AE0F897A7D005A6DDE /* MyMovieViewController.h */ = {
