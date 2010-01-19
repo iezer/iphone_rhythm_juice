@@ -61,6 +61,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 @synthesize tabBarController;
 @synthesize moviePlayer;
 @synthesize tracker;
+@synthesize label;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {	
 
@@ -105,7 +106,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 		// Apply the user specified settings to the movie player object
 		[self setMoviePlayerUserSettings];
 		
-		[ self.tracker play:[movieURL absoluteString] ];
+		[ self.tracker play:[movieURL resourceSpecifier] ];
 		
 		// Play the movie!
 		[self.moviePlayer play];
@@ -219,7 +220,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 - (void) moviePlayBackDidFinish:(NSNotification*)notification
 {
 	TimeTrackerNode* node = [tracker stop];
-	//trackerLabel.text = [node description];
+	label.text = [node description];
 	[node release];
 	/*     
         < add your code here >

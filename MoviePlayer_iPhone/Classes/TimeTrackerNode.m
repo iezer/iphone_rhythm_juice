@@ -23,10 +23,10 @@
 }
 
 - (NSString*)description {
-	NSString* ret = [NSString stringWithFormat:@"%@ %@ elapsed:%1.2f",
-					 self.mName, 
+	NSString* ret = [NSString stringWithFormat:@"%@\nelapsed:%1.2f\n%@",
 					 [self.mStartDate description], 
-					 self.mElapsed	];
+					 self.mElapsed,
+					 self.mName ];
 	return ret;
 }
 
