@@ -9,8 +9,8 @@
 	};
 	1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {996, 5092}}";
-			sepNavSelRange = "{9254, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {996, 5187}}";
+			sepNavSelRange = "{9238, 0}";
 			sepNavVisRange = "{8925, 652}";
 		};
 	};
@@ -192,6 +192,16 @@
 			6A38A3C1110660A6004EF5FD /* PBXTextBookmark */ = 6A38A3C1110660A6004EF5FD /* PBXTextBookmark */;
 			6A38A3C2110660A6004EF5FD /* PBXTextBookmark */ = 6A38A3C2110660A6004EF5FD /* PBXTextBookmark */;
 			6A38A3C3110660A6004EF5FD /* PBXTextBookmark */ = 6A38A3C3110660A6004EF5FD /* PBXTextBookmark */;
+			6A38A3C911066149004EF5FD /* PBXTextBookmark */ = 6A38A3C911066149004EF5FD /* PBXTextBookmark */;
+			6A38A3CA11066149004EF5FD /* PBXTextBookmark */ = 6A38A3CA11066149004EF5FD /* PBXTextBookmark */;
+			6A38A3CB11066149004EF5FD /* PBXTextBookmark */ = 6A38A3CB11066149004EF5FD /* PBXTextBookmark */;
+			6A38A3CC11066149004EF5FD /* PBXTextBookmark */ = 6A38A3CC11066149004EF5FD /* PBXTextBookmark */;
+			6A38A3CD11066149004EF5FD /* PBXTextBookmark */ = 6A38A3CD11066149004EF5FD /* PBXTextBookmark */;
+			6A38A3CE11066149004EF5FD /* PBXTextBookmark */ = 6A38A3CE11066149004EF5FD /* PBXTextBookmark */;
+			6A38A3CF11066149004EF5FD /* PBXTextBookmark */ = 6A38A3CF11066149004EF5FD /* PBXTextBookmark */;
+			6A38A3D011066149004EF5FD /* PBXTextBookmark */ = 6A38A3D011066149004EF5FD /* PBXTextBookmark */;
+			6A38A3D111066149004EF5FD /* PBXTextBookmark */ = 6A38A3D111066149004EF5FD /* PBXTextBookmark */;
+			6A38A3D211066149004EF5FD /* PBXTextBookmark */ = 6A38A3D211066149004EF5FD /* PBXTextBookmark */;
 		};
 		sourceControlManager = 6A38A28B1106586D004EF5FD /* Source Control */;
 		userBuildSettings = {
@@ -246,8 +256,8 @@
 	6A38A2C311065954004EF5FD /* TimeTracker.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {884, 874}}";
-			sepNavSelRange = "{719, 0}";
-			sepNavVisRange = "{305, 574}";
+			sepNavSelRange = "{657, 0}";
+			sepNavVisRange = "{191, 649}";
 		};
 	};
 	6A38A2C411065954004EF5FD /* TimeTrackerNode.h */ = {
@@ -274,11 +284,11 @@
 		delayBeforeContinue = 0;
 		fileReference = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
 		functionName = "-moviePlayBackDidFinish:";
-		hitCount = 0;
+		hitCount = 2;
 		ignoreCount = 0;
 		lineNumber = 221;
 		location = MoviePlayer;
-		modificationTime = 285630619.645444;
+		modificationTime = 285630658.206502;
 		state = 1;
 	};
 	6A38A2E211065B31004EF5FD /* PBXTextBookmark */ = {
@@ -735,11 +745,11 @@
 		delayBeforeContinue = 0;
 		fileReference = 6A38A2C311065954004EF5FD /* TimeTracker.m */;
 		functionName = "-stop";
-		hitCount = 0;
+		hitCount = 2;
 		ignoreCount = 0;
 		lineNumber = 28;
 		location = MoviePlayer;
-		modificationTime = 285630619.699586;
+		modificationTime = 285630662.290758;
 		state = 1;
 	};
 	6A38A32511065C3D004EF5FD /* PBXTextBookmark */ = {
@@ -1586,6 +1596,106 @@
 		rType = 0;
 		vrLen = 574;
 		vrLoc = 305;
+	};
+	6A38A3C911066149004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 223";
+		rLen = 0;
+		rLoc = 9238;
+		rType = 0;
+		vrLen = 652;
+		vrLoc = 8925;
+	};
+	6A38A3CA11066149004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C311065954004EF5FD /* TimeTracker.m */;
+		name = "TimeTracker.m: 29";
+		rLen = 0;
+		rLoc = 657;
+		rType = 0;
+		vrLen = 649;
+		vrLoc = 191;
+	};
+	6A38A3CB11066149004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C411065954004EF5FD /* TimeTrackerNode.h */;
+		name = "TimeTrackerNode.h: 22";
+		rLen = 24;
+		rLoc = 415;
+		rType = 0;
+		vrLen = 559;
+		vrLoc = 0;
+	};
+	6A38A3CC11066149004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C311065954004EF5FD /* TimeTracker.m */;
+		name = "TimeTracker.m: 34";
+		rLen = 0;
+		rLoc = 719;
+		rType = 0;
+		vrLen = 574;
+		vrLoc = 305;
+	};
+	6A38A3CD11066149004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 221";
+		rLen = 0;
+		rLoc = 9154;
+		rType = 0;
+		vrLen = 652;
+		vrLoc = 8925;
+	};
+	6A38A3CE11066149004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C311065954004EF5FD /* TimeTracker.m */;
+		name = "TimeTracker.m: 27";
+		rLen = 0;
+		rLoc = 524;
+		rType = 0;
+		vrLen = 605;
+		vrLoc = 274;
+	};
+	6A38A3CF11066149004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 223";
+		rLen = 0;
+		rLoc = 9238;
+		rType = 0;
+		vrLen = 652;
+		vrLoc = 8925;
+	};
+	6A38A3D011066149004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C311065954004EF5FD /* TimeTracker.m */;
+		name = "TimeTracker.m: 29";
+		rLen = 0;
+		rLoc = 657;
+		rType = 0;
+		vrLen = 649;
+		vrLoc = 191;
+	};
+	6A38A3D111066149004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C411065954004EF5FD /* TimeTrackerNode.h */;
+		name = "TimeTrackerNode.h: 22";
+		rLen = 24;
+		rLoc = 415;
+		rType = 0;
+		vrLen = 559;
+		vrLoc = 0;
+	};
+	6A38A3D211066149004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A38A2C511065954004EF5FD /* TimeTrackerNode.m */;
+		name = "TimeTrackerNode.m: 18";
+		rLen = 32;
+		rLoc = 269;
+		rType = 0;
+		vrLen = 553;
+		vrLoc = 203;
 	};
 	849C87AE0F897A7D005A6DDE /* MyMovieViewController.h */ = {
 		uiCtxt = {
