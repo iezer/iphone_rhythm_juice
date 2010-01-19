@@ -1,0 +1,418 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* MoviePlayerAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {858, 1311}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1296}";
+		};
+	};
+	1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {996, 5282}}";
+			sepNavSelRange = "{4433, 0}";
+			sepNavVisRange = "{8809, 659}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* MoviePlayer */ = {
+		activeExec = 0;
+		executables = (
+			6A389BA510FF37F4004EF5FD /* MoviePlayer */,
+		);
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 6A389BA510FF37F4004EF5FD /* MoviePlayer */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* MoviePlayer */;
+		codeSenseManager = 6A389BCC10FF3802004EF5FD /* Code sense */;
+		executables = (
+			6A389BA510FF37F4004EF5FD /* MoviePlayer */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					601,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 285625700;
+			PBXWorkspaceStateSaveDate = 285625700;
+		};
+		perUserProjectItems = {
+			6A389BCD10FF387F004EF5FD = 6A389BCD10FF387F004EF5FD /* PBXBookmark */;
+			6A389CA11101ECAE004EF5FD = 6A389CA11101ECAE004EF5FD /* PBXTextBookmark */;
+			6A389CA21101ECAE004EF5FD = 6A389CA21101ECAE004EF5FD /* PBXTextBookmark */;
+			6A389CA31101ECAE004EF5FD = 6A389CA31101ECAE004EF5FD /* PBXTextBookmark */;
+			6A389CA41101ECAE004EF5FD = 6A389CA41101ECAE004EF5FD /* PBXTextBookmark */;
+			6A389CA51101ECAE004EF5FD = 6A389CA51101ECAE004EF5FD /* PBXBookmark */;
+			6A389CA61101ECAE004EF5FD = 6A389CA61101ECAE004EF5FD /* PBXBookmark */;
+			6A389CA71101ECAE004EF5FD = 6A389CA71101ECAE004EF5FD /* PlistBookmark */;
+			6A389CA91101ECAE004EF5FD = 6A389CA91101ECAE004EF5FD /* PBXTextBookmark */;
+			6A389CAA1101ECAE004EF5FD = 6A389CAA1101ECAE004EF5FD /* PBXTextBookmark */;
+			6A389CAC1101ECAE004EF5FD = 6A389CAC1101ECAE004EF5FD /* PBXTextBookmark */;
+			6A389CAD1101ECAE004EF5FD = 6A389CAD1101ECAE004EF5FD /* PBXTextBookmark */;
+			6A389CAE1101ECAE004EF5FD = 6A389CAE1101ECAE004EF5FD /* PBXTextBookmark */;
+			6A389CAF1101ECAE004EF5FD = 6A389CAF1101ECAE004EF5FD /* PBXTextBookmark */;
+			6A389CB01101ECAE004EF5FD = 6A389CB01101ECAE004EF5FD /* PBXTextBookmark */;
+			6A389CB11101ECAE004EF5FD = 6A389CB11101ECAE004EF5FD /* PBXBookmark */;
+			6A389CB21101ECAE004EF5FD = 6A389CB21101ECAE004EF5FD /* PBXBookmark */;
+			6A389CB31101ECAE004EF5FD = 6A389CB31101ECAE004EF5FD /* PBXBookmark */;
+			6A389CB41101ECAE004EF5FD = 6A389CB41101ECAE004EF5FD /* PBXBookmark */;
+			6A389CB51101ECAE004EF5FD = 6A389CB51101ECAE004EF5FD /* PBXBookmark */;
+			6A389CB61101ECAE004EF5FD = 6A389CB61101ECAE004EF5FD /* PBXBookmark */;
+			6A389CB71101ECAE004EF5FD = 6A389CB71101ECAE004EF5FD /* PlistBookmark */;
+			6A389CB91101ECAE004EF5FD = 6A389CB91101ECAE004EF5FD /* PBXTextBookmark */;
+			6A389CBA1101ECAE004EF5FD = 6A389CBA1101ECAE004EF5FD /* PBXTextBookmark */;
+			6A389CBB1101ECAE004EF5FD = 6A389CBB1101ECAE004EF5FD /* PBXTextBookmark */;
+			6A389CBD1101ECAE004EF5FD = 6A389CBD1101ECAE004EF5FD /* PBXTextBookmark */;
+			6A38A16B11064D75004EF5FD /* PBXTextBookmark */ = 6A38A16B11064D75004EF5FD /* PBXTextBookmark */;
+			6A38A17911064D9B004EF5FD /* PBXTextBookmark */ = 6A38A17911064D9B004EF5FD /* PBXTextBookmark */;
+		};
+		sourceControlManager = 6A389BCB10FF3802004EF5FD /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {779, 1178}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{1887, 854}";
+		};
+	};
+	538CB4EF0DE329E400931BDA /* ReadMe.txt */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {5636, 1577}}";
+			sepNavSelRange = "{957, 0}";
+			sepNavVisRange = "{0, 2496}";
+		};
+	};
+	53E4BB050DDB491E0033B3CF /* MyImageView.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {858, 1216}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1385}";
+		};
+	};
+	53E4BB060DDB491E0033B3CF /* MyImageView.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {858, 1216}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1335}";
+		};
+	};
+	6A389BA510FF37F4004EF5FD /* MoviePlayer */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = MoviePlayer;
+		sourceDirectories = (
+		);
+	};
+	6A389BCB10FF3802004EF5FD /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	6A389BCC10FF3802004EF5FD /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	6A389BCD10FF387F004EF5FD /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 849C87AF0F897A7D005A6DDE /* MyMovieViewController.m */;
+	};
+	6A389CA11101ECAE004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 538CB4EF0DE329E400931BDA /* ReadMe.txt */;
+		name = "ReadMe.txt: 12";
+		rLen = 0;
+		rLoc = 957;
+		rType = 0;
+		vrLen = 2496;
+		vrLoc = 0;
+	};
+	6A389CA21101ECAE004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* MoviePlayerAppDelegate.h */;
+		name = "MoviePlayerAppDelegate.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1296;
+		vrLoc = 0;
+	};
+	6A389CA31101ECAE004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53E4BB060DDB491E0033B3CF /* MyImageView.h */;
+		name = "MyImageView.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1335;
+		vrLoc = 0;
+	};
+	6A389CA41101ECAE004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53E4BB050DDB491E0033B3CF /* MyImageView.m */;
+		name = "MyImageView.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1385;
+		vrLoc = 0;
+	};
+	6A389CA51101ECAE004EF5FD /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 5360AB710F9555EE004386E1 /* local.png */;
+	};
+	6A389CA61101ECAE004EF5FD /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 5360AB720F9555EE004386E1 /* streaming.png */;
+	};
+	6A389CA71101ECAE004EF5FD /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 6A389CA81101ECAE004EF5FD /* Root.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/isaac/Downloads/MoviePlayer_iPhone/Settings.bundle/Root.plist;
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	6A389CA81101ECAE004EF5FD /* Root.plist */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = text.plist;
+		name = Root.plist;
+		path = /Users/isaac/Downloads/MoviePlayer_iPhone/Settings.bundle/Root.plist;
+		sourceTree = "<absolute>";
+	};
+	6A389CA91101ECAE004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		name = "main.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 854;
+		vrLoc = 1887;
+	};
+	6A389CAA1101ECAE004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A389CAB1101ECAE004EF5FD /* MPMoviePlayerController.h */;
+		name = "MPMoviePlayerController.h: 10";
+		rLen = 18;
+		rLoc = 187;
+		rType = 0;
+		vrLen = 1054;
+		vrLoc = 0;
+	};
+	6A389CAB1101ECAE004EF5FD /* MPMoviePlayerController.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = MPMoviePlayerController.h;
+		path = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk/System/Library/Frameworks/MediaPlayer.framework/Headers/MPMoviePlayerController.h;
+		sourceTree = "<absolute>";
+	};
+	6A389CAC1101ECAE004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 88";
+		rLen = 45;
+		rLoc = 3951;
+		rType = 0;
+		vrLen = 1048;
+		vrLoc = 3215;
+	};
+	6A389CAD1101ECAE004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 538CB4EF0DE329E400931BDA /* ReadMe.txt */;
+		name = "ReadMe.txt: 12";
+		rLen = 0;
+		rLoc = 957;
+		rType = 0;
+		vrLen = 2496;
+		vrLoc = 0;
+	};
+	6A389CAE1101ECAE004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* MoviePlayerAppDelegate.h */;
+		name = "MoviePlayerAppDelegate.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1296;
+		vrLoc = 0;
+	};
+	6A389CAF1101ECAE004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53E4BB060DDB491E0033B3CF /* MyImageView.h */;
+		name = "MyImageView.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1335;
+		vrLoc = 0;
+	};
+	6A389CB01101ECAE004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53E4BB050DDB491E0033B3CF /* MyImageView.m */;
+		name = "MyImageView.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1385;
+		vrLoc = 0;
+	};
+	6A389CB11101ECAE004EF5FD /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 5360AB710F9555EE004386E1 /* local.png */;
+	};
+	6A389CB21101ECAE004EF5FD /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 5360AB720F9555EE004386E1 /* streaming.png */;
+	};
+	6A389CB31101ECAE004EF5FD /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 5360AB710F9555EE004386E1 /* local.png */;
+	};
+	6A389CB41101ECAE004EF5FD /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 5360AB720F9555EE004386E1 /* streaming.png */;
+	};
+	6A389CB51101ECAE004EF5FD /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 5360AB710F9555EE004386E1 /* local.png */;
+	};
+	6A389CB61101ECAE004EF5FD /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 5360AB720F9555EE004386E1 /* streaming.png */;
+	};
+	6A389CB71101ECAE004EF5FD /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 6A389CB81101ECAE004EF5FD /* Root.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/isaac/Downloads/MoviePlayer_iPhone/Settings.bundle/Root.plist;
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	6A389CB81101ECAE004EF5FD /* Root.plist */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = text.plist;
+		name = Root.plist;
+		path = /Users/isaac/Downloads/MoviePlayer_iPhone/Settings.bundle/Root.plist;
+		sourceTree = "<absolute>";
+	};
+	6A389CB91101ECAE004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		name = "main.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 854;
+		vrLoc = 1887;
+	};
+	6A389CBA1101ECAE004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 88";
+		rLen = 45;
+		rLoc = 3951;
+		rType = 0;
+		vrLen = 1048;
+		vrLoc = 3215;
+	};
+	6A389CBB1101ECAE004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A389CBC1101ECAE004EF5FD /* MPMoviePlayerController.h */;
+		name = "MPMoviePlayerController.h: 10";
+		rLen = 18;
+		rLoc = 187;
+		rType = 0;
+		vrLen = 1054;
+		vrLoc = 0;
+	};
+	6A389CBC1101ECAE004EF5FD /* MPMoviePlayerController.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = MPMoviePlayerController.h;
+		path = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk/System/Library/Frameworks/MediaPlayer.framework/Headers/MPMoviePlayerController.h;
+		sourceTree = "<absolute>";
+	};
+	6A389CBD1101ECAE004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 105";
+		rLen = 0;
+		rLoc = 4433;
+		rType = 0;
+		vrLen = 660;
+		vrLoc = 8809;
+	};
+	6A38A16B11064D75004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 105";
+		rLen = 0;
+		rLoc = 4433;
+		rType = 0;
+		vrLen = 657;
+		vrLoc = 8809;
+	};
+	6A38A17911064D9B004EF5FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MoviePlayerAppDelegate.m */;
+		name = "MoviePlayerAppDelegate.m: 105";
+		rLen = 0;
+		rLoc = 4433;
+		rType = 0;
+		vrLen = 659;
+		vrLoc = 8809;
+	};
+	849C87AF0F897A7D005A6DDE /* MyMovieViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1133, 1568}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{1956, 1565}";
+			sepNavWindowFrame = "{{15, 65}, {1192, 708}}";
+		};
+	};
+}
