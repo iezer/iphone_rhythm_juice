@@ -21,7 +21,6 @@
 		28F25CCE0D64C1EB00158CCD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */; };
 		53A3862B0E6DD89B002F7F09 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53A386290E6DD89B002F7F09 /* MainWindow.xib */; };
 		6A38A4F7110CECBD004EF5FD /* Movie.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 6A38A4F6110CECBD004EF5FD /* Movie.m4v */; };
-		6A38A5B0110D4199004EF5FD /* MyMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A38A5AF110D4199004EF5FD /* MyMovieViewController.m */; };
 		6A38A5B9110D41CC004EF5FD /* TimeTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A38A5B4110D41CB004EF5FD /* TimeTracker.m */; };
 		6A38A5BA110D41CC004EF5FD /* TimeTrackerNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A38A5B6110D41CB004EF5FD /* TimeTrackerNode.m */; };
 		6A38A601110D44A5004EF5FD /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6A38A600110D44A5004EF5FD /* Settings.bundle */; };
@@ -51,8 +50,6 @@
 		32CA4F630368D1EE00C91783 /* SimpleDrillDown_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleDrillDown_Prefix.pch; sourceTree = "<group>"; };
 		53A3862A0E6DD89B002F7F09 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		6A38A4F6110CECBD004EF5FD /* Movie.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = Movie.m4v; sourceTree = "<group>"; };
-		6A38A5AE110D4199004EF5FD /* MyMovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMovieViewController.h; sourceTree = "<group>"; };
-		6A38A5AF110D4199004EF5FD /* MyMovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMovieViewController.m; sourceTree = "<group>"; };
 		6A38A5B3110D41CB004EF5FD /* TimeTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTracker.h; sourceTree = "<group>"; };
 		6A38A5B4110D41CB004EF5FD /* TimeTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTracker.m; sourceTree = "<group>"; };
 		6A38A5B5110D41CB004EF5FD /* TimeTrackerNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTrackerNode.h; sourceTree = "<group>"; };
@@ -81,8 +78,6 @@
 		080E96DDFE201D6D7F000001 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				6A38A5AE110D4199004EF5FD /* MyMovieViewController.h */,
-				6A38A5AF110D4199004EF5FD /* MyMovieViewController.m */,
 				28F25CCA0D64C1EB00158CCD /* DetailViewController.h */,
 				28F25CCB0D64C1EB00158CCD /* DetailViewController.m */,
 				282DE87A0D999CA700F5050D /* RootViewController.h */,
@@ -103,6 +98,10 @@
 		282669B30FAA0402007D4074 /* Data Management */ = {
 			isa = PBXGroup;
 			children = (
+				6A38A5B3110D41CB004EF5FD /* TimeTracker.h */,
+				6A38A5B4110D41CB004EF5FD /* TimeTracker.m */,
+				6A38A5B5110D41CB004EF5FD /* TimeTrackerNode.h */,
+				6A38A5B6110D41CB004EF5FD /* TimeTrackerNode.m */,
 				1D3623240D0F684500981E51 /* SimpleDrillDownAppDelegate.h */,
 				1D3623250D0F684500981E51 /* SimpleDrillDownAppDelegate.m */,
 				28348A840E1D400D009134BC /* DataController.h */,
@@ -131,10 +130,6 @@
 			isa = PBXGroup;
 			children = (
 				6A38A613110D45C8004EF5FD /* MoviePlayer_Prefix.pch */,
-				6A38A5B3110D41CB004EF5FD /* TimeTracker.h */,
-				6A38A5B4110D41CB004EF5FD /* TimeTracker.m */,
-				6A38A5B5110D41CB004EF5FD /* TimeTrackerNode.h */,
-				6A38A5B6110D41CB004EF5FD /* TimeTrackerNode.m */,
 				32CA4F630368D1EE00C91783 /* SimpleDrillDown_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
@@ -237,7 +232,6 @@
 				282DE87B0D999CA700F5050D /* RootViewController.m in Sources */,
 				28348A860E1D400D009134BC /* DataController.m in Sources */,
 				282669860FA9FED7007D4074 /* Play.m in Sources */,
-				6A38A5B0110D4199004EF5FD /* MyMovieViewController.m in Sources */,
 				6A38A5B9110D41CC004EF5FD /* TimeTracker.m in Sources */,
 				6A38A5BA110D41CC004EF5FD /* TimeTrackerNode.m in Sources */,
 			);
