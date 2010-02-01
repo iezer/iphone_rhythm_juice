@@ -114,6 +114,7 @@
     play.characters = characters;
 	[characters release];
 	[playList addObject:play];
+	play.tracker = [[TimeTracker alloc] init];
     [play release];
     
 	play = [[Play alloc] init];

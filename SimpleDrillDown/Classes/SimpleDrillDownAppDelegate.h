@@ -49,9 +49,9 @@
 @class RootViewController;
 
 
-#import "TimeTracker.h"
 #import <UIKit/UIKit.h>
 #import "MyMovieViewController.h"
+#import "Play.h"
 
 @interface SimpleDrillDownAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
 	
@@ -63,7 +63,7 @@
     DataController *dataController;
 	
 	MPMoviePlayerController *moviePlayer;
-    TimeTracker* tracker;
+	Play* play;
 
 }
 
@@ -71,11 +71,12 @@
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 @property (nonatomic, retain) IBOutlet RootViewController *rootViewController;
 @property (readwrite, retain) MPMoviePlayerController *moviePlayer;
-@property (nonatomic, retain) TimeTracker* tracker;
+@property (nonatomic, retain) Play *play;
 
 @property (nonatomic, retain) DataController *dataController;
 
--(void)initAndPlayMovie:(NSURL *)movieURL;
+//-(void)initAndPlayMovie:(NSURL *)movieURL;
+-(void)initAndPlayMovie:(NSURL *)movieURL thePlay:(Play *)thePlay;
 -(void)setMoviePlayerUserSettings;
 
 @end

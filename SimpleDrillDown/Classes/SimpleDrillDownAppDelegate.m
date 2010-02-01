@@ -49,6 +49,7 @@
 #import "RootViewController.h"
 #import "DataController.h"
 #import "DetailViewController.h"
+//#import "TimeTrackerNode.h"
 
 NSString *kScalingModeKey	= @"scalingMode";
 NSString *kControlModeKey	= @"controlMode";
@@ -62,7 +63,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 @synthesize rootViewController;
 @synthesize dataController;
 @synthesize moviePlayer;
-//@synthesize tracker;
+@synthesize play;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     
@@ -106,8 +107,14 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 
 
 
--(void)initAndPlayMovie:(NSURL *)movieURL
+-(void)initAndPlayMovie:(NSURL *)movieURL thePlay:(Play *)thePlay
+//-(void)initAndPlayMovie:(NSURL *)movieURL
 {
+//	if (self.play != nil) {
+//		release [self.play];
+//	}
+	
+	self.play = thePlay;
 	// Initialize a movie player object with the specified URL
 	MPMoviePlayerController *mp = [[MPMoviePlayerController alloc] initWithContentURL:movieURL];
 	if (mp)
@@ -122,6 +129,9 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 		NSString* movieFileName = [[[movieURL absoluteString] pathComponents] lastObject];
 	//	[ self.tracker play:movieFileName ];
 		//[ movieFileName release ];
+		
+		[self.play.tracker play:self.play.title ];
+		
 		// Play the movie!
 		[self.moviePlayer play];
 	}
@@ -233,27 +243,25 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 //  Notification called when the movie finished playing.
 - (void) moviePlayBackDidFinish:(NSNotification*)notification
 {
-//	TimeTrackerNode* node = [tracker stop];
+	//MPMoviePlayerController* moviePlayerObj=[notification object];
+
+	TimeTrackerNode* node = [self.play.tracker stop];
 //	NSString* ret = [NSString stringWithFormat:@"%@\n%@",
 //					 textView.text, 
 //					 [node description] ];
 	
 //	textView.text = ret;
-//	[node release];
-	/*     
-	 < add your code here >
+//	[ret release];
+	[node release];
 	 
-	 MPMoviePlayerController* moviePlayerObj=[notification object];
-	 etc.
-	 */
 	
-	DetailViewController *detailViewController = [[DetailViewController alloc] initWithStyle:UITableViewStyleGrouped];
+//	DetailViewController *detailViewController = [[DetailViewController alloc] initWithStyle:UITableViewStyleGrouped];
     
-	 detailViewController.play = [dataController objectInListAtIndex:0];
+//	 detailViewController.play = [dataController objectInListAtIndex:0];
     
     // Push the detail view controller.
-	 [[self navigationController] pushViewController:detailViewController animated:YES];
-	 [detailViewController release];
+//	 [[self navigationController] pushViewController:detailViewController animated:YES];
+//	 [detailViewController release];
 }
 
 //  Notification called when the movie scaling mode has changed.

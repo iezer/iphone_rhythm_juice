@@ -48,7 +48,7 @@
 #import "DetailViewController.h"
 #import "Play.h"
 #import "SimpleDrillDownAppDelegate.h"
-
+#import "TimeTrackerNode.h"
 
 @implementation DetailViewController
 
@@ -74,7 +74,8 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // There are three sections, for date, genre, and characters, in that order.
-    return 3;
+    // Added fourth row for timetracker.
+	return 4;
 }
 
 
@@ -94,7 +95,10 @@
             // For the characters section, there are as many rows as there are characters.
             rows = [play.characters count];
             break;
-        default:
+        case 3:
+			rows = [play.tracker.mList count];
+			break;
+		default:
             break;
     }
     return rows;
@@ -121,7 +125,8 @@
     // Set the text in the cell for the section/row.
     
     NSString *cellText = nil;
-    
+    TimeTrackerNode *node = nil;
+	
     switch (indexPath.section) {
         case 0:
             cellText = [dateFormatter stringFromDate:play.date];
@@ -132,7 +137,16 @@
         case 2:
             cellText = [play.characters objectAtIndex:indexPath.row];
             break;
-        default:
+        case 3:
+			node = [play.tracker.mList objectAtIndex:indexPath.row];
+			if (node == nil) {
+				cellText = @"";
+			} else {
+				cellText = [node description];
+				[node release];
+			}
+			break;
+		default:
             break;
     }
     
@@ -161,7 +175,10 @@
         case 2:
             title = NSLocalizedString(@"Main Characters", @"Main Characters section title");
             break;
-        default:
+        case 3:
+			title = @"View Tracker";
+			break;
+		default:
             break;
     }
     return title;
@@ -182,15 +199,12 @@
 			movieURL = [NSURL fileURLWithPath:moviePath];
 		}
 	}
-	
-	
-	//	return self.movieURL;
-	
+
 	
 	// initialize a new MPMoviePlayerController object with the specified URL, and
 	// play the movie
 	SimpleDrillDownAppDelegate *appDelegate = (SimpleDrillDownAppDelegate *)[[UIApplication sharedApplication] delegate];
-	[appDelegate initAndPlayMovie:movieURL];
+	[appDelegate initAndPlayMovie:movieURL thePlay:play];
 	[movieURL release];
 	//[appDelegate release];
 	

@@ -47,21 +47,22 @@
 
 
 #import <Foundation/Foundation.h>
-//#import "TimeTracker.h"
+#import "TimeTracker.h"
 
 @interface Play : NSObject {
 	NSString *title;
 	NSArray *characters;
 	NSString *genre;
 	NSDate *date;
-	//TimeTracker *tracker;
+	TimeTracker *tracker;
 	NSString *moviePath;
 }
 
+-(Play*)init;
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSArray *characters;
 @property (nonatomic, retain) NSString *genre;
 @property (nonatomic, retain) NSDate *date;
-//@property (nonatomic, retain) Timetracker *tracker;
+@property (nonatomic, retain) TimeTracker *tracker;
 @property (nonatomic, retain) NSString *moviePath;
 @end

@@ -49,14 +49,19 @@
 
 @implementation Play
 
-@synthesize title, characters, genre, date, moviePath;
+@synthesize title, characters, genre, date, moviePath, tracker;
 
+-(Play*)init {
+	self.tracker = [[TimeTracker alloc] init];
+	return self;
+}
 
 - (void)dealloc {
 	[title release];
 	[characters release];
 	[genre release];
 	[date release];
+	[tracker release];
 	[super dealloc];
 }
 
