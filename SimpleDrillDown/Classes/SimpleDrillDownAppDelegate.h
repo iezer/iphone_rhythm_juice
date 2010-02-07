@@ -54,15 +54,10 @@
 #import "Play.h"
 
 @interface SimpleDrillDownAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
-	
 	UIWindow *window;
-	
 	UINavigationController *navigationController;
 	RootViewController *rootViewController;
-	
     DataController *dataController;
-	
-	//MPMoviePlayerController *moviePlayer;
 	Play* play;
 
 }
@@ -70,13 +65,10 @@
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 @property (nonatomic, retain) IBOutlet RootViewController *rootViewController;
-//@property (readwrite, retain) MPMoviePlayerController *moviePlayer;
 @property (nonatomic, retain) Play *play;
-
 @property (nonatomic, retain) DataController *dataController;
 
-//-(void)initAndPlayMovie:(NSURL *)movieURL;
--(void)initAndPlayMovie:(NSURL *)movieURL thePlay:(Play *)thePlay;
+-(void)initAndPlayMovie:(Play *)thePlay;
 -(void)setMoviePlayerUserSettings:(MPMoviePlayerController *)moviePlayer;
 
 @end

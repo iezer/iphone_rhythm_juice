@@ -186,38 +186,11 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	
-	// return a URL for the movie file in our bundle
-	
-	NSURL* movieURL;
-	NSBundle *bundle = [NSBundle mainBundle];
-	if (bundle) 
-	{
-		NSString *moviePath = [bundle pathForResource:@"Movie" ofType:@"m4v"];
-		if (moviePath)
-		{
-			movieURL = [NSURL fileURLWithPath:moviePath];
-		}
-	}
 
-	
 	// initialize a new MPMoviePlayerController object with the specified URL, and
 	// play the movie
 	SimpleDrillDownAppDelegate *appDelegate = (SimpleDrillDownAppDelegate *)[[UIApplication sharedApplication] delegate];
-	[appDelegate initAndPlayMovie:movieURL thePlay:play];
-	[movieURL release];
-	//[appDelegate release];
-	
-	/*
-     When a row is selected, create the detail view controller and set its detail item to the item associated with the selected row.
-     */
-    //DetailViewController *detailViewController = [[DetailViewController alloc] initWithStyle:UITableViewStyleGrouped];
-    
-	// detailViewController.play = [dataController objectInListAtIndex:indexPath.row];
-    
-    // Push the detail view controller.
-	// [[self navigationController] pushViewController:detailViewController animated:YES];
-	// [detailViewController release];
+	[appDelegate initAndPlayMovie:play];
 }
 
 

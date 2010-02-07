@@ -91,7 +91,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 
 
 
--(void)initAndPlayMovie:(NSURL *)movieURL thePlay:(Play *)thePlay
+-(void)initAndPlayMovie:(Play *)thePlay
 //-(void)initAndPlayMovie:(NSURL *)movieURL
 {
 //	if (self.play != nil) {
@@ -99,25 +99,28 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 //	}
 	
 	self.play = thePlay;
+	// TODO Get the URL from the Play.
+	// return a URL for the movie file in our bundle
+	
+	NSURL* movieURL;
+	NSBundle *bundle = [NSBundle mainBundle];
+	if (bundle) 
+	{
+		NSString *moviePath = [bundle pathForResource:@"Movie" ofType:@"m4v"];
+		if (moviePath)
+		{
+			movieURL = [NSURL fileURLWithPath:moviePath];
+		}
+	}
 	
 	// Initialize a movie player object with the specified URL
 	MPMoviePlayerController *mp = [[MPMoviePlayerController alloc] initWithContentURL:movieURL];
 	if (mp)
 	{
-		// save the movie player object
-	//	if (self.moviePlayer != nil) {
-//			[self.moviePlayer release];
-//		}
-		//self.moviePlayer = mp;
-		//[mp release];
-		
 		// Apply the user specified settings to the movie player object
 		[self setMoviePlayerUserSettings:mp];
 		
-		//NSString* movieFileName = [[[movieURL absoluteString] pathComponents] lastObject];
-	//	[ self.tracker play:movieFileName ];
-	//	[ movieFileName release ];
-		
+		// Set up tracker.
 		[self.play.tracker play:self.play.title ];
 		
 		// Play the movie!
@@ -249,35 +252,9 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 //  Notification called when the movie finished playing.
 - (void) moviePlayBackDidFinish:(NSNotification*)notification
 {
-	//MPMoviePlayerController* moviePlayerObj=[notification object];
-
-	//TimeTrackerNode* node = [self.play.tracker stop];
 	[self.play.tracker stop];
-//	NSString* ret = [NSString stringWithFormat:@"%@\n%@",
-//					 textView.text, 
-//					 [node description] ];
-	//[node release];
-	
-//	textView.text = ret;
-//	[ret release];
-//	[moviePlayer release]; 
-//	[play release];
-	//[self.moviePlayer release];
-	//DetailViewController *detailViewController = [[DetailViewController alloc] initWithStyle:UITableViewStyleGrouped];
-    
-  //  detailViewController.play = play;
-    
-    // Push the detail view controller.
-  //  [[self navigationController] pushViewController:detailViewController animated:YES];
-  //  [detailViewController release];
-	//[moviePlayer release];
-	
+
 	MPMoviePlayerController* theMovie = [notification object];
-	
-  //  [[NSNotificationCenter defaultCenter]
-//	 removeObserver: self
-//	 name: MPMoviePlayerPlaybackDidFinishNotification
-//	 object: theMovie];
 	
 	// remove all movie notifications
     [[NSNotificationCenter defaultCenter] removeObserver:self
@@ -313,10 +290,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 	[rootViewController release];
     [window release];
     [dataController release];
-	
-//	[moviePlayer release]; 
 	[play release];
-	
     [super dealloc];
 }
 
