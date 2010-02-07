@@ -17,7 +17,7 @@
 
 @property (nonatomic, copy) NSString *mName;
 @property NSTimeInterval mElapsed;
-@property (nonatomic, retain) NSDate *mStartDate;
+@property (nonatomic, copy) NSDate *mStartDate;
 
 - (TimeTrackerNode*)initWithName:(NSString *)name elapsed:(NSTimeInterval)elapsed starting:(NSDate*)startDate;
 - (NSString *)description;

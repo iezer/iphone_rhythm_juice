@@ -62,7 +62,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 @synthesize navigationController;
 @synthesize rootViewController;
 @synthesize dataController;
-@synthesize moviePlayer;
+//@synthesize moviePlayer;
 @synthesize play;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
@@ -83,23 +83,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 	
 	
 	
-	// Register to receive a notification that the movie is now in memory and ready to play
-	[[NSNotificationCenter defaultCenter] addObserver:self 
-											 selector:@selector(moviePreloadDidFinish:) 
-												 name:MPMoviePlayerContentPreloadDidFinishNotification 
-											   object:nil];
-	
-	// Register to receive a notification when the movie has finished playing. 
-	[[NSNotificationCenter defaultCenter] addObserver:self 
-											 selector:@selector(moviePlayBackDidFinish:) 
-												 name:MPMoviePlayerPlaybackDidFinishNotification 
-											   object:nil];
-	
-	// Register to receive a notification when the movie scaling mode has changed. 
-	[[NSNotificationCenter defaultCenter] addObserver:self 
-											 selector:@selector(movieScalingModeDidChange:) 
-												 name:MPMoviePlayerScalingModeDidChangeNotification 
-											   object:nil];
+
 	
 	//self.tracker = [[TimeTracker alloc] init];
 	
@@ -111,36 +95,58 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 //-(void)initAndPlayMovie:(NSURL *)movieURL
 {
 //	if (self.play != nil) {
-//		release [self.play];
+//		[self.play release];
 //	}
 	
 	self.play = thePlay;
+	
 	// Initialize a movie player object with the specified URL
 	MPMoviePlayerController *mp = [[MPMoviePlayerController alloc] initWithContentURL:movieURL];
 	if (mp)
 	{
 		// save the movie player object
-		self.moviePlayer = mp;
-		[mp release];
+	//	if (self.moviePlayer != nil) {
+//			[self.moviePlayer release];
+//		}
+		//self.moviePlayer = mp;
+		//[mp release];
 		
 		// Apply the user specified settings to the movie player object
-		[self setMoviePlayerUserSettings];
+		[self setMoviePlayerUserSettings:mp];
 		
-		NSString* movieFileName = [[[movieURL absoluteString] pathComponents] lastObject];
+		//NSString* movieFileName = [[[movieURL absoluteString] pathComponents] lastObject];
 	//	[ self.tracker play:movieFileName ];
-		//[ movieFileName release ];
+	//	[ movieFileName release ];
 		
 		[self.play.tracker play:self.play.title ];
 		
 		// Play the movie!
-		[self.moviePlayer play];
+		[mp play];
 	}
 }
 
--(void)setMoviePlayerUserSettings
+-(void)setMoviePlayerUserSettings:(MPMoviePlayerController *)moviePlayer
 {
     /* First get the movie player settings defaults (scaling, controller type and background color)
 	 set by the user via the built-in iPhone Settings application */
+	
+	// Register to receive a notification that the movie is now in memory and ready to play
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(moviePreloadDidFinish:) 
+												 name:MPMoviePlayerContentPreloadDidFinishNotification 
+											   object:moviePlayer];
+	
+	// Register to receive a notification when the movie has finished playing. 
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(moviePlayBackDidFinish:) 
+												 name:MPMoviePlayerPlaybackDidFinishNotification 
+											   object:moviePlayer];
+	
+	// Register to receive a notification when the movie scaling mode has changed. 
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(movieScalingModeDidChange:) 
+												 name:MPMoviePlayerScalingModeDidChangeNotification 
+											   object:moviePlayer];
 	
     NSString *testValue = [[NSUserDefaults standardUserDefaults] stringForKey:kScalingModeKey];
     if (testValue == nil)
@@ -203,13 +209,13 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 	 Movie scaling mode can be one of: MPMovieScalingModeNone, MPMovieScalingModeAspectFit,
 	 MPMovieScalingModeAspectFill, MPMovieScalingModeFill.
 	 */
-    self.moviePlayer.scalingMode = [[NSUserDefaults standardUserDefaults] integerForKey:kScalingModeKey];
+    moviePlayer.scalingMode = [[NSUserDefaults standardUserDefaults] integerForKey:kScalingModeKey];
     
     /* 
 	 Movie control mode can be one of: MPMovieControlModeDefault, MPMovieControlModeVolumeOnly,
 	 MPMovieControlModeHidden.
 	 */
-    self.moviePlayer.movieControlMode = [[NSUserDefaults standardUserDefaults] integerForKey:kControlModeKey];
+    moviePlayer.movieControlMode = [[NSUserDefaults standardUserDefaults] integerForKey:kControlModeKey];
 	
     /*
 	 The color of the background area behind the movie can be any UIColor value.
@@ -218,7 +224,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         [UIColor grayColor], [UIColor redColor], [UIColor greenColor], [UIColor blueColor], [UIColor cyanColor], 
         [UIColor yellowColor], [UIColor magentaColor],[UIColor orangeColor], [UIColor purpleColor], [UIColor brownColor], 
 	[UIColor clearColor]};
-	self.moviePlayer.backgroundColor = colors[ [[NSUserDefaults standardUserDefaults] integerForKey:kBackgroundColorKey] ];
+	moviePlayer.backgroundColor = colors[ [[NSUserDefaults standardUserDefaults] integerForKey:kBackgroundColorKey] ];
 	
 	/*
 	 The time relative to the duration of the video when playback should start, if possible. 
@@ -245,23 +251,48 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 {
 	//MPMoviePlayerController* moviePlayerObj=[notification object];
 
-	TimeTrackerNode* node = [self.play.tracker stop];
+	//TimeTrackerNode* node = [self.play.tracker stop];
+	[self.play.tracker stop];
 //	NSString* ret = [NSString stringWithFormat:@"%@\n%@",
 //					 textView.text, 
 //					 [node description] ];
+	//[node release];
 	
 //	textView.text = ret;
 //	[ret release];
-	[node release];
-	 
-	
-//	DetailViewController *detailViewController = [[DetailViewController alloc] initWithStyle:UITableViewStyleGrouped];
+//	[moviePlayer release]; 
+//	[play release];
+	//[self.moviePlayer release];
+	//DetailViewController *detailViewController = [[DetailViewController alloc] initWithStyle:UITableViewStyleGrouped];
     
-//	 detailViewController.play = [dataController objectInListAtIndex:0];
+  //  detailViewController.play = play;
     
     // Push the detail view controller.
-//	 [[self navigationController] pushViewController:detailViewController animated:YES];
-//	 [detailViewController release];
+  //  [[self navigationController] pushViewController:detailViewController animated:YES];
+  //  [detailViewController release];
+	//[moviePlayer release];
+	
+	MPMoviePlayerController* theMovie = [notification object];
+	
+  //  [[NSNotificationCenter defaultCenter]
+//	 removeObserver: self
+//	 name: MPMoviePlayerPlaybackDidFinishNotification
+//	 object: theMovie];
+	
+	// remove all movie notifications
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:MPMoviePlayerContentPreloadDidFinishNotification
+                                                  object:theMovie];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:MPMoviePlayerPlaybackDidFinishNotification
+                                                  object:theMovie];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:MPMoviePlayerScalingModeDidChangeNotification
+                                                  object:theMovie];
+	
+    // Release the movie instance created in playMovieAtURL:
+  //  [theMovie release];
+	
 }
 
 //  Notification called when the movie scaling mode has changed.
@@ -283,19 +314,8 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     [window release];
     [dataController release];
 	
-	
-    // remove all movie notifications
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:MPMoviePlayerContentPreloadDidFinishNotification
-                                                  object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:MPMoviePlayerPlaybackDidFinishNotification
-                                                  object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:MPMoviePlayerScalingModeDidChangeNotification
-                                                  object:nil];
-	[moviePlayer release]; 
-//	[tracker release];
+//	[moviePlayer release]; 
+	[play release];
 	
     [super dealloc];
 }
