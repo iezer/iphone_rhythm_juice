@@ -270,29 +270,8 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
                                                     name:MPMoviePlayerScalingModeDidChangeNotification
                                                   object:theMovie];
 
-	int trackerRows = [self.play.tracker.mList count];
-	
-	if (0 && trackerRows > 1)
-	{
-		// [states insertObject:[node description] atIndex:trackerRows];
-		
-		NSArray *insertIndexPaths = [NSArray arrayWithObjects:
-									 [NSIndexPath indexPathForRow:trackerRows inSection:3],
-									 nil];
-		
-		UITableView *tv = (UITableView *)self.detailViewController.tableView;
-		
-		[tv beginUpdates];
-		[tv insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationRight];//
-		[tv endUpdates];
-		//[tv reloadData];	
-		// ending rows: Alaska, Arizona, California, Georgia, New Jersey, Virginia
-	}
-	
-	
-    // Release the movie instance created in playMovieAtURL:
-  //  [theMovie release];
-	
+	UITableView *tv = (UITableView *)self.detailViewController.tableView;
+	[tv reloadData];		
 }
 
 //  Notification called when the movie scaling mode has changed.

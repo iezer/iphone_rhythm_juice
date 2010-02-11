@@ -143,7 +143,6 @@
 				cellText = @"";
 			} else {
 				cellText = [node description];
-				//[node release];
 			}
 			break;
 		default:
