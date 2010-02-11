@@ -18,13 +18,13 @@
 		2846CFC80DBFDD18009410C2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2846CFC60DBFDD18009410C2 /* Localizable.strings */; };
 		28554E2C0DAC293600168C19 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 28554E2B0DAC293600168C19 /* Icon.png */; };
 		28A0A2200DCBAA090060EDFB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 28A0A21F0DCBAA090060EDFB /* Default.png */; };
-		28F25CCE0D64C1EB00158CCD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */; };
 		53A3862B0E6DD89B002F7F09 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53A386290E6DD89B002F7F09 /* MainWindow.xib */; };
 		6A38A4F7110CECBD004EF5FD /* Movie.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 6A38A4F6110CECBD004EF5FD /* Movie.m4v */; };
 		6A38A5B9110D41CC004EF5FD /* TimeTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A38A5B4110D41CB004EF5FD /* TimeTracker.m */; };
 		6A38A5BA110D41CC004EF5FD /* TimeTrackerNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A38A5B6110D41CB004EF5FD /* TimeTrackerNode.m */; };
 		6A38A601110D44A5004EF5FD /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6A38A600110D44A5004EF5FD /* Settings.bundle */; };
 		6A38A70B110DF8AD004EF5FD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A38A70A110DF8AD004EF5FD /* MediaPlayer.framework */; };
+		6A7145691123C5F00081571A /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +45,7 @@
 		28A0A21F0DCBAA090060EDFB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		28F1A73C0DC932C300332FD8 /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
 		28F25CCA0D64C1EB00158CCD /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		28F25CCB0D64C1EB00158CCD /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		28F25CCB0D64C1EB00158CCD /* DetailViewController.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = DetailViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* SimpleDrillDown_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleDrillDown_Prefix.pch; sourceTree = "<group>"; };
 		53A3862A0E6DD89B002F7F09 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
@@ -228,12 +228,12 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* SimpleDrillDownAppDelegate.m in Sources */,
-				28F25CCE0D64C1EB00158CCD /* DetailViewController.m in Sources */,
 				282DE87B0D999CA700F5050D /* RootViewController.m in Sources */,
 				28348A860E1D400D009134BC /* DataController.m in Sources */,
 				282669860FA9FED7007D4074 /* Play.m in Sources */,
 				6A38A5B9110D41CC004EF5FD /* TimeTracker.m in Sources */,
 				6A38A5BA110D41CC004EF5FD /* TimeTrackerNode.m in Sources */,
+				6A7145691123C5F00081571A /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

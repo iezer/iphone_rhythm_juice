@@ -64,6 +64,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 @synthesize dataController;
 //@synthesize moviePlayer;
 @synthesize play;
+@synthesize detailViewController;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     
@@ -91,14 +92,16 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 
 
 
--(void)initAndPlayMovie:(Play *)thePlay
+-(void)initAndPlayMovie:(DetailViewController *)theDetailViewController
+//-(void)initAndPlayMovie:(Play *)thePlay
 //-(void)initAndPlayMovie:(NSURL *)movieURL
 {
 //	if (self.play != nil) {
 //		[self.play release];
 //	}
 	
-	self.play = thePlay;
+	self.detailViewController = theDetailViewController;
+	self.play = theDetailViewController.play;
 	// TODO Get the URL from the Play.
 	// return a URL for the movie file in our bundle
 	
@@ -253,7 +256,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 - (void) moviePlayBackDidFinish:(NSNotification*)notification
 {
 	[self.play.tracker stop];
-
+	
 	MPMoviePlayerController* theMovie = [notification object];
 	
 	// remove all movie notifications
@@ -266,6 +269,26 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:MPMoviePlayerScalingModeDidChangeNotification
                                                   object:theMovie];
+
+	int trackerRows = [self.play.tracker.mList count];
+	
+	if (0 && trackerRows > 1)
+	{
+		// [states insertObject:[node description] atIndex:trackerRows];
+		
+		NSArray *insertIndexPaths = [NSArray arrayWithObjects:
+									 [NSIndexPath indexPathForRow:trackerRows inSection:3],
+									 nil];
+		
+		UITableView *tv = (UITableView *)self.detailViewController.tableView;
+		
+		[tv beginUpdates];
+		[tv insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationRight];//
+		[tv endUpdates];
+		//[tv reloadData];	
+		// ending rows: Alaska, Arizona, California, Georgia, New Jersey, Virginia
+	}
+	
 	
     // Release the movie instance created in playMovieAtURL:
   //  [theMovie release];

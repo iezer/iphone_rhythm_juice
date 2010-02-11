@@ -190,7 +190,7 @@
 	// initialize a new MPMoviePlayerController object with the specified URL, and
 	// play the movie
 	SimpleDrillDownAppDelegate *appDelegate = (SimpleDrillDownAppDelegate *)[[UIApplication sharedApplication] delegate];
-	[appDelegate initAndPlayMovie:play];
+	[appDelegate initAndPlayMovie:self];
 }
 
 
