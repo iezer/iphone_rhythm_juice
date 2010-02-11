@@ -54,5 +54,6 @@
 
 - (unsigned)countOfList;
 - (Play *)objectInListAtIndex:(unsigned)theIndex;
+- (NSURL*)makeMovieURL:(NSString*)filename;
 
 @end

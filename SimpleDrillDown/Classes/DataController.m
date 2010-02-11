@@ -91,6 +91,19 @@
     [super dealloc];
 }
 
+- (NSURL*)makeMovieURL:(NSString*)filename {
+	NSURL* movieURL;
+	NSBundle *bundle = [NSBundle mainBundle];
+	if (bundle) 
+	{
+		NSString *moviePath = [bundle pathForResource:filename ofType:@"m4v"];
+		if (moviePath)
+		{
+			movieURL = [NSURL fileURLWithPath:moviePath];
+		}
+	}
+	return movieURL;
+}
 
 - (void)createDemoData {
     
@@ -112,6 +125,7 @@
 	play.date = [calendar dateFromComponents:dateComponents];
 	characters = [[NSArray alloc] initWithObjects:@"Antony", @"Artemidorus", @"Brutus", @"Caesar", @"Calpurnia", @"Casca", @"Cassius", @"Cicero", @"Cinna", @"Cinna the Poet", @"Citizens", @"Claudius", @"Clitus", @"Dardanius", @"Decius Brutus", @"First Citizen", @"First Commoner", @"First Soldier", @"Flavius", @"Fourth Citizen", @"Lepidus", @"Ligarius", @"Lucilius", @"Lucius", @"Marullus", @"Messala", @"Messenger", @"Metellus Cimber", @"Octavius", @"Pindarus", @"Poet", @"Popilius", @"Portia", @"Publius", @"Second Citizen", @"Second Commoner", @"Second Soldier", @"Servant", @"Soothsayer", @"Strato", @"Third Citizen", @"Third Soldier", @"Tintinius", @"Trebonius", @"Varro", @"Volumnius", @"Young Cato", nil];
     play.characters = characters;
+	play.moviePath = [self makeMovieURL:@"sylvia-nick"];
 	[characters release];
 	[playList addObject:play];
     [play release];
@@ -123,6 +137,7 @@
 	play.date = [calendar dateFromComponents:dateComponents];
     characters = [[NSArray alloc] initWithObjects:@"Captain", @"Cordelia", @"Curan", @"Doctor", @"Duke of Albany", @"Duke of Burgundy", @"Duke of Cornwall", @"Earl of Gloucester", @"Earl of Kent", @"Edgar", @"Edmund", @"Fool", @"Gentleman", @"Goneril", @"Herald", @"King of France", @"Knight", @"Lear", @"Messenger", @"Old Man", @"Oswald", @"Regan", @"Servant 1", @"Servant 2", @"Servant 3", nil];
     play.characters = characters;
+	play.moviePath = [self makeMovieURL:@"sylvia-nick"];
 	[characters release];
 	[playList addObject:play];
     [play release];
@@ -134,6 +149,7 @@
 	play.date = [calendar dateFromComponents:dateComponents];
     characters = [[NSArray alloc] initWithObjects:@"Bianca", @"Brabantio", @"Cassio", @"Clown", @"Desdemona", @"Duke of Venice", @"Emilia", @"First Gentleman", @"First Musician", @"First Officer", @"First Senator", @"Fourth Gentleman", @"Gentleman", @"Gratiano", @"Herald", @"Iago", @"Lodovico, Kinsman to Brabantio", @"Messenger", @"Montano", @"Othello", @"Roderigo", @"Sailor", @"Second Gentleman", @"Second Senator", @"Third Gentleman", nil];
     play.characters = characters;
+	play.moviePath = [self makeMovieURL:@"sylvia-nick"];
 	[characters release];
 	[playList addObject:play];
     [play release];
@@ -145,6 +161,7 @@
 	play.date = [calendar dateFromComponents:dateComponents];
     characters = [[NSArray alloc] initWithObjects:@"Archbishop Scroop", @"Blunt", @"Carrier", @"Chamberlain", @"Earl of Douglas", @"Earl of Northumberland", @"Earl of Westmoreland", @"Earl of Worcester", @"Edward Poins", @"Falstaff", @"First Carrier", @"First Traveller", @"Francis", @"Gadshill", @"Glendower", @"Henry IV", @"Henry V", @"Hostess Quickly", @"Hotspur (Henry Percy)", @"Lady Percy", @"Lord Bardolph", @"Messenger", @"Mortimer", @"Ostler", @"Peto", @"Prince John, of Lancaster", @"Second Carrier", @"Servant", @"Sheriff", @"Sir Michael", @"Vernon", @"Vintner", nil];
     play.characters = characters;
+	play.moviePath = [self makeMovieURL:@"sylvia-nick"];
 	[characters release];
 	[playList addObject:play];
     [play release];
@@ -156,6 +173,7 @@
 	play.date = [calendar dateFromComponents:dateComponents];
     characters = [[NSArray alloc] initWithObjects:@"Adrian", @"Alonso", @"Antonio", @"Ariel", @"Boatswain", @"Caliban", @"Ceres", @"Ferdinand", @"Francisco", @"Gonzalo", @"Iris", @"Juno", @"Master", @"Miranda", @"Prospero", @"Sebastian", @"Stephano", @"Trinculo", nil];
     play.characters = characters;
+	play.moviePath = [self makeMovieURL:@"sylvia-nick"];
 	[characters release];
 	[playList addObject:play];
     [play release];

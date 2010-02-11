@@ -52,17 +52,19 @@
 @interface Play : NSObject {
 	NSString *title;
 	NSArray *characters;
+//	NSArray *chapters;
 	NSString *genre;
 	NSDate *date;
 	TimeTracker *tracker;
-	NSString *moviePath;
+	NSURL *moviePath;
 }
 
 -(Play*)init;
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSArray *characters;
+//@property (nonatomic, retain) NSArray *chapters;
 @property (nonatomic, retain) NSString *genre;
 @property (nonatomic, retain) NSDate *date;
 @property (nonatomic, retain) TimeTracker *tracker;
-@property (nonatomic, retain) NSString *moviePath;
+@property (nonatomic, retain) NSURL *moviePath;
 @end

@@ -61,6 +61,7 @@
 	[characters release];
 	[genre release];
 	[date release];
+	[moviePath release];
 	[tracker release];
 	[super dealloc];
 }

@@ -104,20 +104,9 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 	self.play = theDetailViewController.play;
 	// TODO Get the URL from the Play.
 	// return a URL for the movie file in our bundle
-	
-	NSURL* movieURL;
-	NSBundle *bundle = [NSBundle mainBundle];
-	if (bundle) 
-	{
-		NSString *moviePath = [bundle pathForResource:@"Movie" ofType:@"m4v"];
-		if (moviePath)
-		{
-			movieURL = [NSURL fileURLWithPath:moviePath];
-		}
-	}
-	
+		
 	// Initialize a movie player object with the specified URL
-	MPMoviePlayerController *mp = [[MPMoviePlayerController alloc] initWithContentURL:movieURL];
+	MPMoviePlayerController *mp = [[MPMoviePlayerController alloc] initWithContentURL:[play moviePath]];
 	if (mp)
 	{
 		// Apply the user specified settings to the movie player object

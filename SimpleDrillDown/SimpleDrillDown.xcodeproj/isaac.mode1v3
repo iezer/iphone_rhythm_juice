@@ -228,8 +228,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -279,13 +277,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>17</integer>
+									<integer>16</integer>
 									<integer>7</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {339, 651}}</string>
+							<string>{{0, 176}, {339, 651}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -315,12 +313,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Play.m</string>
+								<string>Play.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -328,11 +328,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Play.m</string>
+										<string>Play.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>6A7145CA1123C7E70081571A</string>
+										<string>6A71462B1123DA9A0081571A</string>
 										<key>history</key>
 										<array>
 											<string>6A38A536110D3FFB004EF5FD</string>
@@ -349,19 +349,19 @@
 											<string>6A4F306D111E773E00E06968</string>
 											<string>6A4F322C111E9B6200E06968</string>
 											<string>6A4F334E111EAB1900E06968</string>
-											<string>6A4F3351111EAB1900E06968</string>
 											<string>6A4F3352111EAB1900E06968</string>
 											<string>6A4F34251123C02C00E06968</string>
-											<string>6A71454F1123C5500081571A</string>
 											<string>6A7145501123C5500081571A</string>
 											<string>6A71456B1123C6040081571A</string>
 											<string>6A71457C1123C6CA0081571A</string>
 											<string>6A71457D1123C6CA0081571A</string>
 											<string>6A7145BC1123C7DA0081571A</string>
-											<string>6A7145BD1123C7DA0081571A</string>
-											<string>6A7145BE1123C7DA0081571A</string>
-											<string>6A7145BF1123C7DA0081571A</string>
-											<string>6A7145A01123C7940081571A</string>
+											<string>6A7145F01123D7B50081571A</string>
+											<string>6A71460C1123DA1F0081571A</string>
+											<string>6A71460D1123DA1F0081571A</string>
+											<string>6A71460E1123DA1F0081571A</string>
+											<string>6A7146211123DA850081571A</string>
+											<string>6A7146221123DA850081571A</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -445,6 +445,28 @@
 											<string>6A7145C31123C7DA0081571A</string>
 											<string>6A7145C41123C7DA0081571A</string>
 											<string>6A7145C51123C7DA0081571A</string>
+											<string>6A7145D01123C87A0081571A</string>
+											<string>6A7145D11123C87A0081571A</string>
+											<string>6A7145D21123C87A0081571A</string>
+											<string>6A7145D31123C87A0081571A</string>
+											<string>6A7145E01123C9C40081571A</string>
+											<string>6A7145E11123C9C40081571A</string>
+											<string>6A7145F31123D7B50081571A</string>
+											<string>6A7145F41123D7B50081571A</string>
+											<string>6A7146101123DA1F0081571A</string>
+											<string>6A7146111123DA1F0081571A</string>
+											<string>6A7146121123DA1F0081571A</string>
+											<string>6A7146131123DA1F0081571A</string>
+											<string>6A7146141123DA1F0081571A</string>
+											<string>6A7146151123DA1F0081571A</string>
+											<string>6A7146161123DA1F0081571A</string>
+											<string>6A7146171123DA1F0081571A</string>
+											<string>6A7146181123DA1F0081571A</string>
+											<string>6A7146191123DA1F0081571A</string>
+											<string>6A71461A1123DA1F0081571A</string>
+											<string>6A71461B1123DA1F0081571A</string>
+											<string>6A71461C1123DA1F0081571A</string>
+											<string>6A7146231123DA850081571A</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>

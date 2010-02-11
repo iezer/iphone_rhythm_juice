@@ -51,16 +51,16 @@
 	};
 	28348A840E1D400D009134BC /* DataController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {2188, 988}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 1855}";
+			sepNavIntBoundsRect = "{{0, 0}, {2188, 1140}}";
+			sepNavSelRange = "{2982, 0}";
+			sepNavVisRange = "{1997, 992}";
 		};
 	};
 	28348A850E1D400D009134BC /* DataController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {5716, 3382}}";
-			sepNavSelRange = "{4049, 0}";
-			sepNavVisRange = "{3934, 1965}";
+			sepNavIntBoundsRect = "{{0, 0}, {2372, 4047}}";
+			sepNavSelRange = "{3543, 44}";
+			sepNavVisRange = "{3519, 896}";
 		};
 	};
 	2846CFC70DBFDD18009410C2 /* en */ = {
@@ -86,9 +86,9 @@
 	};
 	28F25CCB0D64C1EB00158CCD /* DetailViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1260, 3781}}";
-			sepNavSelRange = "{5190, 0}";
-			sepNavVisRange = "{4328, 904}";
+			sepNavIntBoundsRect = "{{0, 0}, {1260, 3876}}";
+			sepNavSelRange = "{5278, 0}";
+			sepNavVisRange = "{3303, 724}";
 		};
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
@@ -106,11 +106,11 @@
 			6AF2166D111665BF00B83EA4 /* SimpleDrillDownAppDelegate.m:250 */,
 			6A419F68111670F300DA938B /* MyMovieViewController.m:64 */,
 			6AD847BD11167822003C957B /* DetailViewController.m:142 */,
-			6AD8488611167C6F003C957B /* DetailViewController.m:193 */,
+			6AD8488611167C6F003C957B /* DetailViewController.m:192 */,
 			6AD8498111168380003C957B /* TimeTracker.m:20 */,
 			6AD849D1111684CC003C957B /* Play.m:55 */,
-			6A4F3197111E924F00E06968 /* SimpleDrillDownAppDelegate.m:294 */,
-			6A4F3227111E9B5B00E06968 /* SimpleDrillDownAppDelegate.m:258 */,
+			6A4F3197111E924F00E06968 /* SimpleDrillDownAppDelegate.m:263 */,
+			6A4F3227111E9B5B00E06968 /* SimpleDrillDownAppDelegate.m:247 */,
 			6A4F336D111EAC6300E06968 /* DetailViewController.m:99 */,
 		);
 		codeSenseManager = 6A38A4DA110BBCAD004EF5FD /* Code sense */;
@@ -592,6 +592,60 @@
 			6A7145C51123C7DA0081571A /* PBXTextBookmark */ = 6A7145C51123C7DA0081571A /* PBXTextBookmark */;
 			6A7145C61123C7DA0081571A /* PBXTextBookmark */ = 6A7145C61123C7DA0081571A /* PBXTextBookmark */;
 			6A7145CA1123C7E70081571A /* PBXTextBookmark */ = 6A7145CA1123C7E70081571A /* PBXTextBookmark */;
+			6A7145CC1123C87A0081571A /* PBXTextBookmark */ = 6A7145CC1123C87A0081571A /* PBXTextBookmark */;
+			6A7145CD1123C87A0081571A /* PBXTextBookmark */ = 6A7145CD1123C87A0081571A /* PBXTextBookmark */;
+			6A7145CE1123C87A0081571A /* PBXTextBookmark */ = 6A7145CE1123C87A0081571A /* PBXTextBookmark */;
+			6A7145CF1123C87A0081571A /* PBXTextBookmark */ = 6A7145CF1123C87A0081571A /* PBXTextBookmark */;
+			6A7145D01123C87A0081571A /* PBXTextBookmark */ = 6A7145D01123C87A0081571A /* PBXTextBookmark */;
+			6A7145D11123C87A0081571A /* PBXTextBookmark */ = 6A7145D11123C87A0081571A /* PBXTextBookmark */;
+			6A7145D21123C87A0081571A /* PBXTextBookmark */ = 6A7145D21123C87A0081571A /* PBXTextBookmark */;
+			6A7145D31123C87A0081571A /* PBXTextBookmark */ = 6A7145D31123C87A0081571A /* PBXTextBookmark */;
+			6A7145D41123C87A0081571A /* PBXTextBookmark */ = 6A7145D41123C87A0081571A /* PBXTextBookmark */;
+			6A7145D71123C9030081571A /* PBXTextBookmark */ = 6A7145D71123C9030081571A /* PBXTextBookmark */;
+			6A7145D91123C93A0081571A /* PBXTextBookmark */ = 6A7145D91123C93A0081571A /* PBXTextBookmark */;
+			6A7145DB1123C9760081571A /* PBXTextBookmark */ = 6A7145DB1123C9760081571A /* PBXTextBookmark */;
+			6A7145DE1123C9C40081571A /* PBXTextBookmark */ = 6A7145DE1123C9C40081571A /* PBXTextBookmark */;
+			6A7145DF1123C9C40081571A /* PBXTextBookmark */ = 6A7145DF1123C9C40081571A /* PBXTextBookmark */;
+			6A7145E01123C9C40081571A /* PBXTextBookmark */ = 6A7145E01123C9C40081571A /* PBXTextBookmark */;
+			6A7145E11123C9C40081571A /* PBXTextBookmark */ = 6A7145E11123C9C40081571A /* PBXTextBookmark */;
+			6A7145E21123C9C40081571A /* PBXTextBookmark */ = 6A7145E21123C9C40081571A /* PBXTextBookmark */;
+			6A7145E61123C9F00081571A /* PBXTextBookmark */ = 6A7145E61123C9F00081571A /* PBXTextBookmark */;
+			6A7145EA1123CA170081571A /* PBXTextBookmark */ = 6A7145EA1123CA170081571A /* PBXTextBookmark */;
+			6A7145F01123D7B50081571A /* PBXTextBookmark */ = 6A7145F01123D7B50081571A /* PBXTextBookmark */;
+			6A7145F11123D7B50081571A /* PBXTextBookmark */ = 6A7145F11123D7B50081571A /* PBXTextBookmark */;
+			6A7145F21123D7B50081571A /* PBXTextBookmark */ = 6A7145F21123D7B50081571A /* PBXTextBookmark */;
+			6A7145F31123D7B50081571A /* PBXTextBookmark */ = 6A7145F31123D7B50081571A /* PBXTextBookmark */;
+			6A7145F41123D7B50081571A /* PBXTextBookmark */ = 6A7145F41123D7B50081571A /* PBXTextBookmark */;
+			6A7145F51123D7B50081571A /* PBXTextBookmark */ = 6A7145F51123D7B50081571A /* PBXTextBookmark */;
+			6A7145F81123D7D50081571A /* PBXTextBookmark */ = 6A7145F81123D7D50081571A /* PBXTextBookmark */;
+			6A7145FA1123D7E20081571A /* PBXTextBookmark */ = 6A7145FA1123D7E20081571A /* PBXTextBookmark */;
+			6A7145FE1123D8540081571A /* PBXTextBookmark */ = 6A7145FE1123D8540081571A /* PBXTextBookmark */;
+			6A7146061123D9E00081571A /* PBXTextBookmark */ = 6A7146061123D9E00081571A /* PBXTextBookmark */;
+			6A71460B1123DA1F0081571A /* PBXTextBookmark */ = 6A71460B1123DA1F0081571A /* PBXTextBookmark */;
+			6A71460C1123DA1F0081571A /* PBXTextBookmark */ = 6A71460C1123DA1F0081571A /* PBXTextBookmark */;
+			6A71460D1123DA1F0081571A /* PBXTextBookmark */ = 6A71460D1123DA1F0081571A /* PBXTextBookmark */;
+			6A71460E1123DA1F0081571A /* PBXTextBookmark */ = 6A71460E1123DA1F0081571A /* PBXTextBookmark */;
+			6A71460F1123DA1F0081571A /* PBXTextBookmark */ = 6A71460F1123DA1F0081571A /* PBXTextBookmark */;
+			6A7146101123DA1F0081571A /* PBXTextBookmark */ = 6A7146101123DA1F0081571A /* PBXTextBookmark */;
+			6A7146111123DA1F0081571A /* PBXTextBookmark */ = 6A7146111123DA1F0081571A /* PBXTextBookmark */;
+			6A7146121123DA1F0081571A /* PBXTextBookmark */ = 6A7146121123DA1F0081571A /* PBXTextBookmark */;
+			6A7146131123DA1F0081571A /* PBXTextBookmark */ = 6A7146131123DA1F0081571A /* PBXTextBookmark */;
+			6A7146141123DA1F0081571A /* PBXTextBookmark */ = 6A7146141123DA1F0081571A /* PBXTextBookmark */;
+			6A7146151123DA1F0081571A /* PBXTextBookmark */ = 6A7146151123DA1F0081571A /* PBXTextBookmark */;
+			6A7146161123DA1F0081571A /* PBXTextBookmark */ = 6A7146161123DA1F0081571A /* PBXTextBookmark */;
+			6A7146171123DA1F0081571A /* PBXTextBookmark */ = 6A7146171123DA1F0081571A /* PBXTextBookmark */;
+			6A7146181123DA1F0081571A /* PBXTextBookmark */ = 6A7146181123DA1F0081571A /* PBXTextBookmark */;
+			6A7146191123DA1F0081571A /* PBXTextBookmark */ = 6A7146191123DA1F0081571A /* PBXTextBookmark */;
+			6A71461A1123DA1F0081571A /* PBXTextBookmark */ = 6A71461A1123DA1F0081571A /* PBXTextBookmark */;
+			6A71461B1123DA1F0081571A /* PBXTextBookmark */ = 6A71461B1123DA1F0081571A /* PBXTextBookmark */;
+			6A71461C1123DA1F0081571A /* PBXTextBookmark */ = 6A71461C1123DA1F0081571A /* PBXTextBookmark */;
+			6A71461D1123DA1F0081571A /* PBXTextBookmark */ = 6A71461D1123DA1F0081571A /* PBXTextBookmark */;
+			6A7146201123DA1F0081571A /* PBXTextBookmark */ = 6A7146201123DA1F0081571A /* PBXTextBookmark */;
+			6A7146211123DA850081571A /* PBXTextBookmark */ = 6A7146211123DA850081571A /* PBXTextBookmark */;
+			6A7146221123DA850081571A /* PBXTextBookmark */ = 6A7146221123DA850081571A /* PBXTextBookmark */;
+			6A7146231123DA850081571A /* PBXTextBookmark */ = 6A7146231123DA850081571A /* PBXTextBookmark */;
+			6A7146241123DA850081571A /* PBXTextBookmark */ = 6A7146241123DA850081571A /* PBXTextBookmark */;
+			6A71462B1123DA9A0081571A /* PBXTextBookmark */ = 6A71462B1123DA9A0081571A /* PBXTextBookmark */;
 			6AD8485511167B2D003C957B = 6AD8485511167B2D003C957B /* PBXTextBookmark */;
 			6AD8485811167B2D003C957B = 6AD8485811167B2D003C957B /* PBXTextBookmark */;
 			6AD849E2111685DA003C957B = 6AD849E2111685DA003C957B /* PBXTextBookmark */;
@@ -888,7 +942,7 @@
 		ignoreCount = 0;
 		lineNumber = 84;
 		location = SimpleDrillDown;
-		modificationTime = 287557528.548589;
+		modificationTime = 287561694.232097;
 		state = 2;
 	};
 	6A38A5AF110D4199004EF5FD /* MyMovieViewController.m */ = {
@@ -1032,7 +1086,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 59;
-		modificationTime = 287557586.025146;
+		modificationTime = 287561808.565717;
 		state = 1;
 	};
 	6A38A79A110E206A004EF5FD /* RootViewController.m:104 */ = {
@@ -1049,7 +1103,7 @@
 		ignoreCount = 0;
 		lineNumber = 104;
 		location = SimpleDrillDown;
-		modificationTime = 287557528.548609;
+		modificationTime = 287561694.232122;
 		state = 2;
 	};
 	6A38A8E0110FDE60004EF5FD /* PBXTextBookmark */ = {
@@ -1096,9 +1150,9 @@
 		path = "/Users/isaac/repo/iphone-tracker/SimpleDrillDown/Classes/Play.h";
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {760, 1311}}";
-			sepNavSelRange = "{2611, 5}";
-			sepNavVisRange = "{2114, 829}";
+			sepNavIntBoundsRect = "{{0, 0}, {760, 1349}}";
+			sepNavSelRange = "{2609, 0}";
+			sepNavVisRange = "{2388, 678}";
 		};
 	};
 	6A419F66111670F300DA938B /* MyMovieViewController.m */ = {
@@ -1121,7 +1175,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 64;
-		modificationTime = 287557586.025168;
+		modificationTime = 287561808.565734;
 		state = 1;
 	};
 	6A4F3056111E765C00E06968 /* PBXTextBookmark */ = {
@@ -1129,7 +1183,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 206";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 151;
 		vrLoc = 6454;
@@ -1166,7 +1220,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 206";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 0;
 		vrLoc = 6605;
@@ -1176,7 +1230,7 @@
 		fRef = 6A419EAE11166B2600DA938B /* Play.m */;
 		name = "Play.m: 64";
 		rLen = 0;
-		rLoc = 2761;
+		rLoc = 2783;
 		rType = 0;
 		vrLen = 832;
 		vrLoc = 1766;
@@ -1196,7 +1250,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 206";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 0;
 		vrLoc = 6605;
@@ -1206,7 +1260,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 270";
 		rLen = 0;
-		rLoc = 11559;
+		rLoc = 10728;
 		rType = 0;
 		vrLen = 730;
 		vrLoc = 9932;
@@ -1216,7 +1270,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 206";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 0;
 		vrLoc = 6605;
@@ -1226,7 +1280,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 120";
 		rLen = 23;
-		rLoc = 4333;
+		rLoc = 4104;
 		rType = 0;
 		vrLen = 617;
 		vrLoc = 4439;
@@ -1253,7 +1307,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 270";
 		rLen = 0;
-		rLoc = 11558;
+		rLoc = 10727;
 		rType = 0;
 		vrLen = 722;
 		vrLoc = 10062;
@@ -1263,7 +1317,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 206";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 0;
 		vrLoc = 6605;
@@ -1273,7 +1327,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 270";
 		rLen = 0;
-		rLoc = 10061;
+		rLoc = 9840;
 		rType = 0;
 		vrLen = 513;
 		vrLoc = 10301;
@@ -1283,7 +1337,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 206";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 0;
 		vrLoc = 6605;
@@ -1293,7 +1347,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 270";
 		rLen = 0;
-		rLoc = 10061;
+		rLoc = 9840;
 		rType = 0;
 		vrLen = 698;
 		vrLoc = 9608;
@@ -1313,7 +1367,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 140";
 		rLen = 0;
-		rLoc = 4610;
+		rLoc = 4389;
 		rType = 0;
 		vrLen = 826;
 		vrLoc = 5227;
@@ -1333,7 +1387,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 281";
 		rLen = 0;
-		rLoc = 11558;
+		rLoc = 10727;
 		rType = 0;
 		vrLen = 751;
 		vrLoc = 10171;
@@ -1343,7 +1397,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 206";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 0;
 		vrLoc = 6605;
@@ -1363,7 +1417,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 206";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 1;
 		vrLoc = 6604;
@@ -1388,7 +1442,7 @@
 		vrLen = 472;
 		vrLoc = 2419;
 	};
-	6A4F3197111E924F00E06968 /* SimpleDrillDownAppDelegate.m:294 */ = {
+	6A4F3197111E924F00E06968 /* SimpleDrillDownAppDelegate.m:263 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -1398,11 +1452,11 @@
 		delayBeforeContinue = 0;
 		fileReference = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		functionName = "-moviePlayBackDidFinish:";
-		hitCount = 2;
+		hitCount = 0;
 		ignoreCount = 0;
-		lineNumber = 294;
+		lineNumber = 263;
 		location = SimpleDrillDown;
-		modificationTime = 287557557.859011;
+		modificationTime = 287561696.038386;
 		state = 1;
 	};
 	6A4F319B111E925300E06968 /* PBXTextBookmark */ = {
@@ -1410,7 +1464,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 206";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 280;
 		vrLoc = 6325;
@@ -1430,7 +1484,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 206";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 278;
 		vrLoc = 6327;
@@ -1450,7 +1504,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 208";
 		rLen = 0;
-		rLoc = 6593;
+		rLoc = 6571;
 		rType = 0;
 		vrLen = 278;
 		vrLoc = 6327;
@@ -1460,7 +1514,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 272";
 		rLen = 0;
-		rLoc = 10061;
+		rLoc = 9840;
 		rType = 0;
 		vrLen = 598;
 		vrLoc = 10500;
@@ -1470,7 +1524,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 206";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 278;
 		vrLoc = 6327;
@@ -1480,7 +1534,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 272";
 		rLen = 0;
-		rLoc = 10061;
+		rLoc = 9840;
 		rType = 0;
 		vrLen = 692;
 		vrLoc = 10410;
@@ -1490,7 +1544,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 206";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 278;
 		vrLoc = 6327;
@@ -1500,7 +1554,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 282";
 		rLen = 0;
-		rLoc = 11559;
+		rLoc = 10728;
 		rType = 0;
 		vrLen = 627;
 		vrLoc = 10410;
@@ -1510,7 +1564,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 206";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 278;
 		vrLoc = 6327;
@@ -1520,7 +1574,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 282";
 		rLen = 0;
-		rLoc = 11559;
+		rLoc = 10728;
 		rType = 0;
 		vrLen = 627;
 		vrLoc = 10410;
@@ -1530,7 +1584,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 206";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 278;
 		vrLoc = 6327;
@@ -1540,7 +1594,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 282";
 		rLen = 0;
-		rLoc = 11559;
+		rLoc = 10728;
 		rType = 0;
 		vrLen = 785;
 		vrLoc = 10083;
@@ -1560,7 +1614,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 282";
 		rLen = 0;
-		rLoc = 11559;
+		rLoc = 10728;
 		rType = 0;
 		vrLen = 680;
 		vrLoc = 4637;
@@ -1570,7 +1624,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 206";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 280;
 		vrLoc = 6325;
@@ -1590,7 +1644,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 206";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 280;
 		vrLoc = 6325;
@@ -1600,7 +1654,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 287";
 		rLen = 0;
-		rLoc = 11701;
+		rLoc = 10870;
 		rType = 0;
 		vrLen = 890;
 		vrLoc = 11102;
@@ -1640,7 +1694,7 @@
 		fRef = 6A419EAE11166B2600DA938B /* Play.m */;
 		name = "Play.m: 64";
 		rLen = 0;
-		rLoc = 2761;
+		rLoc = 2783;
 		rType = 0;
 		vrLen = 326;
 		vrLoc = 2473;
@@ -1650,7 +1704,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 261";
 		rLen = 0;
-		rLoc = 10061;
+		rLoc = 9840;
 		rType = 0;
 		vrLen = 656;
 		vrLoc = 9693;
@@ -1670,7 +1724,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 259";
 		rLen = 0;
-		rLoc = 10060;
+		rLoc = 9839;
 		rType = 0;
 		vrLen = 666;
 		vrLoc = 9693;
@@ -1680,7 +1734,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 206";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 280;
 		vrLoc = 6325;
@@ -1700,7 +1754,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 252";
 		rLen = 0;
-		rLoc = 10031;
+		rLoc = 9810;
 		rType = 0;
 		vrLen = 576;
 		vrLoc = 10532;
@@ -1730,7 +1784,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 252";
 		rLen = 0;
-		rLoc = 10031;
+		rLoc = 9810;
 		rType = 0;
 		vrLen = 552;
 		vrLoc = 10558;
@@ -1760,7 +1814,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 252";
 		rLen = 0;
-		rLoc = 10031;
+		rLoc = 9810;
 		rType = 0;
 		vrLen = 619;
 		vrLoc = 2580;
@@ -1790,7 +1844,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 282";
 		rLen = 0;
-		rLoc = 11559;
+		rLoc = 10728;
 		rType = 0;
 		vrLen = 692;
 		vrLoc = 10404;
@@ -1800,7 +1854,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 206";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 151;
 		vrLoc = 6454;
@@ -1820,7 +1874,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 252";
 		rLen = 0;
-		rLoc = 10031;
+		rLoc = 9810;
 		rType = 0;
 		vrLen = 552;
 		vrLoc = 10558;
@@ -1850,7 +1904,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 252";
 		rLen = 0;
-		rLoc = 10031;
+		rLoc = 9810;
 		rType = 0;
 		vrLen = 619;
 		vrLoc = 2580;
@@ -1890,7 +1944,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 252";
 		rLen = 0;
-		rLoc = 10031;
+		rLoc = 9810;
 		rType = 0;
 		vrLen = 705;
 		vrLoc = 2547;
@@ -1920,7 +1974,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 253";
 		rLen = 0;
-		rLoc = 10058;
+		rLoc = 9837;
 		rType = 0;
 		vrLen = 602;
 		vrLoc = 9625;
@@ -1930,12 +1984,12 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 206";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 151;
 		vrLoc = 6454;
 	};
-	6A4F3227111E9B5B00E06968 /* SimpleDrillDownAppDelegate.m:258 */ = {
+	6A4F3227111E9B5B00E06968 /* SimpleDrillDownAppDelegate.m:247 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -1945,11 +1999,11 @@
 		delayBeforeContinue = 0;
 		fileReference = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		functionName = "-moviePlayBackDidFinish:";
-		hitCount = 2;
+		hitCount = 0;
 		ignoreCount = 0;
-		lineNumber = 258;
+		lineNumber = 247;
 		location = SimpleDrillDown;
-		modificationTime = 287557556.46019;
+		modificationTime = 287561696.061211;
 		state = 1;
 	};
 	6A4F322C111E9B6200E06968 /* PBXTextBookmark */ = {
@@ -1977,7 +2031,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 253";
 		rLen = 0;
-		rLoc = 10033;
+		rLoc = 9812;
 		rType = 0;
 		vrLen = 692;
 		vrLoc = 10435;
@@ -1987,7 +2041,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 206";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 151;
 		vrLoc = 6454;
@@ -2007,7 +2061,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 253";
 		rLen = 0;
-		rLoc = 10033;
+		rLoc = 9812;
 		rType = 0;
 		vrLen = 763;
 		vrLoc = 11229;
@@ -2057,7 +2111,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 253";
 		rLen = 0;
-		rLoc = 10033;
+		rLoc = 9812;
 		rType = 0;
 		vrLen = 720;
 		vrLoc = 11059;
@@ -2087,7 +2141,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 281";
 		rLen = 0;
-		rLoc = 11535;
+		rLoc = 10726;
 		rType = 0;
 		vrLen = 728;
 		vrLoc = 9707;
@@ -2097,7 +2151,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 206";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 226;
 		vrLoc = 6379;
@@ -2117,7 +2171,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 206";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 226;
 		vrLoc = 6379;
@@ -2137,7 +2191,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 253";
 		rLen = 0;
-		rLoc = 10033;
+		rLoc = 9812;
 		rType = 0;
 		vrLen = 757;
 		vrLoc = 9896;
@@ -2147,7 +2201,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 206";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 226;
 		vrLoc = 6379;
@@ -2167,7 +2221,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 291";
 		rLen = 0;
-		rLoc = 10854;
+		rLoc = 10633;
 		rType = 0;
 		vrLen = 1034;
 		vrLoc = 10618;
@@ -2177,7 +2231,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 206";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 226;
 		vrLoc = 6379;
@@ -2207,7 +2261,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 294";
 		rLen = 0;
-		rLoc = 11535;
+		rLoc = 10726;
 		rType = 0;
 		vrLen = 1018;
 		vrLoc = 10802;
@@ -2217,7 +2271,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 206";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 226;
 		vrLoc = 6379;
@@ -2237,7 +2291,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 255";
 		rLen = 0;
-		rLoc = 10033;
+		rLoc = 9812;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 11030;
@@ -2247,7 +2301,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 206";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 226;
 		vrLoc = 6379;
@@ -2267,7 +2321,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 255";
 		rLen = 0;
-		rLoc = 10033;
+		rLoc = 9812;
 		rType = 0;
 		vrLen = 695;
 		vrLoc = 9727;
@@ -2304,7 +2358,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 146";
 		rLen = 0;
-		rLoc = 5314;
+		rLoc = 5292;
 		rType = 0;
 		vrLen = 430;
 		vrLoc = 6175;
@@ -2324,7 +2378,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 188";
 		rLen = 0;
-		rLoc = 6355;
+		rLoc = 6333;
 		rType = 0;
 		vrLen = 596;
 		vrLoc = 6009;
@@ -2354,7 +2408,7 @@
 		fRef = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		name = "DetailViewController.m: 193";
 		rLen = 0;
-		rLoc = 6593;
+		rLoc = 6571;
 		rType = 0;
 		vrLen = 612;
 		vrLoc = 5993;
@@ -2384,7 +2438,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 293";
 		rLen = 0;
-		rLoc = 11965;
+		rLoc = 11134;
 		rType = 0;
 		vrLen = 433;
 		vrLoc = 10767;
@@ -2404,7 +2458,7 @@
 		fRef = 6A4F32A3111EA24E00E06968 /* DetailViewController.m */;
 		name = "DetailViewController.m: 193";
 		rLen = 0;
-		rLoc = 6593;
+		rLoc = 6571;
 		rType = 0;
 		vrLen = 1442;
 		vrLoc = 467;
@@ -2444,7 +2498,7 @@
 		fRef = 28348A850E1D400D009134BC /* DataController.m */;
 		name = "DataController.m: 116";
 		rLen = 0;
-		rLoc = 4568;
+		rLoc = 4861;
 		rType = 0;
 		vrLen = 480;
 		vrLoc = 4223;
@@ -2475,9 +2529,9 @@
 		path = "/Users/isaac/repo/iphone-tracker/SimpleDrillDown/Classes/SimpleDrillDownAppDelegate.m";
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {988, 5890}}";
-			sepNavSelRange = "{9908, 0}";
-			sepNavVisRange = "{11150, 662}";
+			sepNavIntBoundsRect = "{{0, 0}, {844, 5643}}";
+			sepNavSelRange = "{4171, 0}";
+			sepNavVisRange = "{3606, 870}";
 		};
 	};
 	6A4F32E2111EA67400E06968 /* SimpleDrillDownAppDelegate.h */ = {
@@ -2509,7 +2563,7 @@
 		fRef = 6A4F32A3111EA24E00E06968 /* DetailViewController.m */;
 		name = "DetailViewController.m: 193";
 		rLen = 0;
-		rLoc = 6593;
+		rLoc = 6571;
 		rType = 0;
 		vrLen = 1364;
 		vrLoc = 0;
@@ -2529,7 +2583,7 @@
 		fRef = 28348A850E1D400D009134BC /* DataController.m */;
 		name = "DataController.m: 116";
 		rLen = 0;
-		rLoc = 4568;
+		rLoc = 4861;
 		rType = 0;
 		vrLen = 1579;
 		vrLoc = 0;
@@ -2549,7 +2603,7 @@
 		fRef = 6A4F32A3111EA24E00E06968 /* DetailViewController.m */;
 		name = "DetailViewController.m: 193";
 		rLen = 0;
-		rLoc = 6593;
+		rLoc = 6571;
 		rType = 0;
 		vrLen = 590;
 		vrLoc = 3300;
@@ -2569,7 +2623,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 293";
 		rLen = 0;
-		rLoc = 11965;
+		rLoc = 11134;
 		rType = 0;
 		vrLen = 757;
 		vrLoc = 2753;
@@ -2589,7 +2643,7 @@
 		fRef = 6A4F32A3111EA24E00E06968 /* DetailViewController.m */;
 		name = "DetailViewController.m: 193";
 		rLen = 0;
-		rLoc = 6593;
+		rLoc = 6571;
 		rType = 0;
 		vrLen = 590;
 		vrLoc = 3300;
@@ -2609,7 +2663,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 293";
 		rLen = 0;
-		rLoc = 11965;
+		rLoc = 11134;
 		rType = 0;
 		vrLen = 757;
 		vrLoc = 2753;
@@ -2619,7 +2673,7 @@
 		fRef = 6A4F32A3111EA24E00E06968 /* DetailViewController.m */;
 		name = "DetailViewController.m: 193";
 		rLen = 0;
-		rLoc = 6593;
+		rLoc = 6571;
 		rType = 0;
 		vrLen = 600;
 		vrLoc = 5993;
@@ -2649,7 +2703,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 293";
 		rLen = 0;
-		rLoc = 11965;
+		rLoc = 11134;
 		rType = 0;
 		vrLen = 636;
 		vrLoc = 2883;
@@ -2659,7 +2713,7 @@
 		fRef = 28348A850E1D400D009134BC /* DataController.m */;
 		name = "DataController.m: 116";
 		rLen = 0;
-		rLoc = 4568;
+		rLoc = 4861;
 		rType = 0;
 		vrLen = 384;
 		vrLoc = 3254;
@@ -2669,7 +2723,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 293";
 		rLen = 0;
-		rLoc = 11965;
+		rLoc = 11134;
 		rType = 0;
 		vrLen = 716;
 		vrLoc = 2796;
@@ -2689,7 +2743,7 @@
 		fRef = 6AD8487E11167C47003C957B /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 293";
 		rLen = 0;
-		rLoc = 11965;
+		rLoc = 11134;
 		rType = 0;
 		vrLen = 1058;
 		vrLoc = 6110;
@@ -2759,7 +2813,7 @@
 		fRef = 6A4F32D6111EA64D00E06968 /* DetailViewController.m */;
 		name = "DetailViewController.m: 193";
 		rLen = 0;
-		rLoc = 6593;
+		rLoc = 6571;
 		rType = 0;
 		vrLen = 631;
 		vrLoc = 5974;
@@ -2829,7 +2883,7 @@
 		fRef = 6A4F32EC111EA69300E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 259";
 		rLen = 0;
-		rLoc = 10058;
+		rLoc = 9837;
 		rType = 0;
 		vrLen = 1087;
 		vrLoc = 9907;
@@ -2839,7 +2893,7 @@
 		fRef = 28348A850E1D400D009134BC /* DataController.m */;
 		name = "DataController.m: 116";
 		rLen = 0;
-		rLoc = 4568;
+		rLoc = 4861;
 		rType = 0;
 		vrLen = 0;
 		vrLoc = 4703;
@@ -2849,7 +2903,7 @@
 		fRef = 6A4F32D6111EA64D00E06968 /* DetailViewController.m */;
 		name = "DetailViewController.m: 193";
 		rLen = 0;
-		rLoc = 6593;
+		rLoc = 6571;
 		rType = 0;
 		vrLen = 865;
 		vrLoc = 3871;
@@ -2859,7 +2913,7 @@
 		fRef = 6A4F32EC111EA69300E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 273";
 		rLen = 0;
-		rLoc = 10058;
+		rLoc = 9837;
 		rType = 0;
 		vrLen = 742;
 		vrLoc = 9895;
@@ -2869,7 +2923,7 @@
 		fRef = 6A4F32D6111EA64D00E06968 /* DetailViewController.m */;
 		name = "DetailViewController.m: 193";
 		rLen = 0;
-		rLoc = 6593;
+		rLoc = 6571;
 		rType = 0;
 		vrLen = 715;
 		vrLoc = 4678;
@@ -2879,7 +2933,7 @@
 		fRef = 6A4F32EC111EA69300E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 260";
 		rLen = 0;
-		rLoc = 10058;
+		rLoc = 9837;
 		rType = 0;
 		vrLen = 944;
 		vrLoc = 9967;
@@ -2889,7 +2943,7 @@
 		fRef = 6A4F32D6111EA64D00E06968 /* DetailViewController.m */;
 		name = "DetailViewController.m: 192";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 739;
 		vrLoc = 5866;
@@ -2919,7 +2973,7 @@
 		fRef = 6A4F32EC111EA69300E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 253";
 		rLen = 0;
-		rLoc = 9908;
+		rLoc = 9687;
 		rType = 0;
 		vrLen = 464;
 		vrLoc = 11505;
@@ -2949,7 +3003,7 @@
 		fRef = 6A4F32EC111EA69300E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 253";
 		rLen = 0;
-		rLoc = 9908;
+		rLoc = 9687;
 		rType = 0;
 		vrLen = 1078;
 		vrLoc = 10708;
@@ -3043,7 +3097,7 @@
 		fRef = 28348A850E1D400D009134BC /* DataController.m */;
 		name = "DataController.m: 116";
 		rLen = 0;
-		rLoc = 4568;
+		rLoc = 4861;
 		rType = 0;
 		vrLen = 302;
 		vrLoc = 4401;
@@ -3073,7 +3127,7 @@
 		fRef = 6A4F32EC111EA69300E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 262";
 		rLen = 0;
-		rLoc = 10058;
+		rLoc = 9837;
 		rType = 0;
 		vrLen = 996;
 		vrLoc = 9907;
@@ -3119,7 +3173,7 @@
 		ignoreCount = 0;
 		lineNumber = 99;
 		location = SimpleDrillDown;
-		modificationTime = 287557528.54882;
+		modificationTime = 287561694.232313;
 		state = 2;
 	};
 	6A4F3371111EAC6500E06968 /* PBXTextBookmark */ = {
@@ -3127,7 +3181,7 @@
 		fRef = 6A4F32EC111EA69300E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 253";
 		rLen = 0;
-		rLoc = 9908;
+		rLoc = 9687;
 		rType = 0;
 		vrLen = 852;
 		vrLoc = 11033;
@@ -3137,7 +3191,7 @@
 		fRef = 6A4F32D6111EA64D00E06968 /* DetailViewController.m */;
 		name = "DetailViewController.m: 192";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 843;
 		vrLoc = 5756;
@@ -3157,7 +3211,7 @@
 		fRef = 6A4F32EC111EA69300E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 253";
 		rLen = 0;
-		rLoc = 9908;
+		rLoc = 9687;
 		rType = 0;
 		vrLen = 1078;
 		vrLoc = 10700;
@@ -3187,7 +3241,7 @@
 		fRef = 6A4F32EC111EA69300E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 253";
 		rLen = 0;
-		rLoc = 9908;
+		rLoc = 9687;
 		rType = 0;
 		vrLen = 1078;
 		vrLoc = 10700;
@@ -3207,7 +3261,7 @@
 		fRef = 6A4F32EC111EA69300E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 273";
 		rLen = 0;
-		rLoc = 10058;
+		rLoc = 9837;
 		rType = 0;
 		vrLen = 827;
 		vrLoc = 9907;
@@ -3237,7 +3291,7 @@
 		fRef = 6A4F32EC111EA69300E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 253";
 		rLen = 0;
-		rLoc = 9908;
+		rLoc = 9687;
 		rType = 0;
 		vrLen = 1043;
 		vrLoc = 10734;
@@ -3247,7 +3301,7 @@
 		fRef = 6A4F336B111EAC6300E06968 /* DetailViewController.m */;
 		name = "DetailViewController.m: 192";
 		rLen = 0;
-		rLoc = 6456;
+		rLoc = 6434;
 		rType = 0;
 		vrLen = 810;
 		vrLoc = 5795;
@@ -3267,7 +3321,7 @@
 		fRef = 6A4F32EC111EA69300E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 253";
 		rLen = 0;
-		rLoc = 9908;
+		rLoc = 9687;
 		rType = 0;
 		vrLen = 1078;
 		vrLoc = 10699;
@@ -3287,7 +3341,7 @@
 		fRef = 6A4F32EC111EA69300E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 273";
 		rLen = 0;
-		rLoc = 10058;
+		rLoc = 9837;
 		rType = 0;
 		vrLen = 838;
 		vrLoc = 9902;
@@ -3317,7 +3371,7 @@
 		fRef = 6A4F32EC111EA69300E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 253";
 		rLen = 0;
-		rLoc = 9908;
+		rLoc = 9687;
 		rType = 0;
 		vrLen = 1392;
 		vrLoc = 4696;
@@ -3377,7 +3431,7 @@
 		fRef = 6A4F32EC111EA69300E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 253";
 		rLen = 0;
-		rLoc = 9908;
+		rLoc = 9687;
 		rType = 0;
 		vrLen = 838;
 		vrLoc = 9905;
@@ -3397,7 +3451,7 @@
 		fRef = 6A4F32EC111EA69300E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 260";
 		rLen = 0;
-		rLoc = 10058;
+		rLoc = 9837;
 		rType = 0;
 		vrLen = 799;
 		vrLoc = 9905;
@@ -3427,7 +3481,7 @@
 		fRef = 6A4F32EC111EA69300E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 253";
 		rLen = 0;
-		rLoc = 9908;
+		rLoc = 9687;
 		rType = 0;
 		vrLen = 799;
 		vrLoc = 9905;
@@ -3447,7 +3501,7 @@
 		fRef = 6A4F32EC111EA69300E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 273";
 		rLen = 0;
-		rLoc = 10058;
+		rLoc = 9837;
 		rType = 0;
 		vrLen = 1003;
 		vrLoc = 9970;
@@ -3477,7 +3531,7 @@
 		fRef = 6A4F32EC111EA69300E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 253";
 		rLen = 0;
-		rLoc = 9908;
+		rLoc = 9687;
 		rType = 0;
 		vrLen = 831;
 		vrLoc = 9805;
@@ -3497,7 +3551,7 @@
 		fRef = 6A4F32EC111EA69300E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 275";
 		rLen = 0;
-		rLoc = 10058;
+		rLoc = 9837;
 		rType = 0;
 		vrLen = 914;
 		vrLoc = 9913;
@@ -3527,7 +3581,7 @@
 		fRef = 6A4F32EC111EA69300E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 253";
 		rLen = 0;
-		rLoc = 9908;
+		rLoc = 9687;
 		rType = 0;
 		vrLen = 1077;
 		vrLoc = 10730;
@@ -3557,7 +3611,7 @@
 		fRef = 6A4F32EC111EA69300E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 253";
 		rLen = 0;
-		rLoc = 9908;
+		rLoc = 9687;
 		rType = 0;
 		vrLen = 853;
 		vrLoc = 9912;
@@ -3577,7 +3631,7 @@
 		fRef = 6A4F32EC111EA69300E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 292";
 		rLen = 0;
-		rLoc = 11469;
+		rLoc = 10726;
 		rType = 0;
 		vrLen = 853;
 		vrLoc = 10939;
@@ -3596,8 +3650,8 @@
 		isa = PBXTextBookmark;
 		fRef = 6A4F32EC111EA69300E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 108";
-		rLen = 227;
-		rLoc = 4010;
+		rLen = 0;
+		rLoc = 4009;
 		rType = 0;
 		vrLen = 774;
 		vrLoc = 3743;
@@ -3607,7 +3661,7 @@
 		fRef = 28348A850E1D400D009134BC /* DataController.m */;
 		name = "DataController.m: 105";
 		rLen = 0;
-		rLoc = 4071;
+		rLoc = 4364;
 		rType = 0;
 		vrLen = 761;
 		vrLoc = 3942;
@@ -3617,7 +3671,7 @@
 		fRef = 6A4F336B111EAC6300E06968 /* DetailViewController.m */;
 		name = "DetailViewController.m: 171";
 		rLen = 0;
-		rLoc = 5894;
+		rLoc = 5872;
 		rType = 0;
 		vrLen = 958;
 		vrLoc = 5498;
@@ -3678,7 +3732,7 @@
 		fRef = 6A4F32EC111EA69300E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 253";
 		rLen = 0;
-		rLoc = 9908;
+		rLoc = 9687;
 		rType = 0;
 		vrLen = 662;
 		vrLoc = 11147;
@@ -3708,7 +3762,7 @@
 		fRef = 6A4F32EC111EA69300E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 253";
 		rLen = 0;
-		rLoc = 9908;
+		rLoc = 9687;
 		rType = 0;
 		vrLen = 933;
 		vrLoc = 10626;
@@ -3728,7 +3782,7 @@
 		fRef = 6A419ECA11166C1A00DA938B /* Play.h */;
 		name = "Play.h: 59";
 		rLen = 0;
-		rLoc = 2675;
+		rLoc = 2694;
 		rType = 0;
 		vrLen = 768;
 		vrLoc = 2178;
@@ -3738,7 +3792,7 @@
 		fRef = 6A419EAE11166B2600DA938B /* Play.m */;
 		name = "Play.m: 63";
 		rLen = 0;
-		rLoc = 2759;
+		rLoc = 2781;
 		rType = 0;
 		vrLen = 1864;
 		vrLoc = 103;
@@ -3748,7 +3802,7 @@
 		fRef = 28348A850E1D400D009134BC /* DataController.m */;
 		name = "DataController.m: 115";
 		rLen = 0;
-		rLoc = 4530;
+		rLoc = 4823;
 		rType = 0;
 		vrLen = 1857;
 		vrLoc = 0;
@@ -3758,7 +3812,7 @@
 		fRef = 6A419ECA11166C1A00DA938B /* Play.h */;
 		name = "Play.h: 59";
 		rLen = 0;
-		rLoc = 2675;
+		rLoc = 2694;
 		rType = 0;
 		vrLen = 768;
 		vrLoc = 2178;
@@ -3768,7 +3822,7 @@
 		fRef = 6A419EAE11166B2600DA938B /* Play.m */;
 		name = "Play.m: 63";
 		rLen = 0;
-		rLoc = 2759;
+		rLoc = 2781;
 		rType = 0;
 		vrLen = 488;
 		vrLoc = 2318;
@@ -3777,8 +3831,8 @@
 		isa = PBXTextBookmark;
 		fRef = 6A4F32EC111EA69300E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 108";
-		rLen = 227;
-		rLoc = 4010;
+		rLen = 0;
+		rLoc = 4009;
 		rType = 0;
 		vrLen = 774;
 		vrLoc = 3743;
@@ -3788,7 +3842,7 @@
 		fRef = 28348A850E1D400D009134BC /* DataController.m */;
 		name = "DataController.m: 105";
 		rLen = 0;
-		rLoc = 4071;
+		rLoc = 4364;
 		rType = 0;
 		vrLen = 761;
 		vrLoc = 3942;
@@ -3798,7 +3852,7 @@
 		fRef = 6A4F336B111EAC6300E06968 /* DetailViewController.m */;
 		name = "DetailViewController.m: 171";
 		rLen = 0;
-		rLoc = 5894;
+		rLoc = 5872;
 		rType = 0;
 		vrLen = 958;
 		vrLoc = 5498;
@@ -3869,7 +3923,7 @@
 		fRef = 28348A850E1D400D009134BC /* DataController.m */;
 		name = "DataController.m: 104";
 		rLen = 0;
-		rLoc = 4049;
+		rLoc = 4342;
 		rType = 0;
 		vrLen = 542;
 		vrLoc = 3000;
@@ -3879,7 +3933,7 @@
 		fRef = 6A419ECA11166C1A00DA938B /* Play.h */;
 		name = "Play.h: 55";
 		rLen = 5;
-		rLoc = 2611;
+		rLoc = 2633;
 		rType = 0;
 		vrLen = 832;
 		vrLoc = 2114;
@@ -3929,7 +3983,7 @@
 		fRef = 6A419ECA11166C1A00DA938B /* Play.h */;
 		name = "Play.h: 56";
 		rLen = 0;
-		rLoc = 2650;
+		rLoc = 2672;
 		rType = 0;
 		vrLen = 768;
 		vrLoc = 2178;
@@ -3949,7 +4003,7 @@
 		fRef = 28348A850E1D400D009134BC /* DataController.m */;
 		name = "DataController.m: 105";
 		rLen = 0;
-		rLoc = 4071;
+		rLoc = 4364;
 		rType = 0;
 		vrLen = 1073;
 		vrLoc = 3544;
@@ -3959,7 +4013,7 @@
 		fRef = 6A419ECA11166C1A00DA938B /* Play.h */;
 		name = "Play.h: 56";
 		rLen = 0;
-		rLoc = 2650;
+		rLoc = 2672;
 		rType = 0;
 		vrLen = 832;
 		vrLoc = 2114;
@@ -3979,7 +4033,7 @@
 		fRef = 28348A850E1D400D009134BC /* DataController.m */;
 		name = "DataController.m: 105";
 		rLen = 0;
-		rLoc = 4071;
+		rLoc = 4364;
 		rType = 0;
 		vrLen = 1073;
 		vrLoc = 3544;
@@ -3989,7 +4043,7 @@
 		fRef = 6A419ECA11166C1A00DA938B /* Play.h */;
 		name = "Play.h: 55";
 		rLen = 5;
-		rLoc = 2611;
+		rLoc = 2633;
 		rType = 0;
 		vrLen = 832;
 		vrLoc = 2114;
@@ -3999,7 +4053,7 @@
 		fRef = 28348A850E1D400D009134BC /* DataController.m */;
 		name = "DataController.m: 104";
 		rLen = 0;
-		rLoc = 4049;
+		rLoc = 4342;
 		rType = 0;
 		vrLen = 542;
 		vrLoc = 3000;
@@ -4009,7 +4063,7 @@
 		fRef = 6A419ECA11166C1A00DA938B /* Play.h */;
 		name = "Play.h: 55";
 		rLen = 5;
-		rLoc = 2611;
+		rLoc = 2633;
 		rType = 0;
 		vrLen = 832;
 		vrLoc = 2114;
@@ -4029,7 +4083,7 @@
 		fRef = 6AD849CF111684CC003C957B /* Play.m */;
 		name = "Play.m: 69";
 		rLen = 0;
-		rLoc = 2799;
+		rLoc = 2821;
 		rType = 0;
 		vrLen = 481;
 		vrLoc = 2318;
@@ -4039,7 +4093,7 @@
 		fRef = 28348A850E1D400D009134BC /* DataController.m */;
 		name = "DataController.m: 104";
 		rLen = 0;
-		rLoc = 4049;
+		rLoc = 4342;
 		rType = 0;
 		vrLen = 1965;
 		vrLoc = 3934;
@@ -4089,7 +4143,7 @@
 		fRef = 6AD849CF111684CC003C957B /* Play.m */;
 		name = "Play.m: 69";
 		rLen = 0;
-		rLoc = 2799;
+		rLoc = 2821;
 		rType = 0;
 		vrLen = 481;
 		vrLoc = 2318;
@@ -4099,7 +4153,7 @@
 		fRef = 28348A850E1D400D009134BC /* DataController.m */;
 		name = "DataController.m: 104";
 		rLen = 0;
-		rLoc = 4049;
+		rLoc = 4342;
 		rType = 0;
 		vrLen = 1965;
 		vrLoc = 3934;
@@ -4189,7 +4243,7 @@
 		fRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */;
 		name = "DetailViewController.m: 198";
 		rLen = 0;
-		rLoc = 6581;
+		rLoc = 6559;
 		rType = 0;
 		vrLen = 1702;
 		vrLoc = 790;
@@ -4209,7 +4263,7 @@
 		fRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */;
 		name = "DetailViewController.m: 198";
 		rLen = 0;
-		rLoc = 6581;
+		rLoc = 6559;
 		rType = 0;
 		vrLen = 1702;
 		vrLoc = 790;
@@ -4219,7 +4273,7 @@
 		fRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */;
 		name = "DetailViewController.m: 198";
 		rLen = 0;
-		rLoc = 6581;
+		rLoc = 6559;
 		rType = 0;
 		vrLen = 1702;
 		vrLoc = 790;
@@ -4239,7 +4293,7 @@
 		fRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */;
 		name = "DetailViewController.m: 198";
 		rLen = 0;
-		rLoc = 6581;
+		rLoc = 6559;
 		rType = 0;
 		vrLen = 1629;
 		vrLoc = 863;
@@ -4249,7 +4303,7 @@
 		fRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */;
 		name = "DetailViewController.m: 198";
 		rLen = 0;
-		rLoc = 6593;
+		rLoc = 6571;
 		rType = 0;
 		vrLen = 1899;
 		vrLoc = 504;
@@ -4259,7 +4313,7 @@
 		fRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */;
 		name = "DetailViewController.m: 198";
 		rLen = 0;
-		rLoc = 6593;
+		rLoc = 6571;
 		rType = 0;
 		vrLen = 1829;
 		vrLoc = 504;
@@ -4269,7 +4323,7 @@
 		fRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */;
 		name = "DetailViewController.m: 198";
 		rLen = 0;
-		rLoc = 6593;
+		rLoc = 6571;
 		rType = 0;
 		vrLen = 1555;
 		vrLoc = 937;
@@ -4309,7 +4363,7 @@
 		fRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */;
 		name = "DetailViewController.m: 198";
 		rLen = 0;
-		rLoc = 6593;
+		rLoc = 6571;
 		rType = 0;
 		vrLen = 739;
 		vrLoc = 5866;
@@ -4319,7 +4373,7 @@
 		fRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */;
 		name = "DetailViewController.m: 198";
 		rLen = 0;
-		rLoc = 6593;
+		rLoc = 6571;
 		rType = 0;
 		vrLen = 1555;
 		vrLoc = 937;
@@ -4329,7 +4383,7 @@
 		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 109";
 		rLen = 0;
-		rLoc = 4042;
+		rLoc = 4009;
 		rType = 0;
 		vrLen = 632;
 		vrLoc = 3548;
@@ -4339,7 +4393,7 @@
 		fRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */;
 		name = "DetailViewController.m: 198";
 		rLen = 0;
-		rLoc = 6593;
+		rLoc = 6571;
 		rType = 0;
 		vrLen = 812;
 		vrLoc = 5393;
@@ -4349,7 +4403,7 @@
 		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 109";
 		rLen = 0;
-		rLoc = 4042;
+		rLoc = 4009;
 		rType = 0;
 		vrLen = 638;
 		vrLoc = 3546;
@@ -4359,7 +4413,7 @@
 		fRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */;
 		name = "DetailViewController.m: 198";
 		rLen = 0;
-		rLoc = 6593;
+		rLoc = 6571;
 		rType = 0;
 		vrLen = 720;
 		vrLoc = 5885;
@@ -4379,7 +4433,7 @@
 		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 109";
 		rLen = 0;
-		rLoc = 4042;
+		rLoc = 4009;
 		rType = 0;
 		vrLen = 638;
 		vrLoc = 3546;
@@ -4389,7 +4443,7 @@
 		fRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */;
 		name = "DetailViewController.m: 198";
 		rLen = 0;
-		rLoc = 6593;
+		rLoc = 6571;
 		rType = 0;
 		vrLen = 739;
 		vrLoc = 5866;
@@ -4399,7 +4453,7 @@
 		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 109";
 		rLen = 0;
-		rLoc = 4042;
+		rLoc = 4009;
 		rType = 0;
 		vrLen = 634;
 		vrLoc = 3546;
@@ -4449,7 +4503,7 @@
 		fRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */;
 		name = "DetailViewController.m: 193";
 		rLen = 0;
-		rLoc = 6577;
+		rLoc = 6555;
 		rType = 0;
 		vrLen = 798;
 		vrLoc = 5795;
@@ -4459,7 +4513,7 @@
 		fRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */;
 		name = "DetailViewController.m: 193";
 		rLen = 0;
-		rLoc = 6577;
+		rLoc = 6555;
 		rType = 0;
 		vrLen = 798;
 		vrLoc = 5795;
@@ -4479,7 +4533,7 @@
 		fRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */;
 		name = "DetailViewController.m: 193";
 		rLen = 0;
-		rLoc = 6577;
+		rLoc = 6555;
 		rType = 0;
 		vrLen = 798;
 		vrLoc = 5795;
@@ -4536,7 +4590,7 @@
 		fRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */;
 		name = "DetailViewController.m: 193";
 		rLen = 0;
-		rLoc = 6546;
+		rLoc = 6524;
 		rType = 0;
 		vrLen = 798;
 		vrLoc = 5795;
@@ -4565,7 +4619,7 @@
 		isa = PBXTextBookmark;
 		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
 		rLen = 0;
-		rLoc = 259;
+		rLoc = 248;
 		rType = 1;
 	};
 	6A7145A31123C7940081571A /* PBXTextBookmark */ = {
@@ -4603,7 +4657,7 @@
 		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 130";
 		rLen = 0;
-		rLoc = 4605;
+		rLoc = 4384;
 		rType = 0;
 		vrLen = 740;
 		vrLoc = 11064;
@@ -4613,7 +4667,7 @@
 		fRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */;
 		name = "DetailViewController.m: 193";
 		rLen = 0;
-		rLoc = 6546;
+		rLoc = 6524;
 		rType = 0;
 		vrLen = 798;
 		vrLoc = 5795;
@@ -4633,7 +4687,7 @@
 		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 253";
 		rLen = 0;
-		rLoc = 9908;
+		rLoc = 9687;
 		rType = 0;
 		vrLen = 874;
 		vrLoc = 2580;
@@ -4663,7 +4717,7 @@
 		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 275";
 		rLen = 0;
-		rLoc = 10922;
+		rLoc = 10636;
 		rType = 0;
 		vrLen = 1137;
 		vrLoc = 10394;
@@ -4673,7 +4727,7 @@
 		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 275";
 		rLen = 0;
-		rLoc = 10922;
+		rLoc = 10636;
 		rType = 0;
 		vrLen = 1137;
 		vrLoc = 10394;
@@ -4683,7 +4737,7 @@
 		fRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */;
 		name = "DetailViewController.m: 193";
 		rLen = 0;
-		rLoc = 6546;
+		rLoc = 6524;
 		rType = 0;
 		vrLen = 798;
 		vrLoc = 5795;
@@ -4702,7 +4756,7 @@
 		isa = PBXTextBookmark;
 		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
 		rLen = 0;
-		rLoc = 252;
+		rLoc = 241;
 		rType = 1;
 	};
 	6A7145B61123C7A40081571A /* PBXTextBookmark */ = {
@@ -4710,7 +4764,7 @@
 		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 275";
 		rLen = 0;
-		rLoc = 10922;
+		rLoc = 10636;
 		rType = 0;
 		vrLen = 1137;
 		vrLoc = 10394;
@@ -4720,7 +4774,7 @@
 		fRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */;
 		name = "DetailViewController.m: 193";
 		rLen = 0;
-		rLoc = 6546;
+		rLoc = 6524;
 		rType = 0;
 		vrLen = 798;
 		vrLoc = 5795;
@@ -4740,7 +4794,7 @@
 		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 253";
 		rLen = 0;
-		rLoc = 9908;
+		rLoc = 9687;
 		rType = 0;
 		vrLen = 962;
 		vrLoc = 9594;
@@ -4760,7 +4814,7 @@
 		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 253";
 		rLen = 0;
-		rLoc = 9908;
+		rLoc = 9687;
 		rType = 0;
 		vrLen = 662;
 		vrLoc = 11150;
@@ -4780,7 +4834,7 @@
 		fRef = 6A419ECA11166C1A00DA938B /* Play.h */;
 		name = "Play.h: 55";
 		rLen = 5;
-		rLoc = 2611;
+		rLoc = 2633;
 		rType = 0;
 		vrLen = 829;
 		vrLoc = 2114;
@@ -4790,7 +4844,7 @@
 		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 253";
 		rLen = 0;
-		rLoc = 9908;
+		rLoc = 9687;
 		rType = 0;
 		vrLen = 661;
 		vrLoc = 11150;
@@ -4800,7 +4854,7 @@
 		fRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */;
 		name = "DetailViewController.m: 193";
 		rLen = 0;
-		rLoc = 6546;
+		rLoc = 6524;
 		rType = 0;
 		vrLen = 798;
 		vrLoc = 5795;
@@ -4820,7 +4874,7 @@
 		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
 		name = "SimpleDrillDownAppDelegate.m: 253";
 		rLen = 0;
-		rLoc = 9908;
+		rLoc = 9687;
 		rType = 0;
 		vrLen = 662;
 		vrLoc = 11150;
@@ -4840,7 +4894,7 @@
 		fRef = 6A419ECA11166C1A00DA938B /* Play.h */;
 		name = "Play.h: 55";
 		rLen = 5;
-		rLoc = 2611;
+		rLoc = 2633;
 		rType = 0;
 		vrLen = 829;
 		vrLoc = 2114;
@@ -4865,6 +4919,566 @@
 		vrLen = 1857;
 		vrLoc = 562;
 	};
+	6A7145CC1123C87A0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6AD849CF111684CC003C957B /* Play.m */;
+		name = "Play.m: 52";
+		rLen = 0;
+		rLoc = 2518;
+		rType = 0;
+		vrLen = 859;
+		vrLoc = 1894;
+	};
+	6A7145CD1123C87A0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */;
+		name = "DetailViewController.m: 142";
+		rLen = 0;
+		rLoc = 5190;
+		rType = 0;
+		vrLen = 687;
+		vrLoc = 4939;
+	};
+	6A7145CE1123C87A0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28348A840E1D400D009134BC /* DataController.h */;
+		name = "DataController.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1857;
+		vrLoc = 0;
+	};
+	6A7145CF1123C87A0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28348A850E1D400D009134BC /* DataController.m */;
+		name = "DataController.m: 104";
+		rLen = 0;
+		rLoc = 4342;
+		rType = 0;
+		vrLen = 744;
+		vrLoc = 3203;
+	};
+	6A7145D01123C87A0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6AD849CF111684CC003C957B /* Play.m */;
+		name = "Play.m: 52";
+		rLen = 0;
+		rLoc = 2518;
+		rType = 0;
+		vrLen = 859;
+		vrLoc = 1894;
+	};
+	6A7145D11123C87A0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */;
+		name = "DetailViewController.m: 142";
+		rLen = 0;
+		rLoc = 5190;
+		rType = 0;
+		vrLen = 687;
+		vrLoc = 4939;
+	};
+	6A7145D21123C87A0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28348A840E1D400D009134BC /* DataController.h */;
+		name = "DataController.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1857;
+		vrLoc = 0;
+	};
+	6A7145D31123C87A0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28348A850E1D400D009134BC /* DataController.m */;
+		name = "DataController.m: 104";
+		rLen = 0;
+		rLoc = 4342;
+		rType = 0;
+		vrLen = 744;
+		vrLoc = 3203;
+	};
+	6A7145D41123C87A0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
+		name = "SimpleDrillDownAppDelegate.m: 275";
+		rLen = 0;
+		rLoc = 10636;
+		rType = 0;
+		vrLen = 1303;
+		vrLoc = 10158;
+	};
+	6A7145D71123C9030081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
+		name = "SimpleDrillDownAppDelegate.m: 281";
+		rLen = 0;
+		rLoc = 10636;
+		rType = 0;
+		vrLen = 980;
+		vrLoc = 10556;
+	};
+	6A7145D91123C93A0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
+		name = "SimpleDrillDownAppDelegate.m: 279";
+		rLen = 0;
+		rLoc = 10726;
+		rType = 0;
+		vrLen = 821;
+		vrLoc = 10556;
+	};
+	6A7145DB1123C9760081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
+		name = "SimpleDrillDownAppDelegate.m: 276";
+		rLen = 0;
+		rLoc = 10709;
+		rType = 0;
+		vrLen = 785;
+		vrLoc = 10556;
+	};
+	6A7145DE1123C9C40081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
+		name = "SimpleDrillDownAppDelegate.m: 274";
+		rLen = 0;
+		rLoc = 10708;
+		rType = 0;
+		vrLen = 985;
+		vrLoc = 1866;
+	};
+	6A7145DF1123C9C40081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28348A850E1D400D009134BC /* DataController.m */;
+		name = "DataController.m: 104";
+		rLen = 0;
+		rLoc = 4342;
+		rType = 0;
+		vrLen = 717;
+		vrLoc = 3230;
+	};
+	6A7145E01123C9C40081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
+		name = "SimpleDrillDownAppDelegate.m: 274";
+		rLen = 0;
+		rLoc = 10708;
+		rType = 0;
+		vrLen = 985;
+		vrLoc = 1866;
+	};
+	6A7145E11123C9C40081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28348A850E1D400D009134BC /* DataController.m */;
+		name = "DataController.m: 104";
+		rLen = 0;
+		rLoc = 4342;
+		rType = 0;
+		vrLen = 717;
+		vrLoc = 3230;
+	};
+	6A7145E21123C9C40081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */;
+		name = "DetailViewController.m: 145";
+		rLen = 0;
+		rLoc = 5278;
+		rType = 0;
+		vrLen = 719;
+		vrLoc = 3303;
+	};
+	6A7145E61123C9F00081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */;
+		name = "DetailViewController.m: 145";
+		rLen = 0;
+		rLoc = 5278;
+		rType = 0;
+		vrLen = 724;
+		vrLoc = 3303;
+	};
+	6A7145EA1123CA170081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */;
+		name = "DetailViewController.m: 145";
+		rLen = 0;
+		rLoc = 5278;
+		rType = 0;
+		vrLen = 724;
+		vrLoc = 3303;
+	};
+	6A7145F01123D7B50081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */;
+		name = "DetailViewController.m: 145";
+		rLen = 0;
+		rLoc = 5278;
+		rType = 0;
+		vrLen = 724;
+		vrLoc = 3303;
+	};
+	6A7145F11123D7B50081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A419ECA11166C1A00DA938B /* Play.h */;
+		name = "Play.h: 65";
+		rLen = 0;
+		rLoc = 2821;
+		rType = 0;
+		vrLen = 749;
+		vrLoc = 2318;
+	};
+	6A7145F21123D7B50081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
+		name = "SimpleDrillDownAppDelegate.m: 274";
+		rLen = 0;
+		rLoc = 10708;
+		rType = 0;
+		vrLen = 1019;
+		vrLoc = 1864;
+	};
+	6A7145F31123D7B50081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */;
+		name = "DetailViewController.m: 145";
+		rLen = 0;
+		rLoc = 5278;
+		rType = 0;
+		vrLen = 724;
+		vrLoc = 3303;
+	};
+	6A7145F41123D7B50081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A419ECA11166C1A00DA938B /* Play.h */;
+		name = "Play.h: 65";
+		rLen = 0;
+		rLoc = 2821;
+		rType = 0;
+		vrLen = 749;
+		vrLoc = 2318;
+	};
+	6A7145F51123D7B50081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
+		name = "SimpleDrillDownAppDelegate.m: 112";
+		rLen = 0;
+		rLoc = 4009;
+		rType = 0;
+		vrLen = 804;
+		vrLoc = 3605;
+	};
+	6A7145F81123D7D50081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
+		name = "SimpleDrillDownAppDelegate.m: 112";
+		rLen = 0;
+		rLoc = 4009;
+		rType = 0;
+		vrLen = 647;
+		vrLoc = 3599;
+	};
+	6A7145FA1123D7E20081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
+		name = "SimpleDrillDownAppDelegate.m: 112";
+		rLen = 0;
+		rLoc = 4009;
+		rType = 0;
+		vrLen = 647;
+		vrLoc = 3599;
+	};
+	6A7145FE1123D8540081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
+		name = "SimpleDrillDownAppDelegate.m: 112";
+		rLen = 0;
+		rLoc = 4009;
+		rType = 0;
+		vrLen = 647;
+		vrLoc = 3599;
+	};
+	6A7146021123D9E00081571A /* DataController.m */ = {
+		isa = PBXFileReference;
+		name = DataController.m;
+		path = "/Users/isaac/repo/iphone-tracker/SimpleDrillDown/Classes/DataController.m";
+		sourceTree = "<absolute>";
+	};
+	6A7146051123D9E00081571A /* DataController.m */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.objc;
+		name = DataController.m;
+		path = "/Users/isaac/repo/iphone-tracker/SimpleDrillDown/Classes/DataController.m";
+		sourceTree = "<absolute>";
+	};
+	6A7146061123D9E00081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A7146051123D9E00081571A /* DataController.m */;
+		rLen = 1;
+		rLoc = 127;
+		rType = 1;
+	};
+	6A7146071123D9E00081571A /* DataController.m */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.objc;
+		name = DataController.m;
+		path = "/Users/isaac/repo/iphone-tracker/SimpleDrillDown/Classes/DataController.m";
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {5716, 3686}}";
+			sepNavSelRange = "{5438, 0}";
+			sepNavVisRange = "{4516, 2407}";
+			sepNavWindowFrame = "{{15, 65}, {1192, 708}}";
+		};
+	};
+	6A71460B1123DA1F0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A419ECA11166C1A00DA938B /* Play.h */;
+		name = "Play.h: 69";
+		rLen = 0;
+		rLoc = 3048;
+		rType = 0;
+		vrLen = 649;
+		vrLoc = 2417;
+	};
+	6A71460C1123DA1F0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6AD849CF111684CC003C957B /* Play.m */;
+		name = "Play.m: 64";
+		rLen = 0;
+		rLoc = 2774;
+		rType = 0;
+		vrLen = 433;
+		vrLoc = 2388;
+	};
+	6A71460D1123DA1F0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28348A840E1D400D009134BC /* DataController.h */;
+		name = "DataController.h: 57";
+		rLen = 0;
+		rLoc = 2982;
+		rType = 0;
+		vrLen = 992;
+		vrLoc = 1997;
+	};
+	6A71460E1123DA1F0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
+		name = "SimpleDrillDownAppDelegate.m: 109";
+		rLen = 0;
+		rLoc = 4171;
+		rType = 0;
+		vrLen = 870;
+		vrLoc = 3606;
+	};
+	6A71460F1123DA1F0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A7146021123D9E00081571A /* DataController.m */;
+		rLen = 1;
+		rLoc = 127;
+		rType = 1;
+	};
+	6A7146101123DA1F0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
+		name = "SimpleDrillDownAppDelegate.m: 107";
+		rLen = 0;
+		rLoc = 4009;
+		rType = 0;
+		vrLen = 790;
+		vrLoc = 3678;
+	};
+	6A7146111123DA1F0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28348A850E1D400D009134BC /* DataController.m */;
+		name = "DataController.m: 104";
+		rLen = 0;
+		rLoc = 4342;
+		rType = 0;
+		vrLen = 779;
+		vrLoc = 3230;
+	};
+	6A7146121123DA1F0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28348A840E1D400D009134BC /* DataController.h */;
+		name = "DataController.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 948;
+		vrLoc = 1997;
+	};
+	6A7146131123DA1F0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28348A850E1D400D009134BC /* DataController.m */;
+		name = "DataController.m: 95";
+		rLen = 0;
+		rLoc = 3589;
+		rType = 0;
+		vrLen = 1756;
+		vrLoc = 3816;
+	};
+	6A7146141123DA1F0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A419ECA11166C1A00DA938B /* Play.h */;
+		name = "Play.h: 55";
+		rLen = 0;
+		rLoc = 2610;
+		rType = 0;
+		vrLen = 653;
+		vrLoc = 2419;
+	};
+	6A7146151123DA1F0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6AD849CF111684CC003C957B /* Play.m */;
+		name = "Play.m: 52";
+		rLen = 0;
+		rLoc = 2518;
+		rType = 0;
+		vrLen = 842;
+		vrLoc = 1894;
+	};
+	6A7146161123DA1F0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28348A850E1D400D009134BC /* DataController.m */;
+		name = "DataController.m: 128";
+		rLen = 53;
+		rLoc = 5439;
+		rType = 0;
+		vrLen = 1902;
+		vrLoc = 4516;
+	};
+	6A7146171123DA1F0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A419ECA11166C1A00DA938B /* Play.h */;
+		name = "Play.h: 69";
+		rLen = 0;
+		rLoc = 3048;
+		rType = 0;
+		vrLen = 649;
+		vrLoc = 2417;
+	};
+	6A7146181123DA1F0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6AD849CF111684CC003C957B /* Play.m */;
+		name = "Play.m: 64";
+		rLen = 0;
+		rLoc = 2774;
+		rType = 0;
+		vrLen = 433;
+		vrLoc = 2388;
+	};
+	6A7146191123DA1F0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28348A850E1D400D009134BC /* DataController.m */;
+		name = "DataController.m: 94";
+		rLen = 44;
+		rLoc = 3543;
+		rType = 0;
+		vrLen = 896;
+		vrLoc = 3519;
+	};
+	6A71461A1123DA1F0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28348A840E1D400D009134BC /* DataController.h */;
+		name = "DataController.h: 57";
+		rLen = 0;
+		rLoc = 2982;
+		rType = 0;
+		vrLen = 992;
+		vrLoc = 1997;
+	};
+	6A71461B1123DA1F0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28348A850E1D400D009134BC /* DataController.m */;
+		name = "DataController.m: 94";
+		rLen = 44;
+		rLoc = 3543;
+		rType = 0;
+		vrLen = 896;
+		vrLoc = 3519;
+	};
+	6A71461C1123DA1F0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A4F32DD111EA66C00E06968 /* SimpleDrillDownAppDelegate.m */;
+		name = "SimpleDrillDownAppDelegate.m: 109";
+		rLen = 0;
+		rLoc = 4171;
+		rType = 0;
+		vrLen = 870;
+		vrLoc = 3606;
+	};
+	6A71461D1123DA1F0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A7146071123D9E00081571A /* DataController.m */;
+		name = "DataController.m: 128";
+		rLen = 0;
+		rLoc = 5492;
+		rType = 0;
+		vrLen = 2368;
+		vrLoc = 4694;
+	};
+	6A7146201123DA1F0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A7146071123D9E00081571A /* DataController.m */;
+		name = "DataController.m: 176";
+		rLen = 0;
+		rLoc = 8548;
+		rType = 0;
+		vrLen = 1848;
+		vrLoc = 3836;
+	};
+	6A7146211123DA850081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A7146071123D9E00081571A /* DataController.m */;
+		name = "DataController.m: 127";
+		rLen = 0;
+		rLoc = 5438;
+		rType = 0;
+		vrLen = 2407;
+		vrLoc = 4516;
+	};
+	6A7146221123DA850081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A419ECA11166C1A00DA938B /* Play.h */;
+		name = "Play.h: 69";
+		rLen = 0;
+		rLoc = 3048;
+		rType = 0;
+		vrLen = 678;
+		vrLoc = 2388;
+	};
+	6A7146231123DA850081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A7146071123D9E00081571A /* DataController.m */;
+		name = "DataController.m: 127";
+		rLen = 0;
+		rLoc = 5438;
+		rType = 0;
+		vrLen = 2407;
+		vrLoc = 4516;
+	};
+	6A7146241123DA850081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A419ECA11166C1A00DA938B /* Play.h */;
+		name = "Play.h: 55";
+		rLen = 0;
+		rLoc = 2609;
+		rType = 0;
+		vrLen = 678;
+		vrLoc = 2388;
+	};
+	6A71462B1123DA9A0081571A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A419ECA11166C1A00DA938B /* Play.h */;
+		name = "Play.h: 55";
+		rLen = 0;
+		rLoc = 2609;
+		rType = 0;
+		vrLen = 678;
+		vrLoc = 2388;
+	};
 	6AD847BB11167822003C957B /* DetailViewController.m */ = {
 		isa = PBXFileReference;
 		lastKnownFileType = sourcecode.c.objc;
@@ -4882,11 +5496,11 @@
 		delayBeforeContinue = 0;
 		fileReference = 6AD847BB11167822003C957B /* DetailViewController.m */;
 		functionName = "-tableView:cellForRowAtIndexPath:";
-		hitCount = 2;
+		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 142;
 		location = SimpleDrillDown;
-		modificationTime = 287557563.866396;
+		modificationTime = 287561695.896818;
 		state = 1;
 	};
 	6AD8480B11167A66003C957B /* SimpleDrillDownAppDelegate.h */ = {
@@ -4942,7 +5556,7 @@
 			sepNavVisRange = "{863, 1629}";
 		};
 	};
-	6AD8488611167C6F003C957B /* DetailViewController.m:193 */ = {
+	6AD8488611167C6F003C957B /* DetailViewController.m:192 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -4952,11 +5566,11 @@
 		delayBeforeContinue = 0;
 		fileReference = 6AD8488411167C6F003C957B /* DetailViewController.m */;
 		functionName = "-tableView:didSelectRowAtIndexPath:";
-		hitCount = 2;
+		hitCount = 0;
 		ignoreCount = 0;
-		lineNumber = 193;
+		lineNumber = 192;
 		location = SimpleDrillDown;
-		modificationTime = 287557551.43738;
+		modificationTime = 287561695.957966;
 		state = 1;
 	};
 	6AD8498111168380003C957B /* TimeTracker.m:20 */ = {
@@ -4969,11 +5583,11 @@
 		delayBeforeContinue = 0;
 		fileReference = 6A38A5B4110D41CB004EF5FD /* TimeTracker.m */;
 		functionName = "-play:";
-		hitCount = 2;
+		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 20;
 		location = SimpleDrillDown;
-		modificationTime = 287557553.012092;
+		modificationTime = 287561695.982204;
 		state = 1;
 	};
 	6AD849CF111684CC003C957B /* Play.m */ = {
@@ -4983,9 +5597,9 @@
 		path = "/Users/isaac/repo/iphone-tracker/SimpleDrillDown/Classes/Play.m";
 		sourceTree = "<group>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {760, 1311}}";
-			sepNavSelRange = "{2518, 0}";
-			sepNavVisRange = "{562, 1857}";
+			sepNavIntBoundsRect = "{{0, 0}, {760, 1330}}";
+			sepNavSelRange = "{2774, 0}";
+			sepNavVisRange = "{2388, 433}";
 		};
 	};
 	6AD849D1111684CC003C957B /* Play.m:55 */ = {
@@ -5002,7 +5616,7 @@
 		ignoreCount = 0;
 		lineNumber = 55;
 		location = SimpleDrillDown;
-		modificationTime = 287557528.54864;
+		modificationTime = 287561694.232151;
 		state = 2;
 	};
 	6AD849E2111685DA003C957B /* PBXTextBookmark */ = {
@@ -5032,11 +5646,11 @@
 		delayBeforeContinue = 0;
 		fileReference = 6AF2166B111665BF00B83EA4 /* SimpleDrillDownAppDelegate.m */;
 		functionName = "-moviePlayBackDidFinish:";
-		hitCount = 2;
+		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 250;
 		location = SimpleDrillDown;
-		modificationTime = 287557553.343096;
+		modificationTime = 287561696.096081;
 		state = 1;
 	};
 }
