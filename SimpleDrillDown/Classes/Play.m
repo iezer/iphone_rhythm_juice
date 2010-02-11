@@ -49,7 +49,7 @@
 
 @implementation Play
 
-@synthesize title, characters, genre, date, moviePath, tracker;
+@synthesize title, instructors, chapters, tracker;
 
 -(Play*)init {
 	self.tracker = [[TimeTracker alloc] init];
@@ -58,12 +58,26 @@
 
 - (void)dealloc {
 	[title release];
-	[characters release];
-	[genre release];
-	[date release];
-	[moviePath release];
+	[instructors release];
+	[chapters release];
 	[tracker release];
 	[super dealloc];
+}
+
+- (NSURL*)makeMovieURL:(NSInteger)chapter {
+	NSURL* movieURL;
+	NSString* filename = [self.chapters objectAtIndex:chapter];
+	NSBundle *bundle = [NSBundle mainBundle];
+	if (bundle) 
+	{
+		NSString *moviePath = [bundle pathForResource:filename ofType:@"m4v"];
+		if (moviePath)
+		{
+			movieURL = [NSURL fileURLWithPath:moviePath];
+		}
+	}
+	[filename release];
+	return movieURL;
 }
 
 @end

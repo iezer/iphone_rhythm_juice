@@ -51,20 +51,15 @@
 
 @interface Play : NSObject {
 	NSString *title;
-	NSArray *characters;
-//	NSArray *chapters;
-	NSString *genre;
-	NSDate *date;
+	NSArray *instructors;
+	NSArray *chapters;
 	TimeTracker *tracker;
-	NSURL *moviePath;
 }
 
 -(Play*)init;
+- (NSURL*)makeMovieURL:(NSInteger)chapter;
 @property (nonatomic, retain) NSString *title;
-@property (nonatomic, retain) NSArray *characters;
-//@property (nonatomic, retain) NSArray *chapters;
-@property (nonatomic, retain) NSString *genre;
-@property (nonatomic, retain) NSDate *date;
+@property (nonatomic, retain) NSArray *instructors;
+@property (nonatomic, retain) NSArray *chapters;
 @property (nonatomic, retain) TimeTracker *tracker;
-@property (nonatomic, retain) NSURL *moviePath;
 @end

@@ -73,9 +73,7 @@
 #pragma mark Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // There are three sections, for date, genre, and characters, in that order.
-    // Added fourth row for timetracker.
-	return 4;
+	return 3;
 }
 
 
@@ -87,15 +85,13 @@
     NSInteger rows = 0;
     switch (section) {
         case 0:
+			rows = [play.instructors count];
+			break;
         case 1:
             // For genre and date there is just one row.
-            rows = 1;
+            rows = [play.chapters count];
             break;
         case 2:
-            // For the characters section, there are as many rows as there are characters.
-            rows = [play.characters count];
-            break;
-        case 3:
 			rows = [play.tracker.mList count];
 			break;
 		default:
@@ -129,15 +125,12 @@
 	
     switch (indexPath.section) {
         case 0:
-            cellText = [dateFormatter stringFromDate:play.date];
+            cellText = [play.instructors objectAtIndex:indexPath.row];
             break;
         case 1:
-            cellText = play.genre;
+            cellText = [play.chapters objectAtIndex:indexPath.row];
             break;
         case 2:
-            cellText = [play.characters objectAtIndex:indexPath.row];
-            break;
-        case 3:
 			node = [play.tracker.mList objectAtIndex:indexPath.row];
 			if (node == nil) {
 				cellText = @"";
@@ -166,15 +159,12 @@
     NSString *title = nil;
     switch (section) {
         case 0:
-            title = NSLocalizedString(@"Date", @"Date section title");
+            title = NSLocalizedString(@"Instructors", @"Date section title");
             break;
         case 1:
-            title = NSLocalizedString(@"Genre", @"Genre section title");
+            title = NSLocalizedString(@"Chapters", @"Genre section title");
             break;
         case 2:
-            title = NSLocalizedString(@"Main Characters", @"Main Characters section title");
-            break;
-        case 3:
 			title = @"View Tracker";
 			break;
 		default:

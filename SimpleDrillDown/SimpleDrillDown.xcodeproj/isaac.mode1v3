@@ -277,13 +277,11 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>16</integer>
-									<integer>7</integer>
-									<integer>0</integer>
+									<integer>42</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 176}, {339, 651}}</string>
+							<string>{{0, 182}, {339, 651}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -320,7 +318,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Play.h</string>
+								<string>DetailViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -328,11 +326,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Play.h</string>
+										<string>DetailViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>6A71462B1123DA9A0081571A</string>
+										<string>6A7146571123DE120081571A</string>
 										<key>history</key>
 										<array>
 											<string>6A38A536110D3FFB004EF5FD</string>
@@ -356,12 +354,12 @@
 											<string>6A71457C1123C6CA0081571A</string>
 											<string>6A71457D1123C6CA0081571A</string>
 											<string>6A7145BC1123C7DA0081571A</string>
-											<string>6A7145F01123D7B50081571A</string>
-											<string>6A71460C1123DA1F0081571A</string>
-											<string>6A71460D1123DA1F0081571A</string>
-											<string>6A71460E1123DA1F0081571A</string>
-											<string>6A7146211123DA850081571A</string>
-											<string>6A7146221123DA850081571A</string>
+											<string>6A7146341123DD670081571A</string>
+											<string>6A7146351123DD670081571A</string>
+											<string>6A7146361123DD670081571A</string>
+											<string>6A7146371123DD670081571A</string>
+											<string>6A7146381123DD670081571A</string>
+											<string>6A7146391123DD670081571A</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -467,6 +465,25 @@
 											<string>6A71461B1123DA1F0081571A</string>
 											<string>6A71461C1123DA1F0081571A</string>
 											<string>6A7146231123DA850081571A</string>
+											<string>6A71463A1123DD670081571A</string>
+											<string>6A71463B1123DD670081571A</string>
+											<string>6A71463C1123DD670081571A</string>
+											<string>6A71463D1123DD670081571A</string>
+											<string>6A71463E1123DD670081571A</string>
+											<string>6A71463F1123DD670081571A</string>
+											<string>6A7146401123DD670081571A</string>
+											<string>6A7146411123DD670081571A</string>
+											<string>6A7146421123DD670081571A</string>
+											<string>6A7146431123DD670081571A</string>
+											<string>6A7146441123DD670081571A</string>
+											<string>6A7146451123DD670081571A</string>
+											<string>6A7146461123DD670081571A</string>
+											<string>6A7146471123DD670081571A</string>
+											<string>6A7146481123DD670081571A</string>
+											<string>6A7146491123DD670081571A</string>
+											<string>6A71464A1123DD670081571A</string>
+											<string>6A71464B1123DD670081571A</string>
+											<string>6A71464C1123DD670081571A</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>

@@ -106,7 +106,9 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 	// return a URL for the movie file in our bundle
 		
 	// Initialize a movie player object with the specified URL
-	MPMoviePlayerController *mp = [[MPMoviePlayerController alloc] initWithContentURL:[play moviePath]];
+	NSURL* movieURL = [self.play makeMovieURL:0];
+	MPMoviePlayerController *mp = [[MPMoviePlayerController alloc] initWithContentURL:movieURL];
+	[movieURL release];
 	if (mp)
 	{
 		// Apply the user specified settings to the movie player object
