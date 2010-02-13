@@ -70,7 +70,7 @@
 @property (nonatomic, retain) DataController *dataController;
 @property (nonatomic, retain) DetailViewController *detailViewController;
 
--(void)initAndPlayMovie:(DetailViewController *)theDetailViewController;
+-(void)initAndPlayMovie:(DetailViewController *)theDetailViewController chapter:(NSUInteger)chapter;
 -(void)setMoviePlayerUserSettings:(MPMoviePlayerController *)moviePlayer;
 
 @end

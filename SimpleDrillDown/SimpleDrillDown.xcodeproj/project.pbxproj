@@ -17,7 +17,6 @@
 		28348A860E1D400D009134BC /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28348A850E1D400D009134BC /* DataController.m */; };
 		2846CFC80DBFDD18009410C2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2846CFC60DBFDD18009410C2 /* Localizable.strings */; };
 		28554E2C0DAC293600168C19 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 28554E2B0DAC293600168C19 /* Icon.png */; };
-		28A0A2200DCBAA090060EDFB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 28A0A21F0DCBAA090060EDFB /* Default.png */; };
 		53A3862B0E6DD89B002F7F09 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53A386290E6DD89B002F7F09 /* MainWindow.xib */; };
 		6A38A4F7110CECBD004EF5FD /* Movie.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 6A38A4F6110CECBD004EF5FD /* Movie.m4v */; };
 		6A38A5B9110D41CC004EF5FD /* TimeTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A38A5B4110D41CB004EF5FD /* TimeTracker.m */; };
@@ -26,6 +25,9 @@
 		6A38A70B110DF8AD004EF5FD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A38A70A110DF8AD004EF5FD /* MediaPlayer.framework */; };
 		6A7145691123C5F00081571A /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */; };
 		6A7145EE1123D77E0081571A /* sylvia-nick.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 6A7145ED1123D77E0081571A /* sylvia-nick.m4v */; };
+		6A7147F111268E8C0081571A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7147F011268E8C0081571A /* Default.png */; };
+		6A7147FD11268F7E0081571A /* ilhc-2008-dax-alice.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 6A7147FC11268F7E0081571A /* ilhc-2008-dax-alice.m4v */; };
+		6A7147FF11268FFC0081571A /* dax-alice-toulouse.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 6A7147FE11268FFC0081571A /* dax-alice-toulouse.m4v */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +45,6 @@
 		28348A850E1D400D009134BC /* DataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataController.m; path = Classes/DataController.m; sourceTree = "<group>"; };
 		2846CFC70DBFDD18009410C2 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		28554E2B0DAC293600168C19 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		28A0A21F0DCBAA090060EDFB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		28F1A73C0DC932C300332FD8 /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
 		28F25CCA0D64C1EB00158CCD /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		28F25CCB0D64C1EB00158CCD /* DetailViewController.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = DetailViewController.m; sourceTree = "<group>"; };
@@ -59,6 +60,9 @@
 		6A38A613110D45C8004EF5FD /* MoviePlayer_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviePlayer_Prefix.pch; sourceTree = "<group>"; };
 		6A38A70A110DF8AD004EF5FD /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		6A7145ED1123D77E0081571A /* sylvia-nick.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sylvia-nick.m4v"; sourceTree = "<group>"; };
+		6A7147F011268E8C0081571A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		6A7147FC11268F7E0081571A /* ilhc-2008-dax-alice.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ilhc-2008-dax-alice.m4v"; sourceTree = "<group>"; };
+		6A7147FE11268FFC0081571A /* dax-alice-toulouse.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dax-alice-toulouse.m4v"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,11 +145,13 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6A7147FE11268FFC0081571A /* dax-alice-toulouse.m4v */,
+				6A7147F011268E8C0081571A /* Default.png */,
+				6A7147FC11268F7E0081571A /* ilhc-2008-dax-alice.m4v */,
 				6A7145ED1123D77E0081571A /* sylvia-nick.m4v */,
 				6A38A600110D44A5004EF5FD /* Settings.bundle */,
 				6A38A4F6110CECBD004EF5FD /* Movie.m4v */,
 				53A386290E6DD89B002F7F09 /* MainWindow.xib */,
-				28A0A21F0DCBAA090060EDFB /* Default.png */,
 				28554E2B0DAC293600168C19 /* Icon.png */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				2846CFC60DBFDD18009410C2 /* Localizable.strings */,
@@ -215,11 +221,13 @@
 			files = (
 				28554E2C0DAC293600168C19 /* Icon.png in Resources */,
 				2846CFC80DBFDD18009410C2 /* Localizable.strings in Resources */,
-				28A0A2200DCBAA090060EDFB /* Default.png in Resources */,
 				53A3862B0E6DD89B002F7F09 /* MainWindow.xib in Resources */,
 				6A38A4F7110CECBD004EF5FD /* Movie.m4v in Resources */,
 				6A38A601110D44A5004EF5FD /* Settings.bundle in Resources */,
 				6A7145EE1123D77E0081571A /* sylvia-nick.m4v in Resources */,
+				6A7147F111268E8C0081571A /* Default.png in Resources */,
+				6A7147FD11268F7E0081571A /* ilhc-2008-dax-alice.m4v in Resources */,
+				6A7147FF11268FFC0081571A /* dax-alice-toulouse.m4v in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

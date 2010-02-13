@@ -91,8 +91,8 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 }
 
 
-
--(void)initAndPlayMovie:(DetailViewController *)theDetailViewController
+-(void)initAndPlayMovie:(DetailViewController *)theDetailViewController chapter:(NSUInteger)chapter
+//-(void)initAndPlayMovie:(DetailViewController *)theDetailViewController
 //-(void)initAndPlayMovie:(Play *)thePlay
 //-(void)initAndPlayMovie:(NSURL *)movieURL
 {
@@ -106,7 +106,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 	// return a URL for the movie file in our bundle
 		
 	// Initialize a movie player object with the specified URL
-	NSURL* movieURL = [self.play makeMovieURL:0];
+	NSURL* movieURL = [self.play makeMovieURL:chapter];
 	MPMoviePlayerController *mp = [[MPMoviePlayerController alloc] initWithContentURL:movieURL];
 	[movieURL release];
 	if (mp)
@@ -115,7 +115,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 		[self setMoviePlayerUserSettings:mp];
 		
 		// Set up tracker.
-		[self.play.tracker play:self.play.title ];
+		[self.play startTracker:chapter];
 		
 		// Play the movie!
 		[mp play];
@@ -246,8 +246,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 //  Notification called when the movie finished playing.
 - (void) moviePlayBackDidFinish:(NSNotification*)notification
 {
-	[self.play.tracker stop];
-	
+	[self.play stopTracker];
 	MPMoviePlayerController* theMovie = [notification object];
 	
 	// remove all movie notifications

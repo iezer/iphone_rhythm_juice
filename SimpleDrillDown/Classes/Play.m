@@ -49,11 +49,19 @@
 
 @implementation Play
 
-@synthesize title, instructors, chapters, tracker;
+@synthesize title, instructors, chapters, chapterTitles, tracker;
 
 -(Play*)init {
 	self.tracker = [[TimeTracker alloc] init];
 	return self;
+}
+
+-(void)startTracker:(NSUInteger)chapter {
+	[self.tracker play:[chapters objectAtIndex:chapter] ];
+}
+
+-(void)stopTracker {
+	[self.tracker stop];
 }
 
 - (void)dealloc {
@@ -64,7 +72,7 @@
 	[super dealloc];
 }
 
-- (NSURL*)makeMovieURL:(NSInteger)chapter {
+- (NSURL*)makeMovieURL:(NSUInteger)chapter {
 	NSURL* movieURL;
 	NSString* filename = [self.chapters objectAtIndex:chapter];
 	NSBundle *bundle = [NSBundle mainBundle];

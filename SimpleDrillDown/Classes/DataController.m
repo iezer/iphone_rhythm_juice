@@ -102,21 +102,39 @@
     Play *play;
     NSArray *instructors;
 	NSArray *chapters;
+	NSArray *chapterTitles;
     NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     
 	play = [[Play alloc] init];
 	play.title = @"Hand To Hand";
 	instructors = [[NSArray alloc] initWithObjects:@"Dax", @"Alice", nil];
-	chapters = [[NSArray alloc] initWithObjects:@"sylvia-nick", @"Movie", nil];
+	//chapters = [[NSArray alloc] initWithObjects:@"sylvia-nick", @"Movie", nil];
+	chapters = [[NSArray alloc] initWithObjects:@"ilhc-2008-dax-alice", @"dax-alice-toulouse", nil];
+	chapterTitles = [[NSArray alloc] initWithObjects:@"Intro", @"With Music", nil];
+	play.instructors = instructors;
+	play.chapters = chapters;
+	play.chapterTitles = chapterTitles;
+    [instructors release];
+	[chapters release];
+	[chapterTitles release];
+	[playList addObject:play];
+    [play release];
+    
+	play = [[Play alloc] init];
+	play.title = @"Groove Walk";
+	instructors = [[NSArray alloc] initWithObjects:@"Dax", @"Alice", nil];
+	//chapters = [[NSArray alloc] initWithObjects:@"sylvia-nick", @"Movie", nil];
+	chapters = [[NSArray alloc] initWithObjects:@"ilhc-2008-dax-alice", @"dax-alice-toulouse", nil];
+	chapterTitles = [[NSArray alloc] initWithObjects:@"Intro", @"With Music", nil];
     play.instructors = instructors;
 	play.chapters = chapters;
+	play.chapterTitles = chapterTitles;
 	[instructors release];
 	[chapters release];
 	[playList addObject:play];
     [play release];
-    
-
+	
     self.list = playList;
     [playList release];
     [dateComponents release];

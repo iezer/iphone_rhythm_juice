@@ -128,7 +128,7 @@
             cellText = [play.instructors objectAtIndex:indexPath.row];
             break;
         case 1:
-            cellText = [play.chapters objectAtIndex:indexPath.row];
+            cellText = [play.chapterTitles objectAtIndex:indexPath.row];
             break;
         case 2:
 			node = [play.tracker.mList objectAtIndex:indexPath.row];
@@ -176,10 +176,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
+	NSUInteger section = [indexPath indexAtPosition:0];
+	NSUInteger chapter = [indexPath indexAtPosition:1];
+	
+	if (section == 1) {
 	// initialize a new MPMoviePlayerController object with the specified URL, and
 	// play the movie
 	SimpleDrillDownAppDelegate *appDelegate = (SimpleDrillDownAppDelegate *)[[UIApplication sharedApplication] delegate];
-	[appDelegate initAndPlayMovie:self];
+		[appDelegate initAndPlayMovie:self chapter:chapter];
+	}
 }
 
 

@@ -23,10 +23,15 @@
 }
 
 - (NSString*)description {
-	NSString* ret = [NSString stringWithFormat:@"%@\nelapsed:%1.2f\n%@\n",
-					 [self.mStartDate description], 
+	NSString* date = [self.mStartDate description];
+	NSArray *listItems = [date componentsSeparatedByString:@" "];
+	NSString* ret = [NSString stringWithFormat:@"%1.2fs %@ %@", 
 					 self.mElapsed,
-					 self.mName ];
+					 [listItems objectAtIndex:0],
+					 [listItems objectAtIndex:1] ];
+					// self.mName ];
+	//[date release];
+	//[listItems release];
 	return ret;
 }
 

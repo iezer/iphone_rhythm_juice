@@ -53,13 +53,18 @@
 	NSString *title;
 	NSArray *instructors;
 	NSArray *chapters;
+	NSArray *chapterTitles;
 	TimeTracker *tracker;
 }
 
--(Play*)init;
-- (NSURL*)makeMovieURL:(NSInteger)chapter;
+- (Play*)init;
+- (NSURL*)makeMovieURL:(NSUInteger)chapter;
+- (void)startTracker:(NSUInteger)chapter;
+- (void)stopTracker;
+
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSArray *instructors;
 @property (nonatomic, retain) NSArray *chapters;
+@property (nonatomic, retain) NSArray *chapterTitles;
 @property (nonatomic, retain) TimeTracker *tracker;
 @end
