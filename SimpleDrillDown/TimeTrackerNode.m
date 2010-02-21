@@ -26,7 +26,7 @@
 	NSString* date = [self.mStartDate description];
 	NSArray *listItems = [date componentsSeparatedByString:@" "];
 	NSString* ret = [NSString stringWithFormat:@"%1.2fs %@ %@", 
-					 self.mElapsed,
+					 self.mElapsed - 1.5,
 					 [listItems objectAtIndex:0],
 					 [listItems objectAtIndex:1] ];
 					// self.mName ];

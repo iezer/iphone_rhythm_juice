@@ -28,6 +28,7 @@
 		6A7147F111268E8C0081571A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7147F011268E8C0081571A /* Default.png */; };
 		6A7147FD11268F7E0081571A /* ilhc-2008-dax-alice.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 6A7147FC11268F7E0081571A /* ilhc-2008-dax-alice.m4v */; };
 		6A7147FF11268FFC0081571A /* dax-alice-toulouse.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 6A7147FE11268FFC0081571A /* dax-alice-toulouse.m4v */; };
+		6A71482E11298A7A0081571A /* alhc-2008-dax-alice.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 6A71482D11298A7A0081571A /* alhc-2008-dax-alice.m4v */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		6A7147F011268E8C0081571A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		6A7147FC11268F7E0081571A /* ilhc-2008-dax-alice.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ilhc-2008-dax-alice.m4v"; sourceTree = "<group>"; };
 		6A7147FE11268FFC0081571A /* dax-alice-toulouse.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dax-alice-toulouse.m4v"; sourceTree = "<group>"; };
+		6A71482D11298A7A0081571A /* alhc-2008-dax-alice.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "alhc-2008-dax-alice.m4v"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,6 +147,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6A71482D11298A7A0081571A /* alhc-2008-dax-alice.m4v */,
 				6A7147FE11268FFC0081571A /* dax-alice-toulouse.m4v */,
 				6A7147F011268E8C0081571A /* Default.png */,
 				6A7147FC11268F7E0081571A /* ilhc-2008-dax-alice.m4v */,
@@ -228,6 +231,7 @@
 				6A7147F111268E8C0081571A /* Default.png in Resources */,
 				6A7147FD11268F7E0081571A /* ilhc-2008-dax-alice.m4v in Resources */,
 				6A7147FF11268FFC0081571A /* dax-alice-toulouse.m4v in Resources */,
+				6A71482E11298A7A0081571A /* alhc-2008-dax-alice.m4v in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

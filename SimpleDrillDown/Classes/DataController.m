@@ -110,7 +110,7 @@
 	play.title = @"Hand To Hand";
 	instructors = [[NSArray alloc] initWithObjects:@"Dax", @"Alice", nil];
 	//chapters = [[NSArray alloc] initWithObjects:@"sylvia-nick", @"Movie", nil];
-	chapters = [[NSArray alloc] initWithObjects:@"ilhc-2008-dax-alice", @"dax-alice-toulouse", nil];
+	chapters = [[NSArray alloc] initWithObjects:@"alhc-2008-dax-alice", @"dax-alice-toulouse", nil];
 	chapterTitles = [[NSArray alloc] initWithObjects:@"Intro", @"With Music", nil];
 	play.instructors = instructors;
 	play.chapters = chapters;
@@ -125,7 +125,7 @@
 	play.title = @"Groove Walk";
 	instructors = [[NSArray alloc] initWithObjects:@"Dax", @"Alice", nil];
 	//chapters = [[NSArray alloc] initWithObjects:@"sylvia-nick", @"Movie", nil];
-	chapters = [[NSArray alloc] initWithObjects:@"ilhc-2008-dax-alice", @"dax-alice-toulouse", nil];
+	chapters = [[NSArray alloc] initWithObjects:@"alhc-2008-dax-alice", @"dax-alice-toulouse", nil];
 	chapterTitles = [[NSArray alloc] initWithObjects:@"Intro", @"With Music", nil];
     play.instructors = instructors;
 	play.chapters = chapters;
