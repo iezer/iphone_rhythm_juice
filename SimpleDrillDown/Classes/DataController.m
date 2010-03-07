@@ -68,6 +68,13 @@
     return self;
 }
 
+- (id)init:(NSDictionary *)data {
+    if (self = [super init]) {
+        [self createDataFromRequest:data];
+    }
+    return self;
+}
+
 // Custom set accessor to ensure the new list is mutable
 - (void)setList:(NSMutableArray *)newList {
     if (list != newList) {
@@ -140,5 +147,43 @@
     [dateComponents release];
     [calendar release];
 }
+
+- (void)createDataFromRequest:(NSDictionary *)data {
+    
+    /*
+     Create an array containing some demonstration data.
+     Each data item is a Play that contains information about a play -- its list of characters, its genre, and its year of publication.  Typically the data would be comprised of instances of custom classes rather than dictionaries, but using dictionaries means fewer distractions in the example.
+     */
+	
+	NSDictionary* user = [data objectForKey:@"RJ User"];
+    NSArray* lessons = [user objectForKey:@"Lessons"];
+    
+    NSMutableArray *playList = [[NSMutableArray alloc] init];
+
+	for(NSDictionary* lesson in lessons) {
+		Play *play = [[Play alloc] init];
+		
+		play.title = [lesson objectForKey:@"Title"];
+		NSArray *instructors = [lesson objectForKey:@"Instructors"];
+		NSArray *chapters = [lesson objectForKey:@"Chapter Paths"];
+		NSArray *chapterTitles = [lesson objectForKey:@"Chapter Titles"];
+		
+		play.instructors = instructors;
+		play.chapters = chapters;
+		play.chapterTitles = chapterTitles;
+
+		[instructors release];
+		[chapters release];
+		[chapterTitles release];
+		[playList addObject:play];
+		[play release];
+	}
+	
+    self.list = playList;
+    [playList release];
+	//[lessons release];
+	//[user release];
+}
+
 
 @end

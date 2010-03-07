@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>RJ User</key>
+	<dict>
+		<key>Username</key>
+		<string>isaacezer</string>
+		<key>First Name</key>
+		<string>Isaac</string>
+		<key>Last Name</key>
+		<string>Ezer</string>
+		<key>Premium</key>
+		<true/>
+		<key>Subscription End</key>
+		<date>2010-03-31T15:00:00Z</date>
+		<key>Lessons</key>
+		<array>
+			<dict>
+				<key>Title</key>
+				<string>Hand To Hand</string>
+				<key>Premium</key>
+				<true/>
+				<key>Instructors</key>
+				<array>
+					<string>Dax Hock</string>
+					<string>Alice Mei</string>
+				</array>
+				<key>Chapter Paths</key>
+				<array>
+					<string>http://localhost/rj/dax-alice-toulouse.m4v</string>
+					<string>http://localhost/rj/alhc-2008-dax-alice.m4</string>
+				</array>
+				<key>Chapter Titles</key>
+				<array>
+					<string>Hand To Hand</string>
+					<string>Slip Slop Shim Sham</string>
+				</array>
+			</dict>
+			<dict>
+				<key>Title</key>
+				<string>Texas Tommy</string>
+				<key>Premium</key>
+				<false/>
+				<key>Instructors</key>
+				<array>
+					<string>Dax Hock</string>
+					<string>Alice Mei</string>
+				</array>
+				<key>Chapter Paths</key>
+				<array>
+					<string>http://localhost/rj/dax-alice-toulouse.m4v</string>
+					<string>http://localhost/rj/alhc-2008-dax-alice.m4</string>
+				</array>
+				<key>Chapter Titles</key>
+				<array>
+					<string>Hand To Hand</string>
+					<string>Slip Slop Shim Sham</string>
+				</array>
+			</dict>
+		</array>
+	</dict>
+</dict>
+</plist>

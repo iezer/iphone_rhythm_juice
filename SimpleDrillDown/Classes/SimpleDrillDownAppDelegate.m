@@ -62,14 +62,44 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 @synthesize navigationController;
 @synthesize rootViewController;
 @synthesize dataController;
-//@synthesize moviePlayer;
 @synthesize play;
 @synthesize detailViewController;
+@synthesize receivedData;
+@synthesize userData;
 
-- (void)applicationDidFinishLaunching:(UIApplication *)application {
-    
-    // Create the data controller.
-    DataController *controller = [[DataController alloc] init];
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    // this method is called when the server has determined that it	
+    // has enough information to create the NSURLResponse
+    // it can be called multiple times, for example in the case of a
+    // redirect, so each time we reset the data.
+    // receivedData is declared as a method instance elsewhere
+    [receivedData setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    // append the new data to the receivedData	
+    // receivedData is declared as a method instance elsewhere
+    [receivedData appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    // do something with the data
+    // receivedData is declared as a method instance elsewhere
+    NSLog(@"Succeeded! Received %d bytes of data",[receivedData length]);
+    // release the connection, and the data object
+	
+	//NSDictionary* rjUserData = [[NSDictionary alloc] initWithData:receivedData];
+	NSDictionary *rjUserData = [NSPropertyListSerialization propertyListFromData:receivedData mutabilityOption:NSPropertyListImmutable format:nil errorDescription:nil];
+
+	self.userData = rjUserData;
+	[rjUserData release];
+	
+	// Create the data controller.
+    //DataController *controller = [[DataController alloc] init];
+	DataController *controller = [[DataController alloc] init:self.userData];
     self.dataController = controller;
     [controller release];
     
@@ -82,10 +112,34 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     [window addSubview:[navigationController view]];
     [window makeKeyAndVisible];
 	
-	
-	
+    [receivedData release];	
+	//[connection release];
+}
 
+- (void)getRequest {
+    // create the request
+	NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost/rj/userdata.plist"]
+											  cachePolicy:NSURLRequestUseProtocolCachePolicy
+										  timeoutInterval:60.0];
 	
+	// create the connection with the request
+	// and start loading the data
+	NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+	
+	if (theConnection) {
+		// Create the NSMutableData that will hold
+		// the received data
+		// receivedData is declared as a method instance elsewhere
+		receivedData=[[NSMutableData data] retain];
+	} else {
+		// inform the user that the download could not be made
+	}
+}
+
+- (void)applicationDidFinishLaunching:(UIApplication *)application {
+	
+	[self getRequest];
+
 	//self.tracker = [[TimeTracker alloc] init];
 	
 }

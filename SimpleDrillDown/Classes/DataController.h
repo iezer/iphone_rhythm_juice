@@ -55,4 +55,7 @@
 - (unsigned)countOfList;
 - (Play *)objectInListAtIndex:(unsigned)theIndex;
 
+- (id)init:(NSDictionary *)data;
+- (void)createDataFromRequest:(NSDictionary *)data;
+
 @end

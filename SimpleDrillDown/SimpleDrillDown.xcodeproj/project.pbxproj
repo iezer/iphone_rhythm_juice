@@ -29,6 +29,7 @@
 		6A7147FD11268F7E0081571A /* ilhc-2008-dax-alice.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 6A7147FC11268F7E0081571A /* ilhc-2008-dax-alice.m4v */; };
 		6A7147FF11268FFC0081571A /* dax-alice-toulouse.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 6A7147FE11268FFC0081571A /* dax-alice-toulouse.m4v */; };
 		6A71482E11298A7A0081571A /* alhc-2008-dax-alice.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 6A71482D11298A7A0081571A /* alhc-2008-dax-alice.m4v */; };
+		6AB292CC114397DF00C2DECF /* userdata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6AB292CB114397DF00C2DECF /* userdata.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		6A7147FC11268F7E0081571A /* ilhc-2008-dax-alice.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ilhc-2008-dax-alice.m4v"; sourceTree = "<group>"; };
 		6A7147FE11268FFC0081571A /* dax-alice-toulouse.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dax-alice-toulouse.m4v"; sourceTree = "<group>"; };
 		6A71482D11298A7A0081571A /* alhc-2008-dax-alice.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "alhc-2008-dax-alice.m4v"; sourceTree = "<group>"; };
+		6AB292CB114397DF00C2DECF /* userdata.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = userdata.plist; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +108,7 @@
 		282669B30FAA0402007D4074 /* Data Management */ = {
 			isa = PBXGroup;
 			children = (
+				28348A850E1D400D009134BC /* DataController.m */,
 				6A38A5B3110D41CB004EF5FD /* TimeTracker.h */,
 				6A38A5B4110D41CB004EF5FD /* TimeTracker.m */,
 				6A38A5B5110D41CB004EF5FD /* TimeTrackerNode.h */,
@@ -113,7 +116,6 @@
 				1D3623240D0F684500981E51 /* SimpleDrillDownAppDelegate.h */,
 				1D3623250D0F684500981E51 /* SimpleDrillDownAppDelegate.m */,
 				28348A840E1D400D009134BC /* DataController.h */,
-				28348A850E1D400D009134BC /* DataController.m */,
 				282669840FA9FED7007D4074 /* Play.h */,
 				282669850FA9FED7007D4074 /* Play.m */,
 			);
@@ -158,6 +160,7 @@
 				28554E2B0DAC293600168C19 /* Icon.png */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				2846CFC60DBFDD18009410C2 /* Localizable.strings */,
+				6AB292CB114397DF00C2DECF /* userdata.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				6A7147FD11268F7E0081571A /* ilhc-2008-dax-alice.m4v in Resources */,
 				6A7147FF11268FFC0081571A /* dax-alice-toulouse.m4v in Resources */,
 				6A71482E11298A7A0081571A /* alhc-2008-dax-alice.m4v in Resources */,
+				6AB292CC114397DF00C2DECF /* userdata.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
