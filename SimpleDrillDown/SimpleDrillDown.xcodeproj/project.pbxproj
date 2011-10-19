@@ -24,8 +24,6 @@
 		6A38A601110D44A5004EF5FD /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6A38A600110D44A5004EF5FD /* Settings.bundle */; };
 		6A38A70B110DF8AD004EF5FD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A38A70A110DF8AD004EF5FD /* MediaPlayer.framework */; };
 		6A6993F7144DCF1C0003434C /* CustomMoviePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6993F2144DCF1C0003434C /* CustomMoviePlayerViewController.m */; };
-		6A6993F8144DCF1C0003434C /* TestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6993F4144DCF1C0003434C /* TestAppDelegate.m */; };
-		6A6993F9144DCF1C0003434C /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6993F6144DCF1C0003434C /* TestViewController.m */; };
 		6A7145691123C5F00081571A /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */; };
 		6A7145EE1123D77E0081571A /* sylvia-nick.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 6A7145ED1123D77E0081571A /* sylvia-nick.m4v */; };
 		6A7147F111268E8C0081571A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7147F011268E8C0081571A /* Default.png */; };
@@ -64,12 +62,8 @@
 		6A38A600110D44A5004EF5FD /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		6A38A613110D45C8004EF5FD /* MoviePlayer_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviePlayer_Prefix.pch; sourceTree = "<group>"; };
 		6A38A70A110DF8AD004EF5FD /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		6A6993F1144DCF1C0003434C /* CustomMoviePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomMoviePlayerViewController.h; sourceTree = "<group>"; };
-		6A6993F2144DCF1C0003434C /* CustomMoviePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomMoviePlayerViewController.m; sourceTree = "<group>"; };
-		6A6993F3144DCF1C0003434C /* TestAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestAppDelegate.h; sourceTree = "<group>"; };
-		6A6993F4144DCF1C0003434C /* TestAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestAppDelegate.m; sourceTree = "<group>"; };
-		6A6993F5144DCF1C0003434C /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
-		6A6993F6144DCF1C0003434C /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		6A6993F1144DCF1C0003434C /* CustomMoviePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomMoviePlayerViewController.h; path = Classes/CustomMoviePlayerViewController.h; sourceTree = "<group>"; };
+		6A6993F2144DCF1C0003434C /* CustomMoviePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomMoviePlayerViewController.m; path = Classes/CustomMoviePlayerViewController.m; sourceTree = "<group>"; };
 		6A7145ED1123D77E0081571A /* sylvia-nick.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sylvia-nick.m4v"; sourceTree = "<group>"; };
 		6A7147F011268E8C0081571A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		6A7147FC11268F7E0081571A /* ilhc-2008-dax-alice.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ilhc-2008-dax-alice.m4v"; sourceTree = "<group>"; };
@@ -97,7 +91,8 @@
 		080E96DDFE201D6D7F000001 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				6A6993F0144DCF1C0003434C /* Classes */,
+				6A6993F1144DCF1C0003434C /* CustomMoviePlayerViewController.h */,
+				6A6993F2144DCF1C0003434C /* CustomMoviePlayerViewController.m */,
 				28F25CCA0D64C1EB00158CCD /* DetailViewController.h */,
 				28F25CCB0D64C1EB00158CCD /* DetailViewController.m */,
 				282DE87A0D999CA700F5050D /* RootViewController.h */,
@@ -186,19 +181,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		6A6993F0144DCF1C0003434C /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				6A6993F1144DCF1C0003434C /* CustomMoviePlayerViewController.h */,
-				6A6993F2144DCF1C0003434C /* CustomMoviePlayerViewController.m */,
-				6A6993F3144DCF1C0003434C /* TestAppDelegate.h */,
-				6A6993F4144DCF1C0003434C /* TestAppDelegate.m */,
-				6A6993F5144DCF1C0003434C /* TestViewController.h */,
-				6A6993F6144DCF1C0003434C /* TestViewController.m */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -282,8 +264,6 @@
 				6A38A5BA110D41CC004EF5FD /* TimeTrackerNode.m in Sources */,
 				6A7145691123C5F00081571A /* DetailViewController.m in Sources */,
 				6A6993F7144DCF1C0003434C /* CustomMoviePlayerViewController.m in Sources */,
-				6A6993F8144DCF1C0003434C /* TestAppDelegate.m in Sources */,
-				6A6993F9144DCF1C0003434C /* TestViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

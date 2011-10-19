@@ -1,7 +1,7 @@
 /*
-     File: DetailViewController.m
+ File: DetailViewController.m
  Abstract: Creates a grouped table view to act as an inspector.
-  Version: 2.7
+ Version: 2.7
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -175,36 +175,19 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    
 	NSUInteger section = [indexPath indexAtPosition:0];
 	NSUInteger chapter = [indexPath indexAtPosition:1];
 	
 	if (section == 1) {
-	// initialize a new MPMoviePlayerController object with the specified URL, and
-	// play the movie
-	//SimpleDrillDownAppDelegate *appDelegate = (SimpleDrillDownAppDelegate *)[[UIApplication sharedApplication] delegate];
-//		[appDelegate initAndPlayMovie:self chapter:chapter];
-	
-        NSString* filename = [self.play makeMovieURL:chapter];
-        
-        // Play movie from the bundle  TODO handle null meaning no file, TODO use preferences folder.
-        NSString *path = [[NSBundle mainBundle] pathForResource:filename ofType:@"mp4"];
-   
-        NSURL *movieURL = [NSURL URLWithString:filename];
-
-        
-        //[self loadMoviePlayer:moviePath];
-        
         // Create custom movie player   
-        moviePlayer = [[[CustomMoviePlayerViewController alloc] initWithURL:movieURL] autorelease];
+        moviePlayer = [[[CustomMoviePlayerViewController alloc] initWithPlay:play chapterIndex:chapter] autorelease];
         
         // Show the movie player as modal
         [self presentModalViewController:moviePlayer animated:YES];
         
         // Prep and play the movie
         [moviePlayer readyPlayer];   
-        
-    
     }
 }
 
@@ -213,7 +196,7 @@
  *--------------------------------------------------------------------------*/
 - (void)loadMoviePlayer:(NSString *)url
 {  
- 
+    
 }
 
 

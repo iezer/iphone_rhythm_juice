@@ -76,14 +76,9 @@
 @property (nonatomic, retain) NSDictionary *userData;
 
 
--(void)initAndPlayMovie:(DetailViewController *)theDetailViewController chapter:(NSUInteger)chapter;
--(void)setMoviePlayerUserSettings:(MPMoviePlayerController *)moviePlayer;
-
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection;
 - (void)getRequest;
-
-- (void) moviePlayerLoadStateChanged:(NSNotification*)notification;
 
 @end
