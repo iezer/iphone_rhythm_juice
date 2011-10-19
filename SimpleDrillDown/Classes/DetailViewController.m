@@ -182,9 +182,38 @@
 	if (section == 1) {
 	// initialize a new MPMoviePlayerController object with the specified URL, and
 	// play the movie
-	SimpleDrillDownAppDelegate *appDelegate = (SimpleDrillDownAppDelegate *)[[UIApplication sharedApplication] delegate];
-		[appDelegate initAndPlayMovie:self chapter:chapter];
-	}
+	//SimpleDrillDownAppDelegate *appDelegate = (SimpleDrillDownAppDelegate *)[[UIApplication sharedApplication] delegate];
+//		[appDelegate initAndPlayMovie:self chapter:chapter];
+	
+        NSString* filename = [self.play makeMovieURL:chapter];
+        
+        // Play movie from the bundle  TODO handle null meaning no file, TODO use preferences folder.
+        NSString *path = [[NSBundle mainBundle] pathForResource:filename ofType:@"mp4"];
+   
+        NSURL *movieURL = [NSURL URLWithString:filename];
+
+        
+        //[self loadMoviePlayer:moviePath];
+        
+        // Create custom movie player   
+        moviePlayer = [[[CustomMoviePlayerViewController alloc] initWithURL:movieURL] autorelease];
+        
+        // Show the movie player as modal
+        [self presentModalViewController:moviePlayer animated:YES];
+        
+        // Prep and play the movie
+        [moviePlayer readyPlayer];   
+        
+    
+    }
+}
+
+/*---------------------------------------------------------------------------
+ * 
+ *--------------------------------------------------------------------------*/
+- (void)loadMoviePlayer:(NSString *)url
+{  
+ 
 }
 
 

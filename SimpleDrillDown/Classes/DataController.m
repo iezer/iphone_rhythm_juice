@@ -139,6 +139,7 @@
 	play.chapterTitles = chapterTitles;
 	[instructors release];
 	[chapters release];
+    [chapterTitles release];
 	[playList addObject:play];
     [play release];
 	
@@ -172,9 +173,6 @@
 		play.chapters = chapters;
 		play.chapterTitles = chapterTitles;
 
-		[instructors release];
-		[chapters release];
-		[chapterTitles release];
 		[playList addObject:play];
 		[play release];
 	}

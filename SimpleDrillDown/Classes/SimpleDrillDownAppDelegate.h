@@ -84,4 +84,6 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection;
 - (void)getRequest;
 
+- (void) moviePlayerLoadStateChanged:(NSNotification*)notification;
+
 @end

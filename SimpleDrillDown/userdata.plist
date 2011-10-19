@@ -29,7 +29,7 @@
 				<key>Chapter Paths</key>
 				<array>
 					<string>http://localhost/rj/dax-alice-toulouse.m4v</string>
-					<string>http://localhost/rj/alhc-2008-dax-alice.m4</string>
+					<string>http://localhost/rj/alhc-2008-dax-alice.m4v</string>
 				</array>
 				<key>Chapter Titles</key>
 				<array>
@@ -50,7 +50,7 @@
 				<key>Chapter Paths</key>
 				<array>
 					<string>http://localhost/rj/dax-alice-toulouse.m4v</string>
-					<string>http://localhost/rj/alhc-2008-dax-alice.m4</string>
+					<string>http://localhost/rj/alhc-2008-dax-alice.m4v</string>
 				</array>
 				<key>Chapter Titles</key>
 				<array>

@@ -95,7 +95,6 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 	NSDictionary *rjUserData = [NSPropertyListSerialization propertyListFromData:receivedData mutabilityOption:NSPropertyListImmutable format:nil errorDescription:nil];
 
 	self.userData = rjUserData;
-	[rjUserData release];
 	
 	// Create the data controller.
     //DataController *controller = [[DataController alloc] init];

@@ -26,7 +26,6 @@
 	NSTimeInterval elapsed = [NSDate timeIntervalSinceReferenceDate] - mStart;
 	TimeTrackerNode* node = [[TimeTrackerNode alloc] initWithName:mName elapsed:elapsed starting:mStartDate];
 	[mList addObject:node];
-	[self.mStartDate release];
 	self.mStartDate = nil;
 	[self.mName release];
 	self.mName = nil;

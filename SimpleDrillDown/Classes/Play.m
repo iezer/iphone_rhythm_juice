@@ -72,20 +72,9 @@
 	[super dealloc];
 }
 
-- (NSURL*)makeMovieURL:(NSUInteger)chapter {
-	NSURL* movieURL;
-	NSString* filename = [self.chapters objectAtIndex:chapter];
-	NSBundle *bundle = [NSBundle mainBundle];
-	if (bundle) 
-	{
-		NSString *moviePath = [bundle pathForResource:filename ofType:@"m4v"];
-		if (moviePath)
-		{
-			movieURL = [NSURL fileURLWithPath:moviePath];
-		}
-	}
-	[filename release];
-	return movieURL;
+- (NSString*)makeMovieURL:(NSUInteger)chapter {
+	return [self.chapters objectAtIndex:chapter];
 }
+
 
 @end

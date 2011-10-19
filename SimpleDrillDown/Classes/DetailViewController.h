@@ -46,11 +46,15 @@
  */
 
 @class Play;
+@class CustomMoviePlayerViewController;
 
 @interface DetailViewController : UITableViewController {
 	Play *play;
+    CustomMoviePlayerViewController *moviePlayer;
 }
 
 @property (nonatomic, retain) Play *play;
+
+-(void)loadMoviePlayer:(NSURL *)url;
 
 @end
