@@ -23,7 +23,7 @@
         [play retain];
         
         chapterIndex = chapter;
-        movieURL = [NSURL URLWithString:[self->play makeMovieURL:chapter]];
+        movieURL = [self->play makeMovieURL:chapter];
         [movieURL retain];
     }
 	return self;

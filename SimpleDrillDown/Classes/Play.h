@@ -58,7 +58,7 @@
 }
 
 - (Play*)init;
-- (NSString*)makeMovieURL:(NSUInteger)chapter;
+- (NSURL*)makeMovieURL:(NSUInteger)chapter;
 - (void)startTracker:(NSUInteger)chapter;
 - (void)stopTracker;
 

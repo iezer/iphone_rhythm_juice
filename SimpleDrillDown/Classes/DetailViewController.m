@@ -49,6 +49,7 @@
 #import "Play.h"
 #import "SimpleDrillDownAppDelegate.h"
 #import "TimeTrackerNode.h"
+#import "CustomMoviePlayerViewController.h"
 
 @implementation DetailViewController
 

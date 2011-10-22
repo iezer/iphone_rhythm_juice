@@ -72,8 +72,43 @@
 	[super dealloc];
 }
 
-- (NSString*)makeMovieURL:(NSUInteger)chapter {
-	return [self.chapters objectAtIndex:chapter];
+- (NSURL*)makeMovieURL:(NSUInteger)chapter {
+    
+    NSFileManager *     fileManager;
+    fileManager = [NSFileManager defaultManager];
+    assert(fileManager != nil);
+    
+    NSString* chapter_remote_path = [self.chapters objectAtIndex:chapter];
+    NSURL* chapter_remote_url = [NSURL URLWithString:chapter_remote_path];
+    
+    NSString* filename = [chapter_remote_url lastPathComponent];
+    
+    NSString *document_folder_path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSString *lessons_folder_path = [document_folder_path stringByAppendingPathComponent:@"lessons"]; 
+    NSString *this_lesson_folder_path = [lessons_folder_path stringByAppendingPathComponent:self.title];
+    
+    NSError *error;
+    BOOL isDir;
+    if (([fileManager fileExistsAtPath:this_lesson_folder_path isDirectory:&isDir] && isDir) == FALSE) {
+        [[NSFileManager defaultManager] createDirectoryAtURL: [NSURL fileURLWithPath:this_lesson_folder_path] withIntermediateDirectories:true attributes:nil error:&error];
+    }
+    
+    NSString* chapter_local_path = [this_lesson_folder_path stringByAppendingPathComponent:filename];
+    
+    if ( ! [fileManager fileExistsAtPath:chapter_local_path]) {
+        NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
+        [request setHTTPMethod:@"GET"];
+        NSURLResponse *response;
+        
+        NSData *urlData;
+        [request setURL:chapter_remote_url];
+        urlData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+        BOOL written = [urlData writeToFile:chapter_local_path atomically:NO];
+        if (written)
+            NSLog(@"Saved to file: %@", chapter_local_path);
+    }
+    
+    return [NSURL fileURLWithPath:chapter_local_path];
 }
 
 
