@@ -99,9 +99,15 @@
     }
     
     // Get the object to display and set the value in the cell.
-    Lesson *playAtIndex = [dataController objectInListAtIndex:indexPath.row];
-    cell.textLabel.text = playAtIndex.title;
-    cell.detailTextLabel.text = [playAtIndex isDownloadedLocally] ? @"downloaded locally" : @"not downloaded";
+    Lesson *lesson = [dataController objectInListAtIndex:indexPath.row];
+    cell.textLabel.text = lesson.title;
+   // cell.detailTextLabel.text = [] ? @"downloaded locally" : @"not downloaded";
+
+    NSString* premium = [lesson premium] ? @"premium - " : @"";
+    NSString* downloaded = [lesson isDownloadedLocally] ? @"downloaded locally" : @"not downloaded";
+    NSString* subTitle = [[NSString alloc] initWithFormat:@"%@%@",premium,downloaded];
+    cell.detailTextLabel.text = subTitle;
+    [subTitle release];
     return cell;
 }
 

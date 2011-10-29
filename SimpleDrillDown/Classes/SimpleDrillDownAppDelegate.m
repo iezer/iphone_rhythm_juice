@@ -96,7 +96,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     [self loadAppWithRJUserData:rjUserData saveToFile:true];
     
     [receivedData release];	
-	//[connection release];
+	[connection release];
 }
 
 - (void)loadAppWithRJUserData:(NSDictionary *)rjUserData saveToFile:(Boolean)save_to_file
@@ -150,7 +150,6 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 		// the received data
 		// receivedData is declared as a method instance elsewhere
 		receivedData=[[NSMutableData data] retain];
-        [theConnection release];
 	} else {
 		// inform the user that the download could not be made
 	}

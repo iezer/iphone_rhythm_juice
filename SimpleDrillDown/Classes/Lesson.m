@@ -70,8 +70,6 @@
         NSString *lessons_folder_path = [document_folder_path stringByAppendingPathComponent:@"lessons"]; 
         
         self.lessonFolderPath = [lessons_folder_path stringByAppendingPathComponent:self.title];
-        
-        NSLog(@"lesson %@ retain count %d", self.title, [self.lessonFolderPath retainCount]);
     }
     return self;
 }
@@ -89,6 +87,7 @@
 	[instructors release];
 	[chapters release];
 	[tracker release];
+    [lessonFolderPath release];
 	[super dealloc];
 }
 
