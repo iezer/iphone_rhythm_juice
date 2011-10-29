@@ -30,8 +30,6 @@
 					 [listItems objectAtIndex:0],
 					 [listItems objectAtIndex:1] ];
 					// self.mName ];
-	//[date release];
-	//[listItems release];
 	return ret;
 }
 

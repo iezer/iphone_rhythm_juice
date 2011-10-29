@@ -12,7 +12,7 @@
 {
     MPMoviePlayerController *mp;
     NSURL *movieURL;
-    Lesson *play;
+    Lesson *lesson;
     NSInteger chapterIndex;
 }
 

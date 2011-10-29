@@ -17,7 +17,7 @@
 		<key>Subscription End</key>
 		<date>2010-03-31T15:00:00Z</date>
 		<key>Allowed Offline Lessons</key>
-		<integer>0</integer>
+		<integer>1</integer>
 		<key>Lessons</key>
 		<array>
 			<dict>

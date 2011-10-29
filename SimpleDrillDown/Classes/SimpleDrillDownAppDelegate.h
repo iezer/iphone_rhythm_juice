@@ -87,6 +87,6 @@
 - (void)getRequest:(NSString *)url;
 - (Boolean)isAuthenticated:(NSDictionary *)rjUserData;
 - (void)loadAppWithRJUserData:(NSDictionary *)rjUserData saveToFile:(Boolean)save_to_file;
-- (void)cleanDiskOfUneededVideos;
+//- (void)cleanDiskOfUneededVideos;
 
 @end

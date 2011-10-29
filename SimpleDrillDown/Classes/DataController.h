@@ -47,13 +47,11 @@
  */
 
 @class Lesson;
+@class User;
 
 @interface DataController : NSObject {
-    NSMutableArray *list;
-    NSInteger allowedDownloads; // -1 means unlimited
+    User* user;
 }
-
-@property NSInteger allowedDownloads;
 
 - (unsigned)countOfList;
 - (Lesson *)objectInListAtIndex:(unsigned)theIndex;
@@ -63,5 +61,11 @@
 
 - (Boolean)canWatchLesson:(Lesson*)lesson;
 - (NSInteger)numberOfDownloadedLessons;
+
+- (NSMutableArray*) list;
+
+- (NSInteger) allowedDownloads; // -1 means unlimited
+
+- (Boolean)expired:(Lesson*)lesson;
 
 @end

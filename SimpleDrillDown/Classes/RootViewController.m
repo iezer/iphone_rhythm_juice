@@ -117,9 +117,8 @@
     DetailViewController *detailViewController = [[DetailViewController alloc] initWithStyle:UITableViewStyleGrouped];
     
     Lesson* lesson = [dataController objectInListAtIndex:indexPath.row];
-    detailViewController.play = lesson;
-    detailViewController.allowedDownloads = [dataController allowedDownloads];
-    detailViewController.canWatchLesson = [dataController canWatchLesson:lesson];
+    detailViewController.lesson = lesson;
+    detailViewController.dataController = dataController;
     
     // Push the detail view controller.
     [[self navigationController] pushViewController:detailViewController animated:YES];

@@ -1,7 +1,7 @@
 /*
-     File: Play.m
+ File: Play.m
  Abstract: A simple class to represent information about a play.
-  Version: 2.7
+ Version: 2.7
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -49,11 +49,31 @@
 
 @implementation Lesson
 
-@synthesize title, instructors, chapters, chapterTitles, tracker, premium, markedForOfflineViewing;
+@synthesize title, instructors, chapters, chapterTitles, tracker, premium, lessonFolderPath;
 
--(Lesson*)init {
-	self.tracker = [[TimeTracker alloc] init];
-	return self;
+- (Lesson*)init:(NSString*)_title instructors:(NSArray*)_instructors chapters:(NSArray*)_chapters chapterTitles:(NSArray*)_chapterTitles premium:(Boolean)_premium {
+    self = [super init];
+    if (self != nil)
+    {
+        self.title = _title;
+        self.instructors = _instructors;
+        self.chapters = _chapters;
+        self.chapterTitles = _chapterTitles;
+        self.premium = _premium;
+        self.tracker = [[TimeTracker alloc] init];
+        
+        NSFileManager *     fileManager;
+        fileManager = [NSFileManager defaultManager];
+        assert(fileManager != nil);
+        
+        NSString *document_folder_path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+        NSString *lessons_folder_path = [document_folder_path stringByAppendingPathComponent:@"lessons"]; 
+        
+        self.lessonFolderPath = [lessons_folder_path stringByAppendingPathComponent:self.title];
+        
+        NSLog(@"lesson %@ retain count %d", self.title, [self.lessonFolderPath retainCount]);
+    }
+    return self;
 }
 
 -(void)startTracker:(NSUInteger)chapter {
@@ -72,27 +92,13 @@
 	[super dealloc];
 }
 
-- (NSString*)getLessonFolder
-{
-    NSFileManager *     fileManager;
-    fileManager = [NSFileManager defaultManager];
-    assert(fileManager != nil);
-    
-    NSString *document_folder_path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
-    NSString *lessons_folder_path = [document_folder_path stringByAppendingPathComponent:@"lessons"]; 
-    NSString *this_lesson_folder_path = [lessons_folder_path stringByAppendingPathComponent:self.title];
-    
-    return this_lesson_folder_path;
-}
-
 - (NSString*)getChapterLocalPath:(NSInteger)chapter
 {
     NSString* chapter_remote_path = [self.chapters objectAtIndex:chapter];
     NSURL* chapter_remote_url = [NSURL URLWithString:chapter_remote_path];
     
     NSString* filename = [chapter_remote_url lastPathComponent];
-    NSString* this_lesson_folder_path = [self getLessonFolder];
-    NSString* chapter_local_path = [this_lesson_folder_path stringByAppendingPathComponent:filename];
+    NSString* chapter_local_path = [lessonFolderPath stringByAppendingPathComponent:filename];
     return chapter_local_path;
 }
 
@@ -102,9 +108,8 @@
     fileManager = [NSFileManager defaultManager];
     assert(fileManager != nil);
     
-    NSString *this_lesson_folder_path = [self getLessonFolder];
     BOOL isDir;
-    return ([fileManager fileExistsAtPath:this_lesson_folder_path isDirectory:&isDir] && isDir);
+    return ([fileManager fileExistsAtPath:lessonFolderPath isDirectory:&isDir] && isDir);
 }
 
 
@@ -123,14 +128,12 @@
     fileManager = [NSFileManager defaultManager];
     assert(fileManager != nil);
     
-    NSString *this_lesson_folder_path = [self getLessonFolder];
-    
     NSError *error;
     if ( [self isDownloadedLocally] ) {
-        [[NSFileManager defaultManager] removeItemAtPath:this_lesson_folder_path error:&error];
+        [[NSFileManager defaultManager] removeItemAtPath:lessonFolderPath error:&error];
     }
 }
-    
+
 - (NSURL*)getMovieFile:(NSUInteger)chapter {
     
     NSFileManager *     fileManager;
@@ -140,11 +143,9 @@
     NSString* chapter_remote_path = [self.chapters objectAtIndex:chapter];
     NSURL* chapter_remote_url = [NSURL URLWithString:chapter_remote_path];
     
-    NSString *this_lesson_folder_path = [self getLessonFolder];
-    
     NSError *error;
     if ( ! [self isDownloadedLocally] ) {
-        [[NSFileManager defaultManager] createDirectoryAtURL: [NSURL fileURLWithPath:this_lesson_folder_path] withIntermediateDirectories:true attributes:nil error:&error];
+        [[NSFileManager defaultManager] createDirectoryAtURL: [NSURL fileURLWithPath:lessonFolderPath] withIntermediateDirectories:true attributes:nil error:&error];
     }
     
     NSString* chapter_local_path = [self getChapterLocalPath:chapter];

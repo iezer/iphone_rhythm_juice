@@ -10,15 +10,21 @@
 
 @interface User : NSObject {
 
-    NSString* firstName;
-    NSString* lastName;
     NSString* username;
     NSDate* subscriptionEndDate;
     Boolean premium;
     Boolean authenticated;
-    Boolean unlimited;
     NSMutableArray* lessons;
     NSInteger allowedOfflineLessons;
 }
+
+- (User*)init:(NSString*)_username subscriptionEndDate:(NSDate*)_subscriptionEndDate premium:(Boolean)premium authenticated:(Boolean)_authenticated lessons:(NSMutableArray*)_lessons allowedOfflineLessons:(NSInteger)_allowedOfflineLessons;
+
+@property (nonatomic, retain) NSString* username;
+@property (nonatomic, retain) NSDate* subscriptionEndDate;
+@property (nonatomic) Boolean premium;
+@property (nonatomic) Boolean authenticated;
+@property (nonatomic, copy, readwrite) NSMutableArray* lessons;
+@property (nonatomic) NSInteger allowedOfflineLessons;
 
 @end

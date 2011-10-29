@@ -150,6 +150,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 		// the received data
 		// receivedData is declared as a method instance elsewhere
 		receivedData=[[NSMutableData data] retain];
+        [theConnection release];
 	} else {
 		// inform the user that the download could not be made
 	}
@@ -180,6 +181,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     } else {
         NSDictionary* data = [[NSDictionary alloc] initWithContentsOfFile:rj_user_info_path];
         [self loadAppWithRJUserData:data saveToFile:false];
+        [data release];
     }
     
    // [self cleanDiskOfUneededVideos]; // @TODO Make run in background
@@ -216,6 +218,8 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     [window release];
     [dataController release];
 	[play release];
+    [userData release];
+    [receivedData release];
     [super dealloc];
 }
 

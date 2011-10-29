@@ -19,11 +19,11 @@
 	// Initialize and create movie URL
     if (self = [super init])
     {
-        play = _play;
-        [play retain];
+        lesson = _play;
+        [lesson retain];
         
         chapterIndex = chapter;
-        movieURL = [self->play getMovieFile:chapter];
+        movieURL = [self->lesson getMovieFile:chapter];
         [movieURL retain];
     }
 	return self;
@@ -60,7 +60,7 @@
         [[self view] addSubview:[mp view]];   
         
         // Set up tracker.
-		[self->play startTracker:chapterIndex];
+		[self->lesson startTracker:chapterIndex];
         
 		// Play the movie
 		[mp play];
@@ -80,7 +80,7 @@
      object:nil];
     
     // Set up tracker.
-    [self->play startTracker:chapterIndex];
+    [self->lesson startTracker:chapterIndex];
     
 	// Play the movie
  	[mp play];
@@ -91,7 +91,7 @@
  *--------------------------------------------------------------------------*/
 - (void) moviePlayBackDidFinish:(NSNotification*)notification 
 {    
-    [self->play stopTracker];
+    [self->lesson stopTracker];
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     
@@ -162,7 +162,7 @@
 {
 	[mp release];
     [movieURL release];
-    [play release];
+    [lesson release];
 	[super dealloc];
 }
 

@@ -24,16 +24,20 @@
 
 - (TimeTrackerNode*)stop {
 	NSTimeInterval elapsed = [NSDate timeIntervalSinceReferenceDate] - mStart;
-	TimeTrackerNode* node = [[TimeTrackerNode alloc] initWithName:mName elapsed:elapsed starting:mStartDate];
+	TimeTrackerNode* node = [[[TimeTrackerNode alloc] initWithName:mName elapsed:elapsed starting:mStartDate] autorelease];
 	[mList addObject:node];
 	self.mStartDate = nil;
-	[self.mName release];
-	self.mName = nil;
+    self.mName = nil;
 	return node;
 }
 
 - (TimeTracker*)init {
-	self.mList = [[NSMutableArray alloc] init];
+    self = [super init];
+    if (self != nil)
+    {
+        self.mList = [[NSMutableArray alloc] init];
+    }
+
 	return self;
 }
 

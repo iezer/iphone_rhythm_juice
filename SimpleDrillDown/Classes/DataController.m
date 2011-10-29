@@ -48,107 +48,38 @@
 
 #import "DataController.h"
 #import "Lesson.h"
+#import "User.h"
 
 
 @interface DataController ()
-@property (nonatomic, copy, readwrite) NSMutableArray *list;
-- (void)createDemoData;
+@property (nonatomic, retain) User *user;
 @end
 
 
 @implementation DataController
 
-@synthesize list, allowedDownloads;
-
-
-- (id)init {
-    if (self = [super init]) {
-        [self createDemoData];
-    }
-    self->allowedDownloads = 1;
-    return self;
-}
+@synthesize user;
 
 - (id)init:(NSDictionary *)data {
     if (self = [super init]) {
         [self createDataFromRequest:data];
     }
-    self->allowedDownloads = 1;
     return self;
-}
-
-// Custom set accessor to ensure the new list is mutable
-- (void)setList:(NSMutableArray *)newList {
-    if (list != newList) {
-        [list release];
-        list = [newList mutableCopy];
-    }
 }
 
 // Accessor methods for list
 - (unsigned)countOfList {
-    return [list count];
+    return [[user lessons] count];
 }
 
 - (Lesson *)objectInListAtIndex:(unsigned)theIndex {
-    return [list objectAtIndex:theIndex];
+    return [[user lessons] objectAtIndex:theIndex];
 }
 
 
 - (void)dealloc {
-    [list release];
+    [user release];
     [super dealloc];
-}
-
-- (void)createDemoData {
-    
-    /*
-     Create an array containing some demonstration data.
-     Each data item is a Play that contains information about a play -- its list of characters, its genre, and its year of publication.  Typically the data would be comprised of instances of custom classes rather than dictionaries, but using dictionaries means fewer distractions in the example.
-     */
-    
-    NSMutableArray *playList = [[NSMutableArray alloc] init];
-    Lesson *play;
-    NSArray *instructors;
-	NSArray *chapters;
-	NSArray *chapterTitles;
-    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    
-	play = [[Lesson alloc] init];
-	play.title = @"Hand To Hand";
-	instructors = [[NSArray alloc] initWithObjects:@"Dax", @"Alice", nil];
-	//chapters = [[NSArray alloc] initWithObjects:@"sylvia-nick", @"Movie", nil];
-	chapters = [[NSArray alloc] initWithObjects:@"alhc-2008-dax-alice", @"dax-alice-toulouse", nil];
-	chapterTitles = [[NSArray alloc] initWithObjects:@"Intro", @"With Music", nil];
-	play.instructors = instructors;
-	play.chapters = chapters;
-	play.chapterTitles = chapterTitles;
-    [instructors release];
-	[chapters release];
-	[chapterTitles release];
-	[playList addObject:play];
-    [play release];
-    
-	play = [[Lesson alloc] init];
-	play.title = @"Groove Walk";
-	instructors = [[NSArray alloc] initWithObjects:@"Dax", @"Alice", nil];
-	//chapters = [[NSArray alloc] initWithObjects:@"sylvia-nick", @"Movie", nil];
-	chapters = [[NSArray alloc] initWithObjects:@"alhc-2008-dax-alice", @"dax-alice-toulouse", nil];
-	chapterTitles = [[NSArray alloc] initWithObjects:@"Intro", @"With Music", nil];
-    play.instructors = instructors;
-	play.chapters = chapters;
-	play.chapterTitles = chapterTitles;
-	[instructors release];
-	[chapters release];
-    [chapterTitles release];
-	[playList addObject:play];
-    [play release];
-	
-    self.list = playList;
-    [playList release];
-    [dateComponents release];
-    [calendar release];
 }
 
 // return true if it works, false if there was an error
@@ -159,37 +90,35 @@
      Each data item is a Play that contains information about a play -- its list of characters, its genre, and its year of publication.  Typically the data would be comprised of instances of custom classes rather than dictionaries, but using dictionaries means fewer distractions in the example.
      */
 	
-	NSDictionary* user = [data objectForKey:@"RJ User"];
+	NSDictionary* userData = [data objectForKey:@"RJ User"];
     
     //NSNumber* authenticated = [user objectForKey:@"Authenticated"];
     
     if( true )//[authenticated boolValue] )
     {
-        
-        //NSString* username = [user objectForKey:@"username"];
-        
-        NSArray* lessons = [user objectForKey:@"Lessons"];
-        
-        NSMutableArray *playList = [[NSMutableArray alloc] init];
-        
+        NSMutableArray* playlist = [[[NSMutableArray alloc] init] autorelease];
+        NSArray* lessons = [userData objectForKey:@"Lessons"];
         for(NSDictionary* lesson in lessons) {
-            Lesson *play = [[Lesson alloc] init];
             
-            play.title = [lesson objectForKey:@"Title"];
+            NSString *title = [lesson objectForKey:@"Title"];
             NSArray *instructors = [lesson objectForKey:@"Instructors"];
             NSArray *chapters = [lesson objectForKey:@"Chapter Paths"];
             NSArray *chapterTitles = [lesson objectForKey:@"Chapter Titles"];
+            Boolean premium = [[lesson objectForKey:@"Premium"] boolValue];
             
-            play.instructors = instructors;
-            play.chapters = chapters;
-            play.chapterTitles = chapterTitles;
+            Lesson *play = [[Lesson alloc] init:title instructors:instructors chapters:chapters chapterTitles:chapterTitles premium:premium];
+
             
-            [playList addObject:play];
+            [playlist addObject:play];
             [play release];
         }
         
-        self.list = playList;
-        [playList release];
+        NSString* username = [userData objectForKey:@"username"];        
+        Boolean premium = [[userData objectForKey:@"Premium"] boolValue];
+        NSDate* subscriptionEndDate = [userData objectForKey:@"Subscription End"];
+        NSInteger allowedOfflineLessons = [[userData objectForKey:@"Allowed Offline Lessons"] intValue];
+        
+        self.user = [[User alloc] init:username subscriptionEndDate:subscriptionEndDate premium:premium authenticated:true lessons:playlist allowedOfflineLessons:allowedOfflineLessons];
     }
     
     return true;
@@ -206,10 +135,23 @@
     return count;
 }
 
-- (Boolean)canWatchLesson:(Lesson*)lesson
-{
+- (Boolean)canWatchLesson:(Lesson*)lesson {
     return ( [lesson isDownloadedLocally] 
         || ([self allowedDownloads] == -1) 
         || ([self numberOfDownloadedLessons] < [self allowedDownloads]) );
 }
+
+- (Boolean)expired:(Lesson*)lesson {
+    NSDate* now = [NSDate date];
+    return ( [lesson premium] && ( now > [user subscriptionEndDate] || ! [user premium] ) );
+}
+
+- (NSMutableArray*) list {
+    return [user lessons];
+}
+
+- (NSInteger) allowedDownloads {
+    return [user allowedOfflineLessons];
+}
+
 @end

@@ -46,18 +46,17 @@
  */
 
 @class Lesson;
+@class DataController;
 @class CustomMoviePlayerViewController;
 
 @interface DetailViewController : UITableViewController {
-	Lesson *play;
+	Lesson *lesson;
     CustomMoviePlayerViewController *moviePlayer;
-    Boolean canWatchLesson;
-    NSInteger allowedDownloads;
+    DataController* dataController;
 }
 
-@property (nonatomic, retain) Lesson *play;
-@property NSInteger allowedDownloads;
-@property Boolean canWatchLesson;
+@property (nonatomic, retain) Lesson *lesson;
+@property (nonatomic, retain) DataController *dataController;
 
 -(void)loadMoviePlayer:(NSURL *)url;
 

@@ -47,13 +47,14 @@
 
 #import "DetailViewController.h"
 #import "Lesson.h"
+#import "DataController.h"
 #import "SimpleDrillDownAppDelegate.h"
 #import "TimeTrackerNode.h"
 #import "CustomMoviePlayerViewController.h"
 
 @implementation DetailViewController
 
-@synthesize play, canWatchLesson, allowedDownloads;
+@synthesize lesson, dataController;
 
 
 #pragma mark -
@@ -66,7 +67,7 @@
     // Scroll the table view to the top before it appears
     [self.tableView reloadData];
     [self.tableView setContentOffset:CGPointZero animated:NO];
-    self.title = play.title;
+    self.title = lesson.title;
 }
 
 
@@ -86,16 +87,16 @@
     NSInteger rows = 0;
     switch (section) {
         case 0:
-			rows = [play.instructors count];
+			rows = [lesson.instructors count];
 			break;
         case 1:
-            rows = [play.chapters count];
+            rows = [lesson.chapters count];
             break;
         case 2:
-            rows = [play isDownloadedLocally] ? 1 : 0;
+            rows = [lesson isDownloadedLocally] ? 1 : 0;
             break;
         case 3:
-			rows = [play.tracker.mList count];
+			rows = [lesson.tracker.mList count];
 			break;
 		default:
             break;
@@ -128,19 +129,19 @@
 	
     switch (indexPath.section) {
         case 0:
-            cellText = [play.instructors objectAtIndex:indexPath.row];
+            cellText = [lesson.instructors objectAtIndex:indexPath.row];
             break;
         case 1:
-            cellText = [play.chapterTitles objectAtIndex:indexPath.row];
+            cellText = [lesson.chapterTitles objectAtIndex:indexPath.row];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.detailTextLabel.text = [play isChapterDownloadedLocally:indexPath.row] ? @"downloaded locally" : @"not downloaded";
+            cell.detailTextLabel.text = [lesson isChapterDownloadedLocally:indexPath.row] ? @"downloaded locally" : @"not downloaded";
             break;
         case 2:
-            cellText = [play isDownloadedLocally] ? @"delete local files" : @"";
+            cellText = [lesson isDownloadedLocally] ? @"delete local files" : @"";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             break;
         case 3:
-			node = [play.tracker.mList objectAtIndex:indexPath.row];
+			node = [lesson.tracker.mList objectAtIndex:indexPath.row];
 			if (node == nil) {
 				cellText = @"";
 			} else {
@@ -193,25 +194,32 @@
 	
 	if (section == 1) {
         
-        if ([self canWatchLesson]){
-        
-        // Create custom movie player   
-        moviePlayer = [[[CustomMoviePlayerViewController alloc] initWithPlay:play chapterIndex:chapter] autorelease];
-        
-        // Show the movie player as modal
-        [self presentModalViewController:moviePlayer animated:YES];
-        
-        // Prep and play the movie
-        [moviePlayer readyPlayer];
-        } else {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Video Cache is Full" message:@"You can only download 1 premium lesson with your current subscription. Please delete some lessons or buy the iPhone Add-On from www.rhythmjuice.com."
+        if ([dataController canWatchLesson:lesson]){
+            
+            // Create custom movie player   
+            moviePlayer = [[[CustomMoviePlayerViewController alloc] initWithPlay:lesson chapterIndex:chapter] autorelease];
+            
+            // Show the movie player as modal
+            [self presentModalViewController:moviePlayer animated:YES];
+            
+            // Prep and play the movie
+            [moviePlayer readyPlayer];
+        } else if ([dataController expired:lesson]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Premium Ended" message:@"Your premium subscription has expired. Please log onto www.rhythmjuice.com and renew your subscription in order to watch this premium lesson."
                                                            delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
             [alert release];
+        } else {
+            NSString *message = [[NSString alloc] initWithFormat:@"You can only download %d premium lesson(s) with your current subscription. Please delete some lessons or buy the iPhone Add-On from www.rhythmjuice.com.",[dataController allowedDownloads]];
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Video Cache is Full" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+            [alert release];
+            [message release];
         }
     } else if (section == 2)
     {
-        [play deleteFiles];
+        [lesson deleteFiles];
         [self.tableView reloadData];
     }
 }

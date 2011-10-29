@@ -56,17 +56,17 @@
 	NSArray *chapterTitles;
 	TimeTracker *tracker;
     Boolean premium;
-    Boolean markedForOfflineViewing;
+    NSString *lessonFolderPath;
 }
 
-- (Lesson*)init;
+- (Lesson*)init:(NSString*)_title instructors:(NSArray*)_instructors chapters:(NSArray*)_chapters chapterTitles:(NSArray*)_chapterTitles premium:(Boolean)_premium;
+
 - (NSURL*)getMovieFile:(NSUInteger)chapter;
 - (void)startTracker:(NSUInteger)chapter;
 - (void)stopTracker;
 - (Boolean) isDownloadedLocally;
 - (Boolean) isChapterDownloadedLocally:(NSUInteger)chapter;
 - (NSString*)getChapterLocalPath:(NSInteger)chapter;
-- (NSString*)getLessonFolder;
 - (void)deleteFiles;
 
 @property (nonatomic, retain) NSString *title;
@@ -75,6 +75,6 @@
 @property (nonatomic, retain) NSArray *chapterTitles;
 @property (nonatomic, retain) TimeTracker *tracker;
 @property (nonatomic) Boolean premium;
-@property (nonatomic) Boolean markedForOfflineViewing;
+@property (nonatomic, retain) NSString *lessonFolderPath;
 
 @end
