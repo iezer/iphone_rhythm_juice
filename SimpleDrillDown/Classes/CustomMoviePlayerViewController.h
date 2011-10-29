@@ -6,19 +6,17 @@
 
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
-#import "Play.h"
+#import "Lesson.h"
 
 @interface CustomMoviePlayerViewController : UIViewController 
 {
     MPMoviePlayerController *mp;
     NSURL *movieURL;
-    Play *play;
+    Lesson *play;
     NSInteger chapterIndex;
 }
 
-- (id)initWithPlay:(Play *)_play chapterIndex:(NSUInteger)chapter;
-- (id)initWithPath:(NSString *)moviePath play:(Play *)_play;
-- (id)initWithURL:(NSURL *)_movieURL play:(Play *)_play;
+- (id)initWithPlay:(Lesson *)_play chapterIndex:(NSUInteger)chapter;
 - (void)readyPlayer;
 
 @end

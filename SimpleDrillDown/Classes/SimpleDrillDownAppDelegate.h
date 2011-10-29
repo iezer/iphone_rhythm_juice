@@ -51,34 +51,42 @@
 
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
-#import "Play.h"
+#import "Lesson.h"
 #import "DetailViewController.h"
+
+@class LoginViewController;
 
 @interface SimpleDrillDownAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
 	UIWindow *window;
 	UINavigationController *navigationController;
 	RootViewController *rootViewController;
     DataController *dataController;
-	Play* play;
+	Lesson* play;
 	DetailViewController* detailViewController;
 	
 	NSMutableData *receivedData;
 	NSDictionary *userData;
+    LoginViewController *loginViewController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 @property (nonatomic, retain) IBOutlet RootViewController *rootViewController;
-@property (nonatomic, retain) Play *play;
+@property (nonatomic, retain) Lesson *play;
 @property (nonatomic, retain) DataController *dataController;
 @property (nonatomic, retain) DetailViewController *detailViewController;
 @property (nonatomic, retain) NSMutableData *receivedData;
 @property (nonatomic, retain) NSDictionary *userData;
+//@property (nonatomic, retain) LoginViewController *loginViewController;
+
 
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection;
-- (void)getRequest;
+- (void)getRequest:(NSString *)url;
+- (Boolean)isAuthenticated:(NSDictionary *)rjUserData;
+- (void)loadAppWithRJUserData:(NSDictionary *)rjUserData saveToFile:(Boolean)save_to_file;
+- (void)cleanDiskOfUneededVideos;
 
 @end

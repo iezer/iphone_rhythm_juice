@@ -49,8 +49,12 @@
 
 @interface RootViewController : UITableViewController {
     DataController *dataController;
+    //UITableViewCellAccessoryType accessoryType;
 }
 
 @property (nonatomic, retain) DataController *dataController;
+//@property(nonatomic) UITableViewCellAccessoryType accessoryType;
+
+
 
 @end

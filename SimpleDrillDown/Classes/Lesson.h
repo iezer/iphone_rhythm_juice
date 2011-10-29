@@ -1,7 +1,6 @@
 /*
-     File: DataController.h
- Abstract: A simple controller class responsible for managing the application's data.
- Typically this object would be able to load and save a file containing the appliction's data. This example illustrates just the basic minimum: it creates an array containing information about some plays and provides simple accessor methods for the array and its contents.
+     File: Play.h
+ Abstract: A simple class to represent information about a play.
   Version: 2.7
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
@@ -46,22 +45,36 @@
  
  */
 
-@class Lesson;
 
-@interface DataController : NSObject {
-    NSMutableArray *list;
-    NSInteger allowedDownloads; // -1 means unlimited
+#import <Foundation/Foundation.h>
+#import "TimeTracker.h"
+
+@interface Lesson : NSObject {
+	NSString *title;
+	NSArray *instructors;
+	NSArray *chapters;
+	NSArray *chapterTitles;
+	TimeTracker *tracker;
+    Boolean premium;
+    Boolean markedForOfflineViewing;
 }
 
-@property NSInteger allowedDownloads;
+- (Lesson*)init;
+- (NSURL*)getMovieFile:(NSUInteger)chapter;
+- (void)startTracker:(NSUInteger)chapter;
+- (void)stopTracker;
+- (Boolean) isDownloadedLocally;
+- (Boolean) isChapterDownloadedLocally:(NSUInteger)chapter;
+- (NSString*)getChapterLocalPath:(NSInteger)chapter;
+- (NSString*)getLessonFolder;
+- (void)deleteFiles;
 
-- (unsigned)countOfList;
-- (Lesson *)objectInListAtIndex:(unsigned)theIndex;
-
-- (id)init:(NSDictionary *)data;
-- (Boolean)createDataFromRequest:(NSDictionary *)data;
-
-- (Boolean)canWatchLesson:(Lesson*)lesson;
-- (NSInteger)numberOfDownloadedLessons;
+@property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) NSArray *instructors;
+@property (nonatomic, retain) NSArray *chapters;
+@property (nonatomic, retain) NSArray *chapterTitles;
+@property (nonatomic, retain) TimeTracker *tracker;
+@property (nonatomic) Boolean premium;
+@property (nonatomic) Boolean markedForOfflineViewing;
 
 @end

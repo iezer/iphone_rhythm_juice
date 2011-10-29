@@ -48,7 +48,7 @@
 #import "RootViewController.h"
 #import "DataController.h"
 #import "DetailViewController.h"
-#import "Play.h"
+#import "Lesson.h"
 #import "SimpleDrillDownAppDelegate.h"
 
 @implementation RootViewController
@@ -63,6 +63,14 @@
 	self.title = NSLocalizedString(@"Plays", @"Master view navigation title");
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    // Update the view with current data before it is displayed.
+    [super viewWillAppear:animated];
+    
+    // Scroll the table view to the top before it appears
+    [self.tableView reloadData];
+    [self.tableView setContentOffset:CGPointZero animated:NO];
+}
 
 #pragma mark -
 #pragma mark Table view data source
@@ -86,13 +94,14 @@
 	// Dequeue or create a cell of the appropriate type.
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     // Get the object to display and set the value in the cell.
-    Play *playAtIndex = [dataController objectInListAtIndex:indexPath.row];
+    Lesson *playAtIndex = [dataController objectInListAtIndex:indexPath.row];
     cell.textLabel.text = playAtIndex.title;
+    cell.detailTextLabel.text = [playAtIndex isDownloadedLocally] ? @"downloaded locally" : @"not downloaded";
     return cell;
 }
 
@@ -107,7 +116,10 @@
      */
     DetailViewController *detailViewController = [[DetailViewController alloc] initWithStyle:UITableViewStyleGrouped];
     
-    detailViewController.play = [dataController objectInListAtIndex:indexPath.row];
+    Lesson* lesson = [dataController objectInListAtIndex:indexPath.row];
+    detailViewController.play = lesson;
+    detailViewController.allowedDownloads = [dataController allowedDownloads];
+    detailViewController.canWatchLesson = [dataController canWatchLesson:lesson];
     
     // Push the detail view controller.
     [[self navigationController] pushViewController:detailViewController animated:YES];

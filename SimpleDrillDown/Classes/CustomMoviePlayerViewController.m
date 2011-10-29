@@ -14,7 +14,7 @@
 /*---------------------------------------------------------------------------
  * 
  *--------------------------------------------------------------------------*/
-- (id)initWithPlay:(Play *)_play chapterIndex:(NSUInteger)chapter
+- (id)initWithPlay:(Lesson *)_play chapterIndex:(NSUInteger)chapter
 {
 	// Initialize and create movie URL
     if (self = [super init])
@@ -23,35 +23,7 @@
         [play retain];
         
         chapterIndex = chapter;
-        movieURL = [self->play makeMovieURL:chapter];
-        [movieURL retain];
-    }
-	return self;
-}
-
-/*---------------------------------------------------------------------------
- * 
- *--------------------------------------------------------------------------*/
-- (id)initWithPath:(NSString *)moviePath
-{
-	// Initialize and create movie URL
-    if (self = [super init])
-    {
-        movieURL = [NSURL fileURLWithPath:moviePath];    
-        [movieURL retain];
-    }
-	return self;
-}
-
-/*---------------------------------------------------------------------------
- * 
- *--------------------------------------------------------------------------*/
-- (id)initWithURL:(NSURL *)_movieURL
-{
-	// Initialize and create movie URL
-    if (self = [super init])
-    {
-        movieURL = _movieURL;    
+        movieURL = [self->play getMovieFile:chapter];
         [movieURL retain];
     }
 	return self;

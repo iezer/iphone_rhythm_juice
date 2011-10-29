@@ -4,6 +4,8 @@
 <dict>
 	<key>RJ User</key>
 	<dict>
+		<key>Authenticated</key>
+		<true/>
 		<key>Username</key>
 		<string>isaacezer</string>
 		<key>First Name</key>
@@ -14,6 +16,8 @@
 		<true/>
 		<key>Subscription End</key>
 		<date>2010-03-31T15:00:00Z</date>
+		<key>Allowed Offline Lessons</key>
+		<integer>0</integer>
 		<key>Lessons</key>
 		<array>
 			<dict>
@@ -21,6 +25,8 @@
 				<string>Hand To Hand</string>
 				<key>Premium</key>
 				<true/>
+				<key>Marked For Offline Viewing</key>
+				<false/>
 				<key>Instructors</key>
 				<array>
 					<string>Dax Hock</string>
@@ -41,6 +47,8 @@
 				<key>Title</key>
 				<string>Texas Tommy</string>
 				<key>Premium</key>
+				<false/>
+				<key>Marked For Offline Viewing</key>
 				<false/>
 				<key>Instructors</key>
 				<array>

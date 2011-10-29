@@ -91,18 +91,40 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     NSLog(@"Succeeded! Received %d bytes of data",[receivedData length]);
     // release the connection, and the data object
 	
-	//NSDictionary* rjUserData = [[NSDictionary alloc] initWithData:receivedData];
 	NSDictionary *rjUserData = [NSPropertyListSerialization propertyListFromData:receivedData mutabilityOption:NSPropertyListImmutable format:nil errorDescription:nil];
 
+    [self loadAppWithRJUserData:rjUserData saveToFile:true];
+    
+    [receivedData release];	
+	//[connection release];
+}
+
+- (void)loadAppWithRJUserData:(NSDictionary *)rjUserData saveToFile:(Boolean)save_to_file
+{
 	self.userData = rjUserData;
 	
 	// Create the data controller.
-    //DataController *controller = [[DataController alloc] init];
 	DataController *controller = [[DataController alloc] init:self.userData];
+    
     self.dataController = controller;
+    
     [controller release];
     
 	rootViewController.dataController = dataController;
+    
+    if (save_to_file) {
+        // If we got to here the file is in good shape so save it for next time
+        NSFileManager *     fileManager;
+        fileManager = [NSFileManager defaultManager];
+        assert(fileManager != nil);
+        
+        NSString *document_folder_path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+        NSString *rj_user_info_path = [document_folder_path stringByAppendingPathComponent:@"rj_user_info.plist"];
+        
+        BOOL written = [rjUserData writeToFile:rj_user_info_path atomically:NO];
+        if (written)
+            NSLog(@"Saved to file: %@", rj_user_info_path);
+    }
     
     /*
 	 The navigation and root view controllers are created in the main nib file.
@@ -110,14 +132,12 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 	 */
     [window addSubview:[navigationController view]];
     [window makeKeyAndVisible];
-	
-    [receivedData release];	
-	//[connection release];
 }
 
-- (void)getRequest {
+- (void)getRequest:(NSString *) url; {
     // create the request
-	NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost/rj/userdata.plist"]
+
+	NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:url]
 											  cachePolicy:NSURLRequestUseProtocolCachePolicy
 										  timeoutInterval:60.0];
 	
@@ -135,13 +155,60 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 	}
 }
 
-- (void)applicationDidFinishLaunching:(UIApplication *)application {
-	
-	[self getRequest];
-
-	//self.tracker = [[TimeTracker alloc] init];
-	
+- (Boolean)isAuthenticated:(NSDictionary *)rjUserData{
+	NSDictionary* user = [rjUserData objectForKey:@"RJ User"];
+    NSNumber* authenticated = [user objectForKey:@"Authenticated"];
+    return [authenticated boolValue];
 }
+
+- (void)applicationDidFinishLaunching:(UIApplication *)application {
+    
+    // Check if we already have user storage saved
+    NSFileManager *     fileManager;
+    fileManager = [NSFileManager defaultManager];
+    assert(fileManager != nil);
+    
+    NSString *document_folder_path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSString *rj_user_info_path = [document_folder_path stringByAppendingPathComponent:@"rj_user_info.plist"];
+    
+    if ( ! [fileManager fileExistsAtPath:rj_user_info_path]) {
+        // Get the user info from the server
+        // NSString* user_data_url = @"http://rj.isaacezer.com/index.php?option=com_user&view=login&tmpl=component";
+        //NSString* user_data_url = @"http://rj.isaacezer.com/index.php?option=com_iphone&format=raw";
+        NSString* user_data_url = @"http://localhost/rj/userdata.plist";
+        [self getRequest:user_data_url];
+    } else {
+        NSDictionary* data = [[NSDictionary alloc] initWithContentsOfFile:rj_user_info_path];
+        [self loadAppWithRJUserData:data saveToFile:false];
+    }
+    
+   // [self cleanDiskOfUneededVideos]; // @TODO Make run in background
+}
+/*
+- (void)cleanDiskOfUneededVideos{
+    NSFileManager *     fileManager;
+    fileManager = [NSFileManager defaultManager];
+    assert(fileManager != nil);
+    
+    NSString *document_folder_path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSString *localFileManager = [document_folder_path stringByAppendingPathComponent:@"lessons"]; 
+
+    
+    NSDirectoryEnumerator *dirEnum =
+    [fileManager enumeratorAtPath:localFileManager];
+    
+    NSString *file;
+    while (file = [dirEnum nextObject]) {
+        if ([[file pathExtension] isEqualToString: @"doc"]) {
+            // process the document
+            [self scanDocument: [docsDir stringByAppendingPathComponent:file]];
+        }
+    }
+    [fileManager release];
+
+
+}*/
+
 
 - (void)dealloc {
     [navigationController release];

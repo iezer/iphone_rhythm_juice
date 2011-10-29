@@ -46,14 +46,14 @@
  */
 
 #import "DetailViewController.h"
-#import "Play.h"
+#import "Lesson.h"
 #import "SimpleDrillDownAppDelegate.h"
 #import "TimeTrackerNode.h"
 #import "CustomMoviePlayerViewController.h"
 
 @implementation DetailViewController
 
-@synthesize play;
+@synthesize play, canWatchLesson, allowedDownloads;
 
 
 #pragma mark -
@@ -74,7 +74,7 @@
 #pragma mark Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return 3;
+	return 4;
 }
 
 
@@ -89,10 +89,12 @@
 			rows = [play.instructors count];
 			break;
         case 1:
-            // For genre and date there is just one row.
             rows = [play.chapters count];
             break;
         case 2:
+            rows = [play isDownloadedLocally] ? 1 : 0;
+            break;
+        case 3:
 			rows = [play.tracker.mList count];
 			break;
 		default:
@@ -108,7 +110,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
@@ -130,8 +132,14 @@
             break;
         case 1:
             cellText = [play.chapterTitles objectAtIndex:indexPath.row];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.detailTextLabel.text = [play isChapterDownloadedLocally:indexPath.row] ? @"downloaded locally" : @"not downloaded";
             break;
         case 2:
+            cellText = [play isDownloadedLocally] ? @"delete local files" : @"";
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            break;
+        case 3:
 			node = [play.tracker.mList objectAtIndex:indexPath.row];
 			if (node == nil) {
 				cellText = @"";
@@ -166,6 +174,9 @@
             title = NSLocalizedString(@"Chapters", @"Genre section title");
             break;
         case 2:
+            title = @"Manage";
+            break;
+        case 3:
 			title = @"View Tracker";
 			break;
 		default:
@@ -181,6 +192,9 @@
 	NSUInteger chapter = [indexPath indexAtPosition:1];
 	
 	if (section == 1) {
+        
+        if ([self canWatchLesson]){
+        
         // Create custom movie player   
         moviePlayer = [[[CustomMoviePlayerViewController alloc] initWithPlay:play chapterIndex:chapter] autorelease];
         
@@ -188,7 +202,17 @@
         [self presentModalViewController:moviePlayer animated:YES];
         
         // Prep and play the movie
-        [moviePlayer readyPlayer];   
+        [moviePlayer readyPlayer];
+        } else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Video Cache is Full" message:@"You can only download 1 premium lesson with your current subscription. Please delete some lessons or buy the iPhone Add-On from www.rhythmjuice.com."
+                                                           delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+            [alert release];
+        }
+    } else if (section == 2)
+    {
+        [play deleteFiles];
+        [self.tableView reloadData];
     }
 }
 

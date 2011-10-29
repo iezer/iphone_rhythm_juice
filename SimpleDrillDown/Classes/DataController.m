@@ -1,8 +1,8 @@
 /*
-     File: DataController.m
+ File: DataController.m
  Abstract: A simple controller class responsible for managing the application's data.
  Typically this object would be able to load and save a file containing the appliction's data. This example illustrates just the basic minimum: it creates an array containing information about some plays and provides simple accessor methods for the array and its contents.
-  Version: 2.7
+ Version: 2.7
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -47,7 +47,7 @@
  */
 
 #import "DataController.h"
-#import "Play.h"
+#import "Lesson.h"
 
 
 @interface DataController ()
@@ -58,13 +58,14 @@
 
 @implementation DataController
 
-@synthesize list;
+@synthesize list, allowedDownloads;
 
 
 - (id)init {
     if (self = [super init]) {
         [self createDemoData];
     }
+    self->allowedDownloads = 1;
     return self;
 }
 
@@ -72,6 +73,7 @@
     if (self = [super init]) {
         [self createDataFromRequest:data];
     }
+    self->allowedDownloads = 1;
     return self;
 }
 
@@ -88,7 +90,7 @@
     return [list count];
 }
 
-- (Play *)objectInListAtIndex:(unsigned)theIndex {
+- (Lesson *)objectInListAtIndex:(unsigned)theIndex {
     return [list objectAtIndex:theIndex];
 }
 
@@ -106,14 +108,14 @@
      */
     
     NSMutableArray *playList = [[NSMutableArray alloc] init];
-    Play *play;
+    Lesson *play;
     NSArray *instructors;
 	NSArray *chapters;
 	NSArray *chapterTitles;
     NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     
-	play = [[Play alloc] init];
+	play = [[Lesson alloc] init];
 	play.title = @"Hand To Hand";
 	instructors = [[NSArray alloc] initWithObjects:@"Dax", @"Alice", nil];
 	//chapters = [[NSArray alloc] initWithObjects:@"sylvia-nick", @"Movie", nil];
@@ -128,7 +130,7 @@
 	[playList addObject:play];
     [play release];
     
-	play = [[Play alloc] init];
+	play = [[Lesson alloc] init];
 	play.title = @"Groove Walk";
 	instructors = [[NSArray alloc] initWithObjects:@"Dax", @"Alice", nil];
 	//chapters = [[NSArray alloc] initWithObjects:@"sylvia-nick", @"Movie", nil];
@@ -149,7 +151,8 @@
     [calendar release];
 }
 
-- (void)createDataFromRequest:(NSDictionary *)data {
+// return true if it works, false if there was an error
+- (Boolean)createDataFromRequest:(NSDictionary *)data {
     
     /*
      Create an array containing some demonstration data.
@@ -157,31 +160,56 @@
      */
 	
 	NSDictionary* user = [data objectForKey:@"RJ User"];
-    NSArray* lessons = [user objectForKey:@"Lessons"];
     
-    NSMutableArray *playList = [[NSMutableArray alloc] init];
-
-	for(NSDictionary* lesson in lessons) {
-		Play *play = [[Play alloc] init];
-		
-		play.title = [lesson objectForKey:@"Title"];
-		NSArray *instructors = [lesson objectForKey:@"Instructors"];
-		NSArray *chapters = [lesson objectForKey:@"Chapter Paths"];
-		NSArray *chapterTitles = [lesson objectForKey:@"Chapter Titles"];
-		
-		play.instructors = instructors;
-		play.chapters = chapters;
-		play.chapterTitles = chapterTitles;
-
-		[playList addObject:play];
-		[play release];
-	}
-	
-    self.list = playList;
-    [playList release];
-	//[lessons release];
-	//[user release];
+    //NSNumber* authenticated = [user objectForKey:@"Authenticated"];
+    
+    if( true )//[authenticated boolValue] )
+    {
+        
+        //NSString* username = [user objectForKey:@"username"];
+        
+        NSArray* lessons = [user objectForKey:@"Lessons"];
+        
+        NSMutableArray *playList = [[NSMutableArray alloc] init];
+        
+        for(NSDictionary* lesson in lessons) {
+            Lesson *play = [[Lesson alloc] init];
+            
+            play.title = [lesson objectForKey:@"Title"];
+            NSArray *instructors = [lesson objectForKey:@"Instructors"];
+            NSArray *chapters = [lesson objectForKey:@"Chapter Paths"];
+            NSArray *chapterTitles = [lesson objectForKey:@"Chapter Titles"];
+            
+            play.instructors = instructors;
+            play.chapters = chapters;
+            play.chapterTitles = chapterTitles;
+            
+            [playList addObject:play];
+            [play release];
+        }
+        
+        self.list = playList;
+        [playList release];
+    }
+    
+    return true;
 }
 
+- (NSInteger)numberOfDownloadedLessons
+{
+    NSInteger count = 0;
+    for (Lesson* lesson in [self list]) {
+        if ([lesson isDownloadedLocally]){
+            count++;
+        }
+    }
+    return count;
+}
 
+- (Boolean)canWatchLesson:(Lesson*)lesson
+{
+    return ( [lesson isDownloadedLocally] 
+        || ([self allowedDownloads] == -1) 
+        || ([self numberOfDownloadedLessons] < [self allowedDownloads]) );
+}
 @end
