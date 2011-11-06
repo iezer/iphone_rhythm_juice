@@ -51,7 +51,11 @@
 
 @interface DataController : NSObject {
     User* user;
+    Boolean gotLatestSettings;
 }
+
+@property (retain) User *user; //atomic
+@property (nonatomic) Boolean gotLatestSettings;
 
 - (unsigned)countOfList;
 - (Lesson *)objectInListAtIndex:(unsigned)theIndex;
@@ -67,5 +71,7 @@
 - (NSInteger) allowedDownloads; // -1 means unlimited
 
 - (Boolean)expired:(Lesson*)lesson;
+
++ (User*)createUserFromData:(NSDictionary *)data;
 
 @end

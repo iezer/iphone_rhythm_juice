@@ -1,7 +1,7 @@
 /*
-     File: SimpleDrillDownAppDelegate.m
+ File: SimpleDrillDownAppDelegate.m
  Abstract: n/a
-  Version: 2.7
+ Version: 2.7
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -49,7 +49,7 @@
 #import "RootViewController.h"
 #import "DataController.h"
 #import "DetailViewController.h"
-//#import "TimeTrackerNode.h"
+#import "User.h"
 
 NSString *kScalingModeKey	= @"scalingMode";
 NSString *kControlModeKey	= @"controlMode";
@@ -65,7 +65,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 @synthesize play;
 @synthesize detailViewController;
 @synthesize receivedData;
-@synthesize userData;
+@synthesize state;
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
@@ -84,35 +84,130 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     [receivedData appendData:data];
 }
 
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    [self showConnectionError];
+}
+
+
+- (void)sendCredentials {
+
+    if( receivedData == nil )
+    {
+        return; // shoudn't happen
+    }
+    
+    NSString* sData = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
+    NSLog( @"received data '%@'", sData );
+    
+    //check if logged in or logged out
+
+    
+    //base64 encoding of 'index.php?option=com_iphone&format=raw'
+    NSString* urlRedirect = @"aW5kZXgucGhwP29wdGlvbj1jb21faXBob25lJmZvcm1hdD1yYXc=";
+    NSString* username = @"admin";
+    NSString* password = @"t0r0nt0";
+    NSString* task = @"login"; // @"login" or @"logout"
+
+    NSRange r = [sData rangeOfString:urlRedirect];
+    NSInteger i = r.location+r.length;
+    NSString* sub =[sData substringFromIndex:i];
+
+    NSString* marker=@"\"hidden\" name=\"";
+    r = [sub rangeOfString:marker];
+    i = r.location+r.length;
+    sub =[sub substringFromIndex:i];
+    
+    NSRange r2 = [sub rangeOfString:@"\""];
+    NSString* randomSessonId = [sub substringToIndex:r2.location];
+    
+    //<input type="hidden" name="task" value="logout" /> use this to figure out login/logout
+    
+    // put out random value
+    
+    // create rest of form
+    
+    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
+    
+    NSString *post = [NSString stringWithFormat:@"username=%@&passwd=%@&Submit=Login&option=com_user&task=%@&return=%@&%@=1",username, password, task, urlRedirect, randomSessonId];
+    
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+    
+    NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
+    [request setURL:[NSURL URLWithString:@"http://rj.isaacezer.com/index.php?option=com_user"]];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPShouldHandleCookies:YES];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+    
+    NSError *error;
+    NSURLResponse *response;
+    NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    NSString *data=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
+    NSLog(data);
+    
+    NSDictionary *headerFields = [(NSHTTPURLResponse*)response allHeaderFields]; 
+    NSURL *url = [NSURL URLWithString:@"http://rj.isaacezer.com/index.php"];   
+    NSArray *cookies = [NSHTTPCookie cookiesWithResponseHeaderFields:headerFields forURL:url];
+    
+    
+    
+    [request release];    
+    
+    
+    
+    //aW5kZXgucGhwP29wdGlvbj1jb21faXBob25lJmZvcm1hdD1yYXc - base64 encoding of 'index.php?option=com_iphone&format=raw'
+    
+    //NSString* user_data_url = @"http://rj.isaacezer.com/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21faXBob25lJmZvcm1hdD1yYXc=";
+    
+   // self.state = 2;
+    [sData release];
+   // [self getRequest:user_data_url];
+}
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     // do something with the data
     // receivedData is declared as a method instance elsewhere
     NSLog(@"Succeeded! Received %d bytes of data",[receivedData length]);
-    // release the connection, and the data object
 	
+    if ( state == 1 ) {
+        [self sendCredentials];
+        
+    } else { // state = 2
 	NSDictionary *rjUserData = [NSPropertyListSerialization propertyListFromData:receivedData mutabilityOption:NSPropertyListImmutable format:nil errorDescription:nil];
-
-    [self loadAppWithRJUserData:rjUserData saveToFile:true];
     
+    [self loadAppWithRJUserData:rjUserData saveToFile:true];
+    }
     [receivedData release];	
 	[connection release];
 }
 
 - (void)loadAppWithRJUserData:(NSDictionary *)rjUserData saveToFile:(Boolean)save_to_file
-{
-	self.userData = rjUserData;
-	
-	// Create the data controller.
-	DataController *controller = [[DataController alloc] init:self.userData];
+{	
+    // Create the data controller.
     
-    self.dataController = controller;
+    if (self.dataController == nil) {
+        DataController *controller = [[DataController alloc] init:rjUserData];
+        self.dataController = controller;
+        [controller release];
+        rootViewController.dataController = dataController;
+        
+        /*
+         The navigation and root view controllers are created in the main nib file.
+         Configure the window with the navigation controller's view and then show it.
+         */
+        [window addSubview:[navigationController view]];
+        [window makeKeyAndVisible];
+    } else {
+        // Received an update to user data;
+        User* u = [DataController createUserFromData:rjUserData];
+        self.dataController.user = u;
+    }
     
-    [controller release];
-    
-	rootViewController.dataController = dataController;
-    
-    if (save_to_file) {
+    if (save_to_file && [[self dataController] user] != nil) {
         // If we got to here the file is in good shape so save it for next time
         NSFileManager *     fileManager;
         fileManager = [NSFileManager defaultManager];
@@ -124,19 +219,14 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         BOOL written = [rjUserData writeToFile:rj_user_info_path atomically:NO];
         if (written)
             NSLog(@"Saved to file: %@", rj_user_info_path);
+        
+        dataController.gotLatestSettings = true;
     }
-    
-    /*
-	 The navigation and root view controllers are created in the main nib file.
-	 Configure the window with the navigation controller's view and then show it.
-	 */
-    [window addSubview:[navigationController view]];
-    [window makeKeyAndVisible];
 }
 
 - (void)getRequest:(NSString *) url; {
     // create the request
-
+    
 	NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:url]
 											  cachePolicy:NSURLRequestUseProtocolCachePolicy
 										  timeoutInterval:60.0];
@@ -152,7 +242,16 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 		receivedData=[[NSMutableData data] retain];
 	} else {
 		// inform the user that the download could not be made
+        [self showConnectionError];
 	}
+}
+
+- (void)showConnectionError {
+    if (self.dataController == nil) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Connection" message:@"Need web access to download your Rhythm Juice Lesson list." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+    }
 }
 
 - (Boolean)isAuthenticated:(NSDictionary *)rjUserData{
@@ -171,45 +270,54 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     NSString *document_folder_path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     NSString *rj_user_info_path = [document_folder_path stringByAppendingPathComponent:@"rj_user_info.plist"];
     
-    if ( ! [fileManager fileExistsAtPath:rj_user_info_path]) {
-        // Get the user info from the server
-        // NSString* user_data_url = @"http://rj.isaacezer.com/index.php?option=com_user&view=login&tmpl=component";
-        //NSString* user_data_url = @"http://rj.isaacezer.com/index.php?option=com_iphone&format=raw";
-        NSString* user_data_url = @"http://localhost/rj/userdata.plist";
-        [self getRequest:user_data_url];
-    } else {
+    if ( [fileManager fileExistsAtPath:rj_user_info_path]) {
         NSDictionary* data = [[NSDictionary alloc] initWithContentsOfFile:rj_user_info_path];
         [self loadAppWithRJUserData:data saveToFile:false];
         [data release];
     }
     
-   // [self cleanDiskOfUneededVideos]; // @TODO Make run in background
+    // Regardless of whether or not we saved the users's info,
+    // try to request an updated version from the server.
+    // NSString* user_data_url = @"http://rj.isaacezer.com/index.php?option=com_user&view=login&tmpl=component";
+    //NSString* user_data_url = @"http://rj.isaacezer.com/index.php?option=com_iphone&format=raw";
+    
+    
+    //NSString* user_data_url = @"http://localhost/rj/userdata.plist";
+    
+    //aW5kZXgucGhwP29wdGlvbj1jb21faXBob25lJmZvcm1hdD1yYXc - base64 encoding of 'index.php?option=com_iphone&format=raw'
+    
+    NSString* user_data_url = @"http://rj.isaacezer.com/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21faXBob25lJmZvcm1hdD1yYXc=";
+    
+    self.state = 1;
+    [self getRequest:user_data_url];
+    
+    // [self cleanDiskOfUneededVideos]; // @TODO Make run in background
 }
+
 /*
-- (void)cleanDiskOfUneededVideos{
-    NSFileManager *     fileManager;
-    fileManager = [NSFileManager defaultManager];
-    assert(fileManager != nil);
-    
-    NSString *document_folder_path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
-    NSString *localFileManager = [document_folder_path stringByAppendingPathComponent:@"lessons"]; 
-
-    
-    NSDirectoryEnumerator *dirEnum =
-    [fileManager enumeratorAtPath:localFileManager];
-    
-    NSString *file;
-    while (file = [dirEnum nextObject]) {
-        if ([[file pathExtension] isEqualToString: @"doc"]) {
-            // process the document
-            [self scanDocument: [docsDir stringByAppendingPathComponent:file]];
-        }
-    }
-    [fileManager release];
-
-
-}*/
-
+ - (void)cleanDiskOfUneededVideos{
+ NSFileManager *     fileManager;
+ fileManager = [NSFileManager defaultManager];
+ assert(fileManager != nil);
+ 
+ NSString *document_folder_path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+ NSString *localFileManager = [document_folder_path stringByAppendingPathComponent:@"lessons"]; 
+ 
+ 
+ NSDirectoryEnumerator *dirEnum =
+ [fileManager enumeratorAtPath:localFileManager];
+ 
+ NSString *file;
+ while (file = [dirEnum nextObject]) {
+ if ([[file pathExtension] isEqualToString: @"doc"]) {
+ // process the document
+ [self scanDocument: [docsDir stringByAppendingPathComponent:file]];
+ }
+ }
+ [fileManager release];
+ 
+ 
+ }*/
 
 - (void)dealloc {
     [navigationController release];
@@ -217,7 +325,6 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     [window release];
     [dataController release];
 	[play release];
-    [userData release];
     [receivedData release];
     [super dealloc];
 }

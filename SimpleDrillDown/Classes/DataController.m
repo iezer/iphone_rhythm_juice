@@ -50,20 +50,16 @@
 #import "Lesson.h"
 #import "User.h"
 
-
-@interface DataController ()
-@property (nonatomic, retain) User *user;
-@end
-
-
 @implementation DataController
 
-@synthesize user;
+@synthesize user, gotLatestSettings;
 
 - (id)init:(NSDictionary *)data {
     if (self = [super init]) {
         [self createDataFromRequest:data];
     }
+    
+    self.gotLatestSettings = false;
     return self;
 }
 
@@ -84,13 +80,19 @@
 
 // return true if it works, false if there was an error
 - (Boolean)createDataFromRequest:(NSDictionary *)data {
-    
-    /*
-     Create an array containing some demonstration data.
-     Each data item is a Play that contains information about a play -- its list of characters, its genre, and its year of publication.  Typically the data would be comprised of instances of custom classes rather than dictionaries, but using dictionaries means fewer distractions in the example.
-     */
+    User* _user = [DataController createUserFromData:data];
+    if (_user != nil) {
+        self.user = _user;
+        return true;
+    }
+        
+    return false;
+}
+
++ (User*)createUserFromData:(NSDictionary *)data {
 	
 	NSDictionary* userData = [data objectForKey:@"RJ User"];
+    User* user;
     
     //NSNumber* authenticated = [user objectForKey:@"Authenticated"];
     
@@ -118,10 +120,10 @@
         NSDate* subscriptionEndDate = [userData objectForKey:@"Subscription End"];
         NSInteger allowedOfflineLessons = [[userData objectForKey:@"Allowed Offline Lessons"] intValue];
         
-        self.user = [[User alloc] init:username subscriptionEndDate:subscriptionEndDate premium:premium authenticated:true lessons:playlist allowedOfflineLessons:allowedOfflineLessons];
+        user = [[User alloc] init:username subscriptionEndDate:subscriptionEndDate premium:premium authenticated:true lessons:playlist allowedOfflineLessons:allowedOfflineLessons];
     }
     
-    return true;
+    return user;
 }
 
 - (NSInteger)numberOfDownloadedLessons
@@ -152,6 +154,14 @@
 
 - (NSInteger) allowedDownloads {
     return [user allowedOfflineLessons];
+}
+
+// Custom set accessor to ensure the new list is mutable
+- (void)setUsers:(User *)newUser {
+    if (user != newUser) {
+        [user release];
+        user = newUser;
+    }
 }
 
 @end

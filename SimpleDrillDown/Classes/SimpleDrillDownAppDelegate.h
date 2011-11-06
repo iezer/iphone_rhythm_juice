@@ -63,12 +63,12 @@
     DataController *dataController;
 	Lesson* play;
 	DetailViewController* detailViewController;
-	
 	NSMutableData *receivedData;
-	NSDictionary *userData;
     LoginViewController *loginViewController;
+    NSInteger state;
 }
 
+@property (nonatomic) NSInteger state;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 @property (nonatomic, retain) IBOutlet RootViewController *rootViewController;
@@ -76,7 +76,6 @@
 @property (nonatomic, retain) DataController *dataController;
 @property (nonatomic, retain) DetailViewController *detailViewController;
 @property (nonatomic, retain) NSMutableData *receivedData;
-@property (nonatomic, retain) NSDictionary *userData;
 //@property (nonatomic, retain) LoginViewController *loginViewController;
 
 
@@ -87,6 +86,8 @@
 - (void)getRequest:(NSString *)url;
 - (Boolean)isAuthenticated:(NSDictionary *)rjUserData;
 - (void)loadAppWithRJUserData:(NSDictionary *)rjUserData saveToFile:(Boolean)save_to_file;
+- (void)showConnectionError;
 //- (void)cleanDiskOfUneededVideos;
+- (void)sendCredentials;
 
 @end
