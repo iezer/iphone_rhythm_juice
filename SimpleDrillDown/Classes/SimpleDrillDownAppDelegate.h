@@ -84,7 +84,7 @@
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection;
 - (void)getRequest:(NSString *)url;
-- (Boolean)isAuthenticated:(NSDictionary *)rjUserData;
+- (void)getRequest:(NSString *) url withRequest:(NSURLRequest*) request;
 - (void)loadAppWithRJUserData:(NSDictionary *)rjUserData saveToFile:(Boolean)save_to_file;
 - (void)showConnectionError;
 //- (void)cleanDiskOfUneededVideos;

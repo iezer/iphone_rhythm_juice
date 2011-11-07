@@ -91,80 +91,8 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 
 
 - (void)sendCredentials {
-
-    if( receivedData == nil )
-    {
-        return; // shoudn't happen
-    }
-    
-    NSString* sData = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
-    NSLog( @"received data '%@'", sData );
-    
-    //check if logged in or logged out
-
-    
-    //base64 encoding of 'index.php?option=com_iphone&format=raw'
-    NSString* urlRedirect = @"aW5kZXgucGhwP29wdGlvbj1jb21faXBob25lJmZvcm1hdD1yYXc=";
-    NSString* username = @"admin";
-    NSString* password = @"t0r0nt0";
-    NSString* task = @"login"; // @"login" or @"logout"
-
-    NSRange r = [sData rangeOfString:urlRedirect];
-    NSInteger i = r.location+r.length;
-    NSString* sub =[sData substringFromIndex:i];
-
-    NSString* marker=@"\"hidden\" name=\"";
-    r = [sub rangeOfString:marker];
-    i = r.location+r.length;
-    sub =[sub substringFromIndex:i];
-    
-    NSRange r2 = [sub rangeOfString:@"\""];
-    NSString* randomSessonId = [sub substringToIndex:r2.location];
-    
-    //<input type="hidden" name="task" value="logout" /> use this to figure out login/logout
-    
-    // put out random value
-    
-    // create rest of form
-    
-    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
-    
-    NSString *post = [NSString stringWithFormat:@"username=%@&passwd=%@&Submit=Login&option=com_user&task=%@&return=%@&%@=1",username, password, task, urlRedirect, randomSessonId];
-    
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
-    
-    NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
-    [request setURL:[NSURL URLWithString:@"http://rj.isaacezer.com/index.php?option=com_user"]];
-    [request setHTTPMethod:@"POST"];
-    [request setHTTPShouldHandleCookies:YES];
-    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPBody:postData];
-    
-    NSError *error;
-    NSURLResponse *response;
-    NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    NSString *data=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
-    NSLog(data);
-    
-    NSDictionary *headerFields = [(NSHTTPURLResponse*)response allHeaderFields]; 
-    NSURL *url = [NSURL URLWithString:@"http://rj.isaacezer.com/index.php"];   
-    NSArray *cookies = [NSHTTPCookie cookiesWithResponseHeaderFields:headerFields forURL:url];
     
     
-    
-    [request release];    
-    
-    
-    
-    //aW5kZXgucGhwP29wdGlvbj1jb21faXBob25lJmZvcm1hdD1yYXc - base64 encoding of 'index.php?option=com_iphone&format=raw'
-    
-    //NSString* user_data_url = @"http://rj.isaacezer.com/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21faXBob25lJmZvcm1hdD1yYXc=";
-    
-   // self.state = 2;
-    [sData release];
-   // [self getRequest:user_data_url];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
@@ -173,16 +101,66 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     // receivedData is declared as a method instance elsewhere
     NSLog(@"Succeeded! Received %d bytes of data",[receivedData length]);
 	
+    if( receivedData == nil )
+    {
+        return; // shoudn't happen
+    }
+    
+    NSString* sData = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
+    NSLog( @"received data '%@'", sData );
+    
     if ( state == 1 ) {
-        [self sendCredentials];
+        
+        //check if logged in or logged out
+        
+        //base64 encoding of 'index.php?option=com_iphone&format=raw'
+        NSString* urlRedirect = @"aW5kZXgucGhwP29wdGlvbj1jb21faXBob25lJmZvcm1hdD1yYXc=";
+        NSString* username = @"admin";
+        NSString* password = @"t0r0nt0";
+        NSString* task = @"login"; // @"login" or @"logout"
+        
+        NSRange r = [sData rangeOfString:urlRedirect];
+        NSInteger i = r.location+r.length;
+        NSString* sub =[sData substringFromIndex:i];
+        
+        NSString* marker=@"\"hidden\" name=\"";
+        r = [sub rangeOfString:marker];
+        i = r.location+r.length;
+        sub =[sub substringFromIndex:i];
+        
+        NSRange r2 = [sub rangeOfString:@"\""];
+        NSString* randomSessonId = [sub substringToIndex:r2.location];
+        
+        [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
+        
+        NSString *post = [NSString stringWithFormat:@"username=%@&passwd=%@&Submit=Login&option=com_user&task=%@&return=%@&%@=1",username, password, task, urlRedirect, randomSessonId];
+        
+        NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+        NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+        
+        NSString* url = @"http://rj.isaacezer.com/index.php?option=com_user";
+        
+        NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
+        [request setURL:[NSURL URLWithString:url]];
+        [request setHTTPMethod:@"POST"];
+        [request setHTTPShouldHandleCookies:YES];
+        [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+        [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+        [request setHTTPBody:postData];
+        
+        [receivedData release];	
+        [connection release];
+        self.state = 2;        
+        [self getRequest:url withRequest:request];
+        [request release];    
         
     } else { // state = 2
-	NSDictionary *rjUserData = [NSPropertyListSerialization propertyListFromData:receivedData mutabilityOption:NSPropertyListImmutable format:nil errorDescription:nil];
-    
-    [self loadAppWithRJUserData:rjUserData saveToFile:true];
+        NSDictionary *rjUserData = [NSPropertyListSerialization propertyListFromData:receivedData mutabilityOption:NSPropertyListImmutable format:nil errorDescription:nil];
+        
+        [self loadAppWithRJUserData:rjUserData saveToFile:true];
     }
-    [receivedData release];	
-	[connection release];
+    
+    [sData release];
 }
 
 - (void)loadAppWithRJUserData:(NSDictionary *)rjUserData saveToFile:(Boolean)save_to_file
@@ -205,6 +183,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         // Received an update to user data;
         User* u = [DataController createUserFromData:rjUserData];
         self.dataController.user = u;
+        [rootViewController.tableView reloadData];
     }
     
     if (save_to_file && [[self dataController] user] != nil) {
@@ -231,9 +210,13 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 											  cachePolicy:NSURLRequestUseProtocolCachePolicy
 										  timeoutInterval:60.0];
 	
+	[self getRequest:url withRequest:theRequest];
+}
+
+- (void)getRequest:(NSString *) url withRequest:(NSURLRequest*)request {
 	// create the connection with the request
 	// and start loading the data
-	NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+	NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:request delegate:self];
 	
 	if (theConnection) {
 		// Create the NSMutableData that will hold
@@ -252,12 +235,6 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         [alert show];
         [alert release];
     }
-}
-
-- (Boolean)isAuthenticated:(NSDictionary *)rjUserData{
-	NSDictionary* user = [rjUserData objectForKey:@"RJ User"];
-    NSNumber* authenticated = [user objectForKey:@"Authenticated"];
-    return [authenticated boolValue];
 }
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
