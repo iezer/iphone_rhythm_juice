@@ -74,6 +74,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 
 @synthesize infoButton;
 @synthesize footer;
+@synthesize loggingIn;
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
@@ -98,10 +99,11 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 }
 
 
-- (void)login:(NSString*)_username withPassword:(NSString*) _password {
+- (void)login:(NSString*)_username withPassword:(NSString*) _password loggingIn:(BOOL)_loggingIn {
     self.username = _username;
     self.password = _password;
     self.state = 1;
+    self.loggingIn = _loggingIn;
     
     NSString* user_data_url = @"http://rj.isaacezer.com/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21faXBob25lJmZvcm1hdD1yYXc=";
     
@@ -128,8 +130,9 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         
         //base64 encoding of 'index.php?option=com_iphone&format=raw'
         NSString* urlRedirect = @"aW5kZXgucGhwP29wdGlvbj1jb21faXBob25lJmZvcm1hdD1yYXc=";
-
-        NSString* task = @"login"; // @"login" or @"logout"
+        
+        //NSString* task = loggingIn ? @"login" : @"logout";
+        NSString* task = @"login";
         
         NSRange r = [sData rangeOfString:urlRedirect];
         NSInteger i = r.location+r.length;
@@ -170,8 +173,17 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         NSDictionary *rjUserData = [NSPropertyListSerialization propertyListFromData:receivedData mutabilityOption:NSPropertyListImmutable format:nil errorDescription:nil];
         
         [self loadAppWithRJUserData:rjUserData saveToFile:true];
+        [loginViewController reset];
         
-        [window addSubview:[navigationController view]];
+        if ([dataController.user authenticated] || !loggingIn) {
+            [window addSubview:[navigationController view]];
+        } else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Auth Failed" message:@"Incorrect user name or password."
+                                                           delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+            [alert release];
+            [window addSubview:[loginViewController view]];
+        }
     }
     
     [sData release];
@@ -253,6 +265,18 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     
+    LoginViewController *_loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:[NSBundle mainBundle]];
+    
+    _loginViewController.delegate = self;
+    self.loginViewController = _loginViewController;
+    [_loginViewController release];
+    
+    // set up the table's footer view based on our UIView 'myFooterView' outlet
+	CGRect newFrame = CGRectMake(0.0, 0.0, self.rootViewController.tableView.bounds.size.width, self.footer.frame.size.height);
+	self.footer.backgroundColor = [UIColor clearColor];
+	self.footer.frame = newFrame;
+	self.rootViewController.tableView.tableFooterView = self.footer;	// note this will override UITableView's 'sectionFooterHeight' property
+    
     // Check if we already have user storage saved
     NSFileManager *     fileManager;
     fileManager = [NSFileManager defaultManager];
@@ -265,6 +289,9 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         NSDictionary* data = [[NSDictionary alloc] initWithContentsOfFile:rj_user_info_path];
         [self loadAppWithRJUserData:data saveToFile:false];
         [data release];
+        [loginViewController update];
+    } else {
+        [window addSubview:[loginViewController view]];
     }
     
     // Regardless of whether or not we saved the users's info,
@@ -276,31 +303,13 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     //NSString* user_data_url = @"http://localhost/rj/userdata.plist";
     
     //aW5kZXgucGhwP29wdGlvbj1jb21faXBob25lJmZvcm1hdD1yYXc - base64 encoding of 'index.php?option=com_iphone&format=raw'
-    
-    // set up the table's footer view based on our UIView 'myFooterView' outlet
-	CGRect newFrame = CGRectMake(0.0, 0.0, self.rootViewController.tableView.bounds.size.width, self.footer.frame.size.height);
-	self.footer.backgroundColor = [UIColor clearColor];
-	self.footer.frame = newFrame;
-	self.rootViewController.tableView.tableFooterView = self.footer;	// note this will override UITableView's 'sectionFooterHeight' property
-    
+
     // [self cleanDiskOfUneededVideos]; // @TODO Make run in background
 }
 
-- (IBAction)loginButtonAction:(id)sender {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Premium Ended" message:@"test footer button"
-                                                   delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [alert show];
-    [alert release];
-    
+- (IBAction)loginButtonAction:(id)sender {    
     if (sender == self.infoButton) {
-        if (loginViewController == nil) {
-            LoginViewController *_loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:[NSBundle mainBundle]];
-            
-            _loginViewController.delegate = self;
-            self.loginViewController = _loginViewController;
-            [_loginViewController release];
-        }
-        
+        [loginViewController update];
         [window addSubview:[loginViewController view]];
     } else { // login view
         [window addSubview:[rootViewController view]];

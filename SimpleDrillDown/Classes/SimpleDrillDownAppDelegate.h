@@ -71,6 +71,7 @@
     
     NSString* username;
     NSString* password;
+    BOOL loggingIn;
 }
 
 @property (nonatomic) NSInteger state;
@@ -88,6 +89,8 @@
 @property (retain, nonatomic) IBOutlet UIButton *infoButton;
 @property (nonatomic, retain) IBOutlet UIView *footer;
 
+@property (nonatomic) BOOL loggingIn;
+
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;
@@ -100,5 +103,5 @@
 
 - (IBAction)loginButtonAction:(id)sender;
 
-- (void)login:(NSString*)_username withPassword:(NSString*) _password;
+- (void)login:(NSString*)_username withPassword:(NSString*) _password loggingIn:(BOOL)_loggingIn;
 @end

@@ -115,12 +115,13 @@
             [play release];
         }
         
-        NSString* username = [userData objectForKey:@"username"];        
+        NSString* username = [userData objectForKey:@"Username"];        
         Boolean premium = [[userData objectForKey:@"Premium"] boolValue];
+        Boolean authenticated = [[userData objectForKey:@"Authenticated"] boolValue];
         NSDate* subscriptionEndDate = [userData objectForKey:@"Subscription End"];
         NSInteger allowedOfflineLessons = [[userData objectForKey:@"Allowed Offline Lessons"] intValue];
         
-        user = [[User alloc] init:username subscriptionEndDate:subscriptionEndDate premium:premium authenticated:true lessons:playlist allowedOfflineLessons:allowedOfflineLessons];
+        user = [[User alloc] init:username subscriptionEndDate:subscriptionEndDate premium:premium authenticated:authenticated lessons:playlist allowedOfflineLessons:allowedOfflineLessons];
     }
     
     return user;

@@ -7,6 +7,8 @@
 //
 
 #import "LoginViewController.h"
+#import "DataController.h"
+#import "User.h"
 
 @implementation LoginViewController
 
@@ -65,12 +67,37 @@
     
     [usernameField resignFirstResponder];
     [passwordField resignFirstResponder];
-    [delegate login:usernameField.text withPassword:passwordField.text];
+    
+    User* u = delegate.dataController.user;
+    BOOL loggedIn = u != nil && u.authenticated;
+
+    [delegate login:usernameField.text withPassword:passwordField.text loggingIn:!loggedIn];
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField*) textField {
     [textField resignFirstResponder]; 
     return YES;
+}
+
+-(BOOL) loggedIn {
+    User* u = delegate.dataController.user;
+    return u != nil && u.authenticated;
+}
+
+-(void) update {
+    User* u = delegate.dataController.user;
+    
+    if (u != nil && u.authenticated) {
+        usernameField.text = u.username;
+        [loginButton setTitle:@"Logout" forState:UIControlStateNormal];
+    } else {
+        [loginButton setTitle:@"Login" forState:UIControlStateNormal];
+    }
+}
+-(void) reset {
+    loginIndicator.hidden = TRUE;
+	[loginIndicator stopAnimating];
+	loginButton.enabled = TRUE;
 }
 
 @end

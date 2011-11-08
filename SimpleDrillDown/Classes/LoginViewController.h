@@ -27,5 +27,6 @@
 
 - (IBAction) login: (id) sender;
 -(BOOL) textFieldShouldReturn:(UITextField*) textField;
+-(void) reset;
 
 @end
