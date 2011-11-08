@@ -26,7 +26,6 @@
     [window makeKeyAndVisible];
 }
 
-
 - (void)dealloc {
 	[loginViewController release];
     [window release];

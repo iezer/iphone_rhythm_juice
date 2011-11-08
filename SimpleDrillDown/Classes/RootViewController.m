@@ -52,9 +52,9 @@
 #import "SimpleDrillDownAppDelegate.h"
 
 @implementation RootViewController
-@synthesize loginButton;
 
-@synthesize dataController, footer;
+
+@synthesize dataController;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -62,13 +62,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	self.title = NSLocalizedString(@"Plays", @"Master view navigation title");
-    
-    // set up the table's footer view based on our UIView 'myFooterView' outlet
-	CGRect newFrame = CGRectMake(0.0, 0.0, self.tableView.bounds.size.width, self.footer.frame.size.height);
-	self.footer.backgroundColor = [UIColor clearColor];
-	self.footer.frame = newFrame;
-	self.tableView.tableFooterView = self.footer;	// note this will override UITableView's 'sectionFooterHeight' property
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -139,28 +132,16 @@
     [detailViewController release];
 }
 
-- (IBAction)loginButtonAction:(id)sender {
-UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Premium Ended" message:@"test footer button"
-                                               delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-[alert show];
-[alert release];
-}
-
 #pragma mark -
 #pragma mark Memory management
 
 - (void)dealloc {
     
     [dataController release];
-    [footer release];
-    [loginButton release];
     [super dealloc];
 }
 
 - (void)viewDidUnload {
-    [footer release];
-    footer = nil;
-    [self setLoginButton:nil];
     [super viewDidUnload];
 }
 @end

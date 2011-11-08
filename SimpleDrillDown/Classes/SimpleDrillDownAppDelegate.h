@@ -66,6 +66,11 @@
 	NSMutableData *receivedData;
     LoginViewController *loginViewController;
     NSInteger state;
+    IBOutlet UIButton *infoButton;
+    IBOutlet UIView *footer;
+    
+    NSString* username;
+    NSString* password;
 }
 
 @property (nonatomic) NSInteger state;
@@ -76,8 +81,12 @@
 @property (nonatomic, retain) DataController *dataController;
 @property (nonatomic, retain) DetailViewController *detailViewController;
 @property (nonatomic, retain) NSMutableData *receivedData;
-//@property (nonatomic, retain) LoginViewController *loginViewController;
+@property (nonatomic, retain) LoginViewController *loginViewController;
+@property (nonatomic, retain) NSString *username;
+@property (nonatomic, retain) NSString *password;
 
+@property (retain, nonatomic) IBOutlet UIButton *infoButton;
+@property (nonatomic, retain) IBOutlet UIView *footer;
 
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
@@ -88,6 +97,8 @@
 - (void)loadAppWithRJUserData:(NSDictionary *)rjUserData saveToFile:(Boolean)save_to_file;
 - (void)showConnectionError;
 //- (void)cleanDiskOfUneededVideos;
-- (void)sendCredentials;
 
+- (IBAction)loginButtonAction:(id)sender;
+
+- (void)login:(NSString*)_username withPassword:(NSString*) _password;
 @end

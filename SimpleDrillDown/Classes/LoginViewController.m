@@ -13,7 +13,9 @@
 @synthesize usernameField;
 @synthesize passwordField;
 @synthesize loginButton;
+@synthesize infoButton;
 @synthesize loginIndicator;
+@synthesize delegate;
 
 /*
 // Override initWithNibName:bundle: to load the view using a nib file then perform additional customization that is not appropriate for viewDidLoad.
@@ -50,19 +52,25 @@
     // Release anything that's not essential, such as cached data
 }
 
-
 - (void)dealloc {
     [super dealloc];
 }
 
 - (IBAction) login: (id) sender
 {
-	// TODO: spawn a login thread
 	
 	loginIndicator.hidden = FALSE;
 	[loginIndicator startAnimating];
-	
 	loginButton.enabled = FALSE;
+    
+    [usernameField resignFirstResponder];
+    [passwordField resignFirstResponder];
+    [delegate login:usernameField.text withPassword:passwordField.text];
+}
+
+-(BOOL) textFieldShouldReturn:(UITextField*) textField {
+    [textField resignFirstResponder]; 
+    return YES;
 }
 
 @end

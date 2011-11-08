@@ -49,6 +49,7 @@
 #import "RootViewController.h"
 #import "DataController.h"
 #import "DetailViewController.h"
+#import "LoginViewController.h"
 #import "User.h"
 
 NSString *kScalingModeKey	= @"scalingMode";
@@ -66,6 +67,13 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 @synthesize detailViewController;
 @synthesize receivedData;
 @synthesize state;
+@synthesize loginViewController;
+
+@synthesize username;
+@synthesize password;
+
+@synthesize infoButton;
+@synthesize footer;
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
@@ -90,9 +98,14 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 }
 
 
-- (void)sendCredentials {
+- (void)login:(NSString*)_username withPassword:(NSString*) _password {
+    self.username = _username;
+    self.password = _password;
+    self.state = 1;
     
+    NSString* user_data_url = @"http://rj.isaacezer.com/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21faXBob25lJmZvcm1hdD1yYXc=";
     
+    [self getRequest:user_data_url];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
@@ -115,8 +128,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         
         //base64 encoding of 'index.php?option=com_iphone&format=raw'
         NSString* urlRedirect = @"aW5kZXgucGhwP29wdGlvbj1jb21faXBob25lJmZvcm1hdD1yYXc=";
-        NSString* username = @"admin";
-        NSString* password = @"t0r0nt0";
+
         NSString* task = @"login"; // @"login" or @"logout"
         
         NSRange r = [sData rangeOfString:urlRedirect];
@@ -158,6 +170,8 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         NSDictionary *rjUserData = [NSPropertyListSerialization propertyListFromData:receivedData mutabilityOption:NSPropertyListImmutable format:nil errorDescription:nil];
         
         [self loadAppWithRJUserData:rjUserData saveToFile:true];
+        
+        [window addSubview:[navigationController view]];
     }
     
     [sData release];
@@ -263,12 +277,34 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     
     //aW5kZXgucGhwP29wdGlvbj1jb21faXBob25lJmZvcm1hdD1yYXc - base64 encoding of 'index.php?option=com_iphone&format=raw'
     
-    NSString* user_data_url = @"http://rj.isaacezer.com/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21faXBob25lJmZvcm1hdD1yYXc=";
-    
-    self.state = 1;
-    [self getRequest:user_data_url];
+    // set up the table's footer view based on our UIView 'myFooterView' outlet
+	CGRect newFrame = CGRectMake(0.0, 0.0, self.rootViewController.tableView.bounds.size.width, self.footer.frame.size.height);
+	self.footer.backgroundColor = [UIColor clearColor];
+	self.footer.frame = newFrame;
+	self.rootViewController.tableView.tableFooterView = self.footer;	// note this will override UITableView's 'sectionFooterHeight' property
     
     // [self cleanDiskOfUneededVideos]; // @TODO Make run in background
+}
+
+- (IBAction)loginButtonAction:(id)sender {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Premium Ended" message:@"test footer button"
+                                                   delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
+    [alert release];
+    
+    if (sender == self.infoButton) {
+        if (loginViewController == nil) {
+            LoginViewController *_loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:[NSBundle mainBundle]];
+            
+            _loginViewController.delegate = self;
+            self.loginViewController = _loginViewController;
+            [_loginViewController release];
+        }
+        
+        [window addSubview:[loginViewController view]];
+    } else { // login view
+        [window addSubview:[rootViewController view]];
+    }
 }
 
 /*
@@ -303,6 +339,9 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     [dataController release];
 	[play release];
     [receivedData release];
+    [loginViewController release];
+    [footer release];
+    [infoButton release];
     [super dealloc];
 }
 
