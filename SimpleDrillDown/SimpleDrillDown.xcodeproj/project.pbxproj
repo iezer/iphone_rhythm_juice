@@ -28,7 +28,6 @@
 		6A38A5BA110D41CC004EF5FD /* TimeTrackerNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A38A5B6110D41CB004EF5FD /* TimeTrackerNode.m */; };
 		6A38A601110D44A5004EF5FD /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6A38A600110D44A5004EF5FD /* Settings.bundle */; };
 		6A38A70B110DF8AD004EF5FD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A38A70A110DF8AD004EF5FD /* MediaPlayer.framework */; };
-		6A4E2B6514682DC6002BA42C /* Footer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A4E2B6414682DC6002BA42C /* Footer.xib */; };
 		6A7145691123C5F00081571A /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */; };
 		6A7145EE1123D77E0081571A /* sylvia-nick.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 6A7145ED1123D77E0081571A /* sylvia-nick.m4v */; };
 		6A7147F111268E8C0081571A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7147F011268E8C0081571A /* Default.png */; };
@@ -76,7 +75,6 @@
 		6A38A600110D44A5004EF5FD /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		6A38A613110D45C8004EF5FD /* MoviePlayer_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviePlayer_Prefix.pch; sourceTree = "<group>"; };
 		6A38A70A110DF8AD004EF5FD /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		6A4E2B6414682DC6002BA42C /* Footer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Footer.xib; sourceTree = "<group>"; };
 		6A7145ED1123D77E0081571A /* sylvia-nick.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sylvia-nick.m4v"; sourceTree = "<group>"; };
 		6A7147F011268E8C0081571A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		6A7147FC11268F7E0081571A /* ilhc-2008-dax-alice.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ilhc-2008-dax-alice.m4v"; sourceTree = "<group>"; };
@@ -110,8 +108,8 @@
 				6A1B185514542C2600E91BDA /* CustomMoviePlayerViewController.m */,
 				28F25CCA0D64C1EB00158CCD /* DetailViewController.h */,
 				28F25CCB0D64C1EB00158CCD /* DetailViewController.m */,
-				282DE87A0D999CA700F5050D /* RootViewController.h */,
 				282DE8790D999CA700F5050D /* RootViewController.m */,
+				282DE87A0D999CA700F5050D /* RootViewController.h */,
 			);
 			name = "View Controllers";
 			path = Classes;
@@ -174,7 +172,6 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				6A4E2B6414682DC6002BA42C /* Footer.xib */,
 				6A1B185D14542E8600E91BDA /* LoginView.xib */,
 				6A71482D11298A7A0081571A /* alhc-2008-dax-alice.m4v */,
 				6A7147FE11268FFC0081571A /* dax-alice-toulouse.m4v */,
@@ -275,7 +272,6 @@
 				6A71482E11298A7A0081571A /* alhc-2008-dax-alice.m4v in Resources */,
 				6AB292CC114397DF00C2DECF /* userdata.plist in Resources */,
 				6A1B185E14542E8600E91BDA /* LoginView.xib in Resources */,
-				6A4E2B6514682DC6002BA42C /* Footer.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

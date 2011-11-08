@@ -49,12 +49,14 @@
 
 @interface RootViewController : UITableViewController {
     DataController *dataController;
-    //UITableViewCellAccessoryType accessoryType;
+    IBOutlet UIView *footer;
+    IBOutlet UIButton *loginButton;
 }
+@property (retain, nonatomic) IBOutlet UIButton *loginButton;
 
 @property (nonatomic, retain) DataController *dataController;
-//@property(nonatomic) UITableViewCellAccessoryType accessoryType;
+@property (nonatomic, retain) IBOutlet UIView *footer;
 
-
+- (IBAction)loginButtonAction:(id)sender;
 
 @end
