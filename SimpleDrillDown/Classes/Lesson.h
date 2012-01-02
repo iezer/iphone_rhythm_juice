@@ -68,6 +68,7 @@
 - (Boolean) isChapterDownloadedLocally:(NSUInteger)chapter;
 - (NSString*)getChapterLocalPath:(NSInteger)chapter;
 - (void)deleteFiles;
+- (NSInteger) canPlayNextLesson:(NSInteger)currentChapterIndex;
 
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSArray *instructors;

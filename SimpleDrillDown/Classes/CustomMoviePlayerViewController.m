@@ -101,7 +101,22 @@
      name:MPMoviePlayerPlaybackDidFinishNotification 
      object:nil];
     
-	[self dismissModalViewControllerAnimated:YES];
+    //play next movie
+    NSDictionary *userInfo = [notification userInfo];
+    
+    NSLog(@"MPMoviePlayerPlaybackDidFinishReasonUserInfoKey: %@",
+          [userInfo objectForKey:@"MPMoviePlayerPlaybackDidFinishReasonUserInfoKey"]);
+ 
+    NSInteger nextChapter = [lesson canPlayNextLesson:chapterIndex];
+    if ([[userInfo objectForKey:@"MPMoviePlayerPlaybackDidFinishReasonUserInfoKey"] intValue] ==MPMovieFinishReasonPlaybackEnded && nextChapter != -1)
+    {
+        chapterIndex = nextChapter;
+        movieURL = [self->lesson getMovieFile:chapterIndex];
+        [movieURL retain];
+        [self readyPlayer];
+    } else {
+        [self dismissModalViewControllerAnimated:YES];
+    }
 }
 
 /*---------------------------------------------------------------------------

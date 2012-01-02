@@ -100,8 +100,11 @@
 - (void)loadAppWithRJUserData:(NSDictionary *)rjUserData saveToFile:(Boolean)save_to_file;
 - (void)showConnectionError;
 //- (void)cleanDiskOfUneededVideos;
+- (void) logout;
 
 - (IBAction)loginButtonAction:(id)sender;
 
 - (void)login:(NSString*)_username withPassword:(NSString*) _password loggingIn:(BOOL)_loggingIn;
+- (NSString*) getAttributeValue:(NSString*)s withMarker:(NSString*) marker;
+
 @end

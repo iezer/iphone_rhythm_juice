@@ -98,6 +98,8 @@
     loginIndicator.hidden = TRUE;
 	[loginIndicator stopAnimating];
 	loginButton.enabled = TRUE;
+    
+    [self update];
 }
 
 @end

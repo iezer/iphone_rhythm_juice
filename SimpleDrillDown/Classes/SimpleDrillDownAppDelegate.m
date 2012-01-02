@@ -105,9 +105,27 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     self.state = 1;
     self.loggingIn = _loggingIn;
     
+    // for local server
     NSString* user_data_url = @"http://rj.isaacezer.com/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21faXBob25lJmZvcm1hdD1yYXc=";
-    
+
+    //NSString* user_data_url = @"http://www.rhythmjuice.com/rhythmjuice/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21fbGVzc29uJnZpZXc9aXBob25lJmZvcm1hdD1yYXc=";
+
     [self getRequest:user_data_url];
+}
+
+- (NSString*) getAttributeValue:(NSString*)s withMarker:(NSString*) marker {
+    NSRange r = [s rangeOfString:marker];
+    NSInteger i = r.location+r.length;
+    NSString* sub;
+    if (r.length > 0) {
+        sub =[s substringFromIndex:i];
+
+        NSRange r2 = [sub rangeOfString:@"\""];
+        if (r2.length > 0) {
+            return [sub substringToIndex:r2.location];
+        }
+    }
+    return @"";
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
@@ -129,22 +147,36 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         //check if logged in or logged out
         
         //base64 encoding of 'index.php?option=com_iphone&format=raw'
+        //for isaacezer.com server tested.
         NSString* urlRedirect = @"aW5kZXgucGhwP29wdGlvbj1jb21faXBob25lJmZvcm1hdD1yYXc=";
+        // for rj
+        //NSString* urlRedirect = @"aW5kZXgucGhwP29wdGlvbj1jb21fbGVzc29uJnZpZXc9aXBob25lJmZvcm1hdD1yYXc=";
         
-        //NSString* task = loggingIn ? @"login" : @"logout";
-        NSString* task = @"login";
+        NSString* taskString = [self getAttributeValue:sData withMarker:@"\"hidden\" name=\"task\" value=\""];
+        
+        NSString* task;
+        if( loggingIn && [taskString isEqualToString:@"logout"] ) {
+            //weird state, iphone thinks we're logging in but server
+            //thinks we're already in. should never get here.
+            //send another login message anyway.
+            task = @"login";
+        } else if( !loggingIn && [taskString isEqualToString:@"login"] ) {
+            [self logout];
+            state = 0;
+            [sData release];
+            [receivedData release];
+            [connection release];
+            [loginViewController reset];
+            return;
+        } else {  
+            task = loggingIn ? @"login" : @"logout";
+        }
         
         NSRange r = [sData rangeOfString:urlRedirect];
         NSInteger i = r.location+r.length;
         NSString* sub =[sData substringFromIndex:i];
         
-        NSString* marker=@"\"hidden\" name=\"";
-        r = [sub rangeOfString:marker];
-        i = r.location+r.length;
-        sub =[sub substringFromIndex:i];
-        
-        NSRange r2 = [sub rangeOfString:@"\""];
-        NSString* randomSessonId = [sub substringToIndex:r2.location];
+        NSString* randomSessonId = [self getAttributeValue:sub withMarker:@"\"hidden\" name=\""];
         
         [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
         
@@ -153,7 +185,8 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
         NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
         
-        NSString* url = @"http://rj.isaacezer.com/index.php?option=com_user";
+        //NSString* url = @"http://www.rhythmjuice.com/rhythmjuice/index.php?option=com_user";
+        NSString* url = @"http://rj.isaacezer.com/index.php?option=com_iphone&format=raw";
         
         NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
         [request setURL:[NSURL URLWithString:url]];
@@ -163,8 +196,9 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
         [request setHTTPBody:postData];
         
-        [receivedData release];	
+        [receivedData release];
         [connection release];
+        
         self.state = 2;        
         [self getRequest:url withRequest:request];
         [request release];    
@@ -175,15 +209,19 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         [self loadAppWithRJUserData:rjUserData saveToFile:true];
         [loginViewController reset];
         
-        if ([dataController.user authenticated] || !loggingIn) {
+        BOOL authd = dataController.user.authenticated;
+        if (loggingIn && authd) {
             [window addSubview:[navigationController view]];
-        } else {
+        } else if (loggingIn && !authd) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Auth Failed" message:@"Incorrect user name or password."
                                                            delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
             [alert release];
             [window addSubview:[loginViewController view]];
+        } else { // !loggingIn
+            [self logout];
         }
+        state = 0;
     }
     
     [sData release];
@@ -212,7 +250,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         [rootViewController.tableView reloadData];
     }
     
-    if (save_to_file && [[self dataController] user] != nil) {
+    if (save_to_file && self.dataController.user != nil && self.dataController.user.authenticated) {
         // If we got to here the file is in good shape so save it for next time
         NSFileManager *     fileManager;
         fileManager = [NSFileManager defaultManager];
@@ -303,17 +341,41 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     //NSString* user_data_url = @"http://localhost/rj/userdata.plist";
     
     //aW5kZXgucGhwP29wdGlvbj1jb21faXBob25lJmZvcm1hdD1yYXc - base64 encoding of 'index.php?option=com_iphone&format=raw'
-
+    
     // [self cleanDiskOfUneededVideos]; // @TODO Make run in background
 }
 
 - (IBAction)loginButtonAction:(id)sender {    
     if (sender == self.infoButton) {
-        [loginViewController update];
         [window addSubview:[loginViewController view]];
+        [loginViewController update];
     } else { // login view
         [window addSubview:[rootViewController view]];
     }
+}
+
+- (void) logout {
+    if( dataController.user != nil ) {
+        [dataController.user release];
+        dataController.user = nil;
+    }
+    
+    // Check if we already have user storage saved
+    NSFileManager *     fileManager;
+    fileManager = [NSFileManager defaultManager];
+    assert(fileManager != nil);
+    
+    NSString *document_folder_path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSString *rj_user_info_path = [document_folder_path stringByAppendingPathComponent:@"rj_user_info.plist"];
+    
+    if ( [fileManager fileExistsAtPath:rj_user_info_path]) {
+        NSError* error;
+        [fileManager removeItemAtPath:rj_user_info_path error:&error];
+    }
+    
+    [fileManager release];
+    
+  //  [window addSubview:[rootViewController view]];
 }
 
 /*

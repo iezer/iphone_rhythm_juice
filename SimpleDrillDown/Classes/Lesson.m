@@ -167,4 +167,15 @@
     return [NSURL fileURLWithPath:chapter_local_path];
 }
 
+/* Return the chapter index of the next downloaded chapter, or -1 if there is nothing left. */
+- (NSInteger) canPlayNextLesson:(NSInteger)currentChapterIndex
+{
+    for (NSInteger i = currentChapterIndex + 1; i < [chapters count]; i++ ) {
+        if ( [self isChapterDownloadedLocally:(i)] )
+        {
+            return i;
+        }
+    }
+    return -1;
+}
 @end

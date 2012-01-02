@@ -96,7 +96,8 @@
             rows = [lesson isDownloadedLocally] ? 1 : 0;
             break;
         case 3:
-			rows = [lesson.tracker.mList count];
+			rows = 0;
+            //rows = [lesson.tracker.mList count];
 			break;
 		default:
             break;
@@ -125,7 +126,7 @@
     // Set the text in the cell for the section/row.
     
     NSString *cellText = nil;
-    TimeTrackerNode *node = nil;
+    //TimeTrackerNode *node = nil;
 	
     switch (indexPath.section) {
         case 0:
@@ -141,12 +142,12 @@
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             break;
         case 3:
-			node = [lesson.tracker.mList objectAtIndex:indexPath.row];
+/*            node = [lesson.tracker.mList objectAtIndex:indexPath.row];
 			if (node == nil) {
 				cellText = @"";
 			} else {
 				cellText = [node description];
-			}
+			} */
 			break;
 		default:
             break;
@@ -175,10 +176,10 @@
             title = NSLocalizedString(@"Chapters", @"Genre section title");
             break;
         case 2:
-            title = @"Manage";
+            title = @""; // Manage
             break;
         case 3:
-			title = @"View Tracker";
+			title = @""; // View Tracker
 			break;
 		default:
             break;
