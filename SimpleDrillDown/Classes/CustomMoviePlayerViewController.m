@@ -12,7 +12,7 @@
 @implementation CustomMoviePlayerViewController
 
 /*---------------------------------------------------------------------------
- * 
+ *  Assumes file is already downloaded.
  *--------------------------------------------------------------------------*/
 - (id)initWithPlay:(Lesson *)_play chapterIndex:(NSUInteger)chapter
 {
@@ -23,7 +23,7 @@
         [lesson retain];
         
         chapterIndex = chapter;
-        movieURL = [self->lesson getMovieFile:chapter];
+        movieURL = [NSURL fileURLWithPath:[lesson getChapterLocalPath:chapter]];
         [movieURL retain];
     }
 	return self;
@@ -111,7 +111,7 @@
     if ([[userInfo objectForKey:@"MPMoviePlayerPlaybackDidFinishReasonUserInfoKey"] intValue] ==MPMovieFinishReasonPlaybackEnded && nextChapter != -1)
     {
         chapterIndex = nextChapter;
-        movieURL = [self->lesson getMovieFile:chapterIndex];
+        movieURL = [NSURL fileURLWithPath:[lesson getChapterLocalPath:chapterIndex]];
         [movieURL retain];
         [self readyPlayer];
     } else {

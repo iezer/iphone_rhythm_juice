@@ -48,34 +48,41 @@
 
 #import <Foundation/Foundation.h>
 #import "TimeTracker.h"
+#import "DetailViewController.h"
 
 @interface Lesson : NSObject {
 	NSString *title;
 	NSArray *instructors;
-	NSArray *chapters;
-	NSArray *chapterTitles;
+	NSMutableArray *chapters;
 	TimeTracker *tracker;
     Boolean premium;
     NSString *lessonFolderPath;
+    
+    DetailViewController *detailViewController;
 }
 
 - (Lesson*)init:(NSString*)_title instructors:(NSArray*)_instructors chapters:(NSArray*)_chapters chapterTitles:(NSArray*)_chapterTitles premium:(Boolean)_premium;
 
-- (NSURL*)getMovieFile:(NSUInteger)chapter;
+- (void)queueChapterDownload:(NSUInteger)chapter;
 - (void)startTracker:(NSUInteger)chapter;
 - (void)stopTracker;
 - (Boolean) isDownloadedLocally;
 - (Boolean) isChapterDownloadedLocally:(NSUInteger)chapter;
 - (NSString*)getChapterLocalPath:(NSInteger)chapter;
+- (NSString*)getChapterRemotePath:(NSInteger)chapter;
 - (void)deleteFiles;
 - (NSInteger) canPlayNextLesson:(NSInteger)currentChapterIndex;
+- (NSString*) status:(NSInteger)chapter;
+- (NSString*)getChapterTitle:(NSInteger)chapter;
+- (NSString*)createChapterLocalPath:(NSString*)chapterRemotePath;
+- (void)queueAllChapters;
 
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSArray *instructors;
-@property (nonatomic, retain) NSArray *chapters;
-@property (nonatomic, retain) NSArray *chapterTitles;
+@property (nonatomic, retain) NSMutableArray *chapters;
 @property (nonatomic, retain) TimeTracker *tracker;
 @property (nonatomic) Boolean premium;
 @property (nonatomic, retain) NSString *lessonFolderPath;
+@property (nonatomic, retain) DetailViewController *detailViewController;
 
 @end

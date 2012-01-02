@@ -93,7 +93,7 @@
             rows = [lesson.chapters count];
             break;
         case 2:
-            rows = [lesson isDownloadedLocally] ? 1 : 0;
+            rows = 2;
             break;
         case 3:
 			rows = 0;
@@ -133,21 +133,26 @@
             cellText = [lesson.instructors objectAtIndex:indexPath.row];
             break;
         case 1:
-            cellText = [lesson.chapterTitles objectAtIndex:indexPath.row];
+            cellText = [lesson getChapterTitle:indexPath.row];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.detailTextLabel.text = [lesson isChapterDownloadedLocally:indexPath.row] ? @"downloaded locally" : @"not downloaded";
+            cell.detailTextLabel.text = [lesson status:indexPath.row];
             break;
         case 2:
-            cellText = [lesson isDownloadedLocally] ? @"delete local files" : @"";
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            if (indexPath.row == 0) {
+                cellText = @"Download All Files";
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            }else{
+                cellText = @"Delete Local Files";
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            }
             break;
         case 3:
-/*            node = [lesson.tracker.mList objectAtIndex:indexPath.row];
-			if (node == nil) {
-				cellText = @"";
-			} else {
-				cellText = [node description];
-			} */
+            /*            node = [lesson.tracker.mList objectAtIndex:indexPath.row];
+             if (node == nil) {
+             cellText = @"";
+             } else {
+             cellText = [node description];
+             } */
 			break;
 		default:
             break;
@@ -197,14 +202,21 @@
         
         if ([dataController canWatchLesson:lesson]){
             
-            // Create custom movie player   
-            moviePlayer = [[[CustomMoviePlayerViewController alloc] initWithPlay:lesson chapterIndex:chapter] autorelease];
-            
-            // Show the movie player as modal
-            [self presentModalViewController:moviePlayer animated:YES];
-            
-            // Prep and play the movie
-            [moviePlayer readyPlayer];
+            if([lesson isChapterDownloadedLocally:chapter])
+            {
+                // Create custom movie player   
+                moviePlayer = [[[CustomMoviePlayerViewController alloc] initWithPlay:lesson chapterIndex:chapter] autorelease];
+                
+                // Show the movie player as modal
+                [self presentModalViewController:moviePlayer animated:YES];
+                
+                // Prep and play the movie
+                [moviePlayer readyPlayer];
+            } else {
+                lesson.detailViewController = self;
+                [lesson queueChapterDownload:chapter];
+                [self.tableView reloadData];
+            }
         } else if ([dataController expired:lesson]) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Premium Ended" message:@"Your premium subscription has expired. Please log onto www.rhythmjuice.com and renew your subscription in order to watch this premium lesson."
                                                            delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
@@ -220,7 +232,12 @@
         }
     } else if (section == 2)
     {
-        [lesson deleteFiles];
+        if (indexPath.row == 0) {
+            lesson.detailViewController = self;
+            [lesson queueAllChapters];
+        } else {
+            [lesson deleteFiles];   
+        }
         [self.tableView reloadData];
     }
 }

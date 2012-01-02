@@ -46,10 +46,12 @@
  */
 
 #import "Lesson.h"
+#import "ASIHTTPRequest.h"
+#import "Chapter.h"
 
 @implementation Lesson
 
-@synthesize title, instructors, chapters, chapterTitles, tracker, premium, lessonFolderPath;
+@synthesize title, instructors, chapters, tracker, premium, lessonFolderPath, detailViewController;
 
 - (Lesson*)init:(NSString*)_title instructors:(NSArray*)_instructors chapters:(NSArray*)_chapters chapterTitles:(NSArray*)_chapterTitles premium:(Boolean)_premium {
     self = [super init];
@@ -57,8 +59,6 @@
     {
         self.title = _title;
         self.instructors = _instructors;
-        self.chapters = _chapters;
-        self.chapterTitles = _chapterTitles;
         self.premium = _premium;
         self.tracker = [[TimeTracker alloc] init];
         
@@ -70,12 +70,21 @@
         NSString *lessons_folder_path = [document_folder_path stringByAppendingPathComponent:@"lessons"]; 
         
         self.lessonFolderPath = [lessons_folder_path stringByAppendingPathComponent:self.title];
+        
+        self->chapters = [[[NSMutableArray alloc] init] retain];
+        
+        NSInteger chapterCount = MIN( [_chapters count], [_chapterTitles count] );
+        for (int i = 0; i < chapterCount; i ++) {
+            NSString* remotePath = [_chapters objectAtIndex:i];
+            [self->chapters addObject:[[Chapter alloc] init:[_chapterTitles objectAtIndex:i] remotePath:remotePath localPath:[self createChapterLocalPath:remotePath]]];
+        }
+        
     }
     return self;
 }
 
 -(void)startTracker:(NSUInteger)chapter {
-	[self.tracker play:[chapters objectAtIndex:chapter] ];
+	[self.tracker play:[self getChapterTitle:chapter]];
 }
 
 -(void)stopTracker {
@@ -91,14 +100,40 @@
 	[super dealloc];
 }
 
-- (NSString*)getChapterLocalPath:(NSInteger)chapter
+- (NSString*)createChapterLocalPath:(NSString*)chapterRemotePath
 {
-    NSString* chapter_remote_path = [self.chapters objectAtIndex:chapter];
-    NSURL* chapter_remote_url = [NSURL URLWithString:chapter_remote_path];
+    NSURL* chapter_remote_url = [NSURL URLWithString:chapterRemotePath];
     
     NSString* filename = [chapter_remote_url lastPathComponent];
     NSString* chapter_local_path = [lessonFolderPath stringByAppendingPathComponent:filename];
     return chapter_local_path;
+}
+
+- (NSString*)getChapterLocalPath:(NSInteger)chapter
+{
+    return [[self->chapters objectAtIndex:chapter] localPath];
+}
+
+- (NSString*)getChapterRemotePath:(NSInteger)chapter
+{
+    return [[self->chapters objectAtIndex:chapter] remotePath];
+}
+
+- (NSString*)getChapterTitle:(NSInteger)chapter
+{
+    return [[self->chapters objectAtIndex:chapter] title];
+}
+
+- (Boolean)isChapterDownloadInProgress:(NSInteger)chapter
+{
+    return [[self->chapters objectAtIndex:chapter] isDownloadInProgress];
+}
+
+
+- (void)setChapterDownloadInProgressFlag:(NSInteger)chapter withFlag:(Boolean)flag
+{
+    Chapter *c = [[self chapters] objectAtIndex:chapter] ;
+    [c setIsDownloadInProgress: flag];
 }
 
 - (Boolean) isDownloadedLocally
@@ -111,6 +146,16 @@
     return ([fileManager fileExistsAtPath:lessonFolderPath isDirectory:&isDir] && isDir);
 }
 
+- (NSString*) status:(NSInteger)chapter
+{
+    if ([self isChapterDownloadedLocally:chapter]) {
+        return @"downloaded";
+    } else if ([self isChapterDownloadInProgress:chapter]) {
+        return @"downloading...";
+    } else {
+        return @"not downloaded.";
+    }
+}
 
 - (Boolean) isChapterDownloadedLocally:(NSUInteger)chapter
 {
@@ -133,13 +178,22 @@
     }
 }
 
-- (NSURL*)getMovieFile:(NSUInteger)chapter {
+- (void)queueAllChapters
+{
+    for (int i = 0; i < [chapters count]; i++) {
+        if (![self isChapterDownloadedLocally:i] && ![self isChapterDownloadInProgress:i]) {
+            [self queueChapterDownload:i];
+        }
+    }
+}
+
+- (void)queueChapterDownload:(NSUInteger)chapter {
     
     NSFileManager *     fileManager;
     fileManager = [NSFileManager defaultManager];
     assert(fileManager != nil);
     
-    NSString* chapter_remote_path = [self.chapters objectAtIndex:chapter];
+    NSString* chapter_remote_path = [self getChapterRemotePath:chapter];
     NSURL* chapter_remote_url = [NSURL URLWithString:chapter_remote_path];
     
     NSError *error;
@@ -147,25 +201,72 @@
         [[NSFileManager defaultManager] createDirectoryAtURL: [NSURL fileURLWithPath:lessonFolderPath] withIntermediateDirectories:true attributes:nil error:&error];
     }
     
-    NSString* chapter_local_path = [self getChapterLocalPath:chapter];
-    
+//    NSString* chapter_local_path = [self getChapterLocalPath:chapter];
     //@TODO maybe should be using NSURLConnectionDownloadDelegate
     
     if ( ! [self isChapterDownloadedLocally:chapter]) {
-        NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
-        [request setHTTPMethod:@"GET"];
-        NSURLResponse *response;
         
-        NSData *urlData;
-        [request setURL:chapter_remote_url];
-        urlData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-        BOOL written = [urlData writeToFile:chapter_local_path atomically:NO];
-        if (written)
-            NSLog(@"Saved to file: %@", chapter_local_path);
+        [self setChapterDownloadInProgressFlag:chapter withFlag:true];
+         ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:chapter_remote_url];
+        [request setDelegate:self];
+        [request startAsynchronous];
+        
+        /*        
+         NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
+         [request setHTTPMethod:@"GET"];
+         NSURLResponse *response;
+         
+         NSData *urlData;
+         [request setURL:chapter_remote_url];
+         urlData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+         BOOL written = [urlData writeToFile:chapter_local_path atomically:NO];
+         if (written)
+         NSLog(@"Saved to file: %@", chapter_local_path);
+         */
+    }
+}
+
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
+    // Use when fetching binary data
+    NSData *responseData = [request responseData];
+    
+    for (int i = 0; i < [chapters count]; i++) {
+        NSString* chapter_local_path = [self getChapterLocalPath:i];
+        NSString* chapter_remote_path = [self getChapterRemotePath:i];
+        NSURL* chapter_remote_url = [NSURL URLWithString:chapter_remote_path];
+        if ([chapter_remote_url isEqual:[request originalURL]]) {
+            BOOL written = [responseData writeToFile:chapter_local_path atomically:NO];
+            if (written)
+                NSLog(@"Saved to file: %@", chapter_local_path);
+            [self setChapterDownloadInProgressFlag:i withFlag:false];
+        }
     }
     
-    return [NSURL fileURLWithPath:chapter_local_path];
+    if ( detailViewController != nil) {
+        [detailViewController.tableView reloadData];
+    }
 }
+
+
+- (void)requestFailed:(ASIHTTPRequest *)request
+{
+    NSError *error = [request error];
+    NSLog(@"Connection Error: %@", error);
+    
+    for (int i = 0; i < [chapters count]; i++) {
+        NSString* chapter_remote_path = [self getChapterRemotePath:i];
+        NSURL* chapter_remote_url = [NSURL URLWithString:chapter_remote_path];
+        if ([chapter_remote_url isEqual:[request originalURL]]) {
+            [self setChapterDownloadInProgressFlag:i withFlag:false];
+        }
+    }
+    
+    if ( detailViewController != nil) {
+        [detailViewController.tableView reloadData];
+    }
+}
+
 
 /* Return the chapter index of the next downloaded chapter, or -1 if there is nothing left. */
 - (NSInteger) canPlayNextLesson:(NSInteger)currentChapterIndex
