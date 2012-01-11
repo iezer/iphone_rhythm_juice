@@ -75,7 +75,7 @@
 #pragma mark Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return 4;
+	return 3;
 }
 
 
@@ -87,15 +87,12 @@
     NSInteger rows = 0;
     switch (section) {
         case 0:
-			rows = [lesson.instructors count];
-			break;
-        case 1:
             rows = [lesson.chapters count];
             break;
-        case 2:
+        case 1:
             rows = 2;
             break;
-        case 3:
+        case 2:
 			rows = 0;
             //rows = [lesson.tracker.mList count];
 			break;
@@ -130,14 +127,11 @@
 	
     switch (indexPath.section) {
         case 0:
-            cellText = [lesson.instructors objectAtIndex:indexPath.row];
-            break;
-        case 1:
             cellText = [lesson getChapterTitle:indexPath.row];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             cell.detailTextLabel.text = [lesson status:indexPath.row];
             break;
-        case 2:
+        case 1:
             if (indexPath.row == 0) {
                 cellText = @"Download All Files";
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -146,7 +140,7 @@
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
             break;
-        case 3:
+        case 2:
             /*            node = [lesson.tracker.mList objectAtIndex:indexPath.row];
              if (node == nil) {
              cellText = @"";
@@ -175,15 +169,12 @@
     NSString *title = nil;
     switch (section) {
         case 0:
-            title = NSLocalizedString(@"Instructors", @"Date section title");
-            break;
-        case 1:
             title = NSLocalizedString(@"Chapters", @"Genre section title");
             break;
-        case 2:
+        case 1:
             title = @""; // Manage
             break;
-        case 3:
+        case 2:
 			title = @""; // View Tracker
 			break;
 		default:
@@ -198,7 +189,7 @@
 	NSUInteger section = [indexPath indexAtPosition:0];
 	NSUInteger chapter = [indexPath indexAtPosition:1];
 	
-	if (section == 1) {
+	if (section == 0) {
         
         if ([dataController canWatchLesson:lesson]){
             
@@ -230,7 +221,7 @@
             [alert release];
             [message release];
         }
-    } else if (section == 2)
+    } else if (section == 1)
     {
         if (indexPath.row == 0) {
             lesson.detailViewController = self;

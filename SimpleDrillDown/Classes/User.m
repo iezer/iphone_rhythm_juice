@@ -7,6 +7,7 @@
 //
 
 #import "User.h"
+#import "Lesson.h"
 
 @implementation User
 
@@ -28,6 +29,18 @@
     if (lessons != newLessons) {
         [lessons release];
         lessons = [newLessons mutableCopy];
+    }
+}
+
+- (void) downloadAllLessons {
+    for (int i = 0; i < [lessons count]; i++) {
+        [[lessons objectAtIndex:i] queueAllChapters];
+    }
+}
+
+- (void) deleteAllLessons {
+    for (int i = 0; i < [lessons count]; i++) {
+        [[lessons objectAtIndex:i] deleteFiles];
     }
 }
 

@@ -1,4 +1,4 @@
-/*
+                /*
  File: Play.m
  Abstract: A simple class to represent information about a play.
  Version: 2.7
@@ -143,7 +143,12 @@
     assert(fileManager != nil);
     
     BOOL isDir;
-    return ([fileManager fileExistsAtPath:lessonFolderPath isDirectory:&isDir] && isDir);
+    BOOL directoryExists = [fileManager fileExistsAtPath:lessonFolderPath isDirectory:&isDir] && isDir;
+
+    //NSError *error;
+    //BOOL nonEmpty = [[fileManager contentsOfDirectoryAtPath:lessonFolderPath error:&error] count] > 0;
+    
+    return directoryExists;// && nonEmpty;
 }
 
 - (NSString*) status:(NSInteger)chapter
@@ -163,6 +168,7 @@
     fileManager = [NSFileManager defaultManager];
     assert(fileManager != nil);
     NSString* chapter_local_path = [self getChapterLocalPath:chapter];
+    NSLog(@"%@", chapter_local_path);
     return [fileManager fileExistsAtPath:chapter_local_path];
 }
 
@@ -174,7 +180,9 @@
     
     NSError *error;
     if ( [self isDownloadedLocally] ) {
-        [[NSFileManager defaultManager] removeItemAtPath:lessonFolderPath error:&error];
+        [fileManager removeItemAtPath:lessonFolderPath error:&error];
+        // call 2nd time to delete empty directory.
+        [fileManager removeItemAtPath:lessonFolderPath error:&error];
     }
 }
 
@@ -201,34 +209,16 @@
         [[NSFileManager defaultManager] createDirectoryAtURL: [NSURL fileURLWithPath:lessonFolderPath] withIntermediateDirectories:true attributes:nil error:&error];
     }
     
-//    NSString* chapter_local_path = [self getChapterLocalPath:chapter];
-    //@TODO maybe should be using NSURLConnectionDownloadDelegate
-    
     if ( ! [self isChapterDownloadedLocally:chapter]) {
-        
         [self setChapterDownloadInProgressFlag:chapter withFlag:true];
          ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:chapter_remote_url];
         [request setDelegate:self];
         [request startAsynchronous];
-        
-        /*        
-         NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
-         [request setHTTPMethod:@"GET"];
-         NSURLResponse *response;
-         
-         NSData *urlData;
-         [request setURL:chapter_remote_url];
-         urlData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-         BOOL written = [urlData writeToFile:chapter_local_path atomically:NO];
-         if (written)
-         NSLog(@"Saved to file: %@", chapter_local_path);
-         */
     }
 }
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-    // Use when fetching binary data
     NSData *responseData = [request responseData];
     
     for (int i = 0; i < [chapters count]; i++) {

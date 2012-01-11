@@ -106,8 +106,9 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     self.loggingIn = _loggingIn;
     
     // for local server
-    NSString* user_data_url = @"http://rj.isaacezer.com/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21faXBob25lJmZvcm1hdD1yYXc=";
+    //NSString* user_data_url = @"http://rj.isaacezer.com/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21faXBob25lJmZvcm1hdD1yYXc=";
 
+    NSString* user_data_url = @"http://localhost/rj/rj-login.html";
     //NSString* user_data_url = @"http://www.rhythmjuice.com/rhythmjuice/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21fbGVzc29uJnZpZXc9aXBob25lJmZvcm1hdD1yYXc=";
 
     [self getRequest:user_data_url];
@@ -185,8 +186,9 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
         NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
         
+        NSString* url = @"http://localhost/rj/userdata.plist";
         //NSString* url = @"http://www.rhythmjuice.com/rhythmjuice/index.php?option=com_user";
-        NSString* url = @"http://rj.isaacezer.com/index.php?option=com_iphone&format=raw";
+        //NSString* url = @"http://rj.isaacezer.com/index.php?option=com_iphone&format=raw";
         
         NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
         [request setURL:[NSURL URLWithString:url]];

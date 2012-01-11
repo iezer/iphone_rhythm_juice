@@ -1,7 +1,7 @@
 /*
-     File: RootViewController.m
+ File: RootViewController.m
  Abstract: A table view controller to display a list of names of plays.
-  Version: 2.7
+ Version: 2.7
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -50,6 +50,7 @@
 #import "DetailViewController.h"
 #import "Lesson.h"
 #import "SimpleDrillDownAppDelegate.h"
+#import "User.h"
 
 @implementation RootViewController
 
@@ -77,8 +78,7 @@
 #pragma mark Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Only one section.
-    return 1;
+    return 2;
 }
 
 
@@ -90,33 +90,49 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-	static NSString *CellIdentifier = @"CellIdentifier";
-	
-	// Dequeue or create a cell of the appropriate type.
+    NSUInteger section = [indexPath indexAtPosition:0];
+    
+    static NSString *CellIdentifier = @"CellIdentifier";
+    
+    // Dequeue or create a cell of the appropriate type.
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
-    // Get the object to display and set the value in the cell.
-    Lesson *lesson = [dataController objectInListAtIndex:indexPath.row];
-    cell.textLabel.text = lesson.title;
-   // cell.detailTextLabel.text = [] ? @"downloaded locally" : @"not downloaded";
-
-    NSString* premium = [lesson premium] ? @"premium - " : @"";
-    NSString* downloaded = [lesson isDownloadedLocally] ? @"downloaded locally" : @"not downloaded";
-    NSString* subTitle = [[NSString alloc] initWithFormat:@"%@%@",premium,downloaded];
-    cell.detailTextLabel.text = subTitle;
-    [subTitle release];
+    if (section == 0) {
+        
+        // Get the object to display and set the value in the cell.
+        Lesson *lesson = [dataController objectInListAtIndex:indexPath.row];
+        cell.textLabel.text = lesson.title;
+        // cell.detailTextLabel.text = [] ? @"downloaded locally" : @"not downloaded";
+        
+        NSString* premium = [lesson premium] ? @"premium - " : @"";
+        NSString* downloaded = [lesson isDownloadedLocally] ? @"downloaded locally" : @"not downloaded";
+        NSString* subTitle = [[NSString alloc] initWithFormat:@"%@%@",premium,downloaded];
+        cell.detailTextLabel.text = subTitle;
+        [subTitle release];
+    } else if (section == 1) {
+        if (indexPath.row == 0) {
+            cell.textLabel.text = @"Download All";
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        } else {
+            cell.textLabel.text = @"Delete All";
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
+    }
     return cell;
 }
-
 
 #pragma mark -
 #pragma mark Table view selection
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSUInteger section = [indexPath indexAtPosition:0];
+    
+    if (section == 0 ) {
 
 	/*
      When a row is selected, create the detail view controller and set its detail item to the item associated with the selected row.
@@ -130,6 +146,14 @@
     // Push the detail view controller.
     [[self navigationController] pushViewController:detailViewController animated:YES];
     [detailViewController release];
+    } else if (section == 1) {
+        if (indexPath.row == 0) {
+            [[dataController user] downloadAllLessons];
+        } else {
+            [[dataController user] deleteAllLessons]; 
+        }
+        [self.tableView reloadData];
+    }
 }
 
 #pragma mark -
