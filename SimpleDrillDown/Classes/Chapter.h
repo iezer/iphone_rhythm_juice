@@ -24,4 +24,6 @@
 @property (nonatomic, retain) NSString *remotePath;
 @property (nonatomic) Boolean isDownloadInProgress;
 
+- (NSString*) getFilename;
+
 @end

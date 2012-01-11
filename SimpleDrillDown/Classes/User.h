@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "Lesson.h"
+
 @interface User : NSObject {
 
     NSString* username;
@@ -22,6 +24,7 @@
 
 - (void) downloadAllLessons;
 - (void) deleteAllLessons;
+- (Lesson*) getLesson:(NSString*)lessonName;
 
 @property (nonatomic, retain) NSString* username;
 @property (nonatomic, retain) NSDate* subscriptionEndDate;

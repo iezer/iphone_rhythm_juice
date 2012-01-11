@@ -25,4 +25,9 @@
         return self;
 }
 
+- (NSString*) getFilename {
+    NSURL* chapter_remote_url = [NSURL URLWithString:self.remotePath];
+    return [chapter_remote_url lastPathComponent];
+}
+
 @end

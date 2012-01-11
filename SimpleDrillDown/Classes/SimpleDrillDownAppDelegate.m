@@ -107,10 +107,15 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     
     // for local server
     //NSString* user_data_url = @"http://rj.isaacezer.com/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21faXBob25lJmZvcm1hdD1yYXc=";
-
-    NSString* user_data_url = @"http://localhost/rj/rj-login.html";
+    
+    NSString* user_data_url;
+    if (_loggingIn) {
+        user_data_url = @"http://localhost/rj/rj-login.html";
+    } else {
+        user_data_url = @"http://localhost/rj/rj-logout.html";
+    }
     //NSString* user_data_url = @"http://www.rhythmjuice.com/rhythmjuice/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21fbGVzc29uJnZpZXc9aXBob25lJmZvcm1hdD1yYXc=";
-
+    
     [self getRequest:user_data_url];
 }
 
@@ -120,7 +125,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     NSString* sub;
     if (r.length > 0) {
         sub =[s substringFromIndex:i];
-
+        
         NSRange r2 = [sub rangeOfString:@"\""];
         if (r2.length > 0) {
             return [sub substringToIndex:r2.location];
@@ -186,7 +191,13 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
         NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
         
-        NSString* url = @"http://localhost/rj/userdata.plist";
+        NSString* url;
+        if (loggingIn) {
+            url = @"http://localhost/rj/userdata.plist";
+        } else { 
+            url = @"http://localhost/rj/userdata-anonymous.plist";
+        }
+        
         //NSString* url = @"http://www.rhythmjuice.com/rhythmjuice/index.php?option=com_user";
         //NSString* url = @"http://rj.isaacezer.com/index.php?option=com_iphone&format=raw";
         
@@ -267,6 +278,8 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         
         dataController.gotLatestSettings = true;
     }
+    
+    //[self cleanDiskOfUneededVideos]; // @TODO Make run in background
 }
 
 - (void)getRequest:(NSString *) url; {
@@ -358,6 +371,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 
 - (void) logout {
     if( dataController.user != nil ) {
+        [dataController.user deleteAllLessons];
         [dataController.user release];
         dataController.user = nil;
     }
@@ -374,36 +388,47 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         NSError* error;
         [fileManager removeItemAtPath:rj_user_info_path error:&error];
     }
-    
+
     [fileManager release];
     
-  //  [window addSubview:[rootViewController view]];
+    //  [window addSubview:[rootViewController view]];
 }
 
-/*
- - (void)cleanDiskOfUneededVideos{
- NSFileManager *     fileManager;
- fileManager = [NSFileManager defaultManager];
- assert(fileManager != nil);
- 
- NSString *document_folder_path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
- NSString *localFileManager = [document_folder_path stringByAppendingPathComponent:@"lessons"]; 
- 
- 
- NSDirectoryEnumerator *dirEnum =
- [fileManager enumeratorAtPath:localFileManager];
- 
- NSString *file;
- while (file = [dirEnum nextObject]) {
- if ([[file pathExtension] isEqualToString: @"doc"]) {
- // process the document
- [self scanDocument: [docsDir stringByAppendingPathComponent:file]];
- }
- }
- [fileManager release];
- 
- 
- }*/
+
+- (void)cleanDiskOfUneededVideos {
+    return; // Don't need this right now.
+    
+    NSMutableSet * validLessonsNames = [NSMutableSet set];
+    for (int i = 0; i < [[[dataController user] lessons] count]; i++) {
+        NSString* name = [[[[dataController user] lessons] objectAtIndex:i] title];
+        NSLog(@"Valid Lesson Name %@", name);
+        [validLessonsNames addObject:name];
+    }
+    
+    NSFileManager *     fileManager;
+    fileManager = [NSFileManager defaultManager];
+    assert(fileManager != nil);
+    
+    NSString *document_folder_path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSString *localFileManager = [document_folder_path stringByAppendingPathComponent:@"lessons"]; 
+    
+    NSDirectoryEnumerator *dirEnum =
+    [fileManager enumeratorAtPath:localFileManager];
+    
+    NSString *file;
+    while (file = [dirEnum nextObject]) {
+        //NSString* lessonName = [[NSURL URLWithString:file] lastPathComponent];
+        NSLog(@"Checking file %@", file);
+        if ( [validLessonsNames containsObject:file] ) {
+            [[[dataController user] getLesson:file] cleanupDirectory];
+        } else {
+            NSError *error;
+            [fileManager removeItemAtPath:file error:&error];
+        }
+    }
+    
+    [fileManager release];
+}
 
 - (void)dealloc {
     [navigationController release];

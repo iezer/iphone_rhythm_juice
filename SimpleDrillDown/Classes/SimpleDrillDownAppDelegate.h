@@ -99,7 +99,7 @@
 - (void)getRequest:(NSString *) url withRequest:(NSURLRequest*) request;
 - (void)loadAppWithRJUserData:(NSDictionary *)rjUserData saveToFile:(Boolean)save_to_file;
 - (void)showConnectionError;
-//- (void)cleanDiskOfUneededVideos;
+- (void)cleanDiskOfUneededVideos;
 - (void) logout;
 
 - (IBAction)loginButtonAction:(id)sender;

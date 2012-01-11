@@ -76,6 +76,7 @@
 - (NSString*)getChapterTitle:(NSInteger)chapter;
 - (NSString*)createChapterLocalPath:(NSString*)chapterRemotePath;
 - (void)queueAllChapters;
+- (void)cleanupDirectory;
 
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSArray *instructors;

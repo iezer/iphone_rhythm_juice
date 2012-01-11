@@ -39,9 +39,27 @@
 }
 
 - (void) deleteAllLessons {
-    for (int i = 0; i < [lessons count]; i++) {
-        [[lessons objectAtIndex:i] deleteFiles];
+    NSFileManager *     fileManager;
+    fileManager = [NSFileManager defaultManager];
+    assert(fileManager != nil);
+    
+    NSString *document_folder_path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSString *lessonFolder = [document_folder_path stringByAppendingPathComponent:@"lessons"]; 
+    
+    NSError *error;
+    [fileManager removeItemAtPath:lessonFolder error:&error];
+    // call 2nd time to delete empty directory.
+    [fileManager removeItemAtPath:lessonFolder error:&error];
+}
+
+- (Lesson*) getLesson:(NSString*)lessonName {
+    for (int i = 0; i < [lessons count]; i++ ) {
+        Lesson* l = [lessons objectAtIndex:i];
+        if ([[l title] isEqual:lessonName]) {
+            return l;
+        }
     }
+    return nil;
 }
 
 - (void)dealloc {

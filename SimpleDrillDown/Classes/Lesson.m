@@ -186,6 +186,30 @@
     }
 }
 
+- (void)cleanupDirectory {
+    NSFileManager *     fileManager;
+    fileManager = [NSFileManager defaultManager];
+    assert(fileManager != nil);
+
+    NSDirectoryEnumerator *dirEnum =
+    [fileManager enumeratorAtPath:lessonFolderPath];
+    
+    NSMutableSet * validChapterNames = [NSMutableSet set];
+    for (int i = 0; i < [chapters count]; i++) {
+        [validChapterNames addObject:[[chapters objectAtIndex:i] getFilename]];
+    }
+    
+    NSString *file;
+    while (file = [dirEnum nextObject]) {
+        
+        if ( ![validChapterNames containsObject:file] ) {
+            NSError *error;
+            [fileManager removeItemAtPath:file error:&error];
+        }
+    }
+    [fileManager release];
+}
+
 - (void)queueAllChapters
 {
     for (int i = 0; i < [chapters count]; i++) {
