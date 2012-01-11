@@ -50,6 +50,8 @@
 		6A7145EE1123D77E0081571A /* sylvia-nick.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 6A7145ED1123D77E0081571A /* sylvia-nick.m4v */; };
 		6A7147F111268E8C0081571A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7147F011268E8C0081571A /* Default.png */; };
 		6A7147FD11268F7E0081571A /* ilhc-2008-dax-alice.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 6A7147FC11268F7E0081571A /* ilhc-2008-dax-alice.m4v */; };
+		6A9E4B1314BDA73100E6FA5F /* rj-logout.html in Resources */ = {isa = PBXBuildFile; fileRef = 6A9E4B1214BDA73100E6FA5F /* rj-logout.html */; };
+		6A9E4B1514BDA8D500E6FA5F /* userdata-anonymous.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A9E4B1414BDA8D500E6FA5F /* userdata-anonymous.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -125,6 +127,8 @@
 		6A7145ED1123D77E0081571A /* sylvia-nick.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sylvia-nick.m4v"; sourceTree = "<group>"; };
 		6A7147F011268E8C0081571A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		6A7147FC11268F7E0081571A /* ilhc-2008-dax-alice.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ilhc-2008-dax-alice.m4v"; sourceTree = "<group>"; };
+		6A9E4B1214BDA73100E6FA5F /* rj-logout.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "rj-logout.html"; sourceTree = "<group>"; };
+		6A9E4B1414BDA8D500E6FA5F /* userdata-anonymous.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "userdata-anonymous.plist"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -256,6 +260,8 @@
 		6A13FE6014BD882200A93826 /* web */ = {
 			isa = PBXGroup;
 			children = (
+				6A9E4B1414BDA8D500E6FA5F /* userdata-anonymous.plist */,
+				6A9E4B1214BDA73100E6FA5F /* rj-logout.html */,
 				6A13FE6114BD882200A93826 /* alhc-2008-dax-alice.m4v */,
 				6A13FE6214BD882200A93826 /* dax-alice-toulouse.m4v */,
 				6A13FE6314BD882200A93826 /* rj-login.html */,
@@ -383,6 +389,8 @@
 				6A13FE6614BD882200A93826 /* dax-alice-toulouse.m4v in Resources */,
 				6A13FE6714BD882200A93826 /* rj-login.html in Resources */,
 				6A13FE6814BD882200A93826 /* userdata.plist in Resources */,
+				6A9E4B1314BDA73100E6FA5F /* rj-logout.html in Resources */,
+				6A9E4B1514BDA8D500E6FA5F /* userdata-anonymous.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
