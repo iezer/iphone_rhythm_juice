@@ -118,10 +118,10 @@
         
         NSArray* lessons = [userData objectForKey:@"Lessons"];
         NSMutableArray* myLessons = [DataController parseLessonList:lessons];
-/*
-        NSArray* playlists = [userData objectForKey:@"PlayLists"];
-        NSMutableArray* myPlaylists = [DataController parseLessonList:lessons];
-        
+
+        NSArray* playlists = [userData objectForKey:@"Playlists"];
+        NSMutableArray* myPlaylists = [DataController parseLessonList:playlists];
+/*        
         NSMutableDictionary* myLessonPlans = [[[NSMutableArray alloc] init] autorelease];
         NSArray* lessonsPlans = [userData objectForKey:@"Lesson Plans"];
         for (NSDictionary* lessonPlan in lessonsPlans) {
@@ -138,6 +138,8 @@
         NSInteger allowedOfflineLessons = [[userData objectForKey:@"Allowed Offline Lessons"] intValue];
         
         user = [[User alloc] init:username subscriptionEndDate:subscriptionEndDate premium:premium authenticated:authenticated lessons:myLessons allowedOfflineLessons:allowedOfflineLessons];
+        
+        user.playlists = myPlaylists;
     }
     
     return user;

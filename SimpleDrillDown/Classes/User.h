@@ -17,6 +17,7 @@
     Boolean premium;
     Boolean authenticated;
     NSMutableArray* lessons;
+    NSMutableArray* playlists;
     NSInteger allowedOfflineLessons;
 }
 
@@ -31,6 +32,7 @@
 @property (nonatomic) Boolean premium;
 @property (nonatomic) Boolean authenticated;
 @property (nonatomic, retain, readwrite) NSMutableArray* lessons;
+@property (nonatomic, retain, readwrite) NSMutableArray* playlists;
 @property (nonatomic) NSInteger allowedOfflineLessons;
 
 @end

@@ -11,7 +11,7 @@
 
 @implementation User
 
-@synthesize username, subscriptionEndDate, premium, authenticated, lessons, allowedOfflineLessons;
+@synthesize username, subscriptionEndDate, premium, authenticated, lessons, playlists, allowedOfflineLessons;
 
 - (User*)init:(NSString*)_username subscriptionEndDate:(NSDate*)_subscriptionEndDate premium:(Boolean)_premium authenticated:(Boolean)_authenticated lessons:(NSMutableArray*)_lessons allowedOfflineLessons:(NSInteger)_allowedOfflineLessons
 {

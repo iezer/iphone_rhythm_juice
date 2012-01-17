@@ -84,22 +84,25 @@
    
     ListOfLessonsViewController *detailViewController = [[ListOfLessonsViewController alloc] initWithStyle:UITableViewStyleGrouped];
     
+    NSMutableArray *lessons;
     switch (indexPath.row) {
         case 0:
             detailViewController.title = NSLocalizedString(@"My Lessons", @"List of My Lessons Title");
+            lessons = self.dataController.user.lessons;
             break;
         case 1:
             detailViewController.title = NSLocalizedString(@"My Playlists", @"List of My Playlists Title");
+            lessons = self.dataController.user.playlists;
             break;
         case 2:
             detailViewController.title = NSLocalizedString(@"My Lesson Plans", @"List of My Lesson Plans Title");
+            lessons = self.dataController.user.lessons;
             break;
         default:
             break;
     }
 
-    NSMutableArray *l = self.dataController.user.lessons;
-    detailViewController.lessons = l;
+    detailViewController.lessons = lessons;
     
     detailViewController.dataController = self.dataController;
     
