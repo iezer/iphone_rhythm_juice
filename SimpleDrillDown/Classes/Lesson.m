@@ -162,6 +162,16 @@
     }
 }
 
+- (UITableViewCellEditingStyle) getEditingStyle:(NSInteger)chapter {
+    if ([self isChapterDownloadedLocally:chapter]) {
+        return UITableViewCellEditingStyleDelete;
+    } else if ([self isChapterDownloadInProgress:chapter]) {
+        return UITableViewCellEditingStyleNone;
+    } else {
+        return UITableViewCellEditingStyleInsert;
+    }
+}
+
 - (Boolean) isChapterDownloadedLocally:(NSUInteger)chapter
 {
     NSFileManager *     fileManager;

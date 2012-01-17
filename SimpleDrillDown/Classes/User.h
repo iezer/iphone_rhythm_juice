@@ -30,7 +30,7 @@
 @property (nonatomic, retain) NSDate* subscriptionEndDate;
 @property (nonatomic) Boolean premium;
 @property (nonatomic) Boolean authenticated;
-@property (nonatomic, copy, readwrite) NSMutableArray* lessons;
+@property (nonatomic, retain, readwrite) NSMutableArray* lessons;
 @property (nonatomic) NSInteger allowedOfflineLessons;
 
 @end

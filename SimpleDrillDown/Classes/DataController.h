@@ -58,9 +58,9 @@
 @property (nonatomic) Boolean gotLatestSettings;
 
 - (unsigned)countOfList;
-- (Lesson *)objectInListAtIndex:(unsigned)theIndex;
+//- (Lesson *)objectInListAtIndex:(unsigned)theIndex;
 
-- (id)init:(NSDictionary *)data;
+- (id)init;
 - (Boolean)createDataFromRequest:(NSDictionary *)data;
 
 - (Boolean)canWatchLesson:(Lesson*)lesson;

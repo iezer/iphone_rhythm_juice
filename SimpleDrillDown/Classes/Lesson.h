@@ -48,7 +48,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TimeTracker.h"
-#import "DetailViewController.h"
+#import "SingleLessonViewController.h"
 
 @interface Lesson : NSObject {
 	NSString *title;
@@ -58,7 +58,7 @@
     Boolean premium;
     NSString *lessonFolderPath;
     
-    DetailViewController *detailViewController;
+    SingleLessonViewController *detailViewController;
 }
 
 - (Lesson*)init:(NSString*)_title instructors:(NSArray*)_instructors chapters:(NSArray*)_chapters chapterTitles:(NSArray*)_chapterTitles premium:(Boolean)_premium;
@@ -77,6 +77,7 @@
 - (NSString*)createChapterLocalPath:(NSString*)chapterRemotePath;
 - (void)queueAllChapters;
 - (void)cleanupDirectory;
+- (UITableViewCellEditingStyle) getEditingStyle:(NSInteger)chapter;
 
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSArray *instructors;
@@ -84,6 +85,6 @@
 @property (nonatomic, retain) TimeTracker *tracker;
 @property (nonatomic) Boolean premium;
 @property (nonatomic, retain) NSString *lessonFolderPath;
-@property (nonatomic, retain) DetailViewController *detailViewController;
+@property (nonatomic, retain) SingleLessonViewController *detailViewController;
 
 @end

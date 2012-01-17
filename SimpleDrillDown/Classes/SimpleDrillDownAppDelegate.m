@@ -46,9 +46,8 @@
  */
 
 #import "SimpleDrillDownAppDelegate.h"
-#import "RootViewController.h"
 #import "DataController.h"
-#import "DetailViewController.h"
+#import "SingleLessonViewController.h"
 #import "LoginViewController.h"
 #import "User.h"
 
@@ -108,13 +107,14 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     // for local server
     //NSString* user_data_url = @"http://rj.isaacezer.com/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21faXBob25lJmZvcm1hdD1yYXc=";
     
+    /*
     NSString* user_data_url;
     if (_loggingIn) {
         user_data_url = @"http://localhost/rj/rj-login.html";
     } else {
         user_data_url = @"http://localhost/rj/rj-logout.html";
-    }
-    //NSString* user_data_url = @"http://www.rhythmjuice.com/rhythmjuice/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21fbGVzc29uJnZpZXc9aXBob25lJmZvcm1hdD1yYXc=";
+    } */
+    NSString* user_data_url = @"http://www.rhythmjuice.com/rhythmjuice/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21fbGVzc29uJnZpZXc9aXBob25lJmZvcm1hdD1yYXc=";
     
     [self getRequest:user_data_url];
 }
@@ -190,15 +190,15 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         
         NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
         NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
-        
+    /*    
         NSString* url;
         if (loggingIn) {
             url = @"http://localhost/rj/userdata.plist";
         } else { 
             url = @"http://localhost/rj/userdata-anonymous.plist";
-        }
+        }*/
         
-        //NSString* url = @"http://www.rhythmjuice.com/rhythmjuice/index.php?option=com_user";
+        NSString* url = @"http://www.rhythmjuice.com/rhythmjuice/index.php?option=com_user";
         //NSString* url = @"http://rj.isaacezer.com/index.php?option=com_iphone&format=raw";
         
         NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
@@ -245,10 +245,13 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     // Create the data controller.
     
     if (self.dataController == nil) {
-        DataController *controller = [[DataController alloc] init:rjUserData];
-        self.dataController = controller;
-        [controller release];
+        DataController *d = [[DataController alloc] init];
+        [d createDataFromRequest:rjUserData];
+        self.dataController = d; 
+        [d release];
+        
         rootViewController.dataController = dataController;
+        //rootViewController.lessons = dataController.user.lessons;
         
         /*
          The navigation and root view controllers are created in the main nib file.
@@ -258,8 +261,8 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         [window makeKeyAndVisible];
     } else {
         // Received an update to user data;
-        User* u = [DataController createUserFromData:rjUserData];
-        self.dataController.user = u;
+        [self.dataController createDataFromRequest:rjUserData];
+        //rootViewController.lessons = u.lessons;
         [rootViewController.tableView reloadData];
     }
     
@@ -323,7 +326,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     _loginViewController.delegate = self;
     self.loginViewController = _loginViewController;
     [_loginViewController release];
-    
+
     // set up the table's footer view based on our UIView 'myFooterView' outlet
 	CGRect newFrame = CGRectMake(0.0, 0.0, self.rootViewController.tableView.bounds.size.width, self.footer.frame.size.height);
 	self.footer.backgroundColor = [UIColor clearColor];
@@ -338,6 +341,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     NSString *document_folder_path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     NSString *rj_user_info_path = [document_folder_path stringByAppendingPathComponent:@"rj_user_info.plist"];
     
+    NSLog(@"%@", rj_user_info_path);
     if ( [fileManager fileExistsAtPath:rj_user_info_path]) {
         NSDictionary* data = [[NSDictionary alloc] initWithContentsOfFile:rj_user_info_path];
         [self loadAppWithRJUserData:data saveToFile:false];
@@ -388,8 +392,6 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         NSError* error;
         [fileManager removeItemAtPath:rj_user_info_path error:&error];
     }
-
-    [fileManager release];
     
     //  [window addSubview:[rootViewController view]];
 }

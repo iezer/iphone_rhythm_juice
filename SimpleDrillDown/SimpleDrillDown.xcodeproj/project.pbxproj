@@ -13,7 +13,7 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		282669860FA9FED7007D4074 /* Lesson.m in Sources */ = {isa = PBXBuildFile; fileRef = 282669850FA9FED7007D4074 /* Lesson.m */; };
-		282DE87B0D999CA700F5050D /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 282DE8790D999CA700F5050D /* RootViewController.m */; };
+		282DE87B0D999CA700F5050D /* ListOfLessonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 282DE8790D999CA700F5050D /* ListOfLessonsViewController.m */; };
 		28348A860E1D400D009134BC /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28348A850E1D400D009134BC /* DataController.m */; };
 		2846CFC80DBFDD18009410C2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2846CFC60DBFDD18009410C2 /* Localizable.strings */; };
 		28554E2C0DAC293600168C19 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 28554E2B0DAC293600168C19 /* Icon.png */; };
@@ -46,10 +46,11 @@
 		6A3F129514B201520042F3E9 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A3F129414B201520042F3E9 /* libz.dylib */; };
 		6A3F129814B20D3F0042F3E9 /* Chapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F129714B20D3F0042F3E9 /* Chapter.m */; };
 		6A3F129E14B21B030042F3E9 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F129D14B21B030042F3E9 /* Reachability.m */; };
-		6A7145691123C5F00081571A /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F25CCB0D64C1EB00158CCD /* DetailViewController.m */; };
+		6A7145691123C5F00081571A /* SingleLessonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F25CCB0D64C1EB00158CCD /* SingleLessonViewController.m */; };
 		6A7145EE1123D77E0081571A /* sylvia-nick.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 6A7145ED1123D77E0081571A /* sylvia-nick.m4v */; };
 		6A7147F111268E8C0081571A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7147F011268E8C0081571A /* Default.png */; };
 		6A7147FD11268F7E0081571A /* ilhc-2008-dax-alice.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 6A7147FC11268F7E0081571A /* ilhc-2008-dax-alice.m4v */; };
+		6A8146B114C533CF00FAA115 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A8146B014C533CF00FAA115 /* RootViewController.m */; };
 		6A9E4B1314BDA73100E6FA5F /* rj-logout.html in Resources */ = {isa = PBXBuildFile; fileRef = 6A9E4B1214BDA73100E6FA5F /* rj-logout.html */; };
 		6A9E4B1514BDA8D500E6FA5F /* userdata-anonymous.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A9E4B1414BDA8D500E6FA5F /* userdata-anonymous.plist */; };
 /* End PBXBuildFile section */
@@ -63,15 +64,15 @@
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		282669840FA9FED7007D4074 /* Lesson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Lesson.h; path = Classes/Lesson.h; sourceTree = "<group>"; };
 		282669850FA9FED7007D4074 /* Lesson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Lesson.m; path = Classes/Lesson.m; sourceTree = "<group>"; };
-		282DE8790D999CA700F5050D /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		282DE87A0D999CA700F5050D /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		282DE8790D999CA700F5050D /* ListOfLessonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListOfLessonsViewController.m; sourceTree = "<group>"; };
+		282DE87A0D999CA700F5050D /* ListOfLessonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListOfLessonsViewController.h; sourceTree = "<group>"; };
 		28348A840E1D400D009134BC /* DataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataController.h; path = Classes/DataController.h; sourceTree = "<group>"; };
 		28348A850E1D400D009134BC /* DataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataController.m; path = Classes/DataController.m; sourceTree = "<group>"; };
 		2846CFC70DBFDD18009410C2 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		28554E2B0DAC293600168C19 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		28F1A73C0DC932C300332FD8 /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
-		28F25CCA0D64C1EB00158CCD /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		28F25CCB0D64C1EB00158CCD /* DetailViewController.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = DetailViewController.m; sourceTree = "<group>"; };
+		28F25CCA0D64C1EB00158CCD /* SingleLessonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleLessonViewController.h; sourceTree = "<group>"; };
+		28F25CCB0D64C1EB00158CCD /* SingleLessonViewController.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = SingleLessonViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* SimpleDrillDown_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleDrillDown_Prefix.pch; sourceTree = "<group>"; };
 		53A3862A0E6DD89B002F7F09 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
@@ -127,6 +128,8 @@
 		6A7145ED1123D77E0081571A /* sylvia-nick.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sylvia-nick.m4v"; sourceTree = "<group>"; };
 		6A7147F011268E8C0081571A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		6A7147FC11268F7E0081571A /* ilhc-2008-dax-alice.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ilhc-2008-dax-alice.m4v"; sourceTree = "<group>"; };
+		6A8146AF14C533CF00FAA115 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		6A8146B014C533CF00FAA115 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		6A9E4B1214BDA73100E6FA5F /* rj-logout.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "rj-logout.html"; sourceTree = "<group>"; };
 		6A9E4B1414BDA8D500E6FA5F /* userdata-anonymous.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "userdata-anonymous.plist"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -158,10 +161,12 @@
 				6A1B185814542E6700E91BDA /* LoginViewController.m */,
 				6A1B185414542C2600E91BDA /* CustomMoviePlayerViewController.h */,
 				6A1B185514542C2600E91BDA /* CustomMoviePlayerViewController.m */,
-				28F25CCA0D64C1EB00158CCD /* DetailViewController.h */,
-				28F25CCB0D64C1EB00158CCD /* DetailViewController.m */,
-				282DE8790D999CA700F5050D /* RootViewController.m */,
-				282DE87A0D999CA700F5050D /* RootViewController.h */,
+				28F25CCA0D64C1EB00158CCD /* SingleLessonViewController.h */,
+				28F25CCB0D64C1EB00158CCD /* SingleLessonViewController.m */,
+				282DE8790D999CA700F5050D /* ListOfLessonsViewController.m */,
+				282DE87A0D999CA700F5050D /* ListOfLessonsViewController.h */,
+				6A8146AF14C533CF00FAA115 /* RootViewController.h */,
+				6A8146B014C533CF00FAA115 /* RootViewController.m */,
 			);
 			name = "View Controllers";
 			path = Classes;
@@ -403,12 +408,12 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* SimpleDrillDownAppDelegate.m in Sources */,
-				282DE87B0D999CA700F5050D /* RootViewController.m in Sources */,
+				282DE87B0D999CA700F5050D /* ListOfLessonsViewController.m in Sources */,
 				28348A860E1D400D009134BC /* DataController.m in Sources */,
 				282669860FA9FED7007D4074 /* Lesson.m in Sources */,
 				6A38A5B9110D41CC004EF5FD /* TimeTracker.m in Sources */,
 				6A38A5BA110D41CC004EF5FD /* TimeTrackerNode.m in Sources */,
-				6A7145691123C5F00081571A /* DetailViewController.m in Sources */,
+				6A7145691123C5F00081571A /* SingleLessonViewController.m in Sources */,
 				6A1B185614542C2600E91BDA /* CustomMoviePlayerViewController.m in Sources */,
 				6A1B185914542E6700E91BDA /* LoginViewController.m in Sources */,
 				6A1B185C14542E7A00E91BDA /* LoginAppAppDelegate.m in Sources */,
@@ -423,6 +428,7 @@
 				6A3F128C14B200C40042F3E9 /* ASINetworkQueue.m in Sources */,
 				6A3F129814B20D3F0042F3E9 /* Chapter.m in Sources */,
 				6A3F129E14B21B030042F3E9 /* Reachability.m in Sources */,
+				6A8146B114C533CF00FAA115 /* RootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

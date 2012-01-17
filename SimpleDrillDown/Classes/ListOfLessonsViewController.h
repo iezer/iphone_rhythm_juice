@@ -1,6 +1,6 @@
 /*
-     File: SimpleDrillDownAppDelegate.h
- Abstract: n/a
+     File: RootViewController.h
+ Abstract: A table view controller to display a list of names of plays.
   Version: 2.7
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
@@ -46,67 +46,13 @@
  */
 
 @class DataController;
-@class ListOfLessonsViewController;
 
-
-#import <UIKit/UIKit.h>
-#import <MediaPlayer/MediaPlayer.h>
-#import "Lesson.h"
-#import "SingleLessonViewController.h"
-#import "RootViewController.h"
-
-@class LoginViewController;
-
-@interface SimpleDrillDownAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
-	UIWindow *window;
-	UINavigationController *navigationController;
-	//ListOfLessonsViewController *rootViewController;
-    RootViewController *rootViewController;
+@interface ListOfLessonsViewController : UITableViewController {
     DataController *dataController;
-	Lesson* play;
-	SingleLessonViewController* detailViewController;
-	NSMutableData *receivedData;
-    LoginViewController *loginViewController;
-    NSInteger state;
-    IBOutlet UIButton *infoButton;
-    IBOutlet UIView *footer;
-    
-    NSString* username;
-    NSString* password;
-    BOOL loggingIn;
+    NSMutableArray* lessons;
 }
 
-@property (nonatomic) NSInteger state;
-@property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
-@property (nonatomic, retain) IBOutlet RootViewController *rootViewController;
-@property (nonatomic, retain) Lesson *play;
 @property (nonatomic, retain) DataController *dataController;
-@property (nonatomic, retain) SingleLessonViewController *detailViewController;
-@property (nonatomic, retain) NSMutableData *receivedData;
-@property (nonatomic, retain) LoginViewController *loginViewController;
-@property (nonatomic, retain) NSString *username;
-@property (nonatomic, retain) NSString *password;
-
-@property (retain, nonatomic) IBOutlet UIButton *infoButton;
-@property (nonatomic, retain) IBOutlet UIView *footer;
-
-@property (nonatomic) BOOL loggingIn;
-
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection;
-- (void)getRequest:(NSString *)url;
-- (void)getRequest:(NSString *) url withRequest:(NSURLRequest*) request;
-- (void)loadAppWithRJUserData:(NSDictionary *)rjUserData saveToFile:(Boolean)save_to_file;
-- (void)showConnectionError;
-- (void)cleanDiskOfUneededVideos;
-- (void) logout;
-
-- (IBAction)loginButtonAction:(id)sender;
-
-- (void)login:(NSString*)_username withPassword:(NSString*) _password loggingIn:(BOOL)_loggingIn;
-- (NSString*) getAttributeValue:(NSString*)s withMarker:(NSString*) marker;
+@property (nonatomic, retain, readwrite) NSMutableArray* lessons;
 
 @end

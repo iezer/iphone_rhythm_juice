@@ -54,11 +54,8 @@
 
 @synthesize user, gotLatestSettings;
 
-- (id)init:(NSDictionary *)data {
-    if (self = [super init]) {
-        [self createDataFromRequest:data];
-    }
-    
+- (id)init {
+    self = [super init];
     self.gotLatestSettings = false;
     return self;
 }
@@ -68,9 +65,10 @@
     return [[user lessons] count];
 }
 
+/*
 - (Lesson *)objectInListAtIndex:(unsigned)theIndex {
     return [[user lessons] objectAtIndex:theIndex];
-}
+} */
 
 
 - (void)dealloc {
@@ -89,6 +87,25 @@
     return false;
 }
 
++ (NSMutableArray*) parseLessonList:(NSArray *) lessons {
+    NSMutableArray* playlist = [[[NSMutableArray alloc] init] autorelease];
+    for(NSDictionary* lesson in lessons) {
+        
+        NSString *title = [lesson objectForKey:@"Title"];
+        NSArray *instructors = [lesson objectForKey:@"Instructors"];
+        NSArray *chapters = [lesson objectForKey:@"Chapter Paths"];
+        NSArray *chapterTitles = [lesson objectForKey:@"Chapter Titles"];
+        Boolean premium = [[lesson objectForKey:@"Premium"] boolValue];
+        
+        Lesson *play = [[Lesson alloc] init:title instructors:instructors chapters:chapters chapterTitles:chapterTitles premium:premium];
+        
+        
+        [playlist addObject:play];
+        [play release];
+    }
+    return playlist;
+}
+
 + (User*)createUserFromData:(NSDictionary *)data {
 	
 	NSDictionary* userData = [data objectForKey:@"RJ User"];
@@ -98,22 +115,21 @@
     
     if( true )//[authenticated boolValue] )
     {
-        NSMutableArray* playlist = [[[NSMutableArray alloc] init] autorelease];
+        
         NSArray* lessons = [userData objectForKey:@"Lessons"];
-        for(NSDictionary* lesson in lessons) {
-            
-            NSString *title = [lesson objectForKey:@"Title"];
-            NSArray *instructors = [lesson objectForKey:@"Instructors"];
-            NSArray *chapters = [lesson objectForKey:@"Chapter Paths"];
-            NSArray *chapterTitles = [lesson objectForKey:@"Chapter Titles"];
-            Boolean premium = [[lesson objectForKey:@"Premium"] boolValue];
-            
-            Lesson *play = [[Lesson alloc] init:title instructors:instructors chapters:chapters chapterTitles:chapterTitles premium:premium];
-
-            
-            [playlist addObject:play];
-            [play release];
-        }
+        NSMutableArray* myLessons = [DataController parseLessonList:lessons];
+/*
+        NSArray* playlists = [userData objectForKey:@"PlayLists"];
+        NSMutableArray* myPlaylists = [DataController parseLessonList:lessons];
+        
+        NSMutableDictionary* myLessonPlans = [[[NSMutableArray alloc] init] autorelease];
+        NSArray* lessonsPlans = [userData objectForKey:@"Lesson Plans"];
+        for (NSDictionary* lessonPlan in lessonsPlans) {
+            NSString* lessonPlanTitle = [lessonPlan objectForKey:@"Title"];
+            NSArray* lessonsInPlan = [lessonPlan objectForKey:@"Lessons"];
+            NSMutableArray* parsedLessonsForPlan = [DataController parseLessonList:lessonsInPlan];
+           
+        }  */      
         
         NSString* username = [userData objectForKey:@"Username"];        
         Boolean premium = [[userData objectForKey:@"Premium"] boolValue];
@@ -121,7 +137,7 @@
         NSDate* subscriptionEndDate = [userData objectForKey:@"Subscription End"];
         NSInteger allowedOfflineLessons = [[userData objectForKey:@"Allowed Offline Lessons"] intValue];
         
-        user = [[User alloc] init:username subscriptionEndDate:subscriptionEndDate premium:premium authenticated:authenticated lessons:playlist allowedOfflineLessons:allowedOfflineLessons];
+        user = [[User alloc] init:username subscriptionEndDate:subscriptionEndDate premium:premium authenticated:authenticated lessons:myLessons allowedOfflineLessons:allowedOfflineLessons];
     }
     
     return user;
