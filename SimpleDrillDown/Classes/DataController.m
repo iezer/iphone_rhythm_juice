@@ -79,7 +79,7 @@
 // return true if it works, false if there was an error
 - (Boolean)createDataFromRequest:(NSDictionary *)data {
     User* _user = [DataController createUserFromData:data];
-    if (_user != nil) {
+    if (_user != nil && _user.username !=nil ) {
         self.user = _user;
         return true;
     }
@@ -119,10 +119,10 @@
         NSArray* lessons = [userData objectForKey:@"Lessons"];
         NSMutableArray* myLessons = [DataController parseLessonList:lessons];
 
-        NSArray* playlists = [userData objectForKey:@"Playlists"];
-        NSMutableArray* myPlaylists = [DataController parseLessonList:playlists];
-/*        
-        NSMutableDictionary* myLessonPlans = [[[NSMutableArray alloc] init] autorelease];
+//        NSArray* playlists = [userData objectForKey:@"Playlists"];
+//        NSMutableArray* myPlaylists = [DataController parseLessonList:playlists];
+        
+/*        NSMutableDictionary* myLessonPlans = [[[NSMutableArray alloc] init] autorelease];
         NSArray* lessonsPlans = [userData objectForKey:@"Lesson Plans"];
         for (NSDictionary* lessonPlan in lessonsPlans) {
             NSString* lessonPlanTitle = [lessonPlan objectForKey:@"Title"];
@@ -139,7 +139,7 @@
         
         user = [[User alloc] init:username subscriptionEndDate:subscriptionEndDate premium:premium authenticated:authenticated lessons:myLessons allowedOfflineLessons:allowedOfflineLessons];
         
-        user.playlists = myPlaylists;
+      //  user.playlists = myPlaylists;
     }
     
     return user;
@@ -172,7 +172,7 @@
 }
 
 - (NSInteger) allowedDownloads {
-    return [user allowedOfflineLessons];
+    return [user allowedOfflineVideos];
 }
 
 // Custom set accessor to ensure the new list is mutable

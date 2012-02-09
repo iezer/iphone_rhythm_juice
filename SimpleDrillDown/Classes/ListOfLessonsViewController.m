@@ -108,8 +108,7 @@
         // cell.detailTextLabel.text = [] ? @"downloaded locally" : @"not downloaded";
         
         NSString* premium = [lesson premium] ? @"premium - " : @"";
-        NSString* downloaded = [lesson isDownloadedLocally] ? @"downloaded locally" : @"not downloaded";
-        NSString* subTitle = [[NSString alloc] initWithFormat:@"%@%@",premium,downloaded];
+        NSString* subTitle = [[NSString alloc] initWithFormat:@"%@%@",premium,[lesson downloadStatus]];
         cell.detailTextLabel.text = subTitle;
         [subTitle release];
     } else if (section == 1) {

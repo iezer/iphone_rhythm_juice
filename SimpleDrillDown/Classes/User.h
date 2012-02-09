@@ -18,7 +18,7 @@
     Boolean authenticated;
     NSMutableArray* lessons;
     NSMutableArray* playlists;
-    NSInteger allowedOfflineLessons;
+    NSInteger allowedOfflineVideos;
 }
 
 - (User*)init:(NSString*)_username subscriptionEndDate:(NSDate*)_subscriptionEndDate premium:(Boolean)premium authenticated:(Boolean)_authenticated lessons:(NSMutableArray*)_lessons allowedOfflineLessons:(NSInteger)_allowedOfflineLessons;
@@ -33,6 +33,6 @@
 @property (nonatomic) Boolean authenticated;
 @property (nonatomic, retain, readwrite) NSMutableArray* lessons;
 @property (nonatomic, retain, readwrite) NSMutableArray* playlists;
-@property (nonatomic) NSInteger allowedOfflineLessons;
+@property (nonatomic) NSInteger allowedOfflineVideos;
 
 @end

@@ -57,6 +57,7 @@
 	TimeTracker *tracker;
     Boolean premium;
     NSString *lessonFolderPath;
+    NSInteger count;
     
     SingleLessonViewController *detailViewController;
 }
@@ -71,6 +72,7 @@
 - (NSString*)getChapterLocalPath:(NSInteger)chapter;
 - (NSString*)getChapterRemotePath:(NSInteger)chapter;
 - (void)deleteFiles;
+- (void)deleteChapter:(NSUInteger)chapter;
 - (NSInteger) canPlayNextLesson:(NSInteger)currentChapterIndex;
 - (NSString*) status:(NSInteger)chapter;
 - (NSString*)getChapterTitle:(NSInteger)chapter;
@@ -78,6 +80,7 @@
 - (void)queueAllChapters;
 - (void)cleanupDirectory;
 - (UITableViewCellEditingStyle) getEditingStyle:(NSInteger)chapter;
+- (NSString*) downloadStatus;
 
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSArray *instructors;
@@ -85,6 +88,7 @@
 @property (nonatomic, retain) TimeTracker *tracker;
 @property (nonatomic) Boolean premium;
 @property (nonatomic, retain) NSString *lessonFolderPath;
+@property (nonatomic) NSInteger count;
 @property (nonatomic, retain) SingleLessonViewController *detailViewController;
 
 @end

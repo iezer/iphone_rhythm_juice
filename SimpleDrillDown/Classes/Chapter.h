@@ -12,6 +12,7 @@
     NSString *title;
     NSString *remotePath;
     NSString *localPath;
+    NSString *filename;
     Boolean  isDownloadInProgress;
 }
 
@@ -22,8 +23,7 @@
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSString *localPath;
 @property (nonatomic, retain) NSString *remotePath;
+@property (nonatomic, retain) NSString *filename;
 @property (nonatomic) Boolean isDownloadInProgress;
-
-- (NSString*) getFilename;
 
 @end

@@ -74,6 +74,8 @@
     NSString* username;
     NSString* password;
     BOOL loggingIn;
+    
+    NSArray *cookies;
 }
 
 @property (nonatomic) NSInteger state;
@@ -93,13 +95,15 @@
 
 @property (nonatomic) BOOL loggingIn;
 
+@property (nonatomic, retain) NSArray *cookies;
+
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection;
 - (void)getRequest:(NSString *)url;
-- (void)getRequest:(NSString *) url withRequest:(NSURLRequest*) request;
-- (void)loadAppWithRJUserData:(NSDictionary *)rjUserData saveToFile:(Boolean)save_to_file;
+- (void)getRequest:(NSString *) url withRequest:(NSMutableURLRequest*) request;
+- (BOOL)loadAppWithRJUserData:(NSDictionary *)rjUserData saveToFile:(Boolean)save_to_file;
 - (void)showConnectionError;
 - (void)cleanDiskOfUneededVideos;
 - (void) logout;

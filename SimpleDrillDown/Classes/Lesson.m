@@ -51,7 +51,7 @@
 
 @implementation Lesson
 
-@synthesize title, instructors, chapters, tracker, premium, lessonFolderPath, detailViewController;
+@synthesize title, instructors, chapters, tracker, premium, count, lessonFolderPath, detailViewController;
 
 - (Lesson*)init:(NSString*)_title instructors:(NSArray*)_instructors chapters:(NSArray*)_chapters chapterTitles:(NSArray*)_chapterTitles premium:(Boolean)_premium {
     self = [super init];
@@ -67,14 +67,15 @@
         assert(fileManager != nil);
         
         NSString *document_folder_path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
-        NSString *lessons_folder_path = [document_folder_path stringByAppendingPathComponent:@"lessons"]; 
+        NSString *lessons_folder_path = [document_folder_path stringByAppendingPathComponent:@"videos"]; 
         
-        self.lessonFolderPath = [lessons_folder_path stringByAppendingPathComponent:self.title];
+       // self.lessonFolderPath = [lessons_folder_path stringByAppendingPathComponent:self.title];
+        self.lessonFolderPath = lessons_folder_path;
         
         self->chapters = [[[NSMutableArray alloc] init] retain];
         
-        NSInteger chapterCount = MIN( [_chapters count], [_chapterTitles count] );
-        for (int i = 0; i < chapterCount; i ++) {
+        self.count = MIN( [_chapters count], [_chapterTitles count] );
+        for (int i = 0; i < self.count; i ++) {
             NSString* remotePath = [_chapters objectAtIndex:i];
             [self->chapters addObject:[[Chapter alloc] init:[_chapterTitles objectAtIndex:i] remotePath:remotePath localPath:[self createChapterLocalPath:remotePath]]];
         }
@@ -136,6 +137,17 @@
     [c setIsDownloadInProgress: flag];
 }
 
+- (NSInteger) downloadedChapters {
+    NSInteger c = 0;
+    
+    for (NSInteger i = 0; i < self.count; i++) {
+        if ([self isChapterDownloadedLocally:i]) {
+            c++;
+        }
+    }
+    return c;
+}
+
 - (Boolean) isDownloadedLocally
 {
     NSFileManager *     fileManager;
@@ -151,6 +163,11 @@
     return directoryExists;// && nonEmpty;
 }
 
+-(NSString*) downloadStatus {
+    NSString *message = [[NSString alloc] initWithFormat:@"%d / %d downloaded", [self downloadedChapters], self.count];
+    return message;
+}
+
 - (NSString*) status:(NSInteger)chapter
 {
     if ([self isChapterDownloadedLocally:chapter]) {
@@ -158,7 +175,7 @@
     } else if ([self isChapterDownloadInProgress:chapter]) {
         return @"downloading...";
     } else {
-        return @"not downloaded.";
+        return @"click to download";
     }
 }
 
@@ -182,17 +199,20 @@
     return [fileManager fileExistsAtPath:chapter_local_path];
 }
 
-- (void)deleteFiles
-{    
+- (void)deleteChapter:(NSUInteger)chapter {
     NSFileManager *     fileManager;
     fileManager = [NSFileManager defaultManager];
     assert(fileManager != nil);
     
     NSError *error;
-    if ( [self isDownloadedLocally] ) {
-        [fileManager removeItemAtPath:lessonFolderPath error:&error];
-        // call 2nd time to delete empty directory.
-        [fileManager removeItemAtPath:lessonFolderPath error:&error];
+    if ([self isChapterDownloadedLocally:chapter]) {
+        [fileManager removeItemAtPath:[self getChapterLocalPath:chapter] error:&error];
+    }
+}
+    
+- (void)deleteFiles {    
+    for (NSInteger i = 0; i < self.count; i++) {
+        [self deleteChapter:i];
     }
 }
 
@@ -206,7 +226,7 @@
     
     NSMutableSet * validChapterNames = [NSMutableSet set];
     for (int i = 0; i < [chapters count]; i++) {
-        [validChapterNames addObject:[[chapters objectAtIndex:i] getFilename]];
+        [validChapterNames addObject:[[chapters objectAtIndex:i] filename]];
     }
     
     NSString *file;

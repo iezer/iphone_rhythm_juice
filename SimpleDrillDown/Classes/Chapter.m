@@ -10,7 +10,7 @@
 
 @implementation Chapter
 
-@synthesize title, remotePath, localPath, isDownloadInProgress;
+@synthesize title, remotePath, localPath, filename, isDownloadInProgress;
 
 -(Chapter *)init:(NSString *)_title remotePath:(NSString*)_remotePath localPath:(NSString*)_localPath;
 {
@@ -21,13 +21,12 @@
             self.remotePath = _remotePath;
             self.localPath = _localPath;
             self.isDownloadInProgress = false;
+            
+            NSURL* chapter_remote_url = [NSURL URLWithString:self.remotePath];
+            self.filename = [chapter_remote_url lastPathComponent];
+            
         }
         return self;
-}
-
-- (NSString*) getFilename {
-    NSURL* chapter_remote_url = [NSURL URLWithString:self.remotePath];
-    return [chapter_remote_url lastPathComponent];
 }
 
 @end
