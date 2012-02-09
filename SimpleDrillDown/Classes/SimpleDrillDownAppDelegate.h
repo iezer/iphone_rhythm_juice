@@ -54,6 +54,7 @@
 #import "Lesson.h"
 #import "SingleLessonViewController.h"
 #import "RootViewController.h"
+#import "ASIHTTPRequest.h"
 
 @class LoginViewController;
 
@@ -75,7 +76,7 @@
     NSString* password;
     BOOL loggingIn;
     
-    NSArray *cookies;
+    NSMutableArray *rjCookies;
 }
 
 @property (nonatomic) NSInteger state;
@@ -95,7 +96,7 @@
 
 @property (nonatomic) BOOL loggingIn;
 
-@property (nonatomic, retain) NSArray *cookies;
+@property (nonatomic, retain) NSMutableArray *rjCookies;
 
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
@@ -107,10 +108,16 @@
 - (void)showConnectionError;
 - (void)cleanDiskOfUneededVideos;
 - (void) logout;
-
+- (void)createASIRequest:(NSString*)path;
 - (IBAction)loginButtonAction:(id)sender;
 
 - (void)login:(NSString*)_username withPassword:(NSString*) _password loggingIn:(BOOL)_loggingIn;
 - (NSString*) getAttributeValue:(NSString*)s withMarker:(NSString*) marker;
+
+
+- (void)requestFinished:(ASIHTTPRequest *)request;
+
+
+- (void)requestFailed:(ASIHTTPRequest *)request;
 
 @end
