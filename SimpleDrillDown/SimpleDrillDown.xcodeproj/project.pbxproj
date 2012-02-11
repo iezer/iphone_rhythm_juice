@@ -22,6 +22,7 @@
 		6A13FE6614BD882200A93826 /* dax-alice-toulouse.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 6A13FE6214BD882200A93826 /* dax-alice-toulouse.m4v */; };
 		6A13FE6714BD882200A93826 /* rj-login.html in Resources */ = {isa = PBXBuildFile; fileRef = 6A13FE6314BD882200A93826 /* rj-login.html */; };
 		6A13FE6814BD882200A93826 /* userdata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A13FE6414BD882200A93826 /* userdata.plist */; };
+		6A16779314E6A29F00AE20FA /* sandbox.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A16779214E6A29F00AE20FA /* sandbox.plist */; };
 		6A1B185614542C2600E91BDA /* CustomMoviePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1B185514542C2600E91BDA /* CustomMoviePlayerViewController.m */; };
 		6A1B185914542E6700E91BDA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1B185814542E6700E91BDA /* LoginViewController.m */; };
 		6A1B185C14542E7A00E91BDA /* LoginAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1B185B14542E7A00E91BDA /* LoginAppAppDelegate.m */; };
@@ -80,6 +81,7 @@
 		6A13FE6214BD882200A93826 /* dax-alice-toulouse.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dax-alice-toulouse.m4v"; sourceTree = "<group>"; };
 		6A13FE6314BD882200A93826 /* rj-login.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "rj-login.html"; sourceTree = "<group>"; };
 		6A13FE6414BD882200A93826 /* userdata.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = userdata.plist; sourceTree = "<group>"; };
+		6A16779214E6A29F00AE20FA /* sandbox.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sandbox.plist; sourceTree = "<group>"; };
 		6A1B185414542C2600E91BDA /* CustomMoviePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomMoviePlayerViewController.h; sourceTree = "<group>"; };
 		6A1B185514542C2600E91BDA /* CustomMoviePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomMoviePlayerViewController.m; sourceTree = "<group>"; };
 		6A1B185714542E6700E91BDA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				6A13FE6214BD882200A93826 /* dax-alice-toulouse.m4v */,
 				6A13FE6314BD882200A93826 /* rj-login.html */,
 				6A13FE6414BD882200A93826 /* userdata.plist */,
+				6A16779214E6A29F00AE20FA /* sandbox.plist */,
 			);
 			path = web;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				6A13FE6814BD882200A93826 /* userdata.plist in Resources */,
 				6A9E4B1314BDA73100E6FA5F /* rj-logout.html in Resources */,
 				6A9E4B1514BDA8D500E6FA5F /* userdata-anonymous.plist in Resources */,
+				6A16779314E6A29F00AE20FA /* sandbox.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

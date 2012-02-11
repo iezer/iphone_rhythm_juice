@@ -161,7 +161,9 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     [sData release];
 }
 
-- (Boolean)handleData:(NSString *)sData {        
+- (Boolean)handleData:(NSData *)data {        
+
+    NSString* sData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 
     bool ret = false;
     NSLog( @"received data '%@'", sData );
@@ -310,7 +312,13 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
   //      [request release];    
         
     } else { // state = 2
-        NSDictionary *rjUserData = [NSPropertyListSerialization propertyListFromData:receivedData mutabilityOption:NSPropertyListImmutable format:nil errorDescription:nil];
+        NSString *error;
+        NSDictionary *rjUserData = [NSPropertyListSerialization propertyListFromData:data mutabilityOption:NSPropertyListImmutable format:nil errorDescription:&error];
+        
+        if ( error != nil ) {
+            NSLog(@"Error with plist file %@", error);
+            [error release];
+        }
         
         [self loadAppWithRJUserData:rjUserData saveToFile:true];
         [loginViewController reset];
@@ -579,7 +587,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-    NSString *responseString = [request responseString];
+    NSString *responseData = [request responseData];
     
     NSLog(@"STATUS CODE: %i", [request responseStatusCode]);
     NSLog(@"STATUS MESSAGE: %@", [request responseStatusMessage]);
@@ -594,7 +602,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         NSLog(@"cookie %@ = %@", [c name], [c value]);
     }
     
-    [self handleData:responseString];
+    [self handleData:responseData];
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request

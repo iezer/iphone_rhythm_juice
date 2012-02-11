@@ -256,7 +256,8 @@
     assert(fileManager != nil);
     
     NSString* chapter_remote_path = [self getChapterRemotePath:chapter];
-    NSURL* chapter_remote_url = [NSURL URLWithString:chapter_remote_path];
+    NSString* root = @"http://www.rhythmjuice.com/sandbox/chapters/";
+    NSURL* chapter_remote_url = [NSURL URLWithString:[root stringByAppendingString:chapter_remote_path]];
     
     NSError *error;
     if ( ! [self isDownloadedLocally] ) {
@@ -279,7 +280,8 @@
         NSString* chapter_local_path = [self getChapterLocalPath:i];
         NSString* chapter_remote_path = [self getChapterRemotePath:i];
         NSURL* chapter_remote_url = [NSURL URLWithString:chapter_remote_path];
-        if ([chapter_remote_url isEqual:[request originalURL]]) {
+        NSLog(@"'%@'  '%@'", chapter_remote_path, [[request originalURL] lastPathComponent]);
+        if ([chapter_remote_path isEqual:[[request originalURL] lastPathComponent]]) {
             BOOL written = [responseData writeToFile:chapter_local_path atomically:NO];
             if (written)
                 NSLog(@"Saved to file: %@", chapter_local_path);

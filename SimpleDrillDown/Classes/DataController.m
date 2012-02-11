@@ -89,15 +89,31 @@
 
 + (NSMutableArray*) parseLessonList:(NSArray *) lessons {
     NSMutableArray* playlist = [[[NSMutableArray alloc] init] autorelease];
+    
+    //NSString *videoRoot = @"www.rhythmjuice.com/sandbox/chapters";
+    
     for(NSDictionary* lesson in lessons) {
         
         NSString *title = [lesson objectForKey:@"Title"];
         NSArray *instructors = [lesson objectForKey:@"Instructors"];
-        NSArray *chapters = [lesson objectForKey:@"Chapter Paths"];
-        NSArray *chapterTitles = [lesson objectForKey:@"Chapter Titles"];
         Boolean premium = [[lesson objectForKey:@"Premium"] boolValue];
         
-        Lesson *play = [[Lesson alloc] init:title instructors:instructors chapters:chapters chapterTitles:chapterTitles premium:premium];
+        //NSArray *chapters = [lesson objectForKey:@"Chapter Paths"];
+        //NSArray *chapterTitles = [lesson objectForKey:@"Chapter Titles"];
+        NSMutableArray *chapterTitles = [[NSMutableArray alloc] init];
+        NSMutableArray *chapterPaths = [[NSMutableArray alloc] init];
+        NSArray* chapters = [lesson objectForKey:@"Chapters"];
+        for(NSDictionary* chapter in chapters) {
+            NSString *title = [chapter objectForKey:@"Name"];
+            NSString *filename = [chapter objectForKey:@"Filename"];
+        //    NSString *path = [videoRoot stringByAppendingPathComponent:filename];
+            
+            [chapterTitles addObject:title];
+            [chapterPaths addObject:filename];
+        }
+
+        
+        Lesson *play = [[Lesson alloc] init:title instructors:instructors chapters:chapterPaths chapterTitles:chapterTitles premium:premium];
         
         
         [playlist addObject:play];

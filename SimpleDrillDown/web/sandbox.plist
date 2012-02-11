@@ -1,0 +1,128 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>RJ User</key>
+  <dict>
+    <key>Authenticated</key>
+    <true/>    
+    <key>ReturnURL</key>
+    <string>return=aW5kZXgucGhwP29wdGlvbj1jb21fbGVzc29uJmZvcm1hdD1yYXc=</string>    
+    <key>Username</key>
+    <string>isaacteacher</string>
+    <key>First Name</key>
+    <string>Isaac</string>
+    <key>Last Name</key>
+    <string>Ezer</string>
+    <key>Premium</key>
+    <true/>
+    <key>Allowed Offline Lessons</key>
+    <integer>1</integer>
+    <key>Subscription End</key>
+    <date>2012-03-31T15:00:00Z</date>
+    <key>Lessons</key>
+    <array>
+      <dict>
+	<key>Title</key>
+        <string>Channel 1 Test</string>
+        <key>Lesson ID</key>
+        <integer>1</integer>
+        <key>Description</key>
+        <string>Testing Channel 1</string>
+        <key>Premium</key>
+        <true/>
+        <key>Instructors</key>
+        <array>
+          <string>Dax Hock</string>
+          <string>Alice Mei</string>
+        </array>
+        <key>Chapters</key>
+        <array>
+   
+          <dict>
+            <key>Name</key>
+            <string>chapter1ddd</string>
+            <key>Chapter ID</key>
+            <integer>6</integer>
+            <key>Filename</key>
+            <string>6_Chapter_1.mp4</string>
+            <key>Chapter Number</key>
+            <integer>1</integer>
+          </dict>   
+          <dict>
+            <key>Name</key>
+            <string>chapter2</string>
+            <key>Chapter ID</key>
+            <integer>7</integer>
+            <key>Filename</key>
+            <string>7_Chapter_2.mp4</string>
+            <key>Chapter Number</key>
+            <integer>2</integer>
+          </dict>   
+          <dict>
+            <key>Name</key>
+            <string>chapter3</string>
+            <key>Chapter ID</key>
+            <integer>10</integer>
+            <key>Filename</key>
+            <string>10_Chapter_3.mp4</string>
+            <key>Chapter Number</key>
+            <integer>3</integer>
+          </dict>
+        </array>
+      </dict>
+
+      <dict>
+	<key>Title</key>
+        <string>Free Lesson Test</string>
+        <key>Lesson ID</key>
+        <integer>2</integer>
+        <key>Description</key>
+        <string>Test Lesson- Testing Free.</string>
+        <key>Premium</key>
+        <true/>
+        <key>Instructors</key>
+        <array>
+          <string>Dax Hock</string>
+          <string>Alice Mei</string>
+        </array>
+        <key>Chapters</key>
+        <array>
+   
+          <dict>
+            <key>Name</key>
+            <string>Chapter 1</string>
+            <key>Chapter ID</key>
+            <integer>11</integer>
+            <key>Filename</key>
+            <string>11_Chapter_1.mp4</string>
+            <key>Chapter Number</key>
+            <integer>1</integer>
+          </dict>   
+          <dict>
+            <key>Name</key>
+            <string>Chapter 2</string>
+            <key>Chapter ID</key>
+            <integer>12</integer>
+            <key>Filename</key>
+            <string>12_Chapter_2.mp4</string>
+            <key>Chapter Number</key>
+            <integer>2</integer>
+          </dict>   
+          <dict>
+            <key>Name</key>
+            <string>Chapter 3</string>
+            <key>Chapter ID</key>
+            <integer>13</integer>
+            <key>Filename</key>
+            <string>13_Chapter_3.mp4</string>
+            <key>Chapter Number</key>
+            <integer>3</integer>
+          </dict>
+        </array>
+      </dict>
+    </array>
+  </dict>
+  </dict>
+</plist>
