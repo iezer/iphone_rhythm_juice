@@ -432,7 +432,6 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     forHTTPHeaderField: @"Cookie" ];
     }
     
-    NSDictionary* d = [request allHTTPHeaderFields];
     // create the connection with the request
 	// and start loading the data
 	NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:request delegate:self];
@@ -587,7 +586,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-    NSString *responseData = [request responseData];
+    NSData *responseData = [request responseData];
     
     NSLog(@"STATUS CODE: %i", [request responseStatusCode]);
     NSLog(@"STATUS MESSAGE: %@", [request responseStatusMessage]);

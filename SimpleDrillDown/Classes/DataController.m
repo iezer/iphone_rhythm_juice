@@ -90,8 +90,6 @@
 + (NSMutableArray*) parseLessonList:(NSArray *) lessons {
     NSMutableArray* playlist = [[[NSMutableArray alloc] init] autorelease];
     
-    //NSString *videoRoot = @"www.rhythmjuice.com/sandbox/chapters";
-    
     for(NSDictionary* lesson in lessons) {
         
         NSString *title = [lesson objectForKey:@"Title"];
@@ -118,6 +116,8 @@
         
         [playlist addObject:play];
         [play release];
+        [chapterPaths release];
+        [chapterTitles release];
     }
     return playlist;
 }

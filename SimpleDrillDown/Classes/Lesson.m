@@ -279,13 +279,13 @@
     for (int i = 0; i < [chapters count]; i++) {
         NSString* chapter_local_path = [self getChapterLocalPath:i];
         NSString* chapter_remote_path = [self getChapterRemotePath:i];
-        NSURL* chapter_remote_url = [NSURL URLWithString:chapter_remote_path];
         NSLog(@"'%@'  '%@'", chapter_remote_path, [[request originalURL] lastPathComponent]);
         if ([chapter_remote_path isEqual:[[request originalURL] lastPathComponent]]) {
             BOOL written = [responseData writeToFile:chapter_local_path atomically:NO];
             if (written)
                 NSLog(@"Saved to file: %@", chapter_local_path);
             [self setChapterDownloadInProgressFlag:i withFlag:false];
+            break;
         }
     }
     
