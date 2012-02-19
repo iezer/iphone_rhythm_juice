@@ -413,7 +413,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     
     NSArray* a = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:url]];
                   
-    NSArray* all = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];//]ForURL:[NSURL URLWithString:url]];
+    NSArray* all = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
     
     for (int i = 0; i < [a count]; i++) {
         NSHTTPCookie* c = [a objectAtIndex:i];
