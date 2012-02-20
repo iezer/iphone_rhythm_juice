@@ -15,7 +15,7 @@
 	IBOutlet UIButton *loginButton;
     IBOutlet UIButton *infoButton;
 	IBOutlet UIActivityIndicatorView *loginIndicator;
-    SimpleDrillDownAppDelegate* delegate; 
+    SimpleDrillDownAppDelegate *delegate; 
 }
 
 @property (nonatomic, retain) UITextField *usernameField;

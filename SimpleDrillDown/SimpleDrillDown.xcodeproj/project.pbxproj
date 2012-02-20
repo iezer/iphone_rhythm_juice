@@ -18,8 +18,6 @@
 		2846CFC80DBFDD18009410C2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2846CFC60DBFDD18009410C2 /* Localizable.strings */; };
 		28554E2C0DAC293600168C19 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 28554E2B0DAC293600168C19 /* Icon.png */; };
 		53A3862B0E6DD89B002F7F09 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53A386290E6DD89B002F7F09 /* MainWindow.xib */; };
-		6A13FE6514BD882200A93826 /* alhc-2008-dax-alice.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 6A13FE6114BD882200A93826 /* alhc-2008-dax-alice.m4v */; };
-		6A13FE6614BD882200A93826 /* dax-alice-toulouse.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 6A13FE6214BD882200A93826 /* dax-alice-toulouse.m4v */; };
 		6A13FE6714BD882200A93826 /* rj-login.html in Resources */ = {isa = PBXBuildFile; fileRef = 6A13FE6314BD882200A93826 /* rj-login.html */; };
 		6A13FE6814BD882200A93826 /* userdata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A13FE6414BD882200A93826 /* userdata.plist */; };
 		6A16779314E6A29F00AE20FA /* sandbox.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A16779214E6A29F00AE20FA /* sandbox.plist */; };
@@ -28,7 +26,6 @@
 		6A1B185C14542E7A00E91BDA /* LoginAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1B185B14542E7A00E91BDA /* LoginAppAppDelegate.m */; };
 		6A1B185E14542E8600E91BDA /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A1B185D14542E8600E91BDA /* LoginView.xib */; };
 		6A1B186C14544DF000E91BDA /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1B186B14544DF000E91BDA /* User.m */; };
-		6A38A4F7110CECBD004EF5FD /* Movie.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 6A38A4F6110CECBD004EF5FD /* Movie.m4v */; };
 		6A38A5B9110D41CC004EF5FD /* TimeTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A38A5B4110D41CB004EF5FD /* TimeTracker.m */; };
 		6A38A5BA110D41CC004EF5FD /* TimeTrackerNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A38A5B6110D41CB004EF5FD /* TimeTrackerNode.m */; };
 		6A38A601110D44A5004EF5FD /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6A38A600110D44A5004EF5FD /* Settings.bundle */; };
@@ -48,9 +45,7 @@
 		6A3F129814B20D3F0042F3E9 /* Chapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F129714B20D3F0042F3E9 /* Chapter.m */; };
 		6A3F129E14B21B030042F3E9 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F129D14B21B030042F3E9 /* Reachability.m */; };
 		6A7145691123C5F00081571A /* SingleLessonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F25CCB0D64C1EB00158CCD /* SingleLessonViewController.m */; };
-		6A7145EE1123D77E0081571A /* sylvia-nick.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 6A7145ED1123D77E0081571A /* sylvia-nick.m4v */; };
 		6A7147F111268E8C0081571A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7147F011268E8C0081571A /* Default.png */; };
-		6A7147FD11268F7E0081571A /* ilhc-2008-dax-alice.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 6A7147FC11268F7E0081571A /* ilhc-2008-dax-alice.m4v */; };
 		6A8146B114C533CF00FAA115 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A8146B014C533CF00FAA115 /* RootViewController.m */; };
 		6A9E4B1314BDA73100E6FA5F /* rj-logout.html in Resources */ = {isa = PBXBuildFile; fileRef = 6A9E4B1214BDA73100E6FA5F /* rj-logout.html */; };
 		6A9E4B1514BDA8D500E6FA5F /* userdata-anonymous.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A9E4B1414BDA8D500E6FA5F /* userdata-anonymous.plist */; };
@@ -77,8 +72,6 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* SimpleDrillDown_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleDrillDown_Prefix.pch; sourceTree = "<group>"; };
 		53A3862A0E6DD89B002F7F09 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		6A13FE6114BD882200A93826 /* alhc-2008-dax-alice.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "alhc-2008-dax-alice.m4v"; sourceTree = "<group>"; };
-		6A13FE6214BD882200A93826 /* dax-alice-toulouse.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dax-alice-toulouse.m4v"; sourceTree = "<group>"; };
 		6A13FE6314BD882200A93826 /* rj-login.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "rj-login.html"; sourceTree = "<group>"; };
 		6A13FE6414BD882200A93826 /* userdata.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = userdata.plist; sourceTree = "<group>"; };
 		6A16779214E6A29F00AE20FA /* sandbox.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sandbox.plist; sourceTree = "<group>"; };
@@ -91,7 +84,6 @@
 		6A1B185D14542E8600E91BDA /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginView.xib; path = Classes/LoginView.xib; sourceTree = "<group>"; };
 		6A1B186A14544DEF00E91BDA /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Classes/User.h; sourceTree = "<group>"; };
 		6A1B186B14544DF000E91BDA /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Classes/User.m; sourceTree = "<group>"; };
-		6A38A4F6110CECBD004EF5FD /* Movie.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = Movie.m4v; sourceTree = "<group>"; };
 		6A38A5B3110D41CB004EF5FD /* TimeTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTracker.h; sourceTree = "<group>"; };
 		6A38A5B4110D41CB004EF5FD /* TimeTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTracker.m; sourceTree = "<group>"; };
 		6A38A5B5110D41CB004EF5FD /* TimeTrackerNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTrackerNode.h; sourceTree = "<group>"; };
@@ -127,9 +119,7 @@
 		6A3F129714B20D3F0042F3E9 /* Chapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Chapter.m; path = Classes/Chapter.m; sourceTree = "<group>"; };
 		6A3F129C14B21B030042F3E9 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		6A3F129D14B21B030042F3E9 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		6A7145ED1123D77E0081571A /* sylvia-nick.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sylvia-nick.m4v"; sourceTree = "<group>"; };
 		6A7147F011268E8C0081571A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		6A7147FC11268F7E0081571A /* ilhc-2008-dax-alice.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ilhc-2008-dax-alice.m4v"; sourceTree = "<group>"; };
 		6A8146AF14C533CF00FAA115 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		6A8146B014C533CF00FAA115 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		6A9E4B1214BDA73100E6FA5F /* rj-logout.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "rj-logout.html"; sourceTree = "<group>"; };
@@ -241,10 +231,7 @@
 				6A13FE6014BD882200A93826 /* web */,
 				6A1B185D14542E8600E91BDA /* LoginView.xib */,
 				6A7147F011268E8C0081571A /* Default.png */,
-				6A7147FC11268F7E0081571A /* ilhc-2008-dax-alice.m4v */,
-				6A7145ED1123D77E0081571A /* sylvia-nick.m4v */,
 				6A38A600110D44A5004EF5FD /* Settings.bundle */,
-				6A38A4F6110CECBD004EF5FD /* Movie.m4v */,
 				53A386290E6DD89B002F7F09 /* MainWindow.xib */,
 				28554E2B0DAC293600168C19 /* Icon.png */,
 				8D1107310486CEB800E47090 /* Info.plist */,
@@ -269,8 +256,6 @@
 			children = (
 				6A9E4B1414BDA8D500E6FA5F /* userdata-anonymous.plist */,
 				6A9E4B1214BDA73100E6FA5F /* rj-logout.html */,
-				6A13FE6114BD882200A93826 /* alhc-2008-dax-alice.m4v */,
-				6A13FE6214BD882200A93826 /* dax-alice-toulouse.m4v */,
 				6A13FE6314BD882200A93826 /* rj-login.html */,
 				6A13FE6414BD882200A93826 /* userdata.plist */,
 				6A16779214E6A29F00AE20FA /* sandbox.plist */,
@@ -387,14 +372,9 @@
 				28554E2C0DAC293600168C19 /* Icon.png in Resources */,
 				2846CFC80DBFDD18009410C2 /* Localizable.strings in Resources */,
 				53A3862B0E6DD89B002F7F09 /* MainWindow.xib in Resources */,
-				6A38A4F7110CECBD004EF5FD /* Movie.m4v in Resources */,
 				6A38A601110D44A5004EF5FD /* Settings.bundle in Resources */,
-				6A7145EE1123D77E0081571A /* sylvia-nick.m4v in Resources */,
 				6A7147F111268E8C0081571A /* Default.png in Resources */,
-				6A7147FD11268F7E0081571A /* ilhc-2008-dax-alice.m4v in Resources */,
 				6A1B185E14542E8600E91BDA /* LoginView.xib in Resources */,
-				6A13FE6514BD882200A93826 /* alhc-2008-dax-alice.m4v in Resources */,
-				6A13FE6614BD882200A93826 /* dax-alice-toulouse.m4v in Resources */,
 				6A13FE6714BD882200A93826 /* rj-login.html in Resources */,
 				6A13FE6814BD882200A93826 /* userdata.plist in Resources */,
 				6A9E4B1314BDA73100E6FA5F /* rj-logout.html in Resources */,

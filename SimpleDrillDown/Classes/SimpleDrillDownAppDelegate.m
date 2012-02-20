@@ -57,7 +57,6 @@ NSString *kScalingModeKey	= @"scalingMode";
 NSString *kControlModeKey	= @"controlMode";
 NSString *kBackgroundColorKey	= @"backgroundColor";
 
-
 @implementation SimpleDrillDownAppDelegate
 
 @synthesize window;
@@ -69,9 +68,6 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 @synthesize receivedData;
 @synthesize state;
 @synthesize loginViewController;
-
-@synthesize username;
-@synthesize password;
 
 @synthesize infoButton;
 @synthesize footer;
@@ -101,28 +97,40 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     [self showConnectionError];
 }
 
-
 - (void)login:(NSString*)_username withPassword:(NSString*) _password loggingIn:(BOOL)_loggingIn {
-    self.username = _username;
-    self.password = _password;
-    self.state = 1;
+    
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:_username forKey:@"username"];
+    [defaults setValue:_password forKey:@"password"];
+    [defaults synchronize];
+    
     self.loggingIn = _loggingIn;
+    [self loginWithStoredCredentials];
+}
+
+- (void)loginWithStoredCredentials {
+    self.state = 1;
     
     // for local server
     //NSString* user_data_url = @"http://rj.isaacezer.com/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21faXBob25lJmZvcm1hdD1yYXc=";
     
     /*
-    NSString* user_data_url;
-    if (_loggingIn) {
-        user_data_url = @"http://localhost/rj/rj-login.html";
-    } else {
-        user_data_url = @"http://localhost/rj/rj-logout.html";
-    } */
-    NSString* user_data_url = @"https://www.rhythmjuice.com/sandbox/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21fbGVzc29uJmZvcm1hdD1yYXc=";
-    http://www.rhythmjuice.com/sandbox/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21fbGVzc29lJmZvcm1hdD1yYXc=
+     NSString* user_data_url;
+     if (_loggingIn) {
+     user_data_url = @"http://localhost/rj/rj-login.html";
+     } else {
+     user_data_url = @"http://localhost/rj/rj-logout.html";
+     } */
+    
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSLog(@"%@", defaults);
+    NSString *rootURL = [defaults stringForKey:@"rootURL"];
+    NSString *user_data_url = [NSString stringWithFormat:@"%@/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21fbGVzc29uJmZvcm1hdD1yYXc=", rootURL];
+    
+    // NSString* user_data_url = @"https://www.rhythmjuice.com/sandbox/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21fbGVzc29uJmZvcm1hdD1yYXc=";
+    //http://www.rhythmjuice.com/sandbox/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21fbGVzc29lJmZvcm1hdD1yYXc=
     
     [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
-    
     
     [self getRequest:user_data_url];
 }
@@ -152,19 +160,17 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     {
         return; // shoudn't happen
     }
-
-    NSString* sData = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
-    [receivedData release];
-    if ([self handleData:sData]) {
+    
+    if ([self handleData:receivedData]) {
         [connection release];
     }
-    [sData release];
+    [receivedData release];
 }
 
 - (Boolean)handleData:(NSData *)data {        
-
+    
     NSString* sData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     bool ret = false;
     NSLog( @"received data '%@'", sData );
     if ( state == 1 ) {
@@ -176,7 +182,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         //NSString* urlRedirect = @"aW5kZXgucGhwP29wdGlvbj1jb21faXBob25lJmZvcm1hdD1yYXc=";
         // for rj
         NSString* urlRedirect = @"aW5kZXgucGhwP29wdGlvbj1jb21fbGVzc29uJmZvcm1hdD1yYXc=";
-
+        
         NSString* taskString = [self getAttributeValue:sData withMarker:@"\"hidden\" name=\"task\" value=\""];
         
         NSString* task;
@@ -203,15 +209,19 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         
         [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
         
-        NSURL *url = [NSURL URLWithString:@"https://www.rhythmjuice.com/sandbox/index.php?option=com_user"];
+        NSString *username = [defaults stringForKey:@"username"];
+        NSString *password = [defaults stringForKey:@"password"];
+        NSString *rootURL = [defaults stringForKey:@"rootURL"];
+        NSString *reqURL = [NSString stringWithFormat:@"%@/index.php?option=com_user", rootURL];
+        NSURL *url = [NSURL URLWithString:reqURL];
+        
+        //NSURL *url = [NSURL URLWithString:@"https://www.rhythmjuice.com/sandbox/index.php?option=com_user"];
         
         NSString *post = [NSString stringWithFormat:@"username=%@&passwd=%@&submit=Login&option=com_user&task=%@&return=%@&%@=1",username, password, task, urlRedirect, randomSessonId];
         
         
         NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
         NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
-        
-        
         
         ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
         
@@ -222,25 +232,27 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         [request addRequestHeader:@"Cache-Control" value:@"max-age=0"];
         [request addRequestHeader:@"Connection" value:@"keep-alive"];
         [request addRequestHeader:@"Content-Type" value:@"application/x-www-form-urlencoded"];
-        [request addRequestHeader:@"Content-Length" value:postLength];
-        NSHTTPCookie *c = [rjCookies objectAtIndex:0];
-        [request addRequestHeader:@"Cookie" value:[NSString stringWithFormat:@"%@=%@", [c name], [c value]]];
+        
+        if ([rjCookies count] > 0) {
+            [request addRequestHeader:@"Content-Length" value:postLength];
+            NSHTTPCookie *c = [rjCookies objectAtIndex:0];
+            [request addRequestHeader:@"Cookie" value:[NSString stringWithFormat:@"%@=%@", [c name], [c value]]];
+        }
         [request addRequestHeader:@"Host" value:@"www.rhythmjuice.com"];
-        [request addRequestHeader:@"Origin" value:@"https://www.rhythmjuice.com"];
-        [request addRequestHeader:@"Referer" value:@"https://www.rhythmjuice.com/sandbox/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21fbGVzc29uJmZvcm1hdD1yYXc="];
+        [request addRequestHeader:@"Origin" value:@"http://www.rhythmjuice.com"];
+        [request addRequestHeader:@"Referer" value:@"http://www.rhythmjuice.com/sandbox/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21fbGVzc29uJmZvcm1hdD1yYXc="];
         [request addRequestHeader:@"User-Agent" value:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.46 Safari/535.11"];
-
         
         [request appendPostData:postData];
         
         /*
-        [request setPostValue:username forKey:@"username"];
-        [request setPostValue:password forKey:@"passwd"];
-        [request setPostValue:@"Login" forKey:@"submit"];
-        [request setPostValue:@"com_user" forKey:@"option"];
-        [request setPostValue:task forKey:@"task"];
-        [request setPostValue:urlRedirect forKey:@"return"];
-        [request setPostValue:@"1" forKey:randomSessonId];
+         [request setPostValue:username forKey:@"username"];
+         [request setPostValue:password forKey:@"passwd"];
+         [request setPostValue:@"Login" forKey:@"submit"];
+         [request setPostValue:@"com_user" forKey:@"option"];
+         [request setPostValue:task forKey:@"task"];
+         [request setPostValue:urlRedirect forKey:@"return"];
+         [request setPostValue:@"1" forKey:randomSessonId];
          */
         [request setTimeOutSeconds:20];
         [request setUseCookiePersistence:YES];
@@ -248,6 +260,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         [request setUseSessionPersistence:YES];
         [request setShouldAttemptPersistentConnection:YES];
         [request setRequestCookies:rjCookies];
+        [request setValidatesSecureCertificate:NO];
         
         NSMutableArray* a = [request requestCookies];
         for (int i = 0; i < [a count]; i++) {
@@ -257,59 +270,17 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         
         NSLog(@"%@", [request haveBuiltRequestHeaders]);
         
-        
-    /*    
-
-     
-     //urlRedirect = @"aW5kZXgucGhw";
-     //urlRedirect = @"aW5kZXgucGhwP29wdGlvbj1jb21fbGVzc29uJmZvcm1hdD1yYXc%3D";
-
-
-     
-     NSString* url;
-        if (loggingIn) {
-            url = @"http://localhost/rj/userdata.plist";
-        } else { 
-            url = @"http://localhost/rj/userdata-anonymous.plist";
-        }
-        
-        //NSString* url = @"http://rj.isaacezer.com/index.php?option=com_user";
-
-        //NSString* url = @"http://www.rhythmjuice.com/sandbox/index.php?option=com_lesson&format=raw";
-        
-        NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
-        [request setURL:[NSURL URLWithString:url]];
-        [request setHTTPMethod:@"POST"];
-        [request setHTTPShouldHandleCookies:YES];
-        [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-        */
-        //[request setValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" forHTTPHeaderField:@"Accept"];
-      /*  [request setValue:@"ISO-8859-1,utf-8;q=0.7,*;q=0.3" forHTTPHeaderField:@"Accept-Charset"];
-        [request setValue:@"gzip,deflate,sdch" forHTTPHeaderField:@"Accept-Encoding"];
-        [request setValue:@"en-US,en;q=0.8" forHTTPHeaderField:@"Accept-Language"];
-        [request setValue:@"max-age=0" forHTTPHeaderField:@"Cache-Control"];
-        [request setValue:@"keep-alive" forHTTPHeaderField:@"Connection"];
-        [request setValue:@"https%3A%2F%2Fwww.rhythmjuice.com%2Fsandbox%2Findex.php%3Foption%3Dcom_community%26view%3Dfrontpage" forHTTPHeaderField:@"currentURI"];
-        [request setValue:@"www.rhythmjuice.com" forHTTPHeaderField:@"host"];
-        [request setValue:@"https://www.rhythmjuice.com" forHTTPHeaderField:@"origin"];
-        [request setValue:@"https://www.rhythmjuice.com/sandbox/index.php?option=com_user&view=login" forHTTPHeaderField: @"referer"];
-        
-        
-        [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-        [request setHTTPBody:postData];
-        */
-        
         ret = true;
         
         self.state = 2; 
         
         [request setDelegate:self];
-            NSLog(@"Request  HEADERS: %@", [request requestHeaders]);
+        NSLog(@"Request  HEADERS: %@", [request requestHeaders]);
         
         [request startAsynchronous];
-            NSLog(@"Request  HEADERS: %@", [request requestHeaders]);
- //       [self getRequest:url withRequest:request];
-  //      [request release];    
+        NSLog(@"Request  HEADERS: %@", [request requestHeaders]);
+        //       [self getRequest:url withRequest:request];
+        //      [request release];    
         
     } else { // state = 2
         NSString *error;
@@ -327,22 +298,26 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         if (loggingIn && authd) {
             [window addSubview:[navigationController view]];
         } else if (loggingIn && !authd) {
-            NSString* url = @"https://www.rhythmjuice.com/sandbox/index.php?option=com_lesson&format=raw";
+            
+            //NSString *rootURL = [defaults stringForKey:@"rootURL"];
+            //NSString *url = [NSString stringWithFormat:@"%@/index.php?option=com_lesson&format=raw", rootURL];
+            
+            //NSString* url = @"https://www.rhythmjuice.com/sandbox/index.php?option=com_lesson&format=raw";
             //NSString* url = @"http://www.rj.isaacezer.com/index.php?option=com_iphone&format=raw";
-           [self getRequest:url];
-            /*
+            //[self getRequest:url];
+            
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Auth Failed" message:@"Incorrect user name or password."
                                                            delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
             [alert release];
             [window addSubview:[loginViewController view]];
-             */
+            
         } else { // !loggingIn
             [self logout];
         }
         state = 0;
     }
-
+    
     return ret;
 }
 
@@ -396,14 +371,6 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 }
 
 - (void)getRequest:(NSString *) url; {
-    // create the request
-    
-	//NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]
-	//										  cachePolicy:NSURLRequestUseProtocolCachePolicy
-	//									  timeoutInterval:60.0];
-	
-	//[self getRequest:url withRequest:theRequest];
-    
     [self createASIRequest:url];
 }
 
@@ -412,7 +379,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
     
     NSArray* a = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:url]];
-                  
+    
     NSArray* all = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
     
     for (int i = 0; i < [a count]; i++) {
@@ -426,10 +393,10 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     }
     
     if ( [a count] > 0 ) {
-    NSDictionary            *cookieHeaders;
-    cookieHeaders = [ NSHTTPCookie requestHeaderFieldsWithCookies: a ];
-    [request setValue: [ cookieHeaders objectForKey: @"Cookie" ]
-    forHTTPHeaderField: @"Cookie" ];
+        NSDictionary            *cookieHeaders;
+        cookieHeaders = [ NSHTTPCookie requestHeaderFieldsWithCookies: a ];
+        [request setValue: [ cookieHeaders objectForKey: @"Cookie" ]
+       forHTTPHeaderField: @"Cookie" ];
     }
     
     // create the connection with the request
@@ -466,12 +433,22 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     _loginViewController.delegate = self;
     self.loginViewController = _loginViewController;
     [_loginViewController release];
-
+    
     // set up the table's footer view based on our UIView 'myFooterView' outlet
 	CGRect newFrame = CGRectMake(0.0, 0.0, self.rootViewController.tableView.bounds.size.width, self.footer.frame.size.height);
 	self.footer.backgroundColor = [UIColor clearColor];
 	self.footer.frame = newFrame;
 	self.rootViewController.tableView.tableFooterView = self.footer;	// note this will override UITableView's 'sectionFooterHeight' property
+    
+    self.rootViewController.delegate = self;
+    
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSString *testValue = [[NSUserDefaults standardUserDefaults] stringForKey:@"rootURL"];
+    if (testValue == nil)
+    {
+        [defaults setValue:@"http://www.rhythmjuice.com/sandbox" forKey:@"rootURL"];
+        [defaults synchronize];
+    }
     
     // Check if we already have user storage saved
     NSFileManager *     fileManager;
@@ -573,15 +550,17 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 }
 
 - (void)createASIRequest:(NSString*)path {
+    NSLog(@"ASI Request URL: %@", path);
     NSURL* chapter_remote_url = [NSURL URLWithString:path];
     
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:chapter_remote_url];
     [request setUseCookiePersistence:NO];
+    [request setValidatesSecureCertificate:NO];
     
-        [request setRequestCookies:rjCookies];
+    [request setRequestCookies:rjCookies];
     
-        [request setDelegate:self];
-        [request startAsynchronous];
+    [request setDelegate:self];
+    [request startAsynchronous];
 }
 
 - (void)requestFinished:(ASIHTTPRequest *)request

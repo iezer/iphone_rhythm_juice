@@ -71,9 +71,7 @@
     NSInteger state;
     IBOutlet UIButton *infoButton;
     IBOutlet UIView *footer;
-    
-    NSString* username;
-    NSString* password;
+
     BOOL loggingIn;
     
     NSMutableArray *rjCookies;
@@ -88,16 +86,10 @@
 @property (nonatomic, retain) SingleLessonViewController *detailViewController;
 @property (nonatomic, retain) NSMutableData *receivedData;
 @property (nonatomic, retain) LoginViewController *loginViewController;
-@property (nonatomic, retain) NSString *username;
-@property (nonatomic, retain) NSString *password;
-
 @property (retain, nonatomic) IBOutlet UIButton *infoButton;
 @property (nonatomic, retain) IBOutlet UIView *footer;
-
 @property (nonatomic) BOOL loggingIn;
-
 @property (nonatomic, retain) NSMutableArray *rjCookies;
-
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;
@@ -110,14 +102,11 @@
 - (void) logout;
 - (void)createASIRequest:(NSString*)path;
 - (IBAction)loginButtonAction:(id)sender;
-
 - (void)login:(NSString*)_username withPassword:(NSString*) _password loggingIn:(BOOL)_loggingIn;
+- (void)loginWithStoredCredentials;
 - (NSString*) getAttributeValue:(NSString*)s withMarker:(NSString*) marker;
-
-
 - (void)requestFinished:(ASIHTTPRequest *)request;
-
-
 - (void)requestFailed:(ASIHTTPRequest *)request;
+- (Boolean)handleData:(NSData *)data;
 
 @end

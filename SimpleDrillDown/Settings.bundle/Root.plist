@@ -8,6 +8,40 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
+			<string>General</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>DefaultValue</key>
+			<string>http://www.rhythmjuice.com/sandbox</string>
+			<key>Title</key>
+			<string>Root URL</string>
+			<key>Key</key>
+			<string>rootURL</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Username</string>
+			<key>Key</key>
+			<string>username</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>Text Field</string>
+			<key>IsSecure</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Password</string>
+			<key>Key</key>
+			<string>password</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
 			<string>Movie Playback</string>
 		</dict>
 		<dict>

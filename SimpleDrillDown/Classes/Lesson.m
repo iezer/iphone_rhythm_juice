@@ -256,7 +256,12 @@
     assert(fileManager != nil);
     
     NSString* chapter_remote_path = [self getChapterRemotePath:chapter];
-    NSString* root = @"http://www.rhythmjuice.com/sandbox/chapters/";
+    
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSString *rootURL = [defaults stringForKey:@"rootURL"];
+    NSString *root = [NSString stringWithFormat:@"%@/chapters/", rootURL];
+    
+    //NSString* root = @"http://www.rhythmjuice.com/sandbox/chapters/";
     NSURL* chapter_remote_url = [NSURL URLWithString:[root stringByAppendingString:chapter_remote_path]];
     
     NSError *error;

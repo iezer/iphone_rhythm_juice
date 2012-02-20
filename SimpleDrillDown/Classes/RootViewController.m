@@ -12,13 +12,12 @@
 #import "DataController.h"
 #import "SingleLessonViewController.h"
 #import "Lesson.h"
-#import "SimpleDrillDownAppDelegate.h"
 #import "User.h"
+#import "SimpleDrillDownAppDelegate.h"
 
 @implementation RootViewController
 
-
-@synthesize dataController;
+@synthesize dataController, delegate;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -45,7 +44,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 4;
 }
 
 
@@ -72,7 +71,11 @@
         } else if (indexPath.row == 2) {
             cell.textLabel.text = @"My Lesson Plans";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        } else if (indexPath.row == 3) {
+            cell.textLabel.text = @"Refresh";
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
+        
     }
     return cell;
 }
@@ -95,46 +98,24 @@
             lessons = self.dataController.user.playlists;
             break;
         case 2:
-            detailViewController.title = NSLocalizedString(@"My Lesson Plans", @"List of My Lesson Plans Title");
+            //detailViewController.title = NSLocalizedString(@"My Lesson Plans", @"List of My Lesson Plans Title");
+            detailViewController.title = NSLocalizedString(@"My Lessons", @"List of My Lessons Title");
             lessons = self.dataController.user.lessons;
             break;
+        case 3: // refresh
+            delegate.loggingIn = true;
+            [delegate loginWithStoredCredentials];
+            [detailViewController release];
+            return;
         default:
             break;
     }
 
     detailViewController.lessons = lessons;
-    
     detailViewController.dataController = self.dataController;
     
     // Push the detail view controller.
     [[self navigationController] pushViewController:detailViewController animated:YES];
-    [detailViewController release];
-    
-    /* 
-    NSUInteger section = [indexPath indexAtPosition:0];
-    
-    if (section == 0 ) {
-        */
-        /*
-         When a row is selected, create the detail view controller and set its detail item to the item associated with the selected row.
-         */
-  /*      SingleLessonViewController *detailViewController = [[SingleLessonViewController alloc] initWithStyle:UITableViewStyleGrouped];
-        
-        Lesson* lesson = [dataController objectInListAtIndex:indexPath.row];
-        detailViewController.lesson = lesson;
-        detailViewController.dataController = dataController;
-        
-        // Push the detail view controller.
-        [[self navigationController] pushViewController:detailViewController animated:YES];
-        [detailViewController release];
-    } else if (section == 1) {
-        if (indexPath.row == 0) {
-            [[dataController user] downloadAllLessons];
-        } else {
-            [[dataController user] deleteAllLessons]; 
-        }
-        [self.tableView reloadData];
-    } */
 }
 
 #pragma mark -

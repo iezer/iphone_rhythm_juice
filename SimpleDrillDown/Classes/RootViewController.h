@@ -9,11 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @class DataController;
+@class SimpleDrillDownAppDelegate;
 
 @interface RootViewController : UITableViewController {
     DataController *dataController;
+    SimpleDrillDownAppDelegate *delegate;
 }
 
 @property (nonatomic, retain) DataController *dataController;
+@property (nonatomic, retain) SimpleDrillDownAppDelegate *delegate;
 
 @end

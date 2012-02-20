@@ -65,12 +65,6 @@
     return [[user lessons] count];
 }
 
-/*
-- (Lesson *)objectInListAtIndex:(unsigned)theIndex {
-    return [[user lessons] objectAtIndex:theIndex];
-} */
-
-
 - (void)dealloc {
     [user release];
     [super dealloc];
@@ -91,28 +85,22 @@
     NSMutableArray* playlist = [[[NSMutableArray alloc] init] autorelease];
     
     for(NSDictionary* lesson in lessons) {
-        
         NSString *title = [lesson objectForKey:@"Title"];
         NSArray *instructors = [lesson objectForKey:@"Instructors"];
         Boolean premium = [[lesson objectForKey:@"Premium"] boolValue];
         
-        //NSArray *chapters = [lesson objectForKey:@"Chapter Paths"];
-        //NSArray *chapterTitles = [lesson objectForKey:@"Chapter Titles"];
         NSMutableArray *chapterTitles = [[NSMutableArray alloc] init];
         NSMutableArray *chapterPaths = [[NSMutableArray alloc] init];
         NSArray* chapters = [lesson objectForKey:@"Chapters"];
         for(NSDictionary* chapter in chapters) {
             NSString *title = [chapter objectForKey:@"Name"];
             NSString *filename = [chapter objectForKey:@"Filename"];
-        //    NSString *path = [videoRoot stringByAppendingPathComponent:filename];
             
             [chapterTitles addObject:title];
             [chapterPaths addObject:filename];
         }
 
-        
         Lesson *play = [[Lesson alloc] init:title instructors:instructors chapters:chapterPaths chapterTitles:chapterTitles premium:premium];
-        
         
         [playlist addObject:play];
         [play release];
@@ -137,16 +125,7 @@
 
         NSArray* playlists = [userData objectForKey:@"Playlists"];
         NSMutableArray* myPlaylists = [DataController parseLessonList:playlists];
-        
-/*        NSMutableDictionary* myLessonPlans = [[[NSMutableArray alloc] init] autorelease];
-        NSArray* lessonsPlans = [userData objectForKey:@"Lesson Plans"];
-        for (NSDictionary* lessonPlan in lessonsPlans) {
-            NSString* lessonPlanTitle = [lessonPlan objectForKey:@"Title"];
-            NSArray* lessonsInPlan = [lessonPlan objectForKey:@"Lessons"];
-            NSMutableArray* parsedLessonsForPlan = [DataController parseLessonList:lessonsInPlan];
-           
-        }  */      
-        
+          
         NSString* username = [userData objectForKey:@"Username"];        
         Boolean premium = [[userData objectForKey:@"Premium"] boolValue];
         Boolean authenticated = [[userData objectForKey:@"Authenticated"] boolValue];
