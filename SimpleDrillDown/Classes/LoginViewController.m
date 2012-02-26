@@ -93,6 +93,17 @@
     } else {
         [loginButton setTitle:@"Login" forState:UIControlStateNormal];
     }
+    
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString* uname = [defaults stringForKey:@"username"];
+    NSString* p = [defaults stringForKey:@"password"];
+    if (uname != nil) {
+        [usernameField setText:uname];
+    }
+    if (p != nil) {
+        [passwordField setText:p];
+    }
 }
 -(void) reset {
     loginIndicator.hidden = TRUE;

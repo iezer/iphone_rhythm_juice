@@ -57,7 +57,6 @@
 @property (retain) User *user; //atomic
 @property (nonatomic) Boolean gotLatestSettings;
 
-- (unsigned)countOfList;
 //- (Lesson *)objectInListAtIndex:(unsigned)theIndex;
 
 - (id)init;

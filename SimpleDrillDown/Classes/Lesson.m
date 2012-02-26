@@ -170,11 +170,15 @@
 
 - (NSString*) status:(NSInteger)chapter
 {
+    Chapter *c = [chapters objectAtIndex:chapter];
     if ([self isChapterDownloadedLocally:chapter]) {
-        return @"downloaded";
+        c.progressView.hidden = true;
+        return @"downloaded, click to play";
     } else if ([self isChapterDownloadInProgress:chapter]) {
+        c.progressView.hidden = false;
         return @"downloading...";
     } else {
+        c.progressView.hidden = true;
         return @"click to download";
     }
 }
@@ -273,6 +277,7 @@
         [self setChapterDownloadInProgressFlag:chapter withFlag:true];
          ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:chapter_remote_url];
         [request setDelegate:self];
+        [request setDownloadProgressDelegate:[[chapters objectAtIndex:chapter] progressView]];
         [request startAsynchronous];
     }
 }

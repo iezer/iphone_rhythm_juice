@@ -44,7 +44,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 5;
 }
 
 
@@ -72,6 +72,9 @@
             cell.textLabel.text = @"My Lesson Plans";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         } else if (indexPath.row == 3) {
+            cell.textLabel.text = @"RJ on the web";
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        } else if (indexPath.row == 4) {
             cell.textLabel.text = @"Refresh";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
@@ -102,9 +105,12 @@
             detailViewController.title = NSLocalizedString(@"My Lessons", @"List of My Lessons Title");
             lessons = self.dataController.user.lessons;
             break;
-        case 3: // refresh
-            delegate.loggingIn = true;
-            [delegate loginWithStoredCredentials];
+        case 3:
+            [delegate refresh:true];
+            [detailViewController release];
+            return;
+        case 4: // refresh
+            [delegate refresh:false];
             [detailViewController release];
             return;
         default:

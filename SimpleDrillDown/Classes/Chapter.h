@@ -14,6 +14,7 @@
     NSString *localPath;
     NSString *filename;
     Boolean  isDownloadInProgress;
+    UIProgressView *progessView;
 }
 
 
@@ -25,5 +26,6 @@
 @property (nonatomic, retain) NSString *remotePath;
 @property (nonatomic, retain) NSString *filename;
 @property (nonatomic) Boolean isDownloadInProgress;
+@property (nonatomic, retain) UIProgressView *progressView;
 
 @end

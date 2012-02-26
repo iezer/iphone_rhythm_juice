@@ -60,11 +60,6 @@
     return self;
 }
 
-// Accessor methods for list
-- (unsigned)countOfList {
-    return [[user lessons] count];
-}
-
 - (void)dealloc {
     [user release];
     [super dealloc];

@@ -82,8 +82,12 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Only one section, so return the number of items in the list.
-    return [dataController countOfList];
+    if (section == 0) {
+        NSInteger i = [lessons count];
+        return i > 0 ? i : 1;
+    } else {
+        return 2;
+    }
 }
 
 
@@ -102,17 +106,22 @@
     
     if (section == 0) {
         
-        // Get the object to display and set the value in the cell.
-        Lesson *lesson = [lessons objectAtIndex:indexPath.row];
-        cell.textLabel.text = lesson.title;
-        // cell.detailTextLabel.text = [] ? @"downloaded locally" : @"not downloaded";
-        
-        NSString* premium = [lesson premium] ? @"premium - " : @"";
-        NSString* downloadStatus = [lesson downloadStatus];
-        NSString* subTitle = [[NSString alloc] initWithFormat:@"%@%@",premium, downloadStatus];
-        [downloadStatus release];
-        cell.detailTextLabel.text = subTitle;
-        [subTitle release];
+        if ([lessons count] > 0) {
+            
+            // Get the object to display and set the value in the cell.
+            Lesson *lesson = [lessons objectAtIndex:indexPath.row];
+            cell.textLabel.text = lesson.title;
+            // cell.detailTextLabel.text = [] ? @"downloaded locally" : @"not downloaded";
+            
+            NSString* premium = [lesson premium] ? @"premium - " : @"";
+            NSString* downloadStatus = [lesson downloadStatus];
+            NSString* subTitle = [[NSString alloc] initWithFormat:@"%@%@",premium, downloadStatus];
+            [downloadStatus release];
+            cell.detailTextLabel.text = subTitle;
+            [subTitle release];
+        } else {
+            cell.detailTextLabel.text = @"No Playlists yet.";
+        }
     } else if (section == 1) {
         if (indexPath.row == 0) {
             cell.textLabel.text = @"Download All";
@@ -130,22 +139,25 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    if ([lessons count] <= 0) {
+        return;
+    }
+    
     NSUInteger section = [indexPath indexAtPosition:0];
     
-    if (section == 0 ) {
-
-	/*
-     When a row is selected, create the detail view controller and set its detail item to the item associated with the selected row.
-     */
-    SingleLessonViewController *detailViewController = [[SingleLessonViewController alloc] initWithStyle:UITableViewStyleGrouped];
-    
-    Lesson* lesson = [lessons objectAtIndex:indexPath.row];
-    detailViewController.lesson = lesson;
-    detailViewController.dataController = dataController;
-    
-    // Push the detail view controller.
-    [[self navigationController] pushViewController:detailViewController animated:YES];
-    [detailViewController release];
+    if (section == 0) {
+        /*
+         When a row is selected, create the detail view controller and set its detail item to the item associated with the selected row.
+         */
+        SingleLessonViewController *detailViewController = [[SingleLessonViewController alloc] initWithStyle:UITableViewStyleGrouped];
+        
+        Lesson* lesson = [lessons objectAtIndex:indexPath.row];
+        detailViewController.lesson = lesson;
+        detailViewController.dataController = dataController;
+        
+        // Push the detail view controller.
+        [[self navigationController] pushViewController:detailViewController animated:YES];
+        [detailViewController release];
     } else if (section == 1) {
         if (indexPath.row == 0) {
             [[dataController user] downloadAllLessons];

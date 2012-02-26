@@ -51,6 +51,7 @@
 #import "SimpleDrillDownAppDelegate.h"
 #import "TimeTrackerNode.h"
 #import "CustomMoviePlayerViewController.h"
+#import "Chapter.h"
 
 @implementation SingleLessonViewController
 
@@ -138,13 +139,16 @@
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             cell.detailTextLabel.text = [lesson status:indexPath.row];
             [cell setEditing:true animated:false];
+            
+            Chapter *c = [lesson.chapters objectAtIndex:indexPath.row];
+            [cell.contentView addSubview:[c progressView]];
             break;
         case 1:
             if (indexPath.row == 0) {
-                cellText = @"Download All Files";
+                cellText = @"Download All Chapters";
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }else{
-                cellText = @"Delete Local Files";
+                cellText = @"Delete All Chapters";
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
             break;

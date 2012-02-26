@@ -52,6 +52,7 @@
 #import "User.h"
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
+#import "WebViewController.h"
 
 NSString *kScalingModeKey	= @"scalingMode";
 NSString *kControlModeKey	= @"controlMode";
@@ -72,6 +73,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 @synthesize infoButton;
 @synthesize footer;
 @synthesize loggingIn;
+@synthesize gotoWebOnLogin;
 
 @synthesize rjCookies;
 
@@ -201,11 +203,17 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         }
         
         //NSRange r = [sData rangeOfString:urlRedirect];
-        NSRange r = [sData rangeOfString:@"return"];
-        NSInteger i = r.location + r.length;
-        NSString* sub =[sData substringFromIndex:i];
+        NSRange r = [sData rangeOfString:@"return\" value=\""];
+
+        NSString* randomSessonId;
+        if( r.length > 0) {
+            NSInteger i = r.location + r.length;
+            NSString* sub =[sData substringFromIndex:i];
+            randomSessonId = [self getAttributeValue:sub withMarker:@"\"hidden\" name=\""];
+        } else {
+            randomSessonId = @"";
+        }
         
-        NSString* randomSessonId = [self getAttributeValue:sub withMarker:@"\"hidden\" name=\""];
         
         [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
         
@@ -222,6 +230,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         
         NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
         NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+        NSLog(@"Post data:%@", post);
         
         ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
         
@@ -239,8 +248,10 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
             [request addRequestHeader:@"Cookie" value:[NSString stringWithFormat:@"%@=%@", [c name], [c value]]];
         }
         [request addRequestHeader:@"Host" value:@"www.rhythmjuice.com"];
-        [request addRequestHeader:@"Origin" value:@"http://www.rhythmjuice.com"];
-        [request addRequestHeader:@"Referer" value:@"http://www.rhythmjuice.com/sandbox/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21fbGVzc29uJmZvcm1hdD1yYXc="];
+        [request addRequestHeader:@"Origin" value:@"https://www.rhythmjuice.com"];
+        
+        NSString *refURL = [NSString stringWithFormat:@"%@/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21fbGVzc29uJmZvcm1hdD1yYXc=", rootURL];
+        [request addRequestHeader:@"Referer" value:refURL];
         [request addRequestHeader:@"User-Agent" value:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.46 Safari/535.11"];
         
         [request appendPostData:postData];
@@ -296,7 +307,12 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         
         BOOL authd = dataController.user.authenticated;
         if (loggingIn && authd) {
-            [window addSubview:[navigationController view]];
+            if (gotoWebOnLogin) {
+                gotoWebOnLogin = false;
+                [self web];
+            } else {
+                [window addSubview:[navigationController view]];
+            }
         } else if (loggingIn && !authd) {
             
             //NSString *rootURL = [defaults stringForKey:@"rootURL"];
@@ -402,7 +418,6 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     // create the connection with the request
 	// and start loading the data
 	NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
 	
 	if (theConnection) {
 		// Create the NSMutableData that will hold
@@ -414,8 +429,6 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         [self showConnectionError];
 	}
 }
-
-
 
 - (void)showConnectionError {
     if (self.dataController == nil) {
@@ -446,7 +459,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     NSString *testValue = [[NSUserDefaults standardUserDefaults] stringForKey:@"rootURL"];
     if (testValue == nil)
     {
-        [defaults setValue:@"http://www.rhythmjuice.com/sandbox" forKey:@"rootURL"];
+        [defaults setValue:@"https://www.rhythmjuice.com/sandbox" forKey:@"rootURL"];
         [defaults synchronize];
     }
     
@@ -554,7 +567,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     NSURL* chapter_remote_url = [NSURL URLWithString:path];
     
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:chapter_remote_url];
-    [request setUseCookiePersistence:NO];
+    [request setUseCookiePersistence:YES];
     [request setValidatesSecureCertificate:NO];
     
     [request setRequestCookies:rjCookies];
@@ -604,4 +617,20 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     [super dealloc];
 }
 
+- (void) refresh:(BOOL)gotoWeb {
+    gotoWebOnLogin = gotoWeb;
+    loggingIn = true;
+    [self loginWithStoredCredentials];
+}
+
+- (void) web {
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSString *rootURL = [defaults stringForKey:@"rootURL"];
+
+    webViewController *webController;
+	webController = [[webViewController alloc] initWithURLPassed:rootURL];
+	[self.navigationController pushViewController:webController animated:YES];
+	[webController release];
+	webController =nil;
+}
 @end

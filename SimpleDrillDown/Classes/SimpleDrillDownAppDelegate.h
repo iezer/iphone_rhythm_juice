@@ -73,6 +73,7 @@
     IBOutlet UIView *footer;
 
     BOOL loggingIn;
+    BOOL gotoWebOnLogin;
     
     NSMutableArray *rjCookies;
 }
@@ -89,6 +90,8 @@
 @property (retain, nonatomic) IBOutlet UIButton *infoButton;
 @property (nonatomic, retain) IBOutlet UIView *footer;
 @property (nonatomic) BOOL loggingIn;
+@property (nonatomic) BOOL gotoWebOnLogin;
+
 @property (nonatomic, retain) NSMutableArray *rjCookies;
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
@@ -108,5 +111,7 @@
 - (void)requestFinished:(ASIHTTPRequest *)request;
 - (void)requestFailed:(ASIHTTPRequest *)request;
 - (Boolean)handleData:(NSData *)data;
+- (void) web;
+- (void) refresh:(BOOL)gotoWeb;
 
 @end

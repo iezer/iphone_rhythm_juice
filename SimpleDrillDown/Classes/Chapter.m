@@ -10,7 +10,7 @@
 
 @implementation Chapter
 
-@synthesize title, remotePath, localPath, filename, isDownloadInProgress;
+@synthesize title, remotePath, localPath, filename, isDownloadInProgress, progressView;
 
 -(Chapter *)init:(NSString *)_title remotePath:(NSString*)_remotePath localPath:(NSString*)_localPath;
 {
@@ -24,7 +24,11 @@
             
             NSURL* chapter_remote_url = [NSURL URLWithString:self.remotePath];
             self.filename = [chapter_remote_url lastPathComponent];
+            progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
             
+            progressView.hidden = true;
+            progressView.tag = 1234;
+            progressView.frame = CGRectMake(110,30,150,10);
         }
         return self;
 }

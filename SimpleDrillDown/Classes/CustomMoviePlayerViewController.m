@@ -135,6 +135,7 @@
         // Set movie player layout
         [mp setControlStyle:MPMovieControlStyleFullscreen];
         [mp setFullscreen:YES];
+        mp.useApplicationAudioSession = NO;
         
 		// May help to reduce latency
 		[mp prepareToPlay];
