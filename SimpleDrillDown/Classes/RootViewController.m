@@ -7,13 +7,13 @@
 //
 
 #import "RootViewController.h"
-
 #import "ListOfLessonsViewController.h"
 #import "DataController.h"
 #import "SingleLessonViewController.h"
 #import "Lesson.h"
 #import "User.h"
 #import "SimpleDrillDownAppDelegate.h"
+#import "LessonPlanViewController.h"
 
 @implementation RootViewController
 
@@ -90,6 +90,8 @@
    
     ListOfLessonsViewController *detailViewController = [[ListOfLessonsViewController alloc] initWithStyle:UITableViewStyleGrouped];
     
+    LessonPlanViewController *lp;
+    
     NSMutableArray *lessons;
     switch (indexPath.row) {
         case 0:
@@ -102,15 +104,25 @@
             break;
         case 2:
             //detailViewController.title = NSLocalizedString(@"My Lesson Plans", @"List of My Lesson Plans Title");
-            detailViewController.title = NSLocalizedString(@"My Lessons", @"List of My Lessons Title");
-            lessons = self.dataController.user.lessons;
-            break;
+            
+            lp = [[LessonPlanViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            
+            lp.title = NSLocalizedString(@"My Lesson Plans", @"List of My Lesson Plans Title");
+            
+            lp.dataController = self.dataController;
+            lp.lessonPlans = self.dataController.user.lessonPlans;
+            
+            // Push the detail view controller.
+            [[self navigationController] pushViewController:lp animated:YES];
+            [detailViewController release];
+            return;
         case 3:
             [delegate refresh:true];
             [detailViewController release];
             return;
         case 4: // refresh
-            [delegate refresh:false];
+            delegate.loggingIn = true;
+            [delegate loginWithStoredCredentials];
             [detailViewController release];
             return;
         default:

@@ -120,7 +120,7 @@
             cell.detailTextLabel.text = subTitle;
             [subTitle release];
         } else {
-            cell.detailTextLabel.text = @"No Playlists yet.";
+            cell.detailTextLabel.text = @"No Lessons yet.";
         }
     } else if (section == 1) {
         if (indexPath.row == 0) {

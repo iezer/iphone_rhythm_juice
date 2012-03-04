@@ -49,6 +49,7 @@
 #import "DataController.h"
 #import "Lesson.h"
 #import "User.h"
+#import "LessonPlan.h"
 
 @implementation DataController
 
@@ -120,7 +121,19 @@
 
         NSArray* playlists = [userData objectForKey:@"Playlists"];
         NSMutableArray* myPlaylists = [DataController parseLessonList:playlists];
-          
+        
+        NSArray* lessonPlans = [userData objectForKey:@"LessonPlans"];
+        NSMutableArray* myLessonPlans = [[NSMutableArray alloc] init];
+        for (NSDictionary* lp in lessonPlans) {
+            NSArray* l = [lp objectForKey:@"Lessons"];
+            NSMutableArray* lpl = [DataController parseLessonList:l];
+            NSString* t = [lp objectForKey:@"Title"];
+            LessonPlan* plan = [[LessonPlan alloc] init:t lessons:lpl];
+            
+            [myLessonPlans addObject:plan];
+            [plan release];
+        }
+        
         NSString* username = [userData objectForKey:@"Username"];        
         Boolean premium = [[userData objectForKey:@"Premium"] boolValue];
         Boolean authenticated = [[userData objectForKey:@"Authenticated"] boolValue];
@@ -130,6 +143,7 @@
         user = [[User alloc] init:username subscriptionEndDate:subscriptionEndDate premium:premium authenticated:authenticated lessons:myLessons allowedOfflineLessons:allowedOfflineLessons];
         
         user.playlists = myPlaylists;
+        user.lessonPlans = myLessonPlans;
     }
     
     return user;

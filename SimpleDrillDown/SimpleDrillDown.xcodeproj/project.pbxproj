@@ -23,6 +23,8 @@
 		6A16779314E6A29F00AE20FA /* sandbox.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A16779214E6A29F00AE20FA /* sandbox.plist */; };
 		6A1ADDCA14FA7D2700B1A846 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1ADDC814FA7D2700B1A846 /* WebViewController.m */; };
 		6A1ADDCB14FA7D2700B1A846 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A1ADDC914FA7D2700B1A846 /* WebViewController.xib */; };
+		6A1ADDD915021D3D00B1A846 /* LessonPlan.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1ADDD815021D3D00B1A846 /* LessonPlan.m */; };
+		6A1ADDDC1503975400B1A846 /* LessonPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1ADDDB1503975400B1A846 /* LessonPlanViewController.m */; };
 		6A1B185614542C2600E91BDA /* CustomMoviePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1B185514542C2600E91BDA /* CustomMoviePlayerViewController.m */; };
 		6A1B185914542E6700E91BDA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1B185814542E6700E91BDA /* LoginViewController.m */; };
 		6A1B185C14542E7A00E91BDA /* LoginAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1B185B14542E7A00E91BDA /* LoginAppAppDelegate.m */; };
@@ -80,6 +82,10 @@
 		6A1ADDC714FA7D2700B1A846 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		6A1ADDC814FA7D2700B1A846 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		6A1ADDC914FA7D2700B1A846 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
+		6A1ADDD715021D3D00B1A846 /* LessonPlan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LessonPlan.h; path = Classes/LessonPlan.h; sourceTree = "<group>"; };
+		6A1ADDD815021D3D00B1A846 /* LessonPlan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LessonPlan.m; path = Classes/LessonPlan.m; sourceTree = "<group>"; };
+		6A1ADDDA1503975400B1A846 /* LessonPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonPlanViewController.h; sourceTree = "<group>"; };
+		6A1ADDDB1503975400B1A846 /* LessonPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonPlanViewController.m; sourceTree = "<group>"; };
 		6A1B185414542C2600E91BDA /* CustomMoviePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomMoviePlayerViewController.h; sourceTree = "<group>"; };
 		6A1B185514542C2600E91BDA /* CustomMoviePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomMoviePlayerViewController.m; sourceTree = "<group>"; };
 		6A1B185714542E6700E91BDA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -167,6 +173,8 @@
 				6A1ADDC714FA7D2700B1A846 /* WebViewController.h */,
 				6A1ADDC814FA7D2700B1A846 /* WebViewController.m */,
 				6A1ADDC914FA7D2700B1A846 /* WebViewController.xib */,
+				6A1ADDDA1503975400B1A846 /* LessonPlanViewController.h */,
+				6A1ADDDB1503975400B1A846 /* LessonPlanViewController.m */,
 			);
 			name = "View Controllers";
 			path = Classes;
@@ -199,6 +207,8 @@
 				6A1B186B14544DF000E91BDA /* User.m */,
 				6A3F129614B20D3F0042F3E9 /* Chapter.h */,
 				6A3F129714B20D3F0042F3E9 /* Chapter.m */,
+				6A1ADDD715021D3D00B1A846 /* LessonPlan.h */,
+				6A1ADDD815021D3D00B1A846 /* LessonPlan.m */,
 			);
 			name = "Data Management";
 			sourceTree = "<group>";
@@ -423,6 +433,8 @@
 				6A3F129E14B21B030042F3E9 /* Reachability.m in Sources */,
 				6A8146B114C533CF00FAA115 /* RootViewController.m in Sources */,
 				6A1ADDCA14FA7D2700B1A846 /* WebViewController.m in Sources */,
+				6A1ADDD915021D3D00B1A846 /* LessonPlan.m in Sources */,
+				6A1ADDDC1503975400B1A846 /* LessonPlanViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

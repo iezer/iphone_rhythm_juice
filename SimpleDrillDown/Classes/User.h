@@ -18,6 +18,7 @@
     Boolean authenticated;
     NSMutableArray* lessons;
     NSMutableArray* playlists;
+    NSMutableArray* lessonPlans;
     NSInteger allowedOfflineVideos;
 }
 
@@ -33,6 +34,7 @@
 @property (nonatomic) Boolean authenticated;
 @property (nonatomic, retain, readwrite) NSMutableArray* lessons;
 @property (nonatomic, retain, readwrite) NSMutableArray* playlists;
+@property (nonatomic, retain, readwrite) NSMutableArray* lessonPlans;
 @property (nonatomic) NSInteger allowedOfflineVideos;
 
 @end
