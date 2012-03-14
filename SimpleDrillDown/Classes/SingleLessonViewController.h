@@ -45,11 +45,12 @@
  
  */
 
+#import "DownloadFileTableViewController.h"
 @class Lesson;
 @class DataController;
 @class CustomMoviePlayerViewController;
 
-@interface SingleLessonViewController : UITableViewController {
+@interface SingleLessonViewController : DownloadFileTableViewController {
 	Lesson *lesson;
     CustomMoviePlayerViewController *moviePlayer;
     DataController* dataController;

@@ -8,6 +8,7 @@
 
 #import "User.h"
 #import "Lesson.h"
+#import "ListOfLessons.h"
 
 @implementation User
 
@@ -19,42 +20,32 @@
     self.subscriptionEndDate = _subscriptionEndDate;
     self.premium = premium;
     self.authenticated = _authenticated;
-    self.lessons = _lessons;
+    self.lessons = [[ListOfLessons alloc] init:_lessons];
     self.allowedOfflineVideos = _allowedOfflineLessons;
     return self;
 }
 
+/*
 // Custom set accessor to ensure the new list is mutable
 - (void)setLessons:(NSMutableArray *)newLessons {
     if (lessons != newLessons) {
         [lessons release];
         lessons = [newLessons mutableCopy];
     }
-}
+}*/
 
-- (void) downloadAllLessons {
-    for (int i = 0; i < [lessons count]; i++) {
-        [[lessons objectAtIndex:i] queueAllChapters];
-    }
-}
-
-- (void) deleteAllLessons {
-    NSFileManager *     fileManager;
-    fileManager = [NSFileManager defaultManager];
-    assert(fileManager != nil);
+- (void) logout {    
+    self.authenticated = false;
     
-    NSString *document_folder_path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
-    NSString *lessonFolder = [document_folder_path stringByAppendingPathComponent:@"lessons"]; 
-    
-    NSError *error;
-    [fileManager removeItemAtPath:lessonFolder error:&error];
-    // call 2nd time to delete empty directory.
-    [fileManager removeItemAtPath:lessonFolder error:&error];
+    [lessons clear];
+    [playlists clear];
+    [lessonPlans removeAllObjects];
+    self.username = @"";
 }
 
 - (Lesson*) getLesson:(NSString*)lessonName {
     for (int i = 0; i < [lessons count]; i++ ) {
-        Lesson* l = [lessons objectAtIndex:i];
+        Lesson* l = [lessons objectInLessonsAtIndex:i];
         if ([[l title] isEqual:lessonName]) {
             return l;
         }
@@ -66,6 +57,8 @@
     [username release];
     [subscriptionEndDate release];
     [lessons release];
+    [playlists release];
+    [lessonPlans release];
 	[super dealloc];
 }
 

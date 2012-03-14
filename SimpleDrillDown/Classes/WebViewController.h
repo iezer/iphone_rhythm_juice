@@ -9,8 +9,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class SimpleDrillDownAppDelegate;
 
-@interface webViewController : UIViewController<UIWebViewDelegate,UIActionSheetDelegate> {
+@interface WebViewController : UIViewController<UIWebViewDelegate,UIActionSheetDelegate> {
 	
 	UIWebView* _webView;
 	UIToolbar* _toolbar;
@@ -19,13 +20,18 @@
 	UIBarButtonItem* _refreshButton;
 	UIBarButtonItem* _stopButton;
 	UIBarButtonItem* _activityItem;
+    UIBarButtonItem* _leaveBrowser;
 	NSURL* _loadingURL;
+    NSString* _url;
+    SimpleDrillDownAppDelegate* _appDelegate;
     
 }
 
 @property(nonatomic,readonly) NSURL* URL;
+@property(nonatomic,retain) NSString* _url;
+@property(nonatomic,retain) SimpleDrillDownAppDelegate* _appDelegate;
 
-- (id)initWithURLPassed:(NSString *)initURL;
+- (id)initWithURLPassed:(NSString *)initURL withDelegate:(SimpleDrillDownAppDelegate*)d;
 - (void)openURL:(NSURL*)URL;
 - (void)openRequest:(NSURLRequest*)request;
 

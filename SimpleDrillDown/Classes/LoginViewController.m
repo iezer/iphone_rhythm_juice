@@ -15,6 +15,7 @@
 @synthesize usernameField;
 @synthesize passwordField;
 @synthesize loginButton;
+@synthesize refreshButton;
 @synthesize infoButton;
 @synthesize loginIndicator;
 @synthesize delegate;
@@ -35,12 +36,13 @@
 }
 */
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {
+    [self update];
     [super viewDidLoad];
 }
-*/
+
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -90,8 +92,13 @@
     if (u != nil && u.authenticated) {
         usernameField.text = u.username;
         [loginButton setTitle:@"Logout" forState:UIControlStateNormal];
+        self.title = NSLocalizedString(@"Logout", @"Logout");        
+        refreshButton.enabled = TRUE;
     } else {
         [loginButton setTitle:@"Login" forState:UIControlStateNormal];
+        self.title = NSLocalizedString(@"Login", @"Login");
+        
+        refreshButton.enabled = FALSE;
     }
     
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
@@ -113,4 +120,13 @@
     [self update];
 }
 
+- (IBAction) refresh: (id) sender
+{
+	loginIndicator.hidden = FALSE;
+	[loginIndicator startAnimating];
+	loginButton.enabled = FALSE;
+    
+    delegate.loggingIn = true;
+    [delegate loginWithStoredCredentials];
+}
 @end

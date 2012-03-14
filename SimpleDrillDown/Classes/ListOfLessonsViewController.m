@@ -51,6 +51,8 @@
 #import "Lesson.h"
 #import "SimpleDrillDownAppDelegate.h"
 #import "User.h"
+#import <QuartzCore/QuartzCore.h>
+#import "ListOfLessons.h"
 
 @implementation ListOfLessonsViewController
 
@@ -64,10 +66,25 @@
     [super viewDidLoad];
 }
 
+-(void) downloadFiles {
+    [lessons downloadAllLessons];
+    [self.tableView reloadData];
+}
+
+-(void) deleteFiles {
+    [lessons deleteAllLessons];
+    [self.tableView reloadData];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     // Update the view with current data before it is displayed.
     [super viewWillAppear:animated];
-    
+    /*
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"blue-fullbg.png"]];
+    self.view.backgroundColor = background;
+    [background release];
+*/
+
     // Scroll the table view to the top before it appears
     [self.tableView reloadData];
     [self.tableView setContentOffset:CGPointZero animated:NO];
@@ -77,7 +94,7 @@
 #pragma mark Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 1;
 }
 
 
@@ -109,7 +126,7 @@
         if ([lessons count] > 0) {
             
             // Get the object to display and set the value in the cell.
-            Lesson *lesson = [lessons objectAtIndex:indexPath.row];
+            Lesson *lesson = [lessons objectInLessonsAtIndex:indexPath.row];
             cell.textLabel.text = lesson.title;
             // cell.detailTextLabel.text = [] ? @"downloaded locally" : @"not downloaded";
             
@@ -119,16 +136,9 @@
             [downloadStatus release];
             cell.detailTextLabel.text = subTitle;
             [subTitle release];
-        } else {
-            cell.detailTextLabel.text = @"No Lessons yet.";
-        }
-    } else if (section == 1) {
-        if (indexPath.row == 0) {
-            cell.textLabel.text = @"Download All";
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        } else {
-            cell.textLabel.text = @"Delete All";
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        } else if( indexPath.row == 0 ) {
+            cell.textLabel.text = @"No Lessons yet.";
+            cell.detailTextLabel.text = @"";
         }
     }
     return cell;
@@ -149,22 +159,15 @@
         /*
          When a row is selected, create the detail view controller and set its detail item to the item associated with the selected row.
          */
-        SingleLessonViewController *detailViewController = [[SingleLessonViewController alloc] initWithStyle:UITableViewStyleGrouped];
+        SingleLessonViewController *detailViewController = [[SingleLessonViewController alloc] initWithStyle:UITableViewStylePlain];
         
-        Lesson* lesson = [lessons objectAtIndex:indexPath.row];
+        Lesson* lesson = [lessons objectInLessonsAtIndex:indexPath.row];
         detailViewController.lesson = lesson;
         detailViewController.dataController = dataController;
         
         // Push the detail view controller.
         [[self navigationController] pushViewController:detailViewController animated:YES];
         [detailViewController release];
-    } else if (section == 1) {
-        if (indexPath.row == 0) {
-            [[dataController user] downloadAllLessons];
-        } else {
-            [[dataController user] deleteAllLessons]; 
-        }
-        [self.tableView reloadData];
     }
 }
 

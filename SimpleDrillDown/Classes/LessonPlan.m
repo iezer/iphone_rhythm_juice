@@ -12,7 +12,7 @@
 
 @synthesize title, lessons;
 
-- (LessonPlan*)init:(NSString*)_title lessons:(NSArray*)_lessons {
+- (LessonPlan*)init:(NSString*)_title lessons:(ListOfLessons*)_lessons {
     self = [super init];
     if (self != nil)
     {

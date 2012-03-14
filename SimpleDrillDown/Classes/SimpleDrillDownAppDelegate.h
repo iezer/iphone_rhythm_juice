@@ -55,12 +55,16 @@
 #import "SingleLessonViewController.h"
 #import "RootViewController.h"
 #import "ASIHTTPRequest.h"
+#import "WebViewController.h"
 
 @class LoginViewController;
+@class WebViewController;
 
 @interface SimpleDrillDownAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
 	UIWindow *window;
 	UINavigationController *navigationController;
+    UITabBarController *tabBarController;
+    NSMutableArray *localControllersArray;
 	//ListOfLessonsViewController *rootViewController;
     RootViewController *rootViewController;
     DataController *dataController;
@@ -74,6 +78,7 @@
 
     BOOL loggingIn;
     BOOL gotoWebOnLogin;
+    BOOL navBarInitialized;
     
     NSMutableArray *rjCookies;
 }
@@ -81,7 +86,9 @@
 @property (nonatomic) NSInteger state;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
+@property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 @property (nonatomic, retain) IBOutlet RootViewController *rootViewController;
+@property (nonatomic, retain) NSMutableArray *localControllersArray;
 @property (nonatomic, retain) Lesson *play;
 @property (nonatomic, retain) DataController *dataController;
 @property (nonatomic, retain) SingleLessonViewController *detailViewController;
@@ -91,6 +98,7 @@
 @property (nonatomic, retain) IBOutlet UIView *footer;
 @property (nonatomic) BOOL loggingIn;
 @property (nonatomic) BOOL gotoWebOnLogin;
+@property (nonatomic) BOOL navBarInitialized;
 
 @property (nonatomic, retain) NSMutableArray *rjCookies;
 
@@ -113,5 +121,7 @@
 - (Boolean)handleData:(NSData *)data;
 - (void) web;
 - (void) refresh:(BOOL)gotoWeb;
+- (void)setUpTabViews;
+- (WebViewController*) webView;
 
 @end

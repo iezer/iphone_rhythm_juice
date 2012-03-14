@@ -76,7 +76,7 @@
 #pragma mark Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return 3;
+	return 1;
 }
 
 
@@ -144,15 +144,6 @@
             [cell.contentView addSubview:[c progressView]];
             break;
         case 1:
-            if (indexPath.row == 0) {
-                cellText = @"Download All Chapters";
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            }else{
-                cellText = @"Delete All Chapters";
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            }
-            break;
-        case 2:
             /*            node = [lesson.tracker.mList objectAtIndex:indexPath.row];
              if (node == nil) {
              cellText = @"";
@@ -233,16 +224,18 @@
             [alert release];
             [message release];
         }
-    } else if (section == 1)
-    {
-        if (indexPath.row == 0) {
-            lesson.detailViewController = self;
-            [lesson queueAllChapters];
-        } else {
-            [lesson deleteFiles];   
-        }
-        [self.tableView reloadData];
     }
+}
+
+-(void) downloadFiles {
+    lesson.detailViewController = self;
+    [lesson queueAllChapters];
+    [self.tableView reloadData];
+}
+
+-(void) deleteFiles {
+    [lesson deleteFiles]; 
+    [self.tableView reloadData];
 }
 
 /*---------------------------------------------------------------------------

@@ -14,6 +14,7 @@
 #import "User.h"
 #import "SimpleDrillDownAppDelegate.h"
 #import "LessonPlanViewController.h"
+#import "ListOfLessons.h"
 
 @implementation RootViewController
 
@@ -92,7 +93,7 @@
     
     LessonPlanViewController *lp;
     
-    NSMutableArray *lessons;
+    ListOfLessons *lessons;
     switch (indexPath.row) {
         case 0:
             detailViewController.title = NSLocalizedString(@"My Lessons", @"List of My Lessons Title");

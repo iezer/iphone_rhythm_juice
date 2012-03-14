@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "DownloadFileTableViewController.h"
 @class DataController;
 
-@interface LessonPlanViewController : UITableViewController {
+@interface LessonPlanViewController : DownloadFileTableViewController {
     DataController *dataController;
     NSArray* lessonPlans;
 }

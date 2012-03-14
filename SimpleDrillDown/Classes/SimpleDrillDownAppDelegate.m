@@ -53,6 +53,8 @@
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
 #import "WebViewController.h"
+#import "ListOfLessonsViewController.h"
+#import "LessonPlanViewController.h"
 
 NSString *kScalingModeKey	= @"scalingMode";
 NSString *kControlModeKey	= @"controlMode";
@@ -60,22 +62,23 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 
 @implementation SimpleDrillDownAppDelegate
 
-@synthesize window;
-@synthesize navigationController;
-@synthesize rootViewController;
-@synthesize dataController;
-@synthesize play;
-@synthesize detailViewController;
-@synthesize receivedData;
-@synthesize state;
-@synthesize loginViewController;
-
-@synthesize infoButton;
-@synthesize footer;
-@synthesize loggingIn;
-@synthesize gotoWebOnLogin;
-
-@synthesize rjCookies;
+@synthesize window
+    ,navigationController
+    ,rootViewController
+    ,dataController
+    ,play
+    ,detailViewController
+    ,receivedData
+    ,state
+    ,loginViewController
+    ,infoButton
+    ,footer
+    ,loggingIn
+    ,gotoWebOnLogin
+    ,localControllersArray
+    ,tabBarController
+    ,rjCookies
+    ,navBarInitialized;
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
@@ -172,6 +175,11 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 - (Boolean)handleData:(NSData *)data {        
     
     NSString* sData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+//    NSString *sData = [[sData1
+                      // stringByReplacingOccurrencesOfString:@"+" withString:@" "]
+                     // stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     bool ret = false;
     NSLog( @"received data '%@'", sData );
@@ -213,7 +221,6 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         } else {
             randomSessonId = @"";
         }
-        
         
         [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
         
@@ -309,9 +316,10 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         if (loggingIn && authd) {
             if (gotoWebOnLogin) {
                 gotoWebOnLogin = false;
-                [self web];
+                //[self web];
             } else {
-                [window addSubview:[navigationController view]];
+               // [window addSubview:[navigationController view]];
+                [self setUpTabViews];
             }
         } else if (loggingIn && !authd) {
             
@@ -326,7 +334,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
                                                            delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
             [alert release];
-            [window addSubview:[loginViewController view]];
+          //  [window addSubview:[loginViewController view]];
             
         } else { // !loggingIn
             [self logout];
@@ -356,8 +364,8 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
          The navigation and root view controllers are created in the main nib file.
          Configure the window with the navigation controller's view and then show it.
          */
-        [window addSubview:[navigationController view]];
-        [window makeKeyAndVisible];
+     //   [window addSubview:[navigationController view]];
+     //   [window makeKeyAndVisible];
     } else {
         // Received an update to user data;
         retVal = [self.dataController createDataFromRequest:rjUserData];
@@ -438,13 +446,86 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     }
 }
 
+
+-(void)addTabView:(UIViewController*)c atIndex:(NSInteger)index title:(NSString*)title image:(UIImage*)image
+{
+    UINavigationController *localNavigationController;
+    localNavigationController = [[UINavigationController alloc] initWithRootViewController:c];
+	localNavigationController.tabBarItem = [[UITabBarItem alloc] initWithTitle:title image:image tag:index];	
+	[localControllersArray addObject:localNavigationController];
+	[localNavigationController release];
+}
+
+-(void)setUpTabViews {
+    
+    if( navBarInitialized )
+        return;
+    
+    navBarInitialized = true;
+        
+    ListOfLessonsViewController *l1 = [[ListOfLessonsViewController alloc] initWithStyle:UITableViewStylePlain];
+    l1.title = NSLocalizedString(@"Lessons", @"List of My Lessons Title");
+    l1.lessons = self.dataController.user.lessons;
+    l1.dataController = self.dataController;
+    
+    UIImage* im = [UIImage imageNamed:@"status-icon-30x30.png"];
+    [self addTabView:l1 atIndex:2 title:@"My Lessons" image:im];
+    [l1 release];
+    [im release];
+    
+    ListOfLessonsViewController *l2 = [[ListOfLessonsViewController alloc] initWithStyle:UITableViewStylePlain];
+    l2.title = NSLocalizedString(@"My Playlists", @"List of My Lessons Title");
+    l2.lessons = self.dataController.user.playlists;
+    l2.dataController = self.dataController;
+    
+    [self addTabView:l2 atIndex:3 title:@"Playlists" image:[UIImage imageNamed:@"playlists-icon-30x30.png"]];
+    [l2 release];
+
+    LessonPlanViewController *lp;
+    lp = [[LessonPlanViewController alloc] initWithStyle:UITableViewStylePlain];
+    
+    lp.title = NSLocalizedString(@"My Lesson Plans", @"List of My Lesson Plans Title");
+    
+    lp.dataController = self.dataController;
+    lp.lessonPlans = self.dataController.user.lessonPlans;
+
+    [self addTabView:lp atIndex:4 title:@"Plans" image:[UIImage imageNamed:@"plans-icon-30x30.png"]];
+    [lp release];
+
+    WebViewController* w = [self webView];
+    [self addTabView:w atIndex:5 title:@"Online" image:[UIImage imageNamed:@"online-icon-30x30.png"]];
+    [w release];
+    [self refresh:true];
+    
+    // load up our tab bar controller with the view controllers
+	tabBarController.viewControllers = localControllersArray;
+
+    tabBarController.selectedIndex = 2;
+    
+	// add the tabBarController as a subview in the window
+	[window addSubview:tabBarController.view];
+    
+    // need this last line to display the window (and tab bar controller)
+	[window makeKeyAndVisible];
+}
+
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
+
+	//I create my TabBar controlelr
+	tabBarController = [[UITabBarController alloc] init];
+	// Icreate the array that will contain all the View controlelr
+	localControllersArray = [[NSMutableArray alloc] initWithCapacity:3];
+	// I create the view controller attached to the first item in the TabBar
+
+    tabBarController.title = NSLocalizedString(@"Rhythm Juice", @"Master view navigation title");
     
     LoginViewController *_loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:[NSBundle mainBundle]];
     
     self.rjCookies = [[[NSMutableArray alloc] init] autorelease];
     _loginViewController.delegate = self;
     self.loginViewController = _loginViewController;
+    
+    [self addTabView:_loginViewController atIndex:2 title:@"Login" image:[UIImage imageNamed:@"logout-icon-30x30.png"]];
     [_loginViewController release];
     
     // set up the table's footer view based on our UIView 'myFooterView' outlet
@@ -454,6 +535,19 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 	self.rootViewController.tableView.tableFooterView = self.footer;	// note this will override UITableView's 'sectionFooterHeight' property
     
     self.rootViewController.delegate = self;
+    
+    // load up our tab bar controller with the view controllers
+	tabBarController.viewControllers = localControllersArray;
+
+    tabBarController.view.opaque = NO;
+
+    tabBarController.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blue-fullbg.png"]];
+    
+    // add the tabBarController as a subview in the window
+	[window addSubview:tabBarController.view];
+    
+    // need this last line to display the window (and tab bar controller)
+	[window makeKeyAndVisible];
     
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     NSString *testValue = [[NSUserDefaults standardUserDefaults] stringForKey:@"rootURL"];
@@ -477,8 +571,11 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         [self loadAppWithRJUserData:data saveToFile:false];
         [data release];
         [loginViewController update];
+        [self setUpTabViews];
+        
+        [self refresh:true];
     } else {
-        [window addSubview:[loginViewController view]];
+       // [window addSubview:[loginViewController view]];
     }
     
     // Regardless of whether or not we saved the users's info,
@@ -505,7 +602,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 
 - (void) logout {
     if( dataController.user != nil ) {
-        [dataController.user deleteAllLessons];
+        [dataController.user logout];
         [dataController.user release];
         dataController.user = nil;
     }
@@ -623,13 +720,19 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     [self loginWithStoredCredentials];
 }
 
-- (void) web {
+- (WebViewController*) webView {
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     NSString *rootURL = [defaults stringForKey:@"rootURL"];
-
-    webViewController *webController;
-	webController = [[webViewController alloc] initWithURLPassed:rootURL];
-	[self.navigationController pushViewController:webController animated:YES];
+    
+    WebViewController *webController;
+	webController = [[WebViewController alloc] initWithURLPassed:rootURL withDelegate:self];
+    webController.title = NSLocalizedString(@"RJ on the Web", @"Browser Title");
+    
+    return webController;
+}
+- (void) web {
+    WebViewController *webController = [self webView];
+    //	[self.navigationController pushViewController:webController animated:YES];
 	[webController release];
 	webController =nil;
 }

@@ -8,19 +8,22 @@
 //
 
 #import "webViewController.h"
+#import "SimpleDrillDownAppDelegate.h"
 
 #define RELEASE_SAFELY(__POINTER) { [__POINTER release]; __POINTER = nil; }
 
-@implementation webViewController
+@implementation WebViewController
 
-
+@synthesize _url, _appDelegate;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (id)initWithURLPassed:(NSString *)initURL {
+- (id)initWithURLPassed:(NSString *)initURL withDelegate:(SimpleDrillDownAppDelegate*)d {
 	if (self = [super init]) {
+        self._url = initURL;
         [self openURL:[NSURL URLWithString:initURL]];
-        self.hidesBottomBarWhenPushed = YES;		
+        self.hidesBottomBarWhenPushed = NO; //YES
+        self._appDelegate = d;
 	}
 	return self;
 }
@@ -50,6 +53,9 @@
 	[_webView stopLoading];
 }
 
+- (void)leaveBrowserAction {
+   // [self._appDelegate.tabBarController ];
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)shareAction {
@@ -71,13 +77,14 @@
 	RELEASE_SAFELY(_refreshButton);
 	RELEASE_SAFELY(_stopButton);
 	RELEASE_SAFELY(_activityItem);
+    RELEASE_SAFELY(_leaveBrowser)
     
 }
 
 - (void)loadView {  
 	[super loadView];
 	////WEBVIEW////////////////////
-	_webView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,320,460)];
+	_webView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,320,420)];
 	_webView.delegate = self;
 	_webView.autoresizingMask = UIViewAutoresizingFlexibleWidth
 	| UIViewAutoresizingFlexibleHeight;
@@ -107,6 +114,18 @@
 	_stopButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:
 				   UIBarButtonSystemItemStop target:self action:@selector(stopAction)];
 	_stopButton.tag = 3;
+    
+	_leaveBrowser = [[UIBarButtonItem alloc] initWithImage:
+                   [UIImage imageNamed:@"backIcon.png"]
+												   style:UIBarButtonItemStylePlain target:self action:@selector(leaveBrowserAction)];
+	_leaveBrowser.title = @"RJ App";
+    _leaveBrowser.tag = 4;
+	_leaveBrowser.enabled = YES;
+    
+    
+    //self.navigationItem.leftBarButtonItem =_leaveBrowser;
+    
+    
 	UIBarButtonItem* actionButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
 									  UIBarButtonSystemItemAction target:self action:@selector(shareAction)] autorelease];
 	
@@ -122,6 +141,8 @@
 	
 	
 	[self.view addSubview:_toolbar];
+    
+    //[self openURL:[NSURL URLWithString:_url]];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -134,6 +155,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)viewWillAppear:(BOOL)animated {
+    [self openURL:[NSURL URLWithString:_url]];
 	[super viewWillAppear:animated];
     
 }
@@ -168,11 +190,11 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)webViewDidStartLoad:(UIWebView*)webView {
-	self.title = @"Loading...";
+	//self.title = @"Loading...";
 	if (!self.navigationItem.rightBarButtonItem) {
 		[self.navigationItem setRightBarButtonItem:_activityItem animated:YES];
 	}
-	
+    
 	UIBarButtonItem* actionButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
 									  UIBarButtonSystemItemAction target:self action:@selector(shareAction)] autorelease];
 	
@@ -190,10 +212,11 @@
 - (void)webViewDidFinishLoad:(UIWebView*)webView {
 	RELEASE_SAFELY(_loadingURL);
 	
-	self.title = [_webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+	//self.title = [_webView stringByEvaluatingJavaScriptFromString:@"document.title"];
 	if (self.navigationItem.rightBarButtonItem == _activityItem) {
 		[self.navigationItem setRightBarButtonItem:nil animated:YES];
 	}
+    
 	UIBarButtonItem* actionButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
 									  UIBarButtonSystemItemAction target:self action:@selector(shareAction)] autorelease];
 	
@@ -248,6 +271,9 @@
 	[_webView loadRequest:request];
 }
 
+- (void)leaveBrowser {
+   // [self.delegate.tabBarController
+}
 
 
 @end

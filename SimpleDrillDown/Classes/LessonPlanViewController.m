@@ -10,6 +10,8 @@
 #import "DataController.h"
 #import "LessonPlan.h"
 #import "ListOfLessonsViewController.h"
+#import "User.h"
+#import "ListOfLessons.h"
 
 @implementation LessonPlanViewController
 
@@ -91,7 +93,7 @@
     
     if (section == 0) {
         
-        ListOfLessonsViewController *detailViewController = [[ListOfLessonsViewController alloc] initWithStyle:UITableViewStyleGrouped];
+        ListOfLessonsViewController *detailViewController = [[ListOfLessonsViewController alloc] initWithStyle:UITableViewStylePlain];
         
         LessonPlan *lp = [lessonPlans objectAtIndex:indexPath.row];
         detailViewController.lessons = lp.lessons;
@@ -116,5 +118,13 @@
 
 - (void)viewDidUnload {
     [super viewDidUnload];
+}
+
+-(void) downloadFiles {
+    //[[dataController user] downloadAllLessons];
+}
+
+-(void) deleteFiles {
+   // [[dataController user] deleteAllLessons]; 
 }
 @end

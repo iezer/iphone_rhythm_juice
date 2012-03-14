@@ -65,8 +65,6 @@
 - (Boolean)canWatchLesson:(Lesson*)lesson;
 - (NSInteger)numberOfDownloadedLessons;
 
-- (NSMutableArray*) list;
-
 - (NSInteger) allowedDownloads; // -1 means unlimited
 
 - (Boolean)expired:(Lesson*)lesson;

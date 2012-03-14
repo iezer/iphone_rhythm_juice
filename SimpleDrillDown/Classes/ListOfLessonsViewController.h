@@ -46,13 +46,16 @@
  */
 
 @class DataController;
+@class ListOfLessons;
 
-@interface ListOfLessonsViewController : UITableViewController {
+#import "DownloadFileTableViewController.h"
+
+@interface ListOfLessonsViewController : DownloadFileTableViewController {
     DataController *dataController;
-    NSMutableArray* lessons;
+    ListOfLessons* lessons;
 }
 
 @property (nonatomic, retain) DataController *dataController;
-@property (nonatomic, retain, readwrite) NSMutableArray* lessons;
+@property (nonatomic, retain) ListOfLessons* lessons;
 
 @end

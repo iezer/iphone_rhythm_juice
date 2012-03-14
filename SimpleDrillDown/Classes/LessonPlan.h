@@ -8,15 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+@class ListOfLessons;
+
 @interface LessonPlan : NSObject {
 
 NSString *title;
-NSMutableArray *lessons;
+ListOfLessons *lessons;
 }
 
 @property (nonatomic, retain) NSString *title;
-@property (nonatomic, retain) NSMutableArray *lessons;
+@property (nonatomic, retain) ListOfLessons *lessons;
 
-- (LessonPlan*)init:(NSString*)_title lessons:(NSArray*)_lessons;
+- (LessonPlan*)init:(NSString*)_title lessons:(ListOfLessons*)_lessons;
 
 @end

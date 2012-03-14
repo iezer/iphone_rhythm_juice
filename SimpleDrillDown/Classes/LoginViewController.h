@@ -13,6 +13,7 @@
 	IBOutlet UITextField *usernameField;
 	IBOutlet UITextField *passwordField;
 	IBOutlet UIButton *loginButton;
+    IBOutlet UIButton *refreshButton;
     IBOutlet UIButton *infoButton;
 	IBOutlet UIActivityIndicatorView *loginIndicator;
     SimpleDrillDownAppDelegate *delegate; 
@@ -21,13 +22,16 @@
 @property (nonatomic, retain) UITextField *usernameField;
 @property (nonatomic, retain) UITextField *passwordField;
 @property (nonatomic, retain) UIButton *loginButton;
+@property (nonatomic, retain) UIButton *refreshButton;
 @property (nonatomic, retain) UIButton *infoButton;
 @property (nonatomic, retain) UIActivityIndicatorView *loginIndicator;
 @property (nonatomic, retain) SimpleDrillDownAppDelegate *delegate;
 
 - (IBAction) login: (id) sender;
+- (IBAction) refresh: (id) sender;
 -(BOOL) textFieldShouldReturn:(UITextField*) textField;
 -(void) reset;
 -(void) update;
+
 
 @end

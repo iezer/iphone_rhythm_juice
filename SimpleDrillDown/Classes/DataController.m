@@ -50,6 +50,7 @@
 #import "Lesson.h"
 #import "User.h"
 #import "LessonPlan.h"
+#import "ListOfLessons.h"
 
 @implementation DataController
 
@@ -126,7 +127,7 @@
         NSMutableArray* myLessonPlans = [[NSMutableArray alloc] init];
         for (NSDictionary* lp in lessonPlans) {
             NSArray* l = [lp objectForKey:@"Lessons"];
-            NSMutableArray* lpl = [DataController parseLessonList:l];
+            ListOfLessons* lpl = [[ListOfLessons alloc] init:[DataController parseLessonList:l]];
             NSString* t = [lp objectForKey:@"Title"];
             LessonPlan* plan = [[LessonPlan alloc] init:t lessons:lpl];
             
@@ -142,37 +143,22 @@
         
         user = [[User alloc] init:username subscriptionEndDate:subscriptionEndDate premium:premium authenticated:authenticated lessons:myLessons allowedOfflineLessons:allowedOfflineLessons];
         
-        user.playlists = myPlaylists;
+        user.playlists = [[ListOfLessons alloc] init:myPlaylists];
         user.lessonPlans = myLessonPlans;
     }
     
     return user;
 }
 
-- (NSInteger)numberOfDownloadedLessons
-{
-    NSInteger count = 0;
-    for (Lesson* lesson in [self list]) {
-        if ([lesson isDownloadedLocally]){
-            count++;
-        }
-    }
-    return count;
-}
-
 - (Boolean)canWatchLesson:(Lesson*)lesson {
     return ( [lesson isDownloadedLocally] 
-        || ([self allowedDownloads] == -1) 
-        || ([self numberOfDownloadedLessons] < [self allowedDownloads]) );
+            || ([self allowedDownloads] == -1) 
+            || ([self numberOfDownloadedLessons] < [self allowedDownloads]) );
 }
 
 - (Boolean)expired:(Lesson*)lesson {
     NSDate* now = [NSDate date];
     return ( [lesson premium] && ( now > [user subscriptionEndDate] || ! [user premium] ) );
-}
-
-- (NSMutableArray*) list {
-    return [user lessons];
 }
 
 - (NSInteger) allowedDownloads {
@@ -185,6 +171,10 @@
         [user release];
         user = newUser;
     }
+}
+
+- (NSInteger)numberOfDownloadedLessons {
+    return 0;
 }
 
 @end
