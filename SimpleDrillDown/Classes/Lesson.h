@@ -81,6 +81,7 @@
 - (void)cleanupDirectory;
 - (UITableViewCellEditingStyle) getEditingStyle:(NSInteger)chapter;
 - (NSString*) downloadStatus;
+- (NSInteger) canPlayPreviousLesson:(NSInteger)currentChapterIndex;
 
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSArray *instructors;

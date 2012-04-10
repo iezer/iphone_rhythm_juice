@@ -98,10 +98,12 @@
         case 0:
             detailViewController.title = NSLocalizedString(@"My Lessons", @"List of My Lessons Title");
             lessons = self.dataController.user.lessons;
+            detailViewController.lessons = lessons;
             break;
         case 1:
             detailViewController.title = NSLocalizedString(@"My Playlists", @"List of My Playlists Title");
             lessons = self.dataController.user.playlists;
+            detailViewController.lessons = lessons;
             break;
         case 2:
             //detailViewController.title = NSLocalizedString(@"My Lesson Plans", @"List of My Lesson Plans Title");
@@ -115,6 +117,7 @@
             
             // Push the detail view controller.
             [[self navigationController] pushViewController:lp animated:YES];
+            [lp release];
             [detailViewController release];
             return;
         case 3:
@@ -130,11 +133,11 @@
             break;
     }
 
-    detailViewController.lessons = lessons;
     detailViewController.dataController = self.dataController;
     
     // Push the detail view controller.
     [[self navigationController] pushViewController:detailViewController animated:YES];
+    [detailViewController release];
 }
 
 #pragma mark -

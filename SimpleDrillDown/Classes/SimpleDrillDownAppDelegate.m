@@ -174,7 +174,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 
 - (Boolean)handleData:(NSData *)data {        
     
-    NSString* sData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSString* sData = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
     
 //    NSString *sData = [[sData1
                       // stringByReplacingOccurrencesOfString:@"+" withString:@" "]
@@ -436,6 +436,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 		// inform the user that the download could not be made
         [self showConnectionError];
 	}
+    [theConnection release];
 }
 
 - (void)showConnectionError {
@@ -451,7 +452,12 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 {
     UINavigationController *localNavigationController;
     localNavigationController = [[UINavigationController alloc] initWithRootViewController:c];
-	localNavigationController.tabBarItem = [[UITabBarItem alloc] initWithTitle:title image:image tag:index];	
+
+	UITabBarItem* item = [[UITabBarItem alloc] initWithTitle:title image:image tag:index];	
+
+    localNavigationController.tabBarItem = item;
+    [item release];
+    
 	[localControllersArray addObject:localNavigationController];
 	[localNavigationController release];
 }
@@ -471,7 +477,6 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     UIImage* im = [UIImage imageNamed:@"status-icon-30x30.png"];
     [self addTabView:l1 atIndex:2 title:@"My Lessons" image:im];
     [l1 release];
-    [im release];
     
     ListOfLessonsViewController *l2 = [[ListOfLessonsViewController alloc] initWithStyle:UITableViewStylePlain];
     l2.title = NSLocalizedString(@"My Playlists", @"List of My Lessons Title");
@@ -494,7 +499,6 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 
     WebViewController* w = [self webView];
     [self addTabView:w atIndex:5 title:@"Online" image:[UIImage imageNamed:@"online-icon-30x30.png"]];
-    [w release];
     [self refresh:true];
     
     // load up our tab bar controller with the view controllers
@@ -541,7 +545,9 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 
     tabBarController.view.opaque = NO;
 
-    tabBarController.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blue-fullbg.png"]];
+    UIImageView* image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blue-fullbg.png"]];
+    tabBarController.navigationItem.titleView = image;
+    [image autorelease];
     
     // add the tabBarController as a subview in the window
 	[window addSubview:tabBarController.view];
@@ -603,7 +609,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 - (void) logout {
     if( dataController.user != nil ) {
         [dataController.user logout];
-        [dataController.user release];
+        //[dataController.user release];
         dataController.user = nil;
     }
     
@@ -725,15 +731,13 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     NSString *rootURL = [defaults stringForKey:@"rootURL"];
     
     WebViewController *webController;
-	webController = [[WebViewController alloc] initWithURLPassed:rootURL withDelegate:self];
+	webController = [[[WebViewController alloc] initWithURLPassed:rootURL withDelegate:self] autorelease];
     webController.title = NSLocalizedString(@"RJ on the Web", @"Browser Title");
     
     return webController;
 }
 - (void) web {
-    WebViewController *webController = [self webView];
+    //WebViewController *webController = [self webView];
     //	[self.navigationController pushViewController:webController animated:YES];
-	[webController release];
-	webController =nil;
 }
 @end

@@ -35,7 +35,7 @@
     self = [super init];
     if (self != nil)
     {
-        self.mList = [[NSMutableArray alloc] init];
+        self.mList = [[[NSMutableArray alloc] init] autorelease];
     }
 
 	return self;

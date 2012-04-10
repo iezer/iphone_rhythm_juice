@@ -119,6 +119,8 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
+        cell.textLabel.font = [UIFont systemFontOfSize:13.0];
     }
     
     if (section == 0) {
@@ -133,7 +135,6 @@
             NSString* premium = [lesson premium] ? @"premium - " : @"";
             NSString* downloadStatus = [lesson downloadStatus];
             NSString* subTitle = [[NSString alloc] initWithFormat:@"%@%@",premium, downloadStatus];
-            [downloadStatus release];
             cell.detailTextLabel.text = subTitle;
             [subTitle release];
         } else if( indexPath.row == 0 ) {

@@ -16,23 +16,44 @@
 
 - (User*)init:(NSString*)_username subscriptionEndDate:(NSDate*)_subscriptionEndDate premium:(Boolean)_premium authenticated:(Boolean)_authenticated lessons:(NSMutableArray*)_lessons allowedOfflineLessons:(NSInteger)_allowedOfflineLessons
 {
-    self.username = _username;
-    self.subscriptionEndDate = _subscriptionEndDate;
-    self.premium = premium;
-    self.authenticated = _authenticated;
-    self.lessons = [[ListOfLessons alloc] init:_lessons];
-    self.allowedOfflineVideos = _allowedOfflineLessons;
+    self = [super init];
+    if (self != nil)
+    {
+        self.username = _username;
+        self.subscriptionEndDate = _subscriptionEndDate;
+        self.premium = premium;
+        self.authenticated = _authenticated;
+        ListOfLessons* _listOfLessons = [[ListOfLessons alloc] init:_lessons];
+        self.lessons = _listOfLessons;
+        [_listOfLessons release];
+        
+        self.allowedOfflineVideos = _allowedOfflineLessons;
+    }
     return self;
 }
 
+- (void)update:(User*) u {
+    self.username = u.username;
+    self.subscriptionEndDate = u.subscriptionEndDate;
+    self.premium = u.premium;
+    self.authenticated = u.authenticated;
+    self.allowedOfflineVideos = u.allowedOfflineVideos;
+    
+    [self.lessons update:u.lessons];
+    [self.playlists update:u.playlists];
+    
+    [self.lessonPlans clear];
+    [self.lessonPlans addObjectsFromArray:u.lessonPlans];
+}
+
 /*
-// Custom set accessor to ensure the new list is mutable
-- (void)setLessons:(NSMutableArray *)newLessons {
-    if (lessons != newLessons) {
-        [lessons release];
-        lessons = [newLessons mutableCopy];
-    }
-}*/
+ // Custom set accessor to ensure the new list is mutable
+ - (void)setLessons:(NSMutableArray *)newLessons {
+ if (lessons != newLessons) {
+ [lessons release];
+ lessons = [newLessons mutableCopy];
+ }
+ }*/
 
 - (void) logout {    
     self.authenticated = false;

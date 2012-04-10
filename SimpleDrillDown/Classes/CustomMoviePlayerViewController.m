@@ -86,11 +86,7 @@
  	[mp play];
 }
 
-/*---------------------------------------------------------------------------
- * 
- *--------------------------------------------------------------------------*/
-- (void) moviePlayBackDidFinish:(NSNotification*)notification 
-{    
+- (void) finishAndPlayNextLesson:(NSNotification*)notification atChapter:(NSInteger)nextChapter {
     [self->lesson stopTracker];
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
@@ -104,10 +100,6 @@
     //play next movie
     NSDictionary *userInfo = [notification userInfo];
     
-    NSLog(@"MPMoviePlayerPlaybackDidFinishReasonUserInfoKey: %@",
-          [userInfo objectForKey:@"MPMoviePlayerPlaybackDidFinishReasonUserInfoKey"]);
- 
-    NSInteger nextChapter = [lesson canPlayNextLesson:chapterIndex];
     if ([[userInfo objectForKey:@"MPMoviePlayerPlaybackDidFinishReasonUserInfoKey"] intValue] ==MPMovieFinishReasonPlaybackEnded && nextChapter != -1)
     {
         chapterIndex = nextChapter;
@@ -116,6 +108,38 @@
         [self readyPlayer];
     } else {
         [self dismissModalViewControllerAnimated:YES];
+    }    
+}
+
+/*---------------------------------------------------------------------------
+ * 
+ *--------------------------------------------------------------------------*/
+- (void) moviePlayBackDidFinish:(NSNotification*)notification 
+{    
+    NSInteger nextChapter = [lesson canPlayNextLesson:chapterIndex];
+    [self finishAndPlayNextLesson:notification atChapter:nextChapter];
+}
+     
+- (void) moviePlayerPlaybackStateDidChange:(NSNotification*)notification {
+    if( [mp playbackState] == MPMoviePlaybackStateSeekingForward ) {
+        
+        // Remove observer
+        [[NSNotificationCenter 	defaultCenter] 
+         removeObserver:self
+         name:MPMoviePlayerPlaybackStateDidChangeNotification 
+         object:nil];
+        
+        [self moviePlayBackDidFinish:notification];
+    } else if( [mp playbackState] == MPMoviePlaybackStateSeekingBackward ) {
+        
+        // Remove observer
+        [[NSNotificationCenter 	defaultCenter] 
+         removeObserver:self
+         name:MPMoviePlayerPlaybackStateDidChangeNotification 
+         object:nil];
+        
+        NSInteger previousChapter = [lesson canPlayPreviousLesson:chapterIndex];
+        [self finishAndPlayNextLesson:notification atChapter:previousChapter];
     }
 }
 
@@ -159,6 +183,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector(moviePlayBackDidFinish:) 
                                                  name:MPMoviePlayerPlaybackDidFinishNotification 
+                                               object:nil];
+
+    // Register to receive a notification when the user presses a button. 
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(moviePlayerPlaybackStateDidChange:) 
+                                                 name:MPMoviePlayerPlaybackStateDidChangeNotification 
                                                object:nil];
 }
 

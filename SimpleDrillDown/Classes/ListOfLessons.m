@@ -53,6 +53,11 @@
     return [lessons objectAtIndex:index];
 }
 
+- (void)update:(ListOfLessons*) l {
+    [self clear];
+    [lessons addObjectsFromArray:l.lessons];
+}
+
 - (void)dealloc {
     [lessons release];
 	[super dealloc];

@@ -60,7 +60,9 @@
         self.title = _title;
         self.instructors = _instructors;
         self.premium = _premium;
-        self.tracker = [[TimeTracker alloc] init];
+        TimeTracker* _tracker = [[TimeTracker alloc] init];
+        self.tracker = _tracker;
+        [_tracker release];
         
         NSFileManager *     fileManager;
         fileManager = [NSFileManager defaultManager];
@@ -77,7 +79,9 @@
         self.count = MIN( [_chapters count], [_chapterTitles count] );
         for (int i = 0; i < self.count; i ++) {
             NSString* remotePath = [_chapters objectAtIndex:i];
-            [self->chapters addObject:[[Chapter alloc] init:[_chapterTitles objectAtIndex:i] remotePath:remotePath localPath:[self createChapterLocalPath:remotePath]]];
+            Chapter* c = [[Chapter alloc] init:[_chapterTitles objectAtIndex:i] remotePath:remotePath localPath:[self createChapterLocalPath:remotePath]];
+            [self->chapters addObject:c];
+            [c release];
         }
         
     }
@@ -164,7 +168,7 @@
 }
 
 -(NSString*) downloadStatus {
-    NSString *message = [[NSString alloc] initWithFormat:@"%d / %d downloaded", [self downloadedChapters], self.count];
+    NSString *message = [[[NSString alloc] initWithFormat:@"%d / %d downloaded", [self downloadedChapters], self.count] autorelease];
     return message;
 }
 
@@ -241,7 +245,6 @@
             [fileManager removeItemAtPath:file error:&error];
         }
     }
-    [fileManager release];
 }
 
 - (void)queueAllChapters
@@ -328,6 +331,18 @@
 - (NSInteger) canPlayNextLesson:(NSInteger)currentChapterIndex
 {
     for (NSInteger i = currentChapterIndex + 1; i < [chapters count]; i++ ) {
+        if ( [self isChapterDownloadedLocally:(i)] )
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
+/* Return the chapter index of the previous downloaded chapter, or -1 if there is nothing left. */
+- (NSInteger) canPlayPreviousLesson:(NSInteger)currentChapterIndex
+{
+    for (NSInteger i = currentChapterIndex - 1; i >=0; i-- ) {
         if ( [self isChapterDownloadedLocally:(i)] )
         {
             return i;

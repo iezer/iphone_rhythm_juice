@@ -23,5 +23,6 @@
 - (void) clear;
 - (NSInteger) count;
 - (Lesson*) objectInLessonsAtIndex:(NSUInteger)index;
+- (void)update:(ListOfLessons*) l;
 
 @end

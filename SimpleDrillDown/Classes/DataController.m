@@ -71,18 +71,30 @@
 - (Boolean)createDataFromRequest:(NSDictionary *)data {
     User* _user = [DataController createUserFromData:data];
     if (_user != nil && _user.username !=nil ) {
-        self.user = _user;
+        if( self.user == nil )
+            self.user = _user;
+        else
+            [self.user update:_user];
         return true;
     }
         
     return false;
 }
 
++ (NSString*)stringByUnescapingFromURLArgument:(NSString *)s {
+    NSMutableString *resultString = [NSMutableString stringWithString:s];
+    [resultString replaceOccurrencesOfString:@"+"
+                                  withString:@" "
+                                     options:NSLiteralSearch
+                                       range:NSMakeRange(0, [resultString length])];
+    return [resultString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+}
+
 + (NSMutableArray*) parseLessonList:(NSArray *) lessons {
     NSMutableArray* playlist = [[[NSMutableArray alloc] init] autorelease];
     
     for(NSDictionary* lesson in lessons) {
-        NSString *title = [lesson objectForKey:@"Title"];
+        NSString *title = [DataController stringByUnescapingFromURLArgument:[lesson objectForKey:@"Title"]];
         NSArray *instructors = [lesson objectForKey:@"Instructors"];
         Boolean premium = [[lesson objectForKey:@"Premium"] boolValue];
         
@@ -90,8 +102,8 @@
         NSMutableArray *chapterPaths = [[NSMutableArray alloc] init];
         NSArray* chapters = [lesson objectForKey:@"Chapters"];
         for(NSDictionary* chapter in chapters) {
-            NSString *title = [chapter objectForKey:@"Name"];
-            NSString *filename = [chapter objectForKey:@"Filename"];
+            NSString *title = [DataController stringByUnescapingFromURLArgument:[chapter objectForKey:@"Name"]];
+            NSString *filename = [DataController stringByUnescapingFromURLArgument:[chapter objectForKey:@"Filename"]];
             
             [chapterTitles addObject:title];
             [chapterPaths addObject:filename];
@@ -128,10 +140,11 @@
         for (NSDictionary* lp in lessonPlans) {
             NSArray* l = [lp objectForKey:@"Lessons"];
             ListOfLessons* lpl = [[ListOfLessons alloc] init:[DataController parseLessonList:l]];
-            NSString* t = [lp objectForKey:@"Title"];
+            NSString* t = [DataController stringByUnescapingFromURLArgument:[lp objectForKey:@"Title"]];
             LessonPlan* plan = [[LessonPlan alloc] init:t lessons:lpl];
             
             [myLessonPlans addObject:plan];
+            [lpl release];
             [plan release];
         }
         
@@ -141,10 +154,14 @@
         NSDate* subscriptionEndDate = [userData objectForKey:@"Subscription End"];
         NSInteger allowedOfflineLessons = [[userData objectForKey:@"Allowed Offline Lessons"] intValue];
         
-        user = [[User alloc] init:username subscriptionEndDate:subscriptionEndDate premium:premium authenticated:authenticated lessons:myLessons allowedOfflineLessons:allowedOfflineLessons];
+        user = [[[User alloc] init:username subscriptionEndDate:subscriptionEndDate premium:premium authenticated:authenticated lessons:myLessons allowedOfflineLessons:allowedOfflineLessons] autorelease];
         
-        user.playlists = [[ListOfLessons alloc] init:myPlaylists];
+        ListOfLessons* parsedPlaylists = [[ListOfLessons alloc] init:myPlaylists];
+        user.playlists = parsedPlaylists;
         user.lessonPlans = myLessonPlans;
+        
+        [parsedPlaylists release];
+        [myLessonPlans release];
     }
     
     return user;
