@@ -14,7 +14,6 @@
 	IBOutlet UITextField *passwordField;
 	IBOutlet UIButton *loginButton;
     IBOutlet UIButton *refreshButton;
-    IBOutlet UIButton *infoButton;
     IBOutlet UIButton *forgotPasswordButton;
     IBOutlet UIButton *cancelButton;
 	IBOutlet UIActivityIndicatorView *loginIndicator;
@@ -25,7 +24,6 @@
 @property (nonatomic, retain) UITextField *passwordField;
 @property (nonatomic, retain) UIButton *loginButton;
 @property (nonatomic, retain) UIButton *refreshButton;
-@property (nonatomic, retain) UIButton *infoButton;
 @property (nonatomic, retain) UIButton *forgotPasswordButton;
 @property (nonatomic, retain) UIButton *cancelButton;
 @property (nonatomic, retain) UIActivityIndicatorView *loginIndicator;
