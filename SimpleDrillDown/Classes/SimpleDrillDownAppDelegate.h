@@ -119,9 +119,10 @@
 - (void)requestFinished:(ASIHTTPRequest *)request;
 - (void)requestFailed:(ASIHTTPRequest *)request;
 - (Boolean)handleData:(NSData *)data;
-- (void) web;
 - (void) refresh:(BOOL)gotoWeb;
 - (void)setUpTabViews;
 - (WebViewController*) webView;
+- (void) showMyLessonsTab;
+- (void) showWebTab;
 
 @end

@@ -15,6 +15,8 @@
 	IBOutlet UIButton *loginButton;
     IBOutlet UIButton *refreshButton;
     IBOutlet UIButton *infoButton;
+    IBOutlet UIButton *forgotPasswordButton;
+    IBOutlet UIButton *cancelButton;
 	IBOutlet UIActivityIndicatorView *loginIndicator;
     SimpleDrillDownAppDelegate *delegate; 
 }
@@ -24,11 +26,15 @@
 @property (nonatomic, retain) UIButton *loginButton;
 @property (nonatomic, retain) UIButton *refreshButton;
 @property (nonatomic, retain) UIButton *infoButton;
+@property (nonatomic, retain) UIButton *forgotPasswordButton;
+@property (nonatomic, retain) UIButton *cancelButton;
 @property (nonatomic, retain) UIActivityIndicatorView *loginIndicator;
 @property (nonatomic, retain) SimpleDrillDownAppDelegate *delegate;
 
 - (IBAction) login: (id) sender;
 - (IBAction) refresh: (id) sender;
+- (IBAction) showWebView:(id)sender;
+- (IBAction) cancel:(id)sender;
 -(BOOL) textFieldShouldReturn:(UITextField*) textField;
 -(void) reset;
 -(void) update;

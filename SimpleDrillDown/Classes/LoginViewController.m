@@ -12,13 +12,7 @@
 
 @implementation LoginViewController
 
-@synthesize usernameField;
-@synthesize passwordField;
-@synthesize loginButton;
-@synthesize refreshButton;
-@synthesize infoButton;
-@synthesize loginIndicator;
-@synthesize delegate;
+@synthesize usernameField, passwordField, loginButton, refreshButton, infoButton, forgotPasswordButton, cancelButton, loginIndicator, delegate;
 
 /*
 // Override initWithNibName:bundle: to load the view using a nib file then perform additional customization that is not appropriate for viewDidLoad.
@@ -40,6 +34,7 @@
 // Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {
     [self update];
+    cancelButton.hidden = TRUE;
     [super viewDidLoad];
 }
 
@@ -60,11 +55,16 @@
     [super dealloc];
 }
 
+- (IBAction) showWebView:(id)sender
+{
+    [delegate showWebTab];
+}
+
 - (IBAction) login: (id) sender
 {
-	
 	loginIndicator.hidden = FALSE;
 	[loginIndicator startAnimating];
+    cancelButton.hidden = FALSE;
 	loginButton.enabled = FALSE;
     
     [usernameField resignFirstResponder];
@@ -90,13 +90,17 @@
     User* u = delegate.dataController.user;
     
     NSString* t;
-    if (u != nil && u.authenticated) {
+    if ([self loggedIn]) {
         usernameField.text = u.username;
         t = @"Logout";
         refreshButton.enabled = TRUE;
+        [refreshButton setTitle:@"Refresh" forState:UIControlStateNormal];
+        forgotPasswordButton.hidden = true;
     } else {
         t = @"Login";
-        refreshButton.enabled = FALSE;
+        refreshButton.enabled = TRUE;
+        [refreshButton setTitle:@"Join Now" forState:UIControlStateNormal];
+        forgotPasswordButton.hidden = false;
     }
     [loginButton setTitle:t forState:UIControlStateNormal];
     self.title = NSLocalizedString(t, t); 
@@ -113,21 +117,35 @@
     }
 }
 
--(void) reset {
+-(void) cancelIndicators {
     loginIndicator.hidden = TRUE;
 	[loginIndicator stopAnimating];
 	loginButton.enabled = TRUE;
+    cancelButton.hidden = TRUE;
     
+}
+
+-(void) reset {
+    [self cancelIndicators];
     [self update];
+}
+
+- (IBAction) cancel: (id) sender {
+    [self cancelIndicators];
 }
 
 - (IBAction) refresh: (id) sender
 {
-	loginIndicator.hidden = FALSE;
+	if( [self loggedIn] ) {
+    loginIndicator.hidden = FALSE;
 	[loginIndicator startAnimating];
+    cancelButton.hidden = FALSE;
 	loginButton.enabled = FALSE;
     
     delegate.loggingIn = true;
     [delegate loginWithStoredCredentials];
+    } else {
+        [delegate showWebTab];
+    }
 }
 @end

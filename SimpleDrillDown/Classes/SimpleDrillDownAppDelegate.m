@@ -320,7 +320,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
             } else {
                // [window addSubview:[navigationController view]];
                 [self setUpTabViews];
-                tabBarController.selectedIndex = 1;
+                [self showMyLessonsTab];
             }
         } else if (loggingIn && !authd) {
             
@@ -499,8 +499,6 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     [self addTabView:lp atIndex:4 title:@"Plans" image:[UIImage imageNamed:@"plans-icon-30x30.png"]];
     [lp release];
 
-    WebViewController* w = [self webView];
-    [self addTabView:w atIndex:5 title:@"Online" image:[UIImage imageNamed:@"online-icon-30x30.png"]];
     [self refresh:true];
     
     // load up our tab bar controller with the view controllers
@@ -531,6 +529,9 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     
     [self addTabView:_loginViewController atIndex:2 title:@"Login" image:[UIImage imageNamed:@"logout-icon-30x30.png"]];
     [_loginViewController release];
+    
+    WebViewController* w = [self webView];
+    [self addTabView:w atIndex:5 title:@"Online" image:[UIImage imageNamed:@"online-icon-30x30.png"]];
     
     // set up the table's footer view based on our UIView 'myFooterView' outlet
 	CGRect newFrame = CGRectMake(0.0, 0.0, self.rootViewController.tableView.bounds.size.width, self.footer.frame.size.height);
@@ -578,7 +579,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         [data release];
         [loginViewController update];
         [self setUpTabViews];
-        tabBarController.selectedIndex = 1;
+        [self showMyLessonsTab];
         
         [self refresh:true];
     } else {
@@ -738,8 +739,13 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     
     return webController;
 }
-- (void) web {
-    //WebViewController *webController = [self webView];
-    //	[self.navigationController pushViewController:webController animated:YES];
+
+- (void) showMyLessonsTab {
+    tabBarController.selectedIndex = 2;
 }
+
+- (void) showWebTab {
+    tabBarController.selectedIndex = 1;
+}
+
 @end
