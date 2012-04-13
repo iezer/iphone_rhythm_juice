@@ -121,6 +121,13 @@
 }
      
 - (void) moviePlayerPlaybackStateDidChange:(NSNotification*)notification {
+    return;
+/*    
+    goal here was to make fast forward and backward buttons go back 
+    and forth through the videos, but that is creating some weird bugs
+    where video keeps pausing, so better to leave if as is where if
+    the user presses and holds, then they advance within the video.
+ 
     if( [mp playbackState] == MPMoviePlaybackStateSeekingForward ) {
         
         // Remove observer
@@ -141,6 +148,7 @@
         NSInteger previousChapter = [lesson canPlayPreviousLesson:chapterIndex];
         [self finishAndPlayNextLesson:notification atChapter:previousChapter];
     }
+ */
 }
 
 /*---------------------------------------------------------------------------
