@@ -559,7 +559,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     NSString *testValue = [[NSUserDefaults standardUserDefaults] stringForKey:@"rootURL"];
     if (testValue == nil)
     {
-        [defaults setValue:@"https://www.rhythmjuice.com/rhythmjuice" forKey:@"rootURL"];
+        [defaults setValue:@"http://www.rhythmjuice.com/rhythmjuice" forKey:@"rootURL"];
         [defaults synchronize];
     }
     
