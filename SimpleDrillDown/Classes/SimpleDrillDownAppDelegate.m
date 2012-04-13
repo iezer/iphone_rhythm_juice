@@ -320,6 +320,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
             } else {
                // [window addSubview:[navigationController view]];
                 [self setUpTabViews];
+                tabBarController.selectedIndex = 1;
             }
         } else if (loggingIn && !authd) {
             
@@ -338,6 +339,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
             
         } else { // !loggingIn
             [self logout];
+            [loginViewController reset];
         }
         state = 0;
     }
@@ -503,8 +505,6 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     
     // load up our tab bar controller with the view controllers
 	tabBarController.viewControllers = localControllersArray;
-
-    tabBarController.selectedIndex = 2;
     
 	// add the tabBarController as a subview in the window
 	[window addSubview:tabBarController.view];
@@ -559,7 +559,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     NSString *testValue = [[NSUserDefaults standardUserDefaults] stringForKey:@"rootURL"];
     if (testValue == nil)
     {
-        [defaults setValue:@"https://www.rhythmjuice.com/sandbox" forKey:@"rootURL"];
+        [defaults setValue:@"https://www.rhythmjuice.com/rhythmjuice" forKey:@"rootURL"];
         [defaults synchronize];
     }
     
@@ -578,6 +578,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         [data release];
         [loginViewController update];
         [self setUpTabViews];
+        tabBarController.selectedIndex = 1;
         
         [self refresh:true];
     } else {
@@ -609,8 +610,6 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 - (void) logout {
     if( dataController.user != nil ) {
         [dataController.user logout];
-        //[dataController.user release];
-        dataController.user = nil;
     }
     
     // Check if we already have user storage saved
@@ -625,6 +624,11 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         NSError* error;
         [fileManager removeItemAtPath:rj_user_info_path error:&error];
     }
+    
+    NSString *localFileManager = [document_folder_path stringByAppendingPathComponent:@"videos"]; 
+    
+    NSError *error;
+    [fileManager removeItemAtPath:localFileManager error:&error];
     
     //  [window addSubview:[rootViewController view]];
 }
@@ -661,8 +665,6 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
             [fileManager removeItemAtPath:file error:&error];
         }
     }
-    
-    [fileManager release];
 }
 
 - (void)createASIRequest:(NSString*)path {

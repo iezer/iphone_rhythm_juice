@@ -69,8 +69,8 @@
     [self.tableView reloadData];
     [self.tableView setContentOffset:CGPointZero animated:NO];
     self.title = lesson.title;
+    lesson.detailViewController = self;
 }
-
 
 #pragma mark -
 #pragma mark Table view data source
@@ -208,7 +208,6 @@
                 // Prep and play the movie
                 [moviePlayer readyPlayer];
             } else {
-                lesson.detailViewController = self;
                 [lesson queueChapterDownload:chapter];
                 [self.tableView reloadData];
             }

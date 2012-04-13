@@ -89,17 +89,17 @@
 -(void) update {
     User* u = delegate.dataController.user;
     
+    NSString* t;
     if (u != nil && u.authenticated) {
         usernameField.text = u.username;
-        [loginButton setTitle:@"Logout" forState:UIControlStateNormal];
-        self.title = NSLocalizedString(@"Logout", @"Logout");        
+        t = @"Logout";
         refreshButton.enabled = TRUE;
     } else {
-        [loginButton setTitle:@"Login" forState:UIControlStateNormal];
-        self.title = NSLocalizedString(@"Login", @"Login");
-        
+        t = @"Login";
         refreshButton.enabled = FALSE;
     }
+    [loginButton setTitle:t forState:UIControlStateNormal];
+    self.title = NSLocalizedString(t, t); 
     
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     
@@ -112,6 +112,7 @@
         [passwordField setText:p];
     }
 }
+
 -(void) reset {
     loginIndicator.hidden = TRUE;
 	[loginIndicator stopAnimating];

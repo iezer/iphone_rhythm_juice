@@ -122,10 +122,17 @@
 }
 
 -(void) downloadFiles {
-    //[[dataController user] downloadAllLessons];
+    for (int i = 0; i < [lessonPlans count]; i++) {
+        LessonPlan *lp = [lessonPlans objectAtIndex:i];
+        [[lp lessons] downloadAllLessons];
+    }
 }
 
 -(void) deleteFiles {
-   // [[dataController user] deleteAllLessons]; 
+    for (int i = 0; i < [lessonPlans count]; i++) {
+        LessonPlan *lp = [lessonPlans objectAtIndex:i];
+        [[lp lessons] deleteAllLessons];
+    }
 }
+
 @end

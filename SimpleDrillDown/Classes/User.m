@@ -42,7 +42,7 @@
     [self.lessons update:u.lessons];
     [self.playlists update:u.playlists];
     
-    [self.lessonPlans clear];
+    [self.lessonPlans removeAllObjects];
     [self.lessonPlans addObjectsFromArray:u.lessonPlans];
 }
 
