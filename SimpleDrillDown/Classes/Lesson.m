@@ -173,7 +173,7 @@
 }
 
 - (NSString*) status:(NSInteger)chapter
-{
+{ 
     Chapter *c = [chapters objectAtIndex:chapter];
     if ([self isChapterDownloadedLocally:chapter]) {
         c.progressView.hidden = true;
@@ -181,6 +181,8 @@
     } else if ([self isChapterDownloadInProgress:chapter]) {
         c.progressView.hidden = false;
         return @"downloading...";
+    } else if ( ![self canPlayVideo:chapter] ) {
+        return @"incompatible with iPhone"; 
     } else {
         c.progressView.hidden = true;
         return @"click to download";
@@ -350,4 +352,12 @@
     }
     return -1;
 }
+
+- (BOOL) canPlayVideo:(NSInteger) chapter {
+    NSString* path = [self getChapterRemotePath:chapter];
+    NSRange r1 = [path rangeOfString:@".flv"];
+    NSRange r2 = [path rangeOfString:@".f4v"];
+    return r1.location == NSNotFound && r2.location == NSNotFound;
+}    
+
 @end

@@ -12,7 +12,7 @@
 
 @implementation LoginViewController
 
-@synthesize usernameField, passwordField, loginButton, refreshButton, forgotPasswordButton, cancelButton, loginIndicator, delegate;
+@synthesize usernameField, passwordField, loginButton, refreshButton, forgotPasswordButton, cancelButton, loginIndicator, delegate; 
 
 /*
 // Override initWithNibName:bundle: to load the view using a nib file then perform additional customization that is not appropriate for viewDidLoad.

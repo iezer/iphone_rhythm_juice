@@ -62,6 +62,8 @@
 #pragma mark View lifecycle
 
 - (void)viewWillAppear:(BOOL)animated {
+    
+    self.showToolbar = true;
     // Update the view with current data before it is displayed.
     [super viewWillAppear:animated];
     
@@ -197,6 +199,13 @@
         
         if ([dataController canWatchLesson:lesson]){
             
+            if(![lesson canPlayVideo:chapter]) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cannot Play Video." message:@"Sorry, this video format is not supported. We are working on converting all videos to an iPhone-compatible format."
+                                                               delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alert show];
+                [alert release];
+                return;
+            }
             if([lesson isChapterDownloadedLocally:chapter])
             {
                 // Create custom movie player   

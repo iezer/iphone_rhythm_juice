@@ -96,6 +96,8 @@
         
         ListOfLessonsViewController *detailViewController = [[ListOfLessonsViewController alloc] initWithStyle:UITableViewStylePlain];
         
+        detailViewController.showToolbar = true;
+        
         LessonPlan *lp = [lessonPlans objectAtIndex:indexPath.row];
         detailViewController.lessons = lp.lessons;
         detailViewController.dataController = self.dataController;

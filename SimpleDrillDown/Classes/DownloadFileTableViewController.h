@@ -12,8 +12,12 @@
     UIToolbar* _toolbar;
     UIBarButtonItem* _downloadButton;
     UIBarButtonItem* _deleteButton;
+    Boolean showToolbar;
 }
 
+@property (nonatomic) Boolean showToolbar;
+
+- (id)initWithStyle:(UITableViewStyle)style;
 -(void) downloadFiles;
 -(void) deleteFiles;
 

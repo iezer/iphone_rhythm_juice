@@ -10,7 +10,19 @@
 
 @implementation DownloadFileTableViewController
 
+@synthesize showToolbar;
+
+- (id)initWithStyle:(UITableViewStyle)style {
+    self = [super initWithStyle:style];
+    self.showToolbar = false;
+    return self;
+}
+
 -(void) initToolbar {
+    
+    if( !self.showToolbar )
+        return;
+    
     _downloadButton = [[UIBarButtonItem alloc] initWithImage:
                        [UIImage imageNamed:@"download-icon-30x30-color.png"]
                                                        style:UIBarButtonItemStylePlain target:self action:@selector(downloadFiles)];
