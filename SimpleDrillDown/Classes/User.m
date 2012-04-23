@@ -9,12 +9,13 @@
 #import "User.h"
 #import "Lesson.h"
 #import "ListOfLessons.h"
+#import "ChannelSubscription.h"
 
 @implementation User
 
-@synthesize username, subscriptionEndDate, premium, authenticated, lessons, playlists, allowedOfflineVideos, lessonPlans;
+@synthesize username, subscriptionEndDate, premium, authenticated, lessons, playlists, allowedOfflineVideos, lessonPlans, channelSubscriptions;
 
-- (User*)init:(NSString*)_username subscriptionEndDate:(NSDate*)_subscriptionEndDate premium:(Boolean)_premium authenticated:(Boolean)_authenticated lessons:(NSMutableArray*)_lessons allowedOfflineLessons:(NSInteger)_allowedOfflineLessons
+- (User*)init:(NSString*)_username subscriptionEndDate:(NSDate*)_subscriptionEndDate premium:(Boolean)_premium authenticated:(Boolean)_authenticated lessons:(NSMutableArray*)_lessons allowedOfflineLessons:(NSInteger)_allowedOfflineLessons channelSubscriptions:(NSMutableArray*)_channelSubscriptions
 {
     self = [super init];
     if (self != nil)
@@ -28,6 +29,7 @@
         [_listOfLessons release];
         
         self.allowedOfflineVideos = _allowedOfflineLessons;
+        self.channelSubscriptions = _channelSubscriptions;
     }
     return self;
 }
@@ -61,6 +63,7 @@
     [lessons clear];
     [playlists clear];
     [lessonPlans removeAllObjects];
+    [channelSubscriptions removeAllObjects];
     self.username = @"";
 }
 
@@ -80,6 +83,7 @@
     [lessons release];
     [playlists release];
     [lessonPlans release];
+    [channelSubscriptions release];
 	[super dealloc];
 }
 

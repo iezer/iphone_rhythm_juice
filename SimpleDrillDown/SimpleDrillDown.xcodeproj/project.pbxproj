@@ -47,6 +47,7 @@
 		6A3F129514B201520042F3E9 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A3F129414B201520042F3E9 /* libz.dylib */; };
 		6A3F129814B20D3F0042F3E9 /* Chapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F129714B20D3F0042F3E9 /* Chapter.m */; };
 		6A3F129E14B21B030042F3E9 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F129D14B21B030042F3E9 /* Reachability.m */; };
+		6A42FD82153F181B0046EF71 /* ChannelSubscription.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A42FD81153F181B0046EF71 /* ChannelSubscription.m */; };
 		6A6C0CBD15383C8900ED2E00 /* blue-bg-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A6C0CBC15383C8900ED2E00 /* blue-bg-tile.png */; };
 		6A6C0CBF15383D3800ED2E00 /* logo-transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A6C0CBE15383D3800ED2E00 /* logo-transparent.png */; };
 		6A6C0CC115383F7300ED2E00 /* blank-orange-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A6C0CC015383F7300ED2E00 /* blank-orange-button.png */; };
@@ -172,6 +173,8 @@
 		6A3F129714B20D3F0042F3E9 /* Chapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Chapter.m; path = Classes/Chapter.m; sourceTree = "<group>"; };
 		6A3F129C14B21B030042F3E9 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		6A3F129D14B21B030042F3E9 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		6A42FD80153F181A0046EF71 /* ChannelSubscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChannelSubscription.h; path = Classes/ChannelSubscription.h; sourceTree = "<group>"; };
+		6A42FD81153F181B0046EF71 /* ChannelSubscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChannelSubscription.m; path = Classes/ChannelSubscription.m; sourceTree = "<group>"; };
 		6A6C0CBC15383C8900ED2E00 /* blue-bg-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue-bg-tile.png"; sourceTree = "<group>"; };
 		6A6C0CBE15383D3800ED2E00 /* logo-transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-transparent.png"; sourceTree = "<group>"; };
 		6A6C0CC015383F7300ED2E00 /* blank-orange-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blank-orange-button.png"; sourceTree = "<group>"; };
@@ -292,6 +295,8 @@
 				1D3623250D0F684500981E51 /* SimpleDrillDownAppDelegate.m */,
 				28348A840E1D400D009134BC /* DataController.h */,
 				282669840FA9FED7007D4074 /* Lesson.h */,
+				6A42FD80153F181A0046EF71 /* ChannelSubscription.h */,
+				6A42FD81153F181B0046EF71 /* ChannelSubscription.m */,
 				282669850FA9FED7007D4074 /* Lesson.m */,
 				6A1B186A14544DEF00E91BDA /* User.h */,
 				6A1B186B14544DF000E91BDA /* User.m */,
@@ -627,6 +632,7 @@
 				6A1ADDDC1503975400B1A846 /* LessonPlanViewController.m in Sources */,
 				6A984FE6151058A30053FD6E /* DownloadFileTableViewController.m in Sources */,
 				6A9850711510F39C0053FD6E /* ListOfLessons.m in Sources */,
+				6A42FD82153F181B0046EF71 /* ChannelSubscription.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

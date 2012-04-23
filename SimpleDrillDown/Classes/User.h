@@ -22,9 +22,10 @@
     ListOfLessons* playlists;
     NSMutableArray* lessonPlans;
     NSInteger allowedOfflineVideos;
+    NSMutableArray* channelSubscriptions;
 }
 
-- (User*)init:(NSString*)_username subscriptionEndDate:(NSDate*)_subscriptionEndDate premium:(Boolean)premium authenticated:(Boolean)_authenticated lessons:(NSMutableArray*)_lessons allowedOfflineLessons:(NSInteger)_allowedOfflineLessons;
+- (User*)init:(NSString*)_username subscriptionEndDate:(NSDate*)_subscriptionEndDate premium:(Boolean)premium authenticated:(Boolean)_authenticated lessons:(NSMutableArray*)_lessons allowedOfflineLessons:(NSInteger)_allowedOfflineLessons channelSubscriptions:(NSMutableArray*)_channelSubscriptions;
 - (Lesson*) getLesson:(NSString*)lessonName;
 - (void) logout;
 - (void)update:(User*) u;
@@ -37,5 +38,6 @@
 @property (nonatomic, retain, readwrite) ListOfLessons* playlists;
 @property (nonatomic, retain, readwrite) NSMutableArray* lessonPlans;
 @property (nonatomic) NSInteger allowedOfflineVideos;
+@property (nonatomic, retain, readwrite) NSMutableArray* channelSubscriptions;
 
 @end

@@ -10,9 +10,9 @@
 
 @implementation Chapter
 
-@synthesize title, remotePath, localPath, filename, isDownloadInProgress, progressView;
+@synthesize title, remotePath, localPath, filename, channel, isDownloadInProgress, progressView;
 
--(Chapter *)init:(NSString *)_title remotePath:(NSString*)_remotePath localPath:(NSString*)_localPath;
+-(Chapter *)init:(NSString *)_title remotePath:(NSString*)_remotePath localPath:(NSString*)_localPath channel:(NSString*)_channel
 {
         self = [super init];
         if (self != nil)
@@ -29,8 +29,27 @@
             progressView.hidden = true;
             progressView.tag = 1234;
             progressView.frame = CGRectMake(110,30,150,10);
+            
+            self.channel = _channel;
         }
         return self;
+}
+
+/*
+-(void)release {
+    NSLog(@"I'm released");
+    [super release];
+}
+ */
+
+- (void)dealloc {
+	[title release];
+	[remotePath release];
+	[localPath release];
+	[filename release];
+    [channel release];
+    [progressView release];
+	[super dealloc];
 }
 
 @end

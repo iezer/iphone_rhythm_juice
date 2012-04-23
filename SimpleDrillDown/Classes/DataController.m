@@ -51,6 +51,8 @@
 #import "User.h"
 #import "LessonPlan.h"
 #import "ListOfLessons.h"
+#import "Chapter.h"
+#import "ChannelSubscription.h"
 
 @implementation DataController
 
@@ -77,11 +79,16 @@
             [self.user update:_user];
         return true;
     }
-        
+    
     return false;
 }
 
 + (NSString*)stringByUnescapingFromURLArgument:(NSString *)s {
+    
+    if (s == nil) {
+        return @"";
+    }
+    
     NSMutableString *resultString = [NSMutableString stringWithString:s];
     [resultString replaceOccurrencesOfString:@"+"
                                   withString:@" "
@@ -92,29 +99,42 @@
 
 + (NSMutableArray*) parseLessonList:(NSArray *) lessons {
     NSMutableArray* playlist = [[[NSMutableArray alloc] init] autorelease];
+
+    NSFileManager *     fileManager;
+    fileManager = [NSFileManager defaultManager];
+    assert(fileManager != nil);
+
+    NSString *document_folder_path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSString *lessonsFolderPath = [document_folder_path stringByAppendingPathComponent:@"videos"]; 
     
     for(NSDictionary* lesson in lessons) {
         NSString *title = [DataController stringByUnescapingFromURLArgument:[lesson objectForKey:@"Title"]];
         NSArray *instructors = [lesson objectForKey:@"Instructors"];
         Boolean premium = [[lesson objectForKey:@"Premium"] boolValue];
         
-        NSMutableArray *chapterTitles = [[NSMutableArray alloc] init];
-        NSMutableArray *chapterPaths = [[NSMutableArray alloc] init];
-        NSArray* chapters = [lesson objectForKey:@"Chapters"];
-        for(NSDictionary* chapter in chapters) {
+        NSMutableArray *chapters = [[NSMutableArray alloc] init];
+        
+        NSArray* chaptersDict = [lesson objectForKey:@"Chapters"];
+        for(NSDictionary* chapter in chaptersDict) {
             NSString *title = [DataController stringByUnescapingFromURLArgument:[chapter objectForKey:@"Name"]];
-            NSString *filename = [DataController stringByUnescapingFromURLArgument:[chapter objectForKey:@"Filename"]];
+            NSString *remotePath = [DataController stringByUnescapingFromURLArgument:[chapter objectForKey:@"Filename"]];
+            NSString *channel = [DataController stringByUnescapingFromURLArgument:[chapter objectForKey:@"Channel"]];
             
-            [chapterTitles addObject:title];
-            [chapterPaths addObject:filename];
+            NSURL* chapter_remote_url = [NSURL URLWithString:remotePath];
+            NSString* filename = [chapter_remote_url lastPathComponent];
+            NSString* chapterLocalPath = [lessonsFolderPath stringByAppendingPathComponent:filename];
+            
+            Chapter* c = [[Chapter alloc] init:title remotePath:remotePath localPath:chapterLocalPath channel:channel];
+            [chapters addObject:c];
+            [c release];
+            
         }
-
-        Lesson *play = [[Lesson alloc] init:title instructors:instructors chapters:chapterPaths chapterTitles:chapterTitles premium:premium];
+        
+        Lesson *play = [[Lesson alloc] init:title instructors:instructors lessonFolderPath:lessonsFolderPath chapters:chapters premium:premium];
         
         [playlist addObject:play];
+        [chapters release];
         [play release];
-        [chapterPaths release];
-        [chapterTitles release];
     }
     return playlist;
 }
@@ -131,7 +151,7 @@
         
         NSArray* lessons = [userData objectForKey:@"Lessons"];
         NSMutableArray* myLessons = [DataController parseLessonList:lessons];
-
+        
         NSArray* playlists = [userData objectForKey:@"Playlists"];
         NSMutableArray* myPlaylists = [DataController parseLessonList:playlists];
         
@@ -154,7 +174,23 @@
         NSDate* subscriptionEndDate = [userData objectForKey:@"Subscription End"];
         NSInteger allowedOfflineLessons = [[userData objectForKey:@"Allowed Offline Lessons"] intValue];
         
-        user = [[[User alloc] init:username subscriptionEndDate:subscriptionEndDate premium:premium authenticated:authenticated lessons:myLessons allowedOfflineLessons:allowedOfflineLessons] autorelease];
+        NSMutableArray* channelSubscriptions = [[NSMutableArray alloc] init];
+        NSArray* subscribedChannels = [userData objectForKey:@"Subscribed Channels"];
+        
+        for (NSDictionary* cs in subscribedChannels) {
+            
+            NSString* name = [DataController stringByUnescapingFromURLArgument:[cs objectForKey:@"Name"]];
+            NSDate* endDate = [cs objectForKey:@"Subscription End"];
+            NSString* statusString = [DataController stringByUnescapingFromURLArgument:[cs objectForKey:@"Status"]];
+            SubscriptionStatus status = [statusString isEqualToString:@"Renew"] ? Renew : Cancel;
+            
+            ChannelSubscription * c = [[ChannelSubscription alloc] init:name endDate:endDate status:status];
+            
+            [channelSubscriptions addObject:c];
+            [c release];
+        }        
+        
+        user = [[[User alloc] init:username subscriptionEndDate:subscriptionEndDate premium:premium authenticated:authenticated lessons:myLessons allowedOfflineLessons:allowedOfflineLessons channelSubscriptions:channelSubscriptions] autorelease];
         
         ListOfLessons* parsedPlaylists = [[ListOfLessons alloc] init:myPlaylists];
         user.playlists = parsedPlaylists;
@@ -162,6 +198,7 @@
         
         [parsedPlaylists release];
         [myLessonPlans release];
+        [channelSubscriptions release];
     }
     
     return user;

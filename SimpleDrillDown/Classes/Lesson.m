@@ -51,9 +51,9 @@
 
 @implementation Lesson
 
-@synthesize title, instructors, chapters, tracker, premium, count, lessonFolderPath, detailViewController;
+@synthesize title, instructors, chapters, tracker, premium, lessonFolderPath, detailViewController;
 
-- (Lesson*)init:(NSString*)_title instructors:(NSArray*)_instructors chapters:(NSArray*)_chapters chapterTitles:(NSArray*)_chapterTitles premium:(Boolean)_premium {
+- (Lesson*)init:(NSString*)_title instructors:(NSArray*)_instructors lessonFolderPath:(NSString*)_lessonFolderPath chapters:(NSMutableArray*)_chapters premium:(Boolean)_premium {
     self = [super init];
     if (self != nil)
     {
@@ -63,27 +63,9 @@
         TimeTracker* _tracker = [[TimeTracker alloc] init];
         self.tracker = _tracker;
         [_tracker release];
-        
-        NSFileManager *     fileManager;
-        fileManager = [NSFileManager defaultManager];
-        assert(fileManager != nil);
-        
-        NSString *document_folder_path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
-        NSString *lessons_folder_path = [document_folder_path stringByAppendingPathComponent:@"videos"]; 
-        
-       // self.lessonFolderPath = [lessons_folder_path stringByAppendingPathComponent:self.title];
-        self.lessonFolderPath = lessons_folder_path;
-        
-        self->chapters = [[[NSMutableArray alloc] init] retain];
-        
-        self.count = MIN( [_chapters count], [_chapterTitles count] );
-        for (int i = 0; i < self.count; i ++) {
-            NSString* remotePath = [_chapters objectAtIndex:i];
-            Chapter* c = [[Chapter alloc] init:[_chapterTitles objectAtIndex:i] remotePath:remotePath localPath:[self createChapterLocalPath:remotePath]];
-            [self->chapters addObject:c];
-            [c release];
-        }
-        
+
+        self.lessonFolderPath = _lessonFolderPath;
+        self.chapters = _chapters;
     }
     return self;
 }
@@ -102,6 +84,7 @@
 	[chapters release];
 	[tracker release];
     [lessonFolderPath release];
+    [detailViewController release];
 	[super dealloc];
 }
 
@@ -144,7 +127,7 @@
 - (NSInteger) downloadedChapters {
     NSInteger c = 0;
     
-    for (NSInteger i = 0; i < self.count; i++) {
+    for (NSInteger i = 0; i < [self count]; i++) {
         if ([self isChapterDownloadedLocally:i]) {
             c++;
         }
@@ -168,7 +151,7 @@
 }
 
 -(NSString*) downloadStatus {
-    NSString *message = [[[NSString alloc] initWithFormat:@"%d / %d downloaded", [self downloadedChapters], self.count] autorelease];
+    NSString *message = [[[NSString alloc] initWithFormat:@"%d / %d downloaded", [self downloadedChapters], [self count]] autorelease];
     return message;
 }
 
@@ -205,7 +188,7 @@
     fileManager = [NSFileManager defaultManager];
     assert(fileManager != nil);
     NSString* chapter_local_path = [self getChapterLocalPath:chapter];
-    NSLog(@"%@", chapter_local_path);
+    //NSLog(@"%@", chapter_local_path);
     return [fileManager fileExistsAtPath:chapter_local_path];
 }
 
@@ -221,7 +204,7 @@
 }
     
 - (void)deleteFiles {    
-    for (NSInteger i = 0; i < self.count; i++) {
+    for (NSInteger i = 0; i < [self count]; i++) {
         [self deleteChapter:i];
     }
 }
@@ -358,6 +341,10 @@
     NSRange r1 = [path rangeOfString:@".flv"];
     NSRange r2 = [path rangeOfString:@".f4v"];
     return r1.location == NSNotFound && r2.location == NSNotFound;
-}    
+}
+
+- (NSInteger) count {
+    return [self->chapters count];
+}
 
 @end

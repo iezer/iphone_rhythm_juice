@@ -57,12 +57,18 @@
 	TimeTracker *tracker;
     Boolean premium;
     NSString *lessonFolderPath;
-    NSInteger count;
-    
     SingleLessonViewController *detailViewController;
 }
 
-- (Lesson*)init:(NSString*)_title instructors:(NSArray*)_instructors chapters:(NSArray*)_chapters chapterTitles:(NSArray*)_chapterTitles premium:(Boolean)_premium;
+@property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) NSArray *instructors;
+@property (nonatomic, retain) NSMutableArray *chapters;
+@property (nonatomic, retain) TimeTracker *tracker;
+@property (nonatomic) Boolean premium;
+@property (nonatomic, retain) NSString *lessonFolderPath;
+@property (nonatomic, retain) SingleLessonViewController *detailViewController;
+
+- (Lesson*)init:(NSString*)_title instructors:(NSArray*)_instructors lessonFolderPath:(NSString*)_lessonFolderPath chapters:(NSMutableArray*)_chapters premium: (Boolean)_premium;
 
 - (void)queueChapterDownload:(NSUInteger)chapter;
 - (void)startTracker:(NSUInteger)chapter;
@@ -83,14 +89,6 @@
 - (NSString*) downloadStatus;
 - (NSInteger) canPlayPreviousLesson:(NSInteger)currentChapterIndex;
 - (BOOL) canPlayVideo:(NSInteger) chapter;
-
-@property (nonatomic, retain) NSString *title;
-@property (nonatomic, retain) NSArray *instructors;
-@property (nonatomic, retain) NSMutableArray *chapters;
-@property (nonatomic, retain) TimeTracker *tracker;
-@property (nonatomic) Boolean premium;
-@property (nonatomic, retain) NSString *lessonFolderPath;
-@property (nonatomic) NSInteger count;
-@property (nonatomic, retain) SingleLessonViewController *detailViewController;
+- (NSInteger) count;
 
 @end
