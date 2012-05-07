@@ -25,7 +25,7 @@
     NSMutableArray* channelSubscriptions;
 }
 
-- (User*)init:(NSString*)_username subscriptionEndDate:(NSDate*)_subscriptionEndDate premium:(Boolean)premium authenticated:(Boolean)_authenticated lessons:(NSMutableArray*)_lessons allowedOfflineLessons:(NSInteger)_allowedOfflineLessons channelSubscriptions:(NSMutableArray*)_channelSubscriptions;
+- (User*)init:(NSString*)_username subscriptionEndDate:(NSDate*)_subscriptionEndDate premium:(Boolean)premium authenticated:(Boolean)_authenticated lessons:(NSMutableArray*)_lessons allowedOfflineLessons:(NSInteger)_allowedOfflineLessons channelSubscriptions:(NSArray*)_channelSubscriptions;
 - (Lesson*) getLesson:(NSString*)lessonName;
 - (void) logout;
 - (void)update:(User*) u;

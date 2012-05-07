@@ -15,7 +15,7 @@
 
 @synthesize username, subscriptionEndDate, premium, authenticated, lessons, playlists, allowedOfflineVideos, lessonPlans, channelSubscriptions;
 
-- (User*)init:(NSString*)_username subscriptionEndDate:(NSDate*)_subscriptionEndDate premium:(Boolean)_premium authenticated:(Boolean)_authenticated lessons:(NSMutableArray*)_lessons allowedOfflineLessons:(NSInteger)_allowedOfflineLessons channelSubscriptions:(NSMutableArray*)_channelSubscriptions
+- (User*)init:(NSString*)_username subscriptionEndDate:(NSDate*)_subscriptionEndDate premium:(Boolean)_premium authenticated:(Boolean)_authenticated lessons:(NSMutableArray*)_lessons allowedOfflineLessons:(NSInteger)_allowedOfflineLessons channelSubscriptions:(NSArray*)_channelSubscriptions
 {
     self = [super init];
     if (self != nil)
@@ -29,7 +29,9 @@
         [_listOfLessons release];
         
         self.allowedOfflineVideos = _allowedOfflineLessons;
-        self.channelSubscriptions = _channelSubscriptions;
+        NSMutableArray* channels = [[NSMutableArray alloc] initWithArray:_channelSubscriptions];
+        self.channelSubscriptions = channels;
+        [channels release];
     }
     return self;
 }
@@ -46,6 +48,9 @@
     
     [self.lessonPlans removeAllObjects];
     [self.lessonPlans addObjectsFromArray:u.lessonPlans];
+    
+    [self.channelSubscriptions removeAllObjects];
+    [self.channelSubscriptions addObjectsFromArray:u.channelSubscriptions];
 }
 
 /*

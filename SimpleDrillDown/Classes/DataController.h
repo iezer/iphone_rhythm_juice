@@ -64,6 +64,7 @@
 
 - (Boolean)canWatchLesson:(Lesson*)lesson;
 - (NSInteger)numberOfDownloadedLessons;
+- (Boolean)canWatchChapterInChannel:(Lesson*)lesson chapter:(NSInteger)chapter_index;
 
 - (NSInteger) allowedDownloads; // -1 means unlimited
 

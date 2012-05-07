@@ -193,23 +193,37 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 	NSUInteger section = [indexPath indexAtPosition:0];
-	NSUInteger chapter = [indexPath indexAtPosition:1];
+	NSUInteger chapter_index = [indexPath indexAtPosition:1];
 	
 	if (section == 0) {
-        
-        if ([dataController canWatchLesson:lesson]){
+        if ([dataController expired:lesson]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Subscription Ended" message:@"Your  subscription has expired. Please log onto www.rhythmjuice.com and renew your subscription.."
+                                                           delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+            [alert release];
+        } else if (![dataController canWatchChapterInChannel:lesson chapter:chapter_index]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Channel" message:@"You are no longer subscribed to the channel containing this video."
+                                                           delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+            [alert release];  
+        } else if(![lesson canPlayVideo:chapter_index]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cannot Play Video." message:@"Sorry, this video format is not supported. We are working on converting all videos to an iPhone-compatible format."
+                                                           delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+            [alert release];
+            return;
+        } else if (![dataController canWatchLesson:lesson]){
+            NSString *message = [[NSString alloc] initWithFormat:@"You can only download %d videos with your current subscription. Please delete some lessons or buy the iPhone Add-On from www.rhythmjuice.com.",[dataController allowedDownloads]];
             
-            if(![lesson canPlayVideo:chapter]) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cannot Play Video." message:@"Sorry, this video format is not supported. We are working on converting all videos to an iPhone-compatible format."
-                                                               delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                [alert show];
-                [alert release];
-                return;
-            }
-            if([lesson isChapterDownloadedLocally:chapter])
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Video Cache is Full" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+            [alert release];
+            [message release];
+        } else {
+            if([lesson isChapterDownloadedLocally:chapter_index])
             {
                 // Create custom movie player   
-                moviePlayer = [[[CustomMoviePlayerViewController alloc] initWithPlay:lesson chapterIndex:chapter] autorelease];
+                moviePlayer = [[[CustomMoviePlayerViewController alloc] initWithPlay:lesson chapterIndex:chapter_index] autorelease];
                 
                 // Show the movie player as modal
                 [self presentModalViewController:moviePlayer animated:YES];
@@ -217,21 +231,9 @@
                 // Prep and play the movie
                 [moviePlayer readyPlayer];
             } else {
-                [lesson queueChapterDownload:chapter];
+                [lesson queueChapterDownload:chapter_index];
                 [self.tableView reloadData];
             }
-        } else if ([dataController expired:lesson]) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Premium Ended" message:@"Your premium subscription has expired. Please log onto www.rhythmjuice.com and renew your subscription in order to watch this premium lesson."
-                                                           delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alert show];
-            [alert release];
-        } else {
-            NSString *message = [[NSString alloc] initWithFormat:@"You can only download %d premium lesson(s) with your current subscription. Please delete some lessons or buy the iPhone Add-On from www.rhythmjuice.com.",[dataController allowedDownloads]];
-            
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Video Cache is Full" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alert show];
-            [alert release];
-            [message release];
         }
     }
 }

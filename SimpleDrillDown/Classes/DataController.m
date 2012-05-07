@@ -118,7 +118,7 @@
         for(NSDictionary* chapter in chaptersDict) {
             NSString *title = [DataController stringByUnescapingFromURLArgument:[chapter objectForKey:@"Name"]];
             NSString *remotePath = [DataController stringByUnescapingFromURLArgument:[chapter objectForKey:@"Filename"]];
-            NSString *channel = [DataController stringByUnescapingFromURLArgument:[chapter objectForKey:@"Channel"]];
+            NSInteger channel = [[chapter objectForKey:@"Channel"] intValue];
             
             NSURL* chapter_remote_url = [NSURL URLWithString:remotePath];
             NSString* filename = [chapter_remote_url lastPathComponent];
@@ -174,21 +174,7 @@
         NSDate* subscriptionEndDate = [userData objectForKey:@"Subscription End"];
         NSInteger allowedOfflineLessons = [[userData objectForKey:@"Allowed Offline Lessons"] intValue];
         
-        NSMutableArray* channelSubscriptions = [[NSMutableArray alloc] init];
-        NSArray* subscribedChannels = [userData objectForKey:@"Subscribed Channels"];
-        
-        for (NSDictionary* cs in subscribedChannels) {
-            
-            NSString* name = [DataController stringByUnescapingFromURLArgument:[cs objectForKey:@"Name"]];
-            NSDate* endDate = [cs objectForKey:@"Subscription End"];
-            NSString* statusString = [DataController stringByUnescapingFromURLArgument:[cs objectForKey:@"Status"]];
-            SubscriptionStatus status = [statusString isEqualToString:@"Renew"] ? Renew : Cancel;
-            
-            ChannelSubscription * c = [[ChannelSubscription alloc] init:name endDate:endDate status:status];
-            
-            [channelSubscriptions addObject:c];
-            [c release];
-        }        
+        NSArray* channelSubscriptions = [userData objectForKey:@"Channels"];     
         
         user = [[[User alloc] init:username subscriptionEndDate:subscriptionEndDate premium:premium authenticated:authenticated lessons:myLessons allowedOfflineLessons:allowedOfflineLessons channelSubscriptions:channelSubscriptions] autorelease];
         
@@ -198,7 +184,6 @@
         
         [parsedPlaylists release];
         [myLessonPlans release];
-        [channelSubscriptions release];
     }
     
     return user;
@@ -210,9 +195,22 @@
             || ([self numberOfDownloadedLessons] < [self allowedDownloads]) );
 }
 
+- (Boolean)canWatchChapterInChannel:(Lesson*)lesson chapter:(NSInteger)chapter_index {
+    Chapter* chapter = [lesson.chapters objectAtIndex:chapter_index];
+    for( int i = 0; i < [[user channelSubscriptions] count]; i ++ ) {
+        if ( [[user.channelSubscriptions objectAtIndex:i] intValue] == chapter.channel) {
+            return true;
+        }
+    }
+    return false;
+}
+
 - (Boolean)expired:(Lesson*)lesson {
     NSDate* now = [NSDate date];
-    return ( [lesson premium] && ( now > [user subscriptionEndDate] || ! [user premium] ) );
+    NSDate* endDate = [user subscriptionEndDate];
+    NSComparisonResult result = [now compare:endDate];
+    NSLog(@"%@ %@ %d", now, endDate, result);
+    return ( result == NSOrderedDescending );
 }
 
 - (NSInteger) allowedDownloads {

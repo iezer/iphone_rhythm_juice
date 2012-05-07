@@ -132,7 +132,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     NSString *rootURL = [defaults stringForKey:@"rootURL"];
     NSString *user_data_url = [NSString stringWithFormat:@"%@/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21fbGVzc29uJmZvcm1hdD1yYXc=", rootURL];
     
-    // NSString* user_data_url = @"https://www.rhythmjuice.com/sandbox/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21fbGVzc29uJmZvcm1hdD1yYXc=";
+    //NSString* user_data_url = [NSString stringWithFormat:@"%@/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21fbGVzc29uJmZvcm1hdD1yYXc=", rootURL];
     //http://www.rhythmjuice.com/sandbox/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21fbGVzc29lJmZvcm1hdD1yYXc=
     
     [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];

@@ -12,7 +12,7 @@
 
 @synthesize title, remotePath, localPath, filename, channel, isDownloadInProgress, progressView;
 
--(Chapter *)init:(NSString *)_title remotePath:(NSString*)_remotePath localPath:(NSString*)_localPath channel:(NSString*)_channel
+-(Chapter *)init:(NSString *)_title remotePath:(NSString*)_remotePath localPath:(NSString*)_localPath channel:(NSInteger)_channel
 {
         self = [super init];
         if (self != nil)
@@ -47,7 +47,6 @@
 	[remotePath release];
 	[localPath release];
 	[filename release];
-    [channel release];
     [progressView release];
 	[super dealloc];
 }
