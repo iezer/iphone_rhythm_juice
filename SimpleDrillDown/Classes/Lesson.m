@@ -347,4 +347,7 @@
     return [self->chapters count];
 }
 
+- (NSComparisonResult)compare:(Lesson *)otherObject {
+    return [self.title compare:otherObject.title];
+}
 @end

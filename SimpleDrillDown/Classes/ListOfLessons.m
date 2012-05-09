@@ -14,7 +14,9 @@
 @synthesize lessons;
 
 - (ListOfLessons*) init:(NSMutableArray*) l {
-    self.lessons = l;
+    NSArray* sorted = [l sortedArrayUsingComparator:^(Lesson* obj1, Lesson* obj2){
+        return [obj1.title compare:obj2.title];  }];
+    self.lessons = [NSMutableArray arrayWithArray:sorted];
     return self;
 }
 

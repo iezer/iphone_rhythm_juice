@@ -180,7 +180,10 @@
         
         ListOfLessons* parsedPlaylists = [[ListOfLessons alloc] init:myPlaylists];
         user.playlists = parsedPlaylists;
-        user.lessonPlans = myLessonPlans;
+        
+        NSArray* sortedLessonPlans = [myLessonPlans sortedArrayUsingComparator:^(LessonPlan* obj1, LessonPlan* obj2){
+            return [obj1.title compare:obj2.title];  }];
+        user.lessonPlans = [NSMutableArray arrayWithArray:sortedLessonPlans];
         
         [parsedPlaylists release];
         [myLessonPlans release];
@@ -190,9 +193,7 @@
 }
 
 - (Boolean)canWatchLesson:(Lesson*)lesson {
-    return ( [lesson isDownloadedLocally] 
-            || ([self allowedDownloads] == -1) 
-            || ([self numberOfDownloadedLessons] < [self allowedDownloads]) );
+    return ([self allowedDownloads] == -1) || ([self numberOfDownloadedLessons] < [self allowedDownloads]);
 }
 
 - (Boolean)canWatchChapterInChannel:(Lesson*)lesson chapter:(NSInteger)chapter_index {

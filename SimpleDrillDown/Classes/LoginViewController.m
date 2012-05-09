@@ -35,6 +35,7 @@
 - (void)viewDidLoad {
     [self update];
     cancelButton.hidden = TRUE;
+	loginIndicator.hidden = TRUE;
     [super viewDidLoad];
 }
 
@@ -92,17 +93,18 @@
     NSString* t;
     if ([self loggedIn]) {
         usernameField.text = u.username;
-        t = @"Logout";
+        t = @"Info";
+        [loginButton setTitle:@"Logout" forState:UIControlStateNormal];
         refreshButton.enabled = TRUE;
         [refreshButton setTitle:@"Refresh" forState:UIControlStateNormal];
         forgotPasswordButton.hidden = true;
     } else {
         t = @"Login";
+        [loginButton setTitle:t forState:UIControlStateNormal];
         refreshButton.enabled = TRUE;
         [refreshButton setTitle:@"Join Now" forState:UIControlStateNormal];
         forgotPasswordButton.hidden = false;
     }
-    [loginButton setTitle:t forState:UIControlStateNormal];
     self.title = NSLocalizedString(t, t); 
     
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
