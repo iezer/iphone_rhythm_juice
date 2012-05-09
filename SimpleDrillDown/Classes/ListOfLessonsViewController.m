@@ -67,12 +67,17 @@
 }
 
 -(void) downloadFiles {
-    [lessons downloadAllLessons];
+    
+    
+
+    
+    
+    [dataController downloadAllLessons:lessons];
     [self.tableView reloadData];
 }
 
 -(void) deleteFiles {
-    [lessons deleteAllLessons];
+    [dataController deleteAllLessons:lessons];
     [self.tableView reloadData];
 }
 

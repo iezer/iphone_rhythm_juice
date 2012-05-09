@@ -53,6 +53,7 @@
 #import "ListOfLessons.h"
 #import "Chapter.h"
 #import "ChannelSubscription.h"
+#import "ASIHTTPRequest.h"
 
 @implementation DataController
 
@@ -226,8 +227,59 @@
     }
 }
 
+- (void) deleteAllLessons:(ListOfLessons *)list {
+    for (int i = 0; i < [list.lessons count]; i++) {
+        [[list.lessons objectAtIndex:i] deleteFiles];
+    }
+}
+
+- (void) downloadAllLessons:(ListOfLessons *)list {
+    for (int i = 0; i < [list.lessons count]; i++) {
+        [self queueAllChapters:[list.lessons objectAtIndex:i]];
+    }
+}
+
+//Meant to be all videos, not just for 1 particular lesson
 - (NSInteger)numberOfDownloadedLessons {
     return 0;
+}
+
+- (void)queueAllChapters:(Lesson *)lesson
+{
+    for (int i = 0; i < [[lesson chapters] count]; i++) {
+        if (![lesson isChapterDownloadedLocally:i] && ![lesson isChapterDownloadInProgress:i]) {
+            [self queueChapterDownload:lesson chapter:i];
+        }
+    }
+}
+
+- (void)queueChapterDownload:(Lesson *) lesson chapter:(NSUInteger)chapter {
+    
+    NSFileManager *     fileManager;
+    fileManager = [NSFileManager defaultManager];
+    assert(fileManager != nil);
+    
+    NSString* chapter_remote_path = [lesson getChapterRemotePath:chapter];
+    
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSString *rootURL = [defaults stringForKey:@"rootURL"];
+    NSString *root = [NSString stringWithFormat:@"%@/chapters/", rootURL];
+    
+    //NSString* root = @"http://www.rhythmjuice.com/sandbox/chapters/";
+    NSURL* chapter_remote_url = [NSURL URLWithString:[root stringByAppendingString:chapter_remote_path]];
+    
+    NSError *error;
+    if ( ! [lesson isDownloadedLocally] ) {
+        [[NSFileManager defaultManager] createDirectoryAtURL: [NSURL fileURLWithPath:[lesson lessonFolderPath]] withIntermediateDirectories:true attributes:nil error:&error];
+    }
+    
+    if ( ! [lesson isChapterDownloadedLocally:chapter]) {
+        [lesson setChapterDownloadInProgressFlag:chapter withFlag:true];
+        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:chapter_remote_url];
+        [request setDelegate:lesson];
+        [request setDownloadProgressDelegate:[[[lesson chapters] objectAtIndex:chapter] progressView]];
+        [request startAsynchronous];
+    }
 }
 
 @end

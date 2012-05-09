@@ -70,25 +70,25 @@
 
 - (Lesson*)init:(NSString*)_title instructors:(NSArray*)_instructors lessonFolderPath:(NSString*)_lessonFolderPath chapters:(NSMutableArray*)_chapters premium: (Boolean)_premium;
 
-- (void)queueChapterDownload:(NSUInteger)chapter;
 - (void)startTracker:(NSUInteger)chapter;
 - (void)stopTracker;
 - (Boolean) isDownloadedLocally;
 - (Boolean) isChapterDownloadedLocally:(NSUInteger)chapter;
+- (Boolean)isChapterDownloadInProgress:(NSInteger)chapter;
 - (NSString*)getChapterLocalPath:(NSInteger)chapter;
 - (NSString*)getChapterRemotePath:(NSInteger)chapter;
 - (void)deleteFiles;
 - (void)deleteChapter:(NSUInteger)chapter;
-- (NSInteger) canPlayNextLesson:(NSInteger)currentChapterIndex;
+- (NSInteger) indexOfNextDownloadedLesson:(NSInteger)currentChapterIndex;
 - (NSString*) status:(NSInteger)chapter;
 - (NSString*)getChapterTitle:(NSInteger)chapter;
 - (NSString*)createChapterLocalPath:(NSString*)chapterRemotePath;
-- (void)queueAllChapters;
 - (void)cleanupDirectory;
 - (UITableViewCellEditingStyle) getEditingStyle:(NSInteger)chapter;
 - (NSString*) downloadStatus;
-- (NSInteger) canPlayPreviousLesson:(NSInteger)currentChapterIndex;
-- (BOOL) canPlayVideo:(NSInteger) chapter;
+- (NSInteger) indexOfPreviousDownloadedLesson:(NSInteger)currentChapterIndex;
+- (BOOL) isVideoTypeSupported:(NSInteger) chapter;
 - (NSInteger) count;
+- (void)setChapterDownloadInProgressFlag:(NSInteger)chapter withFlag:(Boolean)flag;
 
 @end

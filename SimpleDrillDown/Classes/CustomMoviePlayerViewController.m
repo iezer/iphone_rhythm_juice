@@ -116,7 +116,7 @@
  *--------------------------------------------------------------------------*/
 - (void) moviePlayBackDidFinish:(NSNotification*)notification 
 {    
-    NSInteger nextChapter = [lesson canPlayNextLesson:chapterIndex];
+    NSInteger nextChapter = [lesson indexOfNextDownloadedLesson:chapterIndex];
     [self finishAndPlayNextLesson:notification atChapter:nextChapter];
 }
      

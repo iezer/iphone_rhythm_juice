@@ -48,6 +48,7 @@
 
 @class Lesson;
 @class User;
+@class ListOfLessons;
 
 @interface DataController : NSObject {
     User* user;
@@ -71,5 +72,10 @@
 - (Boolean)expired:(Lesson*)lesson;
 
 + (User*)createUserFromData:(NSDictionary *)data;
+
+- (void)deleteAllLessons:(ListOfLessons *)list;
+- (void)downloadAllLessons:(ListOfLessons *)list;
+- (void)queueAllChapters:(Lesson *)lesson;
+- (void)queueChapterDownload:(Lesson *) lesson chapter:(NSUInteger)chapter;
 
 @end

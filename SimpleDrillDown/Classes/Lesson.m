@@ -46,8 +46,8 @@
  */
 
 #import "Lesson.h"
-#import "ASIHTTPRequest.h"
 #import "Chapter.h"
+#import "ASIHTTPRequest.h"
 
 @implementation Lesson
 
@@ -117,13 +117,6 @@
     return [[self->chapters objectAtIndex:chapter] isDownloadInProgress];
 }
 
-
-- (void)setChapterDownloadInProgressFlag:(NSInteger)chapter withFlag:(Boolean)flag
-{
-    Chapter *c = [[self chapters] objectAtIndex:chapter] ;
-    [c setIsDownloadInProgress: flag];
-}
-
 - (NSInteger) downloadedChapters {
     NSInteger c = 0;
     
@@ -164,7 +157,7 @@
     } else if ([self isChapterDownloadInProgress:chapter]) {
         c.progressView.hidden = false;
         return @"downloading...";
-    } else if ( ![self canPlayVideo:chapter] ) {
+    } else if ( ![self isVideoTypeSupported:chapter] ) {
         return @"incompatible with iPhone"; 
     } else {
         c.progressView.hidden = true;
@@ -232,44 +225,6 @@
     }
 }
 
-- (void)queueAllChapters
-{
-    for (int i = 0; i < [chapters count]; i++) {
-        if (![self isChapterDownloadedLocally:i] && ![self isChapterDownloadInProgress:i]) {
-            [self queueChapterDownload:i];
-        }
-    }
-}
-
-- (void)queueChapterDownload:(NSUInteger)chapter {
-    
-    NSFileManager *     fileManager;
-    fileManager = [NSFileManager defaultManager];
-    assert(fileManager != nil);
-    
-    NSString* chapter_remote_path = [self getChapterRemotePath:chapter];
-    
-    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-    NSString *rootURL = [defaults stringForKey:@"rootURL"];
-    NSString *root = [NSString stringWithFormat:@"%@/chapters/", rootURL];
-    
-    //NSString* root = @"http://www.rhythmjuice.com/sandbox/chapters/";
-    NSURL* chapter_remote_url = [NSURL URLWithString:[root stringByAppendingString:chapter_remote_path]];
-    
-    NSError *error;
-    if ( ! [self isDownloadedLocally] ) {
-        [[NSFileManager defaultManager] createDirectoryAtURL: [NSURL fileURLWithPath:lessonFolderPath] withIntermediateDirectories:true attributes:nil error:&error];
-    }
-    
-    if ( ! [self isChapterDownloadedLocally:chapter]) {
-        [self setChapterDownloadInProgressFlag:chapter withFlag:true];
-         ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:chapter_remote_url];
-        [request setDelegate:self];
-        [request setDownloadProgressDelegate:[[chapters objectAtIndex:chapter] progressView]];
-        [request startAsynchronous];
-    }
-}
-
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
     NSData *responseData = [request responseData];
@@ -311,9 +266,14 @@
     }
 }
 
+- (void)setChapterDownloadInProgressFlag:(NSInteger)chapter withFlag:(Boolean)flag
+{
+    Chapter *c = [[self chapters] objectAtIndex:chapter] ;
+    [c setIsDownloadInProgress: flag];
+}
 
 /* Return the chapter index of the next downloaded chapter, or -1 if there is nothing left. */
-- (NSInteger) canPlayNextLesson:(NSInteger)currentChapterIndex
+- (NSInteger) indexOfNextDownloadedLesson:(NSInteger)currentChapterIndex
 {
     for (NSInteger i = currentChapterIndex + 1; i < [chapters count]; i++ ) {
         if ( [self isChapterDownloadedLocally:(i)] )
@@ -325,7 +285,7 @@
 }
 
 /* Return the chapter index of the previous downloaded chapter, or -1 if there is nothing left. */
-- (NSInteger) canPlayPreviousLesson:(NSInteger)currentChapterIndex
+- (NSInteger) indexOfPreviousDownloadedLesson:(NSInteger)currentChapterIndex
 {
     for (NSInteger i = currentChapterIndex - 1; i >=0; i-- ) {
         if ( [self isChapterDownloadedLocally:(i)] )
@@ -336,7 +296,7 @@
     return -1;
 }
 
-- (BOOL) canPlayVideo:(NSInteger) chapter {
+- (BOOL) isVideoTypeSupported:(NSInteger) chapter {
     NSString* path = [self getChapterRemotePath:chapter];
     NSRange r1 = [path rangeOfString:@".flv"];
     NSRange r2 = [path rangeOfString:@".f4v"];

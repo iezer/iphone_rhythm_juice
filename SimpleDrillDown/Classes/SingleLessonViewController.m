@@ -206,7 +206,7 @@
                                                            delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
             [alert release];  
-        } else if(![lesson canPlayVideo:chapter_index]) {
+        } else if(![lesson isVideoTypeSupported:chapter_index]) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cannot Play Video." message:@"Sorry, this video format is not supported. We are working on converting all videos to an iPhone-compatible format."
                                                            delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
@@ -231,7 +231,7 @@
                 // Prep and play the movie
                 [moviePlayer readyPlayer];
             } else {
-                [lesson queueChapterDownload:chapter_index];
+                [dataController queueChapterDownload:lesson chapter:chapter_index];
                 [self.tableView reloadData];
             }
         }
@@ -240,7 +240,7 @@
 
 -(void) downloadFiles {
     lesson.detailViewController = self;
-    [lesson queueAllChapters];
+    [dataController queueAllChapters:lesson];
     [self.tableView reloadData];
 }
 

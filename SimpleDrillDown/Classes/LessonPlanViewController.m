@@ -126,14 +126,14 @@
 -(void) downloadFiles {
     for (int i = 0; i < [lessonPlans count]; i++) {
         LessonPlan *lp = [lessonPlans objectAtIndex:i];
-        [[lp lessons] downloadAllLessons];
+        [dataController downloadAllLessons:[lp lessons]];
     }
 }
 
 -(void) deleteFiles {
     for (int i = 0; i < [lessonPlans count]; i++) {
         LessonPlan *lp = [lessonPlans objectAtIndex:i];
-        [[lp lessons] deleteAllLessons];
+        [dataController deleteAllLessons:[lp lessons]];
     }
 }
 

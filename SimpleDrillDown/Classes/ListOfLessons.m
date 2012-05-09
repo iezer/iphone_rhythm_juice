@@ -31,18 +31,6 @@
     return count;
 }
 
-- (void) deleteAllLessons {
-    for (int i = 0; i < [lessons count]; i++) {
-        [[lessons objectAtIndex:i] deleteFiles];
-    }
-}
-
-- (void) downloadAllLessons {
-    for (int i = 0; i < [lessons count]; i++) {
-        [[lessons objectAtIndex:i] queueAllChapters];
-    }
-}
-
 - (void) clear {
     [lessons removeAllObjects];
 }

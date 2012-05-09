@@ -18,8 +18,6 @@
 
 - (ListOfLessons*) init:(NSMutableArray*) l;
 - (NSInteger)numberOfDownloadedLessons;
-- (void) downloadAllLessons;
-- (void) deleteAllLessons;
 - (void) clear;
 - (NSInteger) count;
 - (Lesson*) objectInLessonsAtIndex:(NSUInteger)index;
