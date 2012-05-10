@@ -63,22 +63,21 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 @implementation SimpleDrillDownAppDelegate
 
 @synthesize window
-    ,navigationController
-    ,rootViewController
-    ,dataController
-    ,play
-    ,detailViewController
-    ,receivedData
-    ,state
-    ,loginViewController
-    ,infoButton
-    ,footer
-    ,loggingIn
-    ,gotoWebOnLogin
-    ,localControllersArray
-    ,tabBarController
-    ,rjCookies
-    ,navBarInitialized;
+,navigationController
+,rootViewController
+,dataController
+,play
+,detailViewController
+,receivedData
+,state
+,loginViewController
+,infoButton
+,footer
+,loggingIn
+,gotoWebOnLogin
+,localControllersArray
+,tabBarController
+,rjCookies;
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
@@ -104,40 +103,42 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 
 - (void)login:(NSString*)_username withPassword:(NSString*) _password loggingIn:(BOOL)_loggingIn {
     
+    self.loggingIn = _loggingIn;
+    
+    if( ! _loggingIn ) {
+        [self logout];
+        [loginViewController reset];
+    }
+    // Send logout message to server just for sanity, but don't really care about response.
+    
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     [defaults setValue:_username forKey:@"username"];
     [defaults setValue:_password forKey:@"password"];
     [defaults synchronize];
     
-    self.loggingIn = _loggingIn;
     [self loginWithStoredCredentials];
 }
 
 - (void)loginWithStoredCredentials {
     self.state = 1;
     
-    // for local server
-    //NSString* user_data_url = @"http://rj.isaacezer.com/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21faXBob25lJmZvcm1hdD1yYXc=";
-    
-    /*
-     NSString* user_data_url;
-     if (_loggingIn) {
-     user_data_url = @"http://localhost/rj/rj-login.html";
-     } else {
-     user_data_url = @"http://localhost/rj/rj-logout.html";
-     } */
-    
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-    NSLog(@"%@", defaults);
     NSString *rootURL = [defaults stringForKey:@"rootURL"];
     NSString *user_data_url = [NSString stringWithFormat:@"%@/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21fbGVzc29uJmZvcm1hdD1yYXc=", rootURL];
     
-    //NSString* user_data_url = [NSString stringWithFormat:@"%@/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21fbGVzc29uJmZvcm1hdD1yYXc=", rootURL];
-    //http://www.rhythmjuice.com/sandbox/index.php?option=com_user&view=login&tmpl=component&return=aW5kZXgucGhwP29wdGlvbj1jb21fbGVzc29lJmZvcm1hdD1yYXc=
+    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
+    
+    [self createASIRequest:user_data_url];
+}
+
+- (void)downloadUserInfo {
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSString *rootURL = [defaults stringForKey:@"rootURL"];
+    NSString *user_data_url = [NSString stringWithFormat:@"%@/index.php?option=com_lesson&format=raw", rootURL];
     
     [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
     
-    [self getRequest:user_data_url];
+    [self createASIRequest:user_data_url];
 }
 
 - (NSString*) getAttributeValue:(NSString*)s withMarker:(NSString*) marker {
@@ -176,9 +177,9 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     
     NSString* sData = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
     
-//    NSString *sData = [[sData1
-                      // stringByReplacingOccurrencesOfString:@"+" withString:@" "]
-                     // stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    //    NSString *sData = [[sData1
+    // stringByReplacingOccurrencesOfString:@"+" withString:@" "]
+    // stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     bool ret = false;
@@ -212,7 +213,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         
         //NSRange r = [sData rangeOfString:urlRedirect];
         NSRange r = [sData rangeOfString:@"return\" value=\""];
-
+        
         NSString* randomSessonId;
         if( r.length > 0) {
             NSInteger i = r.location + r.length;
@@ -229,8 +230,6 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         NSString *rootURL = [defaults stringForKey:@"rootURL"];
         NSString *reqURL = [NSString stringWithFormat:@"%@/index.php?option=com_user", rootURL];
         NSURL *url = [NSURL URLWithString:reqURL];
-        
-        //NSURL *url = [NSURL URLWithString:@"https://www.rhythmjuice.com/sandbox/index.php?option=com_user"];
         
         NSString *post = [NSString stringWithFormat:@"username=%@&passwd=%@&submit=Login&option=com_user&task=%@&return=%@&%@=1",username, password, task, urlRedirect, randomSessonId];
         
@@ -300,7 +299,13 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         //       [self getRequest:url withRequest:request];
         //      [request release];    
         
-    } else { // state = 2
+    } else { // state > 1
+        
+        if( ! self.loggingIn ) {
+            state = 0;
+            return ret;
+        }
+        
         NSString *error;
         NSDictionary *rjUserData = [NSPropertyListSerialization propertyListFromData:data mutabilityOption:NSPropertyListImmutable format:nil errorDescription:&error];
         
@@ -318,30 +323,28 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
                 gotoWebOnLogin = false;
                 //[self web];
             } else {
-               // [window addSubview:[navigationController view]];
+                // [window addSubview:[navigationController view]];
                 [self setUpTabViews];
-                [self showMyLessonsTab];
             }
+            state = 0;
         } else if (loggingIn && !authd) {
             
-            //NSString *rootURL = [defaults stringForKey:@"rootURL"];
-            //NSString *url = [NSString stringWithFormat:@"%@/index.php?option=com_lesson&format=raw", rootURL];
+            if( state == 1 ) {
+                // Might have failed because we already logged in through web interface
+                // so try 1 direct connection
+                // TODO might be a better way like check we receive a cookie, or notice that
+                // we recieve a huge HTML file when logging in.
+                state = 2;
+                [self downloadUserInfo];
+            } else {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Auth Failed" message:@"Incorrect user name or password."
+                                                               delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alert show];
+                [alert release];
+                state = 0;
+            }
             
-            //NSString* url = @"https://www.rhythmjuice.com/sandbox/index.php?option=com_lesson&format=raw";
-            //NSString* url = @"http://www.rj.isaacezer.com/index.php?option=com_iphone&format=raw";
-            //[self getRequest:url];
-            
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Auth Failed" message:@"Incorrect user name or password."
-                                                           delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alert show];
-            [alert release];
-          //  [window addSubview:[loginViewController view]];
-            
-        } else { // !loggingIn
-            [self logout];
-            [loginViewController reset];
-        }
-        state = 0;
+        } // logging out
     }
     
     return ret;
@@ -366,8 +369,8 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
          The navigation and root view controllers are created in the main nib file.
          Configure the window with the navigation controller's view and then show it.
          */
-     //   [window addSubview:[navigationController view]];
-     //   [window makeKeyAndVisible];
+        //   [window addSubview:[navigationController view]];
+        //   [window makeKeyAndVisible];
     } else {
         // Received an update to user data;
         retVal = [self.dataController createDataFromRequest:rjUserData];
@@ -396,51 +399,6 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     return retVal;
 }
 
-- (void)getRequest:(NSString *) url; {
-    [self createASIRequest:url];
-}
-
-- (void)getRequest:(NSString *) url withRequest:(NSMutableURLRequest*)request {
-	
-    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
-    
-    NSArray* a = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:url]];
-    
-    NSArray* all = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
-    
-    for (int i = 0; i < [a count]; i++) {
-        NSHTTPCookie* c = [a objectAtIndex:i];
-        NSLog(@"cookie %@ = %@", [c name], [c value]);
-    }
-    
-    for (int i = 0; i < [all count]; i++) {
-        NSHTTPCookie* c = [all objectAtIndex:i];
-        NSLog(@"cookie %@ = %@", [c name], [c value]);
-    }
-    
-    if ( [a count] > 0 ) {
-        NSDictionary            *cookieHeaders;
-        cookieHeaders = [ NSHTTPCookie requestHeaderFieldsWithCookies: a ];
-        [request setValue: [ cookieHeaders objectForKey: @"Cookie" ]
-       forHTTPHeaderField: @"Cookie" ];
-    }
-    
-    // create the connection with the request
-	// and start loading the data
-	NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:request delegate:self];
-	
-	if (theConnection) {
-		// Create the NSMutableData that will hold
-		// the received data
-		// receivedData is declared as a method instance elsewhere
-		receivedData=[[NSMutableData data] retain];
-	} else {
-		// inform the user that the download could not be made
-        [self showConnectionError];
-	}
-    [theConnection release];
-}
-
 - (void)showConnectionError {
     if (self.dataController == nil) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Connection" message:@"Need web access to download your Rhythm Juice Lesson list." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
@@ -454,9 +412,9 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 {
     UINavigationController *localNavigationController;
     localNavigationController = [[UINavigationController alloc] initWithRootViewController:c];
-
+    
 	UITabBarItem* item = [[UITabBarItem alloc] initWithTitle:title image:image tag:index];	
-
+    
     localNavigationController.tabBarItem = item;
     [item release];
     
@@ -466,18 +424,18 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 
 -(void)setUpTabViews {
     
-    if( navBarInitialized )
+    if( [localControllersArray count] > 2 )
         return;
     
-    navBarInitialized = true;
-        
+    [localControllersArray removeAllObjects];
+    
     ListOfLessonsViewController *l1 = [[ListOfLessonsViewController alloc] initWithStyle:UITableViewStylePlain];
     l1.title = NSLocalizedString(@"Lessons", @"List of My Lessons Title");
     l1.lessons = self.dataController.user.lessons;
     l1.dataController = self.dataController;
     
     UIImage* im = [UIImage imageNamed:@"status-icon-30x30.png"];
-    [self addTabView:l1 atIndex:2 title:@"My Lessons" image:im];
+    [self addTabView:l1 atIndex:0 title:@"My Lessons" image:im];
     [l1 release];
     
     ListOfLessonsViewController *l2 = [[ListOfLessonsViewController alloc] initWithStyle:UITableViewStylePlain];
@@ -485,9 +443,9 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     l2.lessons = self.dataController.user.playlists;
     l2.dataController = self.dataController;
     
-    [self addTabView:l2 atIndex:3 title:@"Playlists" image:[UIImage imageNamed:@"playlists-icon-30x30.png"]];
+    [self addTabView:l2 atIndex:1 title:@"Playlists" image:[UIImage imageNamed:@"playlists-icon-30x30.png"]];
     [l2 release];
-
+    
     LessonPlanViewController *lp;
     lp = [[LessonPlanViewController alloc] initWithStyle:UITableViewStylePlain];
     
@@ -495,11 +453,11 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     
     lp.dataController = self.dataController;
     lp.lessonPlans = self.dataController.user.lessonPlans;
-
-    [self addTabView:lp atIndex:4 title:@"Plans" image:[UIImage imageNamed:@"plans-icon-30x30.png"]];
+    
+    [self addTabView:lp atIndex:2 title:@"Plans" image:[UIImage imageNamed:@"plans-icon-30x30.png"]];
     [lp release];
-
-    [self refresh:true];
+    
+    [self createStandardButtons];
     
     // load up our tab bar controller with the view controllers
 	tabBarController.viewControllers = localControllersArray;
@@ -509,29 +467,26 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     
     // need this last line to display the window (and tab bar controller)
 	[window makeKeyAndVisible];
+    
+    [self showMyLessonsTab];
 }
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-
+    
 	//I create my TabBar controlelr
 	tabBarController = [[UITabBarController alloc] init];
-	// Icreate the array that will contain all the View controlelr
-	localControllersArray = [[NSMutableArray alloc] initWithCapacity:3];
-	// I create the view controller attached to the first item in the TabBar
-
+    
     tabBarController.title = NSLocalizedString(@"Rhythm Juice", @"Master view navigation title");
     
-    LoginViewController *_loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:[NSBundle mainBundle]];
-    
     self.rjCookies = [[[NSMutableArray alloc] init] autorelease];
+    
+    localControllersArray = [[NSMutableArray alloc] initWithCapacity:5];
+    LoginViewController *_loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:[NSBundle mainBundle]];
     _loginViewController.delegate = self;
+    
     self.loginViewController = _loginViewController;
     
-    [self addTabView:_loginViewController atIndex:2 title:@"Login" image:[UIImage imageNamed:@"logout-icon-30x30.png"]];
-    [_loginViewController release];
-    
-    WebViewController* w = [self webView];
-    [self addTabView:w atIndex:5 title:@"Online" image:[UIImage imageNamed:@"online-icon-30x30.png"]];
+    [self createStandardButtons];
     
     // set up the table's footer view based on our UIView 'myFooterView' outlet
 	CGRect newFrame = CGRectMake(0.0, 0.0, self.rootViewController.tableView.bounds.size.width, self.footer.frame.size.height);
@@ -543,9 +498,10 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     
     // load up our tab bar controller with the view controllers
 	tabBarController.viewControllers = localControllersArray;
-
+    
     tabBarController.view.opaque = NO;
-
+    tabBarController.selectedIndex = 1;
+    
     UIImageView* image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blue-fullbg.png"]];
     tabBarController.navigationItem.titleView = image;
     [image autorelease];
@@ -579,11 +535,10 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         [data release];
         [loginViewController update];
         [self setUpTabViews];
-        [self showMyLessonsTab];
         
         [self refresh:true];
     } else {
-       // [window addSubview:[loginViewController view]];
+        // [window addSubview:[loginViewController view]];
     }
     
     // Regardless of whether or not we saved the users's info,
@@ -608,7 +563,20 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     }
 }
 
+- (void) createStandardButtons {
+    [self addTabView:[self webView] atIndex:0 title:@"Online" image:[UIImage imageNamed:@"online-icon-30x30.png"]];
+    
+    [self addTabView:self.loginViewController atIndex:1 title:@"Info" image:[UIImage imageNamed:@"logout-icon-30x30.png"]];
+}
+
 - (void) logout {
+    [localControllersArray removeAllObjects];
+    [self createStandardButtons];
+    tabBarController.viewControllers = localControllersArray;
+    tabBarController.selectedIndex = 1;
+    
+    [window makeKeyAndVisible];
+    
     if( dataController.user != nil ) {
         [dataController.user logout];
     }
@@ -630,8 +598,6 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     
     NSError *error;
     [fileManager removeItemAtPath:localFileManager error:&error];
-    
-    //  [window addSubview:[rootViewController view]];
 }
 
 
@@ -657,7 +623,6 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     
     NSString *file;
     while (file = [dirEnum nextObject]) {
-        //NSString* lessonName = [[NSURL URLWithString:file] lastPathComponent];
         NSLog(@"Checking file %@", file);
         if ( [validLessonsNames containsObject:file] ) {
             [[[dataController user] getLesson:file] cleanupDirectory];
@@ -692,11 +657,13 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     NSLog(@"RESPONSE HEADERS: %@", [request responseHeaders]);
     
     NSArray* a = [request responseCookies];
-    [[self rjCookies] removeAllObjects];
-    [[self rjCookies] addObjectsFromArray:a];
-    for (int i = 0; i < [a count]; i++) {
-        NSHTTPCookie* c = [a objectAtIndex:i];
-        NSLog(@"cookie %@ = %@", [c name], [c value]);
+    if ([a count] > 0) {
+        [[self rjCookies] removeAllObjects];
+        [[self rjCookies] addObjectsFromArray:a];
+        for (int i = 0; i < [a count]; i++) {
+            NSHTTPCookie* c = [a objectAtIndex:i];
+            NSLog(@"cookie %@ = %@", [c name], [c value]);
+        }
     }
     
     [self handleData:responseData];
@@ -741,11 +708,11 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 }
 
 - (void) showMyLessonsTab {
-    tabBarController.selectedIndex = 2;
+    tabBarController.selectedIndex = 0;
 }
 
 - (void) showWebTab {
-    tabBarController.selectedIndex = 1;
+    tabBarController.selectedIndex = 0; 
 }
 
 @end

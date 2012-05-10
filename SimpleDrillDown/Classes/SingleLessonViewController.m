@@ -196,12 +196,13 @@
 	NSUInteger chapter_index = [indexPath indexAtPosition:1];
 	
 	if (section == 0) {
-        if ([dataController expired:lesson]) {
+        Boolean isFreeLesson = [dataController isFreeVideo:lesson chapter:chapter_index];
+        if (!isFreeLesson && [dataController expired:lesson]) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Subscription Ended" message:@"Your  subscription has expired. Please log onto www.rhythmjuice.com and renew your subscription.."
                                                            delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
             [alert release];
-        } else if (![dataController canWatchChapterInChannel:lesson chapter:chapter_index]) {
+        } else if (!isFreeLesson && ![dataController canWatchChapterInChannel:lesson chapter:chapter_index]) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Channel" message:@"You are no longer subscribed to the channel containing this video."
                                                            delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];

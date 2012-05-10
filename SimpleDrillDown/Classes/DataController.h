@@ -70,7 +70,7 @@
 - (NSInteger) allowedDownloads; // -1 means unlimited
 
 - (Boolean)expired:(Lesson*)lesson;
-
+- (Boolean)isFreeVideo:(Lesson*)lesson chapter:(NSInteger)chapter_index;
 + (User*)createUserFromData:(NSDictionary *)data;
 
 - (void)deleteAllLessons:(ListOfLessons *)list;

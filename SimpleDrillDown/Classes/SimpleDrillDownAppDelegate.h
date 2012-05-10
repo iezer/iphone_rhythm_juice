@@ -78,7 +78,6 @@
 
     BOOL loggingIn;
     BOOL gotoWebOnLogin;
-    BOOL navBarInitialized;
     
     NSMutableArray *rjCookies;
 }
@@ -98,15 +97,12 @@
 @property (nonatomic, retain) IBOutlet UIView *footer;
 @property (nonatomic) BOOL loggingIn;
 @property (nonatomic) BOOL gotoWebOnLogin;
-@property (nonatomic) BOOL navBarInitialized;
 
 @property (nonatomic, retain) NSMutableArray *rjCookies;
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection;
-- (void)getRequest:(NSString *)url;
-- (void)getRequest:(NSString *) url withRequest:(NSMutableURLRequest*) request;
 - (BOOL)loadAppWithRJUserData:(NSDictionary *)rjUserData saveToFile:(Boolean)save_to_file;
 - (void)showConnectionError;
 - (void)cleanDiskOfUneededVideos;

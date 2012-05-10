@@ -15,20 +15,20 @@
 @synthesize usernameField, passwordField, loginButton, refreshButton, forgotPasswordButton, cancelButton, loginIndicator, delegate; 
 
 /*
-// Override initWithNibName:bundle: to load the view using a nib file then perform additional customization that is not appropriate for viewDidLoad.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        // Custom initialization
-    }
-    return self;
-}
-*/
+ // Override initWithNibName:bundle: to load the view using a nib file then perform additional customization that is not appropriate for viewDidLoad.
+ - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+ if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+ // Custom initialization
+ }
+ return self;
+ }
+ */
 
 /*
-// Implement loadView to create a view hierarchy programmatically.
-- (void)loadView {
-}
-*/
+ // Implement loadView to create a view hierarchy programmatically.
+ - (void)loadView {
+ }
+ */
 
 
 // Implement viewDidLoad to do additional setup after loading the view.
@@ -73,7 +73,7 @@
     
     User* u = delegate.dataController.user;
     BOOL loggedIn = u != nil && u.authenticated;
-
+    
     [delegate login:usernameField.text withPassword:passwordField.text loggingIn:!loggedIn];
 }
 
@@ -139,13 +139,13 @@
 - (IBAction) refresh: (id) sender
 {
 	if( [self loggedIn] ) {
-    loginIndicator.hidden = FALSE;
-	[loginIndicator startAnimating];
-    cancelButton.hidden = FALSE;
-	loginButton.enabled = FALSE;
-    
-    delegate.loggingIn = true;
-    [delegate loginWithStoredCredentials];
+        loginIndicator.hidden = FALSE;
+        [loginIndicator startAnimating];
+        cancelButton.hidden = FALSE;
+        loginButton.enabled = FALSE;
+        
+        delegate.loggingIn = true;
+        [delegate loginWithStoredCredentials];
     } else {
         [delegate showWebTab];
     }

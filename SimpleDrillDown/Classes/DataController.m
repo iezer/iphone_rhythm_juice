@@ -197,6 +197,11 @@
     return ([self allowedDownloads] == -1) || ([self numberOfDownloadedLessons] < [self allowedDownloads]);
 }
 
+- (Boolean)isFreeVideo:(Lesson*)lesson chapter:(NSInteger)chapter_index {
+    Chapter* chapter = [lesson.chapters objectAtIndex:chapter_index];    
+    return chapter.channel == 2;
+}
+
 - (Boolean)canWatchChapterInChannel:(Lesson*)lesson chapter:(NSInteger)chapter_index {
     Chapter* chapter = [lesson.chapters objectAtIndex:chapter_index];
     for( int i = 0; i < [[user channelSubscriptions] count]; i ++ ) {
