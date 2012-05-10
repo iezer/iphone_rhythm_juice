@@ -57,16 +57,33 @@
 
 @implementation DataController
 
-@synthesize user, gotLatestSettings;
+@synthesize user, videoDownloadQueue, gotLatestSettings;
 
 - (id)init {
     self = [super init];
     self.gotLatestSettings = false;
+    
+    NSInteger queueSize = 2;
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSString *testValue = [[NSUserDefaults standardUserDefaults] stringForKey:@"maxConcurrentDownloads"];
+    if (testValue == nil)
+    {
+        [defaults setValue:@"2" forKey:@"maxConcurrentDownloads"];
+        [defaults synchronize];
+    } else {
+        queueSize = [testValue intValue];
+    }
+    
+    NSOperationQueue* queue = [[NSOperationQueue alloc] init];
+    queue.maxConcurrentOperationCount = queueSize;
+    self.videoDownloadQueue = queue;
+    [queue release];
     return self;
 }
 
 - (void)dealloc {
     [user release];
+    [videoDownloadQueue release];
     [super dealloc];
 }
 
@@ -100,11 +117,11 @@
 
 + (NSMutableArray*) parseLessonList:(NSArray *) lessons {
     NSMutableArray* playlist = [[[NSMutableArray alloc] init] autorelease];
-
+    
     NSFileManager *     fileManager;
     fileManager = [NSFileManager defaultManager];
     assert(fileManager != nil);
-
+    
     NSString *document_folder_path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     NSString *lessonsFolderPath = [document_folder_path stringByAppendingPathComponent:@"videos"]; 
     
@@ -258,13 +275,18 @@
     }
 }
 
-- (void)queueChapterDownload:(Lesson *) lesson chapter:(NSUInteger)chapter {
+- (void)queueChapterDownload:(Lesson *) lesson chapter:(NSUInteger)chapter_index {
+    
+    Chapter* chapter = [[lesson chapters] objectAtIndex:chapter_index];
+    if ([chapter isDownloadInProgress]) {
+        return;
+    }
     
     NSFileManager *     fileManager;
     fileManager = [NSFileManager defaultManager];
     assert(fileManager != nil);
     
-    NSString* chapter_remote_path = [lesson getChapterRemotePath:chapter];
+    NSString* chapter_remote_path = [lesson getChapterRemotePath:chapter_index];
     
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     NSString *rootURL = [defaults stringForKey:@"rootURL"];
@@ -278,13 +300,27 @@
         [[NSFileManager defaultManager] createDirectoryAtURL: [NSURL fileURLWithPath:[lesson lessonFolderPath]] withIntermediateDirectories:true attributes:nil error:&error];
     }
     
-    if ( ! [lesson isChapterDownloadedLocally:chapter]) {
-        [lesson setChapterDownloadInProgressFlag:chapter withFlag:true];
+    if ( ! [lesson isChapterDownloadedLocally:chapter_index]) {
+        [lesson setChapterDownloadInProgressFlag:chapter_index withFlag:true];
         ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:chapter_remote_url];
+        chapter.request = request;
         [request setDelegate:lesson];
-        [request setDownloadProgressDelegate:[[[lesson chapters] objectAtIndex:chapter] progressView]];
-        [request startAsynchronous];
+        [request setDownloadProgressDelegate:[chapter progressView]];
+        
+        [videoDownloadQueue addOperation:request];
     }
+}
+
+- (NSSet*) allChapterTitles {
+    NSMutableSet * validLessonsNames = [[NSMutableSet alloc] init];
+    [validLessonsNames unionSet:[[user lessons] chapterTitles]];
+    [validLessonsNames unionSet:[[user playlists] chapterTitles]];
+    for ( LessonPlan* lp in [user lessonPlans] ) {
+        [validLessonsNames unionSet:[[lp lessons] chapterTitles]];
+    }
+    NSSet* retSet = [NSSet setWithSet:validLessonsNames];
+    [validLessonsNames release];
+    return retSet;
 }
 
 @end

@@ -90,5 +90,7 @@
 - (BOOL) isVideoTypeSupported:(NSInteger) chapter;
 - (NSInteger) count;
 - (void)setChapterDownloadInProgressFlag:(NSInteger)chapter withFlag:(Boolean)flag;
+- (void)cancelChapterDownload:(NSUInteger)chapter_index;
+- (NSSet*)chapterTitles;
 
 @end

@@ -10,7 +10,7 @@
 
 @implementation Chapter
 
-@synthesize title, remotePath, localPath, filename, channel, isDownloadInProgress, progressView;
+@synthesize title, remotePath, localPath, filename, channel, isDownloadInProgress, progressView, request;
 
 -(Chapter *)init:(NSString *)_title remotePath:(NSString*)_remotePath localPath:(NSString*)_localPath channel:(NSInteger)_channel
 {
@@ -48,6 +48,9 @@
 	[localPath release];
 	[filename release];
     [progressView release];
+    if( request )
+        [request release];
+    
 	[super dealloc];
 }
 

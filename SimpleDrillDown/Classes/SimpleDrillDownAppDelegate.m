@@ -394,8 +394,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
         dataController.gotLatestSettings = true;
     }
     
-    //[self cleanDiskOfUneededVideos]; // @TODO Make run in background
-    
+    [self cleanDiskOfUneededVideos];
     return retVal;
 }
 
@@ -602,33 +601,20 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 
 
 - (void)cleanDiskOfUneededVideos {
-    return; // Don't need this right now.
-    
-    NSMutableSet * validLessonsNames = [NSMutableSet set];
-    for (int i = 0; i < [[[dataController user] lessons] count]; i++) {
-        NSString* name = [[[[dataController user] lessons] objectAtIndex:i] title];
-        NSLog(@"Valid Lesson Name %@", name);
-        [validLessonsNames addObject:name];
-    }
-    
+
+    NSSet * validLessonsNames = [dataController allChapterTitles];
+
     NSFileManager *     fileManager;
     fileManager = [NSFileManager defaultManager];
     assert(fileManager != nil);
     
     NSString *document_folder_path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
-    NSString *localFileManager = [document_folder_path stringByAppendingPathComponent:@"lessons"]; 
+    NSString *videoFolder = [document_folder_path stringByAppendingPathComponent:@"videos"]; 
     
-    NSDirectoryEnumerator *dirEnum =
-    [fileManager enumeratorAtPath:localFileManager];
-    
-    NSString *file;
-    while (file = [dirEnum nextObject]) {
-        NSLog(@"Checking file %@", file);
-        if ( [validLessonsNames containsObject:file] ) {
-            [[[dataController user] getLesson:file] cleanupDirectory];
-        } else {
-            NSError *error;
-            [fileManager removeItemAtPath:file error:&error];
+    NSError *error;
+    for (NSString* file in [fileManager contentsOfDirectoryAtPath:videoFolder  error:&error]) {
+        if ( ![validLessonsNames member:file] ) {
+            [fileManager removeItemAtPath:[videoFolder stringByAppendingPathComponent:file] error:&error];
         }
     }
 }

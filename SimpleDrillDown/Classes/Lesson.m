@@ -1,4 +1,4 @@
-                /*
+/*
  File: Play.m
  Abstract: A simple class to represent information about a play.
  Version: 2.7
@@ -63,7 +63,7 @@
         TimeTracker* _tracker = [[TimeTracker alloc] init];
         self.tracker = _tracker;
         [_tracker release];
-
+        
         self.lessonFolderPath = _lessonFolderPath;
         self.chapters = _chapters;
     }
@@ -136,7 +136,7 @@
     
     BOOL isDir;
     BOOL directoryExists = [fileManager fileExistsAtPath:lessonFolderPath isDirectory:&isDir] && isDir;
-
+    
     //NSError *error;
     //BOOL nonEmpty = [[fileManager contentsOfDirectoryAtPath:lessonFolderPath error:&error] count] > 0;
     
@@ -185,6 +185,14 @@
     return [fileManager fileExistsAtPath:chapter_local_path];
 }
 
+- (void)cancelChapterDownload:(NSUInteger)chapter_index {
+    Chapter* chapter = [chapters objectAtIndex:chapter_index];
+    if (chapter.isDownloadInProgress) {
+    [chapter.request cancel];
+    [self closeDownloadRequest:chapter_index];
+    }
+}
+
 - (void)deleteChapter:(NSUInteger)chapter {
     NSFileManager *     fileManager;
     fileManager = [NSFileManager defaultManager];
@@ -195,9 +203,10 @@
         [fileManager removeItemAtPath:[self getChapterLocalPath:chapter] error:&error];
     }
 }
-    
+
 - (void)deleteFiles {    
     for (NSInteger i = 0; i < [self count]; i++) {
+        [self cancelChapterDownload:i];
         [self deleteChapter:i];
     }
 }
@@ -206,7 +215,7 @@
     NSFileManager *     fileManager;
     fileManager = [NSFileManager defaultManager];
     assert(fileManager != nil);
-
+    
     NSDirectoryEnumerator *dirEnum =
     [fileManager enumeratorAtPath:lessonFolderPath];
     
@@ -225,6 +234,17 @@
     }
 }
 
+- (void)closeDownloadRequest:(NSInteger)chapter_index {
+    Chapter* chapter = [chapters objectAtIndex:chapter_index];
+    chapter.isDownloadInProgress = false;
+    if( chapter.request ) {
+        chapter.request = nil;
+    }
+    if ( detailViewController != nil) {
+        [detailViewController.tableView reloadData];
+    }
+}
+
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
     NSData *responseData = [request responseData];
@@ -237,16 +257,11 @@
             BOOL written = [responseData writeToFile:chapter_local_path atomically:NO];
             if (written)
                 NSLog(@"Saved to file: %@", chapter_local_path);
-            [self setChapterDownloadInProgressFlag:i withFlag:false];
+            [self closeDownloadRequest:i];
             break;
         }
     }
-    
-    if ( detailViewController != nil) {
-        [detailViewController.tableView reloadData];
-    }
 }
-
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
@@ -258,11 +273,8 @@
         NSURL* chapter_remote_url = [NSURL URLWithString:chapter_remote_path];
         if ([chapter_remote_url isEqual:[request originalURL]]) {
             [self setChapterDownloadInProgressFlag:i withFlag:false];
+            [self closeDownloadRequest:i];
         }
-    }
-    
-    if ( detailViewController != nil) {
-        [detailViewController.tableView reloadData];
     }
 }
 
@@ -310,4 +322,16 @@
 - (NSComparisonResult)compare:(Lesson *)otherObject {
     return [self.title compare:otherObject.title];
 }
+
+- (NSSet*)chapterTitles {
+    
+    NSMutableSet * titles = [[NSMutableSet alloc] init];
+    for (Chapter* c in chapters) {
+        [titles addObject:c.filename];
+    }
+    NSSet* retSet = [NSSet setWithSet:titles];
+    [titles release];
+    return retSet;
+}
+
 @end

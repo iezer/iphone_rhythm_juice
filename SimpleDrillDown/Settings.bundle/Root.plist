@@ -40,6 +40,18 @@
 		</dict>
 		<dict>
 			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Max Concurrent Downloads</string>
+			<key>Key</key>
+			<string>maxConcurrentDownloads</string>
+			<key>DefaultValue</key>
+			<string>2</string>
+			<key>KeyboardType</key>
+			<string>NumberPad</string>
+		</dict>
+		<dict>
+			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
 			<string>Movie Playback</string>

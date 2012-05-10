@@ -52,11 +52,14 @@
 
 @interface DataController : NSObject {
     User* user;
+    NSOperationQueue* videoDownloadQueue;
     Boolean gotLatestSettings;
 }
 
 @property (retain) User *user; //atomic
+@property (nonatomic, retain) NSOperationQueue* videoDownloadQueue;
 @property (nonatomic) Boolean gotLatestSettings;
+
 
 //- (Lesson *)objectInListAtIndex:(unsigned)theIndex;
 
@@ -76,6 +79,7 @@
 - (void)deleteAllLessons:(ListOfLessons *)list;
 - (void)downloadAllLessons:(ListOfLessons *)list;
 - (void)queueAllChapters:(Lesson *)lesson;
-- (void)queueChapterDownload:(Lesson *) lesson chapter:(NSUInteger)chapter;
+- (void)queueChapterDownload:(Lesson *) lesson chapter:(NSUInteger)chapter_index;
+- (NSSet*) allChapterTitles;
 
 @end

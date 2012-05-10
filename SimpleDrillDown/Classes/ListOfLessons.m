@@ -53,4 +53,14 @@
 	[super dealloc];
 }
 
+- (NSSet*)chapterTitles {
+    NSMutableSet* titles = [[NSMutableSet alloc] init];
+    for (Lesson* lesson in lessons) {
+        [titles unionSet:[lesson chapterTitles]];
+    }
+    NSSet* retSet = [NSSet setWithSet:titles];
+    [titles release];
+    return retSet;
+}
+
 @end

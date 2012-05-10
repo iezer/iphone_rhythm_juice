@@ -221,8 +221,9 @@
             [alert release];
             [message release];
         } else {
-            if([lesson isChapterDownloadedLocally:chapter_index])
-            {
+            if([lesson isChapterDownloadInProgress:chapter_index]) {
+                [lesson cancelChapterDownload:chapter_index];
+            } else if([lesson isChapterDownloadedLocally:chapter_index]) {
                 // Create custom movie player   
                 moviePlayer = [[[CustomMoviePlayerViewController alloc] initWithPlay:lesson chapterIndex:chapter_index] autorelease];
                 

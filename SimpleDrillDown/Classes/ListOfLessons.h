@@ -22,5 +22,6 @@
 - (NSInteger) count;
 - (Lesson*) objectInLessonsAtIndex:(NSUInteger)index;
 - (void)update:(ListOfLessons*) l;
+- (NSSet*) chapterTitles;
 
 @end
