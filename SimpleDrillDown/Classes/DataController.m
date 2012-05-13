@@ -328,7 +328,6 @@
                                                        delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
         [alert release];
-        return;
     } else if (![self canWatchLesson:lesson chapter:chapter_index]){
         NSString *message = [[NSString alloc] initWithFormat:@"You can only download %d videos with your current subscription. Please delete some videos or buy the iPhone Add-On from www.rhythmjuice.com. [LIMIT CAN BE CHANGED IN SETTINGS FOR TESTING]",[self allowedDownloads]];
         
