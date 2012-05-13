@@ -66,7 +66,7 @@
 - (id)init;
 - (Boolean)createDataFromRequest:(NSDictionary *)data;
 
-- (Boolean)canWatchLesson:(Lesson*)lesson;
+- (Boolean)canWatchLesson:(Lesson*)lesson chapter:(NSInteger)chapter_index;
 - (NSInteger)numberOfDownloadedLessons;
 - (Boolean)canWatchChapterInChannel:(Lesson*)lesson chapter:(NSInteger)chapter_index;
 
@@ -81,5 +81,6 @@
 - (void)queueAllChapters:(Lesson *)lesson;
 - (void)queueChapterDownload:(Lesson *) lesson chapter:(NSUInteger)chapter_index;
 - (NSSet*) allChapterTitles;
+- (Boolean)validateChapterPlayOrDownload:(Lesson*)lesson chapter:(NSUInteger)chapter_index;
 
 @end

@@ -196,49 +196,27 @@
 	NSUInteger chapter_index = [indexPath indexAtPosition:1];
 	
 	if (section == 0) {
-        Boolean isFreeLesson = [dataController isFreeVideo:lesson chapter:chapter_index];
-        if (!isFreeLesson && [dataController expired:lesson]) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Subscription Ended" message:@"Your  subscription has expired. Please log onto www.rhythmjuice.com and renew your subscription.."
-                                                           delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alert show];
-            [alert release];
-        } else if (!isFreeLesson && ![dataController canWatchChapterInChannel:lesson chapter:chapter_index]) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Channel" message:@"You are no longer subscribed to the channel containing this video."
-                                                           delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alert show];
-            [alert release];  
-        } else if(![lesson isVideoTypeSupported:chapter_index]) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cannot Play Video." message:@"Sorry, this video format is not supported. We are working on converting all videos to an iPhone-compatible format."
-                                                           delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alert show];
-            [alert release];
+
+        if([lesson isChapterDownloadInProgress:chapter_index]) {
+            [lesson cancelChapterDownload:chapter_index];
+        } else if (! [dataController validateChapterPlayOrDownload:lesson chapter:chapter_index]) {
             return;
-        } else if (![dataController canWatchLesson:lesson]){
-            NSString *message = [[NSString alloc] initWithFormat:@"You can only download %d videos with your current subscription. Please delete some videos or buy the iPhone Add-On from www.rhythmjuice.com.",[dataController allowedDownloads]];
+        } else if([lesson isChapterDownloadedLocally:chapter_index]) {
+            // Create custom movie player   
+            moviePlayer = [[[CustomMoviePlayerViewController alloc] initWithPlay:lesson chapterIndex:chapter_index] autorelease];
             
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Video Cache is Full" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alert show];
-            [alert release];
-            [message release];
+            // Show the movie player as modal
+            [self presentModalViewController:moviePlayer animated:YES];
+            
+            // Prep and play the movie
+            [moviePlayer readyPlayer];
         } else {
-            if([lesson isChapterDownloadInProgress:chapter_index]) {
-                [lesson cancelChapterDownload:chapter_index];
-            } else if([lesson isChapterDownloadedLocally:chapter_index]) {
-                // Create custom movie player   
-                moviePlayer = [[[CustomMoviePlayerViewController alloc] initWithPlay:lesson chapterIndex:chapter_index] autorelease];
-                
-                // Show the movie player as modal
-                [self presentModalViewController:moviePlayer animated:YES];
-                
-                // Prep and play the movie
-                [moviePlayer readyPlayer];
-            } else {
-                [dataController queueChapterDownload:lesson chapter:chapter_index];
-                [self.tableView reloadData];
-            }
+            [dataController queueChapterDownload:lesson chapter:chapter_index];
+            [self.tableView reloadData];
         }
     }
 }
+
 
 -(void) downloadFiles {
     lesson.detailViewController = self;
