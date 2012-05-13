@@ -52,24 +52,19 @@
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import "Lesson.h"
-#import "SingleLessonViewController.h"
-#import "RootViewController.h"
-#import "ASIHTTPRequest.h"
-#import "WebViewController.h"
 
 @class LoginViewController;
 @class WebViewController;
+@class RootViewController;
+@class ASIHTTPRequest;
 
 @interface SimpleDrillDownAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
 	UIWindow *window;
 	UINavigationController *navigationController;
     UITabBarController *tabBarController;
-    NSMutableArray *localControllersArray;
-	//ListOfLessonsViewController *rootViewController;
     RootViewController *rootViewController;
     DataController *dataController;
 	Lesson* play;
-	SingleLessonViewController* detailViewController;
 	NSMutableData *receivedData;
     LoginViewController *loginViewController;
     NSInteger state;
@@ -87,10 +82,8 @@
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 @property (nonatomic, retain) IBOutlet RootViewController *rootViewController;
-@property (nonatomic, retain) NSMutableArray *localControllersArray;
 @property (nonatomic, retain) Lesson *play;
 @property (nonatomic, retain) DataController *dataController;
-@property (nonatomic, retain) SingleLessonViewController *detailViewController;
 @property (nonatomic, retain) NSMutableData *receivedData;
 @property (nonatomic, retain) LoginViewController *loginViewController;
 @property (retain, nonatomic) IBOutlet UIButton *infoButton;
@@ -120,5 +113,8 @@
 - (WebViewController*) webView;
 - (void) showMyLessonsTab;
 - (void) showWebTab;
+- (void) showJoinNowWebTab;
+- (void) showLostPasswordWebTab;
+- (void) showWebTab:(NSString*) url;    
 
 @end

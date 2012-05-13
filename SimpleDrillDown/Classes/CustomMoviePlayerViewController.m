@@ -67,25 +67,6 @@
 	}
 }
 
-/*---------------------------------------------------------------------------
- * For 3.1.x devices
- * For 3.2 and 4.x see moviePlayerLoadStateChanged: 
- *--------------------------------------------------------------------------*/
-- (void) moviePreloadDidFinish:(NSNotification*)notification 
-{
-	// Remove observer
-	[[NSNotificationCenter 	defaultCenter] 
-     removeObserver:self
-     name:MPMoviePlayerContentPreloadDidFinishNotification
-     object:nil];
-    
-    // Set up tracker.
-    [self->lesson startTracker:chapterIndex];
-    
-	// Play the movie
- 	[mp play];
-}
-
 - (void) finishAndPlayNextLesson:(NSNotification*)notification atChapter:(NSInteger)nextChapter {
     [self->lesson stopTracker];
     
@@ -178,14 +159,6 @@
                                                      name:MPMoviePlayerLoadStateDidChangeNotification 
                                                    object:nil];
     }  
-    else
-    {
-        // Register to receive a notification when the movie is in memory and ready to play.
-        [[NSNotificationCenter defaultCenter] addObserver:self 
-                                                 selector:@selector(moviePreloadDidFinish:) 
-                                                     name:MPMoviePlayerContentPreloadDidFinishNotification 
-                                                   object:nil];
-    }
     
     // Register to receive a notification when the movie has finished playing. 
     [[NSNotificationCenter defaultCenter] addObserver:self 

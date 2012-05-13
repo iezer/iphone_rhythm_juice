@@ -214,7 +214,7 @@
             [alert release];
             return;
         } else if (![dataController canWatchLesson:lesson]){
-            NSString *message = [[NSString alloc] initWithFormat:@"You can only download %d videos with your current subscription. Please delete some lessons or buy the iPhone Add-On from www.rhythmjuice.com.",[dataController allowedDownloads]];
+            NSString *message = [[NSString alloc] initWithFormat:@"You can only download %d videos with your current subscription. Please delete some videos or buy the iPhone Add-On from www.rhythmjuice.com.",[dataController allowedDownloads]];
             
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Video Cache is Full" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];

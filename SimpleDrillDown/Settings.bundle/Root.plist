@@ -52,6 +52,18 @@
 		</dict>
 		<dict>
 			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Number of Allowed Video Files</string>
+			<key>Key</key>
+			<string>numberOfAllowedVideoFiles</string>
+			<key>DefaultValue</key>
+			<string>2</string>
+			<key>KeyboardType</key>
+			<string>NumberPad</string>
+		</dict>
+		<dict>
+			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
 			<string>Movie Playback</string>

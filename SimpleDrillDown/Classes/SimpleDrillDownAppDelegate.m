@@ -55,6 +55,7 @@
 #import "WebViewController.h"
 #import "ListOfLessonsViewController.h"
 #import "LessonPlanViewController.h"
+#import "RootViewController.h"
 
 NSString *kScalingModeKey	= @"scalingMode";
 NSString *kControlModeKey	= @"controlMode";
@@ -67,7 +68,6 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 ,rootViewController
 ,dataController
 ,play
-,detailViewController
 ,receivedData
 ,state
 ,loginViewController
@@ -75,7 +75,6 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 ,footer
 ,loggingIn
 ,gotoWebOnLogin
-,localControllersArray
 ,tabBarController
 ,rjCookies;
 
@@ -407,7 +406,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 }
 
 
--(void)addTabView:(UIViewController*)c atIndex:(NSInteger)index title:(NSString*)title image:(UIImage*)image
+-(void)addTabView:(UIViewController*)c atIndex:(NSInteger)index title:(NSString*)title image:(UIImage*)image intoArray:(NSMutableArray*)localControllersArray
 {
     UINavigationController *localNavigationController;
     localNavigationController = [[UINavigationController alloc] initWithRootViewController:c];
@@ -418,14 +417,15 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     [item release];
     
 	[localControllersArray addObject:localNavigationController];
-	[localNavigationController release];
+    [localNavigationController release];
 }
 
 -(void)setUpTabViews {
     
-    if( [localControllersArray count] > 2 )
+    if( [tabBarController.viewControllers count] > 2 )
         return;
     
+    NSMutableArray *localControllersArray = [[NSMutableArray alloc] init];
     [localControllersArray removeAllObjects];
     
     ListOfLessonsViewController *l1 = [[ListOfLessonsViewController alloc] initWithStyle:UITableViewStylePlain];
@@ -434,7 +434,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     l1.dataController = self.dataController;
     
     UIImage* im = [UIImage imageNamed:@"status-icon-30x30.png"];
-    [self addTabView:l1 atIndex:0 title:@"My Lessons" image:im];
+    [self addTabView:l1 atIndex:0 title:@"My Lessons" image:im intoArray:localControllersArray];
     [l1 release];
     
     ListOfLessonsViewController *l2 = [[ListOfLessonsViewController alloc] initWithStyle:UITableViewStylePlain];
@@ -442,7 +442,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     l2.lessons = self.dataController.user.playlists;
     l2.dataController = self.dataController;
     
-    [self addTabView:l2 atIndex:1 title:@"Playlists" image:[UIImage imageNamed:@"playlists-icon-30x30.png"]];
+    [self addTabView:l2 atIndex:1 title:@"Playlists" image:[UIImage imageNamed:@"playlists-icon-30x30.png"] intoArray:localControllersArray];
     [l2 release];
     
     LessonPlanViewController *lp;
@@ -453,13 +453,14 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     lp.dataController = self.dataController;
     lp.lessonPlans = self.dataController.user.lessonPlans;
     
-    [self addTabView:lp atIndex:2 title:@"Plans" image:[UIImage imageNamed:@"plans-icon-30x30.png"]];
+    [self addTabView:lp atIndex:2 title:@"Plans" image:[UIImage imageNamed:@"plans-icon-30x30.png"] intoArray:localControllersArray];
     [lp release];
     
-    [self createStandardButtons];
+    [self createStandardButtons:localControllersArray];
     
     // load up our tab bar controller with the view controllers
 	tabBarController.viewControllers = localControllersArray;
+    [localControllersArray release];
     
 	// add the tabBarController as a subview in the window
 	[window addSubview:tabBarController.view];
@@ -479,13 +480,12 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     
     self.rjCookies = [[[NSMutableArray alloc] init] autorelease];
     
-    localControllersArray = [[NSMutableArray alloc] initWithCapacity:5];
     LoginViewController *_loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:[NSBundle mainBundle]];
     _loginViewController.delegate = self;
     
     self.loginViewController = _loginViewController;
     
-    [self createStandardButtons];
+    [self createToolbarOfStandardButtons];
     
     // set up the table's footer view based on our UIView 'myFooterView' outlet
 	CGRect newFrame = CGRectMake(0.0, 0.0, self.rootViewController.tableView.bounds.size.width, self.footer.frame.size.height);
@@ -494,9 +494,6 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 	self.rootViewController.tableView.tableFooterView = self.footer;	// note this will override UITableView's 'sectionFooterHeight' property
     
     self.rootViewController.delegate = self;
-    
-    // load up our tab bar controller with the view controllers
-	tabBarController.viewControllers = localControllersArray;
     
     tabBarController.view.opaque = NO;
     tabBarController.selectedIndex = 1;
@@ -539,18 +536,6 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     } else {
         // [window addSubview:[loginViewController view]];
     }
-    
-    // Regardless of whether or not we saved the users's info,
-    // try to request an updated version from the server.
-    // NSString* user_data_url = @"http://rj.isaacezer.com/index.php?option=com_user&view=login&tmpl=component";
-    //NSString* user_data_url = @"http://rj.isaacezer.com/index.php?option=com_iphone&format=raw";
-    
-    
-    //NSString* user_data_url = @"http://localhost/rj/userdata.plist";
-    
-    //aW5kZXgucGhwP29wdGlvbj1jb21faXBob25lJmZvcm1hdD1yYXc - base64 encoding of 'index.php?option=com_iphone&format=raw'
-    
-    // [self cleanDiskOfUneededVideos]; // @TODO Make run in background
 }
 
 - (IBAction)loginButtonAction:(id)sender {    
@@ -562,16 +547,22 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     }
 }
 
-- (void) createStandardButtons {
-    [self addTabView:[self webView] atIndex:0 title:@"Online" image:[UIImage imageNamed:@"online-icon-30x30.png"]];
+- (void) createStandardButtons:(NSMutableArray*)array {
+    [self addTabView:[self webView] atIndex:0 title:@"Online" image:[UIImage imageNamed:@"online-icon-30x30.png"] intoArray:array];
     
-    [self addTabView:self.loginViewController atIndex:1 title:@"Info" image:[UIImage imageNamed:@"logout-icon-30x30.png"]];
+    [self addTabView:self.loginViewController atIndex:1 title:@"Info" image:[UIImage imageNamed:@"logout-icon-30x30.png"] intoArray:array];
+}
+
+- (void) createToolbarOfStandardButtons {
+    NSMutableArray* viewArray = [[NSMutableArray alloc] init];
+    [self createStandardButtons:viewArray];
+    tabBarController.viewControllers = viewArray;
+    [viewArray release];    
 }
 
 - (void) logout {
-    [localControllersArray removeAllObjects];
-    [self createStandardButtons];
-    tabBarController.viewControllers = localControllersArray;
+    [self createToolbarOfStandardButtons];
+    
     tabBarController.selectedIndex = 1;
     
     [window makeKeyAndVisible];
@@ -699,6 +690,29 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
 
 - (void) showWebTab {
     tabBarController.selectedIndex = 0; 
+}
+
+- (void) showWebTab:(NSString*) url {
+    UINavigationController *nav = [[tabBarController viewControllers] objectAtIndex:0];
+    WebViewController* web = [[nav viewControllers] objectAtIndex:0];
+    web._url = url;
+    tabBarController.selectedIndex = 0; 
+}
+
+- (void) showJoinNowWebTab {
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSString *rootURL = [defaults stringForKey:@"rootURL"];
+    NSString *joinNow = [rootURL stringByAppendingPathComponent:@"/index.php?option=com_community&view=register&task=register"];
+    
+    [self showWebTab:joinNow];
+}
+
+- (void) showLostPasswordWebTab {
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSString *rootURL = [defaults stringForKey:@"rootURL"];
+    NSString *joinNow = [rootURL stringByAppendingPathComponent:@"/index.php?option=com_user&view=reset#content"];
+    
+    [self showWebTab:joinNow];
 }
 
 @end

@@ -58,7 +58,7 @@
 
 - (IBAction) showWebView:(id)sender
 {
-    [delegate showWebTab];
+    [delegate showLostPasswordWebTab];
 }
 
 - (IBAction) login: (id) sender
@@ -147,7 +147,7 @@
         delegate.loggingIn = true;
         [delegate loginWithStoredCredentials];
     } else {
-        [delegate showWebTab];
+        [delegate showJoinNowWebTab];
     }
 }
 @end

@@ -62,7 +62,14 @@
 - (id)init {
     self = [super init];
     self.gotLatestSettings = false;
-    
+    NSOperationQueue* queue = [[NSOperationQueue alloc] init];
+    self.videoDownloadQueue = queue;
+    [queue release];
+    [self updatedDownloadQueueSize];
+    return self;
+}
+
+- (void)updatedDownloadQueueSize {
     NSInteger queueSize = 2;
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     NSString *testValue = [[NSUserDefaults standardUserDefaults] stringForKey:@"maxConcurrentDownloads"];
@@ -73,12 +80,7 @@
     } else {
         queueSize = [testValue intValue];
     }
-    
-    NSOperationQueue* queue = [[NSOperationQueue alloc] init];
-    queue.maxConcurrentOperationCount = queueSize;
-    self.videoDownloadQueue = queue;
-    [queue release];
-    return self;
+    self.videoDownloadQueue.maxConcurrentOperationCount = queueSize;
 }
 
 - (void)dealloc {
@@ -211,7 +213,8 @@
 }
 
 - (Boolean)canWatchLesson:(Lesson*)lesson {
-    return ([self allowedDownloads] == -1) || ([self numberOfDownloadedLessons] < [self allowedDownloads]);
+    NSInteger currentAndPendingDownloads = [self numberOfDownloadedLessons] + [ videoDownloadQueue operationCount];
+    return ([self allowedDownloads] == -1) || (currentAndPendingDownloads < [self allowedDownloads]);
 }
 
 - (Boolean)isFreeVideo:(Lesson*)lesson chapter:(NSInteger)chapter_index {
@@ -233,12 +236,25 @@
     NSDate* now = [NSDate date];
     NSDate* endDate = [user subscriptionEndDate];
     NSComparisonResult result = [now compare:endDate];
-    NSLog(@"%@ %@ %d", now, endDate, result);
+    //NSLog(@"%@ %@ %d", now, endDate, result);
     return ( result == NSOrderedDescending );
 }
 
 - (NSInteger) allowedDownloads {
-    return [user allowedOfflineVideos];
+    //return [user allowedOfflineVideos];
+    
+    // Make configurable for now.
+    NSInteger queueSize = 2;
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSString *testValue = [[NSUserDefaults standardUserDefaults] stringForKey:@"numberOfAllowedVideoFiles"];
+    if (testValue == nil)
+    {
+        [defaults setValue:@"2" forKey:@"numberOfAllowedVideoFiles"];
+        [defaults synchronize];
+    } else {
+        queueSize = [testValue intValue];
+    }
+    return queueSize;
 }
 
 // Custom set accessor to ensure the new list is mutable
@@ -263,7 +279,15 @@
 
 //Meant to be all videos, not just for 1 particular lesson
 - (NSInteger)numberOfDownloadedLessons {
-    return 0;
+    NSFileManager *     fileManager;
+    fileManager = [NSFileManager defaultManager];
+    assert(fileManager != nil);
+    
+    NSString *document_folder_path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSString *videoFolder = [document_folder_path stringByAppendingPathComponent:@"videos"]; 
+    
+    NSError *error;
+    return [[fileManager contentsOfDirectoryAtPath:videoFolder  error:&error] count];
 }
 
 - (void)queueAllChapters:(Lesson *)lesson
@@ -276,6 +300,9 @@
 }
 
 - (void)queueChapterDownload:(Lesson *) lesson chapter:(NSUInteger)chapter_index {
+    
+    // update queue size incase user changed in settings.
+    [self updatedDownloadQueueSize];
     
     Chapter* chapter = [[lesson chapters] objectAtIndex:chapter_index];
     if ([chapter isDownloadInProgress]) {
