@@ -68,12 +68,20 @@
 
 -(void) downloadFiles {
     [dataController downloadAllLessons:lessons];
-    [self.tableView reloadData];
+    [self update];
+}
+
+-(Boolean) isDownloadInProgress {
+    return [dataController isDownloadInProgress:lessons];
 }
 
 -(void) deleteFiles {
-    [dataController deleteAllLessons:lessons];
-    [self.tableView reloadData];
+    if ([self isDownloadInProgress]) {
+        [dataController cancelAllDownloads:lessons];
+    } else {
+        [dataController deleteAllLessons:lessons];
+    }
+    [self update];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -86,7 +94,7 @@
 */
 
     // Scroll the table view to the top before it appears
-    [self.tableView reloadData];
+    [self update];
     [self.tableView setContentOffset:CGPointZero animated:NO];
 }
 

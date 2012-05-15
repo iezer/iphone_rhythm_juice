@@ -282,6 +282,21 @@
     }
 }
 
+- (void) cancelAllDownloads:(ListOfLessons *)list {
+    for (int i = 0; i < [list.lessons count]; i++) {
+        [[list.lessons objectAtIndex:i] cancelAllDownloads];
+    }
+}
+
+- (Boolean) isDownloadInProgress:(ListOfLessons *)list {
+    for (int i = 0; i < [list.lessons count]; i++) {
+        Lesson* lesson = [list.lessons objectAtIndex:i];
+        if( [lesson isDownloadInProgress] )
+            return true;
+    }
+    return false;
+}
+
 - (Boolean) downloadAllLessons:(ListOfLessons *)list {
     for (int i = 0; i < [list.lessons count]; i++) {
         if( ![self queueAllChapters:[list.lessons objectAtIndex:i]] )

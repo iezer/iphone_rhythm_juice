@@ -138,7 +138,7 @@
 	_toolbar.tintColor = [UIColor blackColor];
 	_toolbar.items = [NSArray arrayWithObjects:
 					  _backButton, space, _forwardButton, space, _refreshButton, space, actionButton, nil];
-	
+	_toolbar.tintColor = RJColorBlue;
 	
 	[self.view addSubview:_toolbar];
     

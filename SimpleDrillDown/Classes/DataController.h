@@ -82,5 +82,7 @@
 - (Boolean)queueChapterDownload:(Lesson *) lesson chapter:(NSUInteger)chapter_index;
 - (NSSet*) allChapterTitles;
 - (Boolean)validateChapterPlayOrDownload:(Lesson*)lesson chapter:(NSUInteger)chapter_index;
+- (Boolean) isDownloadInProgress:(ListOfLessons *)list;
+- (void) cancelAllDownloads:(ListOfLessons *)list;
 
 @end

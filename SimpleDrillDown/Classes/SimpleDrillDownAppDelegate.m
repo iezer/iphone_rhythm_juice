@@ -430,7 +430,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     [localControllersArray removeAllObjects];
     
     ListOfLessonsViewController *l1 = [[ListOfLessonsViewController alloc] initWithStyle:UITableViewStylePlain];
-    l1.title = NSLocalizedString(@"Lessons", @"List of My Lessons Title");
+    l1.title = NSLocalizedString(@"My Lessons", @"List of My Lessons Title");
     l1.lessons = self.dataController.user.lessons;
     l1.dataController = self.dataController;
     
