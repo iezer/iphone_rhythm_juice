@@ -68,10 +68,10 @@
     [super viewWillAppear:animated];
     
     // Scroll the table view to the top before it appears
-    [self.tableView reloadData];
+    [self update];
     [self.tableView setContentOffset:CGPointZero animated:NO];
     self.title = lesson.title;
-    lesson.detailViewController = self;
+    lesson.singleLessonViewController = self;
 }
 
 #pragma mark -
@@ -121,7 +121,8 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.textLabel.font = [UIFont systemFontOfSize:13.0];
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:13.5];
+        cell.textLabel.textColor = RJColorDarkBlue;
     }
     
     // Cache a date formatter to create a string representation of the date object.
@@ -212,30 +213,28 @@
             [moviePlayer readyPlayer];
         } else {
             [dataController queueChapterDownload:lesson chapter:chapter_index];
-            [self.tableView reloadData];
+            [self update];
         }
     }
 }
 
-
 -(void) downloadFiles {
-    lesson.detailViewController = self;
+    lesson.singleLessonViewController = self;
     [dataController queueAllChapters:lesson];
-    [self.tableView reloadData];
+    [self update];
 }
 
 -(void) deleteFiles {
-    [lesson deleteFiles]; 
-    [self.tableView reloadData];
+    if ([self isDownloadInProgress]) {
+        [lesson cancelAllDownloads];
+    } else {
+        [lesson deleteFiles];
+    }
+    [self update];
 }
 
-/*---------------------------------------------------------------------------
- * 
- *--------------------------------------------------------------------------*/
-- (void)loadMoviePlayer:(NSString *)url
-{  
-    
+-(Boolean) isDownloadInProgress {
+    return [lesson isDownloadInProgress];
 }
-
 
 @end

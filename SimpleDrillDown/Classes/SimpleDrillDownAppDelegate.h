@@ -52,6 +52,7 @@
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import "Lesson.h"
+#import "ColourMacro.h"
 
 @class LoginViewController;
 @class WebViewController;

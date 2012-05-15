@@ -57,6 +57,7 @@
 		6A6C0CCB1538498000ED2E00 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A6C0CC71538498000ED2E00 /* Icon@2x.png */; };
 		6A6C0CCC1538498000ED2E00 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A6C0CC81538498000ED2E00 /* iTunesArtwork.png */; };
 		6A6C0CCE153849C400ED2E00 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A6C0CCD153849C400ED2E00 /* Default.png */; };
+		6A6E519415629116005EB8CD /* DownloadFileTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A6E519315629116005EB8CD /* DownloadFileTableView.xib */; };
 		6A7145691123C5F00081571A /* SingleLessonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F25CCB0D64C1EB00158CCD /* SingleLessonViewController.m */; };
 		6A8146B114C533CF00FAA115 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A8146B014C533CF00FAA115 /* RootViewController.m */; };
 		6A984FE6151058A30053FD6E /* DownloadFileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A984FE5151058A30053FD6E /* DownloadFileTableViewController.m */; };
@@ -184,6 +185,7 @@
 		6A6C0CC71538498000ED2E00 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "images/launch-pages/app-icons/Icon@2x.png"; sourceTree = "<group>"; };
 		6A6C0CC81538498000ED2E00 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iTunesArtwork.png; path = "images/launch-pages/app-icons/iTunesArtwork.png"; sourceTree = "<group>"; };
 		6A6C0CCD153849C400ED2E00 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = "images/launch-pages/Default.png"; sourceTree = "<group>"; };
+		6A6E519315629116005EB8CD /* DownloadFileTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadFileTableView.xib; sourceTree = "<group>"; };
 		6A8146AF14C533CF00FAA115 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		6A8146B014C533CF00FAA115 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		6A984FE4151058A30053FD6E /* DownloadFileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadFileTableViewController.h; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 		6A9850701510F39C0053FD6E /* ListOfLessons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListOfLessons.m; path = Classes/ListOfLessons.m; sourceTree = "<group>"; };
 		6A9E4B1214BDA73100E6FA5F /* rj-logout.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "rj-logout.html"; sourceTree = "<group>"; };
 		6A9E4B1414BDA8D500E6FA5F /* userdata-anonymous.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "userdata-anonymous.plist"; sourceTree = "<group>"; };
+		6ACAF8DD1562A3F80037510B /* ColourMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColourMacro.h; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -306,6 +309,7 @@
 				6A1ADDD815021D3D00B1A846 /* LessonPlan.m */,
 				6A98506F1510F39C0053FD6E /* ListOfLessons.h */,
 				6A9850701510F39C0053FD6E /* ListOfLessons.m */,
+				6ACAF8DD1562A3F80037510B /* ColourMacro.h */,
 			);
 			name = "Data Management";
 			sourceTree = "<group>";
@@ -355,6 +359,7 @@
 				53A386290E6DD89B002F7F09 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				2846CFC60DBFDD18009410C2 /* Localizable.strings */,
+				6A6E519315629116005EB8CD /* DownloadFileTableView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -594,6 +599,7 @@
 				6A6C0CCB1538498000ED2E00 /* Icon@2x.png in Resources */,
 				6A6C0CCC1538498000ED2E00 /* iTunesArtwork.png in Resources */,
 				6A6C0CCE153849C400ED2E00 /* Default.png in Resources */,
+				6A6E519415629116005EB8CD /* DownloadFileTableView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

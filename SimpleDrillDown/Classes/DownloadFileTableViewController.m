@@ -7,6 +7,7 @@
 //
 
 #import "DownloadFileTableViewController.h"
+#import "ColourMacro.h"
 
 @implementation DownloadFileTableViewController
 
@@ -15,6 +16,9 @@
 - (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     self.showToolbar = false;
+    
+    //self.navigationItem.titleView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blue-fullbg.png"]] autorelease];
+    
     return self;
 }
 
@@ -23,20 +27,17 @@
     if( !self.showToolbar )
         return;
     
-    _downloadButton = [[UIBarButtonItem alloc] initWithImage:
-                       [UIImage imageNamed:@"download-icon-30x30-color.png"]
-                                                       style:UIBarButtonItemStylePlain target:self action:@selector(downloadFiles)];
-	_downloadButton.title = @"Download All";
+    _downloadButton = [[UIBarButtonItem alloc] initWithTitle:@"Download All"
+                                                       style:UIBarButtonItemStyleDone target:self action:@selector(downloadFiles)];
     _downloadButton.tag = 1;
 	_downloadButton.enabled = YES;
+    _downloadButton.tintColor = RJColorGreen;
     
-    
-    _deleteButton = [[UIBarButtonItem alloc] initWithImage:
-                     [UIImage imageNamed:@"logout-icon-30x30.png"]
-                                                     style:UIBarButtonItemStylePlain target:self action:@selector(deleteFiles)];
-	_deleteButton.title = @"Delete All";
+    _deleteButton = [[UIBarButtonItem alloc] initWithTitle:@"Delete All"
+                                                     style:UIBarButtonItemStyleDone target:self action:@selector(deleteFiles)];
     _deleteButton.tag = 2;
 	_deleteButton.enabled = YES;
+    _deleteButton.tintColor = RJColorRed;
 	
 	UIBarItem* space = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
 						 UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
@@ -44,7 +45,7 @@
 	_toolbar = [[UIToolbar alloc] initWithFrame:
 				CGRectMake(0, 460 - 44, 320, 44)];
 	_toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	_toolbar.tintColor = [UIColor blackColor];
+	_toolbar.tintColor = [UIColor whiteColor];
 	_toolbar.items = [NSArray arrayWithObjects:
 					  _downloadButton, space, _deleteButton, nil];
     
@@ -63,6 +64,19 @@
 }
 
 -(void) deleteFiles{
+}
+
+-(Boolean) isDownloadInProgress {
+    return false;
+}
+
+-(void) update {
+    if ([self isDownloadInProgress]) {
+        _deleteButton.title = @"Cancel Downloads";
+    } else {
+        _deleteButton.title = @"Delete All";
+    }
+    [self.tableView reloadData];
 }
 
 @end

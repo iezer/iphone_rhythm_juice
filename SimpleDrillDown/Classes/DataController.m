@@ -282,10 +282,12 @@
     }
 }
 
-- (void) downloadAllLessons:(ListOfLessons *)list {
+- (Boolean) downloadAllLessons:(ListOfLessons *)list {
     for (int i = 0; i < [list.lessons count]; i++) {
-        [self queueAllChapters:[list.lessons objectAtIndex:i]];
+        if( ![self queueAllChapters:[list.lessons objectAtIndex:i]] )
+            return false;
     }
+    return true;
 }
 
 //Meant to be all videos, not just for 1 particular lesson
@@ -301,13 +303,16 @@
     return [[fileManager contentsOfDirectoryAtPath:videoFolder  error:&error] count];
 }
 
-- (void)queueAllChapters:(Lesson *)lesson
+- (Boolean)queueAllChapters:(Lesson *)lesson
 {
     for (int i = 0; i < [[lesson chapters] count]; i++) {
         if (![lesson isChapterDownloadedLocally:i] && ![lesson isChapterDownloadInProgress:i]) {
-            [self queueChapterDownload:lesson chapter:i];
+            if ( ! [self queueChapterDownload:lesson chapter:i] ) {
+                return false;;
+            }
         }
     }
+    return true;
 }
 
 - (Boolean)validateChapterPlayOrDownload:(Lesson*)lesson chapter:(NSUInteger)chapter_index {
@@ -342,18 +347,18 @@
     return false;
 }
 
-- (void)queueChapterDownload:(Lesson *) lesson chapter:(NSUInteger)chapter_index {
+- (Boolean)queueChapterDownload:(Lesson *) lesson chapter:(NSUInteger)chapter_index {
     
     // update queue size in case user changed in settings.
     [self updatedDownloadQueueSize];
     
     if (! [self validateChapterPlayOrDownload:lesson chapter:chapter_index]) {
-        return;
+        return false;
     }
            
     Chapter* chapter = [[lesson chapters] objectAtIndex:chapter_index];
     if ([chapter isDownloadInProgress]) {
-        return;
+        return true;
     }
     
     NSFileManager *     fileManager;
@@ -383,6 +388,7 @@
         
         [videoDownloadQueue addOperation:request];
     }
+    return true;
 }
 
 - (NSSet*) allChapterTitles {

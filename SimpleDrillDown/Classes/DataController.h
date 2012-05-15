@@ -77,9 +77,9 @@
 + (User*)createUserFromData:(NSDictionary *)data;
 
 - (void)deleteAllLessons:(ListOfLessons *)list;
-- (void)downloadAllLessons:(ListOfLessons *)list;
-- (void)queueAllChapters:(Lesson *)lesson;
-- (void)queueChapterDownload:(Lesson *) lesson chapter:(NSUInteger)chapter_index;
+- (Boolean)downloadAllLessons:(ListOfLessons *)list;
+- (Boolean)queueAllChapters:(Lesson *)lesson;
+- (Boolean)queueChapterDownload:(Lesson *) lesson chapter:(NSUInteger)chapter_index;
 - (NSSet*) allChapterTitles;
 - (Boolean)validateChapterPlayOrDownload:(Lesson*)lesson chapter:(NSUInteger)chapter_index;
 

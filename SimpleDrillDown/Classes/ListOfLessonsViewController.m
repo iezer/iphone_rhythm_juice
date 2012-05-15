@@ -67,11 +67,6 @@
 }
 
 -(void) downloadFiles {
-    
-    
-
-    
-    
     [dataController downloadAllLessons:lessons];
     [self.tableView reloadData];
 }
@@ -125,7 +120,8 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
-        cell.textLabel.font = [UIFont systemFontOfSize:13.0];
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:13.5];
+        cell.textLabel.textColor = RJColorDarkBlue;
     }
     
     if (section == 0) {
@@ -137,9 +133,9 @@
             cell.textLabel.text = lesson.title;
             // cell.detailTextLabel.text = [] ? @"downloaded locally" : @"not downloaded";
             
-            NSString* premium = [lesson premium] ? @"premium - " : @"";
+            //NSString* premium = [lesson premium] ? @"premium - " : @"";
             NSString* downloadStatus = [lesson downloadStatus];
-            NSString* subTitle = [[NSString alloc] initWithFormat:@"%@%@",premium, downloadStatus];
+            NSString* subTitle = [[NSString alloc] initWithFormat:@"Chapters - %@", downloadStatus];
             cell.detailTextLabel.text = subTitle;
             [subTitle release];
         } else if( indexPath.row == 0 ) {
@@ -175,6 +171,23 @@
         [[self navigationController] pushViewController:detailViewController animated:YES];
         [detailViewController release];
     }
+}
+
+/*
+ HIG note: In this case, since the content of each section is obvious, there's probably no need to provide a title, but the code is useful for illustration.
+ */
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    NSString *title = nil;
+    switch (section) {
+        case 0:
+            if( showToolbar )
+                title = NSLocalizedString(@"Lessons", @"Lesson section title");
+            break;
+		default:
+            break;
+    }
+    return title;
 }
 
 #pragma mark -

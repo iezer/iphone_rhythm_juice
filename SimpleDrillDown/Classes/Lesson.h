@@ -57,7 +57,7 @@
 	TimeTracker *tracker;
     Boolean premium;
     NSString *lessonFolderPath;
-    SingleLessonViewController *detailViewController;
+    SingleLessonViewController *singleLessonViewController;
 }
 
 @property (nonatomic, retain) NSString *title;
@@ -66,7 +66,7 @@
 @property (nonatomic, retain) TimeTracker *tracker;
 @property (nonatomic) Boolean premium;
 @property (nonatomic, retain) NSString *lessonFolderPath;
-@property (nonatomic, retain) SingleLessonViewController *detailViewController;
+@property (nonatomic, retain) SingleLessonViewController *singleLessonViewController;
 
 - (Lesson*)init:(NSString*)_title instructors:(NSArray*)_instructors lessonFolderPath:(NSString*)_lessonFolderPath chapters:(NSMutableArray*)_chapters premium: (Boolean)_premium;
 
@@ -92,5 +92,7 @@
 - (void)setChapterDownloadInProgressFlag:(NSInteger)chapter withFlag:(Boolean)flag;
 - (void)cancelChapterDownload:(NSUInteger)chapter_index;
 - (NSSet*)chapterTitles;
+- (void)cancelAllDownloads;
+-(Boolean) isDownloadInProgress;
 
 @end

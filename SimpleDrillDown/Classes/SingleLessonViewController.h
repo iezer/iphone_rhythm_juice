@@ -59,6 +59,4 @@
 @property (nonatomic, retain) Lesson *lesson;
 @property (nonatomic, retain) DataController *dataController;
 
--(void)loadMoviePlayer:(NSURL *)url;
-
 @end

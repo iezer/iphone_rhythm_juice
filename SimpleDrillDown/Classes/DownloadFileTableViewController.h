@@ -20,5 +20,7 @@
 - (id)initWithStyle:(UITableViewStyle)style;
 -(void) downloadFiles;
 -(void) deleteFiles;
+-(Boolean) isDownloadInProgress;
+-(void) update;
 
 @end

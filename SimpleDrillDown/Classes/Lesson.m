@@ -51,7 +51,7 @@
 
 @implementation Lesson
 
-@synthesize title, instructors, chapters, tracker, premium, lessonFolderPath, detailViewController;
+@synthesize title, instructors, chapters, tracker, premium, lessonFolderPath, singleLessonViewController;
 
 - (Lesson*)init:(NSString*)_title instructors:(NSArray*)_instructors lessonFolderPath:(NSString*)_lessonFolderPath chapters:(NSMutableArray*)_chapters premium:(Boolean)_premium {
     self = [super init];
@@ -84,7 +84,7 @@
 	[chapters release];
 	[tracker release];
     [lessonFolderPath release];
-    [detailViewController release];
+    [singleLessonViewController release];
 	[super dealloc];
 }
 
@@ -204,9 +204,14 @@
     }
 }
 
-- (void)deleteFiles {    
+- (void)cancelAllDownloads {    
     for (NSInteger i = 0; i < [self count]; i++) {
         [self cancelChapterDownload:i];
+    }
+}
+
+- (void)deleteFiles {    
+    for (NSInteger i = 0; i < [self count]; i++) {
         [self deleteChapter:i];
     }
 }
@@ -240,8 +245,8 @@
     if( chapter.request ) {
         chapter.request = nil;
     }
-    if ( detailViewController != nil) {
-        [detailViewController.tableView reloadData];
+    if ( singleLessonViewController != nil) {
+        [singleLessonViewController update];
     }
 }
 
@@ -315,15 +320,15 @@
     return r1.location == NSNotFound && r2.location == NSNotFound;
 }
 
-- (NSInteger) count {
+-(NSInteger) count {
     return [self->chapters count];
 }
 
-- (NSComparisonResult)compare:(Lesson *)otherObject {
+-(NSComparisonResult) compare:(Lesson *)otherObject {
     return [self.title compare:otherObject.title];
 }
 
-- (NSSet*)chapterTitles {
+-(NSSet*) chapterTitles {
     
     NSMutableSet * titles = [[NSMutableSet alloc] init];
     for (Chapter* c in chapters) {
@@ -332,6 +337,16 @@
     NSSet* retSet = [NSSet setWithSet:titles];
     [titles release];
     return retSet;
+}
+
+-(Boolean) isDownloadInProgress {    
+    for (NSInteger i = 0; i < [self count]; i++) {
+        Chapter* chapter = [chapters objectAtIndex:i];
+        if (chapter.isDownloadInProgress) {
+            return true;
+        }
+    }
+    return false;
 }
 
 @end

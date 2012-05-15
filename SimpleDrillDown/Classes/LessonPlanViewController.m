@@ -12,6 +12,7 @@
 #import "ListOfLessonsViewController.h"
 #import "User.h"
 #import "ListOfLessons.h"
+#import "ColourMacro.h"
 
 @implementation LessonPlanViewController
 
@@ -58,7 +59,8 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.textLabel.font = [UIFont systemFontOfSize:13.0];
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:13.5];
+        cell.textLabel.textColor = RJColorDarkBlue;
     }
     
     if (section == 0) {

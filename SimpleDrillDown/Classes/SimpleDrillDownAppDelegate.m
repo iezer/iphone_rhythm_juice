@@ -322,7 +322,6 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
                 gotoWebOnLogin = false;
                 //[self web];
             } else {
-                // [window addSubview:[navigationController view]];
                 [self setUpTabViews];
             }
             state = 0;
@@ -411,10 +410,12 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     UINavigationController *localNavigationController;
     localNavigationController = [[UINavigationController alloc] initWithRootViewController:c];
     
-	UITabBarItem* item = [[UITabBarItem alloc] initWithTitle:title image:image tag:index];	
+	UITabBarItem* item = [[UITabBarItem alloc] initWithTitle:title image:image tag:index];
     
     localNavigationController.tabBarItem = item;
     [item release];
+    
+    localNavigationController.navigationBar.tintColor = RJColorBlue;
     
 	[localControllersArray addObject:localNavigationController];
     [localNavigationController release];
@@ -463,7 +464,7 @@ NSString *kBackgroundColorKey	= @"backgroundColor";
     [localControllersArray release];
     
 	// add the tabBarController as a subview in the window
-	[window addSubview:tabBarController.view];
+	//[window addSubview:tabBarController.view];
     
     // need this last line to display the window (and tab bar controller)
 	[window makeKeyAndVisible];
